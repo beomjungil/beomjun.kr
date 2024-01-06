@@ -13,6 +13,26 @@ const posts = await getCollection('posts', (post) => {
 ---
 
 <Layout title={t('name')}>
+  <Fragment slot='head'>
+    <meta name='description' content={t('description')} />
+    <link rel='canonical' href={Astro.url.origin} />
+    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+    <link rel='manifest' href='/site.webmanifest' />
+    <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#fff' />
+    <meta name='msapplication-TileColor' content='#fff' />
+    <meta name='theme-color' content='#fff' />
+
+    <meta property='og:url' content={Astro.url.origin} />
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content={t('name')} />
+    <meta property='og:description' content={t('description')} />
+    <meta
+      property='og:image'
+      content={`/og/${astroI18n.locale}/og-image.png`}
+    />
+  </Fragment>
   <div class:list={'flex flex-col grow'}>
     <div class:list={'grow'}>
       <div class='flex h-full flex-col items-start justify-center'>
