@@ -1,0 +1,23 @@
+---
+import { l, t } from 'astro-i18n';
+
+import LocaleSwitcher from './LocaleSwitcher.astro';
+
+import Logo from '@/ui/foundations/Logo.astro';
+---
+
+<header
+  class='fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-background/20 p-2 backdrop-blur-md'
+>
+  <a href={l('/')} class='group flex items-center space-x-4'>
+    <Logo cn={'h-8 w-8 text-black dark:text-white'} />
+    <h1 class:list={'text-md font-black'}>
+      {t('name')}
+    </h1>
+  </a>
+  <div class='flex items-center space-x-1'>
+    <LocaleSwitcher />
+    <!-- <ThemeSwitcher />
+    <BookingButton /> -->
+  </div>
+</header>

@@ -1,0 +1,11 @@
+{
+  "main": {
+    "greeting": "반가워요.",
+    "myNameIs": "저는 ",
+    "myNameIsSuffix": "입니다.",
+    "greetingDescription": "저는 현재 서울에서 소프트웨어 엔지니어로 일하고 있어요. ",
+    "aboutMe": "소개",
+    "blog": "블로그",
+    "getInTouch": "연락하기"
+  }
+}

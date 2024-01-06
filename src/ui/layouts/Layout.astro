@@ -1,0 +1,58 @@
+---
+import { astroI18n } from 'astro-i18n';
+
+import HeadHrefLangs from '@/ui/components/HeadHrefLangs.astro';
+import Header from '@/ui/components/Header.astro';
+
+import '@/styles/fonts.css';
+import '@/styles/global.css';
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang={astroI18n.locale}>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content='Astro description' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <HeadHrefLangs />
+    <slot name='head' />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <slot />
+    </main>
+
+    <script is:inline>
+      const theme = (() => {
+        // eslint-disable-next-line prettier/prettier
+        const persistedColorPreference = localStorage?.getItem('theme');
+        if (persistedColorPreference) {
+          return localStorage.getItem('theme');
+        }
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+
+        return 'light';
+      })();
+
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+      window.localStorage.setItem('theme', theme);
+    </script>
+  </body>
+</html>

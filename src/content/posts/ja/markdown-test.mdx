@@ -1,0 +1,218 @@
+---
+title: マークダウンテストブログ記事
+description: マークダウンとSanityをテストするための投稿
+locale: ja
+date: 2021-09-28 00:00:00
+tags:
+  - markdown
+image:
+  url: /images/1.jpg
+  alt: マークダウンテストブログ記事
+---
+
+
+# なぜ動かないのか
+
+ウッラムコ エ ノストラッド マグナ コモド ノストラッド
+
+<YouTube url="https://www.youtube.com/watch?v=SjOl_Bl1l20&pp=ygUJZXNzZW50aWFs"/>
+---
+__広告 :)__ -高品質で高速な画像。
+
+- __[ピカ](https://nodeca.github.io/pica/demo/)__ - 高品質で高速な画像
+ブラウザでリサイズ。
+- __[babelfish](https://github.com/nodeca/babelfish/)__-開発者フレンドリー。
+複数形のサポートと簡単な構文で国際化。
+
+これらのプロジェクトが気に入るでしょう！
+
+---# h1 見出し 8-)
+## h2 見出し
+### h3 見出し
+#### h4 見出し
+##### h5 見出し
+##### h6 見出し
+
+
+## 水平ルール
+
+___
+
+---
+
+***
+
+
+## タイポグラフィの置換
+
+結果を見るにはタイポグラファーオプションを有効にする。
+
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-.
+
+テスト......テスト......テスト......テスト......テスト......?
+
+!!!!!! ???? ,, -- ---
+
+"スマートパンツ、ダブルクォート "と "シングルクォート
+
+
+## 強調
+
+**これは太字です**
+
+__これは太字です__
+
+*これはイタリック体です*
+
+_これはイタリック体です。_
+
+~~打ち消し線~~
+## ブロッククオート
+
+
+> ブロッククオートは入れ子にすることもできる...> ...大なり小なり、矢印と矢印の間に空白を入れる...。
+
+
+## リスト
+
+順序なし
+
++ 行頭を `+`, `-`, `*` で始めるとリストが作成される。
++ サブリストは空白2つ分インデントして作成される：
+- マーカー文字が変わると新しいリストが始まる：
+(マーカ文字を変更すると、新しいリストが開始されます。) * 3行のリストを作成します。
++ 文字列を変更すると新しいリストが作成されます。
+- 簡単に作成できる。
++ とても簡単です！
+ご注文
+
+1. ローム ipsum dolor sit amet
+2. このような場合、以下のようになります。
+3. .曖昧なままにしておくこと
+
+
+1. 連番を使うこともできます。
+1... ...または、すべての数字を「1.`」とする。
+
+オフセットから番号をつける：
+
+57.
+1.
+
+
+## コード
+
+インライン `code`
+
+ブロックコード "fences"
+
+```
+サンプルテキストはこちら...
+```
+
+構文のハイライト
+
+```ts
+const foo = ファンクション (bar) {
+  return bar++
+};
+
+console.log(foo(5))；
+```
+
+## テーブル
+
+| オプション
+| ------ | ----------- |
+| データ｜テンプレートに渡されるデータを供給するデータファイルへのパス。|
+| エンジン｜テンプレートの処理に使用するエンジン。Handlebarsがデフォルトです。|
+| dest ファイルに使用する拡張子。|
+
+右寄せカラム
+
+| オプション
+| ------:| -----------:|
+| データ｜テンプレートに渡されるデータを供給するデータファイルへのパス。|
+| engine テンプレート処理に使用するエンジン。Handlebarsがデフォルトです。|
+| dest ファイルに使用する拡張子。|
+
+
+## リンク
+
+[リンクテキスト](http://dev.nodeca.com)
+
+[タイトル付きリンク](http://nodeca.github.io/pica/demo/ "title text!")
+
+自動変換されたリンク https://github.com/nodeca/pica (見るにはlinkifyを有効にする)
+##画像
+
+ミニオン](https://octodex.github.com/images/minion.png)
+ストームトルーポキャット](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+リンクと同様、画像にも脚注スタイルの構文がある。
+
+![Altテキスト][id]
+
+URLの場所を定義する、文書内の後の参照付き：
+
+[id] https://octodex.github.com/images/dojocat.jpg "ドージョ猫"
+
+
+## プラグイン
+
+markdown-it`のキラー機能は以下のプラグインを非常に効果的にサポートしていることです。
+[構文プラグイン](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+
+
+### [絵文字](https://github.com/markdown-it/markdown-it-emoji)
+
+> 古典的なマークアップ： :wink: :crush: :cry: :tear: :laughing: :yum:ショートカット(顔文字)： :-) :-( 8-) ;)
+
+twemojiで[出力を変更する方法](https://github.com/markdown-it/markdown-it-emoji#change-output)を参照してください。
+
+
+### [下付き文字](https://github.com/markdown-it/markdown-it-sub) / [上付き文字](https://github.com/markdown-it/markdown-it-sup)
+
+- 19^th^
+- H~2~O
+
+
+### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+
+++挿入テキスト
+
+
+### [印](https://github.com/markdown-it/markdown-it-mark)
+
+==マーク付きテキスト
+
+
+### [脚注](https://github.com/markdown-it/markdown-it-footnote)
+
+脚注1のリンク[^最初の]。
+
+脚注2 link[^第2].
+
+インライン脚注^[インライン脚注のテキスト]定義。
+
+重複脚注参照[^第2]。
+
+[^最初の]： 脚注**はマークアップ**を持つことができる。
+
+    と複数の段落があります。
+
+[^第2]： 脚注テキスト。
+
+### [略語](https://github.com/markdown-it/markdown-it-abbr)
+
+これはHTMLの省略形の例です。
+
+HTML "は変換されますが、"xxxHTMLyyy "などの部分的なエントリはそのままです。
+
+*[HTML]： ハイパーテキストマークアップ言語
+
+### [カスタムコンテナ](https://github.com/markdown-it/markdown-it-container)
+
+::: 警告
+*here be dragons*
+:::

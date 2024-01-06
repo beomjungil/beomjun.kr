@@ -1,0 +1,17 @@
+---
+import { getHeadings } from './getHeadings';
+import RecursiveList from './RecursiveList.astro';
+
+interface Props {
+  post: string;
+}
+
+const { post } = Astro.props;
+const headings = getHeadings(post);
+---
+
+<aside
+  class:list={'absolute select-none h-full top-0 hidden lg:block w-[8rem] right-[-10rem] text-sm'}
+>
+  <RecursiveList headings={headings} />
+</aside>

@@ -1,0 +1,47 @@
+---
+import { t } from 'astro-i18n';
+
+import IndexButton from './IndexButton.astro';
+---
+
+<div
+  class:list={'flex w-full shrink-0 grow-0 flex-col items-start justify-center gap-4 px-2 md:h-full md:w-[60rem]'}
+>
+  <h1 class='flex flex-col items-start font-sans text-3xl md:text-4xl'>
+    <span>
+      <span
+        class:list={'relative after:absolute after:inset-0 after:block after:animate-[text-block-in_1s_cubic-bezier(0.19,1,0.22,1)_forwards] after:bg-foreground'}
+      >
+        {t('main.greeting')}
+      </span>
+    </span>
+    <span>
+      <span
+        class:list={'relative after:absolute after:inset-0 after:block after:animate-[text-block-in_1.5s_cubic-bezier(0.19,1,0.22,1)_1s_forwards] after:bg-foreground'}
+      >
+        {t('main.myNameIs')}
+        <span
+          class='inline-block animate-gradient-move bg-clip-text transition-all'
+        >
+          {t('fullName')}
+        </span>
+        {t('main.myNameIsSuffix')}
+      </span>
+    </span>
+  </h1>
+  <p class:list={'whitespace-nowrap opacity-50'}>
+    {t('main.greetingDescription')}
+  </p>
+  <div class:list={'mt-20 flex min-w-[16rem] flex-col gap-4 self-end'}>
+    <IndexButton to='about'>
+      {t('main.aboutMe')}
+    </IndexButton>
+
+    <IndexButton to='blog'>
+      {t('main.blog')}
+    </IndexButton>
+    <IndexButton to='contact'>
+      {t('main.getInTouch')}
+    </IndexButton>
+  </div>
+</div>

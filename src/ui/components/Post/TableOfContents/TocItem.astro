@@ -1,0 +1,38 @@
+---
+interface Props {
+  slug: string;
+  text: string;
+  index: number;
+}
+
+const { slug, text, index } = Astro.props;
+---
+
+<toc-item data-to={slug}>
+  <button
+    type='button'
+    class:list={'inline-block appearance-none whitespace-nowrap text-start outline-0 delay-0 duration-300 animate-in fade-in slide-in-from-bottom fill-mode-both hover:underline'}
+    style={{ animationDelay: `${index * 0.02}s` }}
+  >
+    {text}
+  </button>
+</toc-item>
+
+<script>
+  class TocItem extends HTMLElement {
+    constructor() {
+      super();
+
+      const button = this.querySelector('button');
+      const to = this.dataset.to;
+
+      if (!button || !to) return;
+
+      button.addEventListener('click', () => {
+        document.getElementById(to)?.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  }
+
+  customElements.define('toc-item', TocItem);
+</script>

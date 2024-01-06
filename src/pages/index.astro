@@ -1,0 +1,47 @@
+---
+import { astroI18n, l, t } from 'astro-i18n';
+import { getCollection } from 'astro:content';
+
+import GetInTouchSection from '@/ui/components/Main/GetInTouchSection.astro';
+import GreetingSection from '@/ui/components/Main/GreetingSection.astro';
+import Layout from '@/ui/layouts/Layout.astro';
+import { normalizeSlug } from '@/utils/normalizeSlug';
+
+const posts = await getCollection('posts', (post) => {
+  return post.data.locale === astroI18n.locale;
+});
+---
+
+<Layout title={t('name')}>
+  <div class:list={'flex flex-col grow'}>
+    <div class:list={'grow'}>
+      <div class='flex h-full flex-col items-start justify-center'>
+        <section
+          class='flex w-full flex-col items-center md:w-auto md:flex-row'
+        >
+          <GreetingSection />
+          <div class='h-screen w-1/2 md:w-screen'></div>
+          <div class='flex h-screen w-1/2 items-center md:w-screen' id='blog'>
+            {
+              posts.map((post) => (
+                <div class='m-4 rounded-lg  p-4 shadow-lg'>
+                  <h2 class='mb-2 text-xl font-bold'>{post.data.title}</h2>
+                  <p class='text-gray-600'>{post.data.description}</p>
+                  <a
+                    href={l(`/posts/${normalizeSlug(post.slug)}`)}
+                    class='text-blue-500 hover:underline'
+                  >
+                    Read more
+                  </a>
+                </div>
+              ))
+            }
+          </div>
+          <div class='h-screen w-1/2 md:w-screen'></div>
+          <div class='h-screen w-1/2 md:w-screen'></div>
+          <GetInTouchSection />
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,21 @@
+{
+  "name": "길범준",
+  "fullName": "길범준",
+
+  "theme": {
+    "light": "라이트 모드",
+    "dark": "다크 모드",
+    "system": "시스템 설정 사용",
+    "label": "테마 변경"
+  },
+  "header": {
+    "talkWithMe": "마주보며 이야기하기"
+  },
+  "locale": {
+    "en": "영어",
+    "ko": "한국어",
+    "ja": "일본어",
+    "label": "언어 변경",
+    "suggest": "번역 제안하기"
+  }
+}

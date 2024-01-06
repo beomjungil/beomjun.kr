@@ -1,0 +1,36 @@
+---
+import { astroI18n, l } from 'astro-i18n';
+
+const labels: Record<string, string> = {
+  ko: '한국어',
+  en: 'English',
+  ja: '日本語',
+};
+
+const params = Object.entries(Astro.params).reduce<Record<string, string>>(
+  (acc, [key, value]) => {
+    return value !== undefined ? { ...acc, [key]: String(value) } : acc;
+  },
+  {},
+);
+
+const links = astroI18n.locales.map((locale) => ({
+  locale,
+  href: l(Astro.url.pathname, params, {
+    targetLocale: locale,
+  }),
+  label: labels[locale] || locale.toUpperCase(),
+}));
+---
+
+<nav>
+  <ul>
+    {
+      links.map(({ href, label }) => (
+        <li>
+          <a href={href}>{label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

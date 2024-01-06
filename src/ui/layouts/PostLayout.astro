@@ -1,0 +1,53 @@
+---
+import '@/styles/post.css';
+import TableOfContents from '@/ui/components/Post/TableOfContents/TableOfContents.astro';
+import Layout from '@/ui/layouts/Layout.astro';
+
+import type { Post } from '@/types/Post';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+
+const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
+  '/',
+  '__',
+)}/og.png`;
+---
+
+<Layout title={post.data.title}>
+  <Fragment slot='head'>
+    <meta property='og:title' content={post.data.title} />
+    <meta property='og:description' content={post.data.description} />
+    <meta property='og:url' content={Astro.url.href} />
+    <meta property='og:image' content={ogImage} />
+    <meta property='og:locale' content={post.data.locale} />
+    <meta property='og:type' content='article' />
+    <meta
+      property='article:published_time'
+      content={post.data.date.toLocaleDateString()}
+    />
+    <meta
+      property='article:author'
+      content={`${Astro.url.origin}/${post.data.locale}/about`}
+    />
+    <meta
+      property='article:tag'
+      content={post.data.tags.map((tag) => tag.id).join(',')}
+    />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content={post.data.title} />
+    <meta property='twitter:description' content={post.data.description} />
+    <meta name='twitter:image' content={ogImage} />
+  </Fragment>
+  <div class:list={'prose mx-auto mt-20 dark:prose-invert relative w-full'}>
+    <h1>{post.data.title}</h1>
+    <blockquote>{post.data.description}</blockquote>
+  </div>
+  <div class='prose relative mx-auto w-full px-2 dark:prose-invert'>
+    <TableOfContents post={post.body} />
+    <slot />
+  </div>
+</Layout>

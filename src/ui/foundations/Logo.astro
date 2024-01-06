@@ -1,0 +1,26 @@
+---
+interface Props {
+  cn?: string;
+}
+
+const { cn } = Astro.props;
+---
+
+<svg
+  xmlns='http://www.w3.org/2000/svg'
+  width={256}
+  height={256}
+  fill='none'
+  viewBox='0 0 256 256'
+  class:list={cn}
+>
+  <path
+    fill='#FF4E5D'
+    d='M.001 0h256v256h-256z'
+    class:list={'in-expo fill-white transition-colors duration-300 group-hover:fill-primary dark:fill-black'}
+  ></path>
+  <path
+    fill='currentColor'
+    d='M196.267 0H256v187.733h-59.733zM0 256v-59.733h256V256zM0 187.733a187.741 187.741 0 0 0 132.747-54.985 187.724 187.724 0 0 0 40.695-60.906A187.724 187.724 0 0 0 187.733 0H0v187.733Z'
+  ></path>
+</svg>

@@ -1,0 +1,21 @@
+{
+  "name": "Beomjun",
+  "fullName": "Beomjun Gil",
+
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "Use system setting",
+    "label": "Change theme"
+  },
+  "header": {
+    "talkWithMe": "Talk with me"
+  },
+  "locale": {
+    "en": "English",
+    "ko": "Korean",
+    "ja": "Japanese",
+    "label": "Change language",
+    "suggest": "Suggest translation"
+  }
+}

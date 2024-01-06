@@ -1,0 +1,34 @@
+---
+import { astroI18n, createGetStaticPaths } from 'astro-i18n';
+import { getCollection } from 'astro:content';
+
+import Empty from '@/ui/Empty.astro';
+import YouTube from '@/ui/components/Post/YouTube.astro';
+import PostLayout from '@/ui/layouts/PostLayout.astro';
+import { normalizeSlug } from '@/utils/normalizeSlug';
+
+import type { Post } from '@/types/Post';
+
+export const getStaticPaths = createGetStaticPaths(async () => {
+  const blogEntries = await getCollection('posts', (post) => {
+    return post.data.locale === astroI18n.locale;
+  });
+
+  return blogEntries.map((entry) => ({
+    params: { slug: normalizeSlug(entry.slug) },
+    props: { entry },
+  }));
+});
+
+const { entry } = Astro.props as { entry: Post };
+const { Content } = await entry.render();
+---
+
+<PostLayout post={entry}>
+  <Content
+    components={{
+      YouTube: YouTube,
+      Callout: Empty,
+    }}
+  />
+</PostLayout>

@@ -1,0 +1,24 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @apply font-sans text-foreground bg-background selection:bg-black dark:selection:bg-white selection:text-primary;
+  font-feature-settings:
+    'ss03' on,
+    'ss06' on,
+    'salt' on;
+
+  line-height: 139.3%;
+  letter-spacing: -0.04em;
+  box-sizing: border-box;
+}
+
+[lang='ko'] {
+  p,
+  article li,
+  td,
+  th,
+  blockquote {
+    @apply font-ko-paragraph;
+  }
+}

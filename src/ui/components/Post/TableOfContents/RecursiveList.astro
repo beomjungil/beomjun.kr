@@ -1,0 +1,31 @@
+---
+import TocItem from './TocItem.astro';
+
+import type { Heading } from './getHeadings';
+
+interface Props {
+  headings: Heading[];
+}
+const extractTextFromMarkdown = (text: string) => {
+  const linkRegex = /\[([^\]]+)\]\([^)]+\)/g;
+  return text.replace(linkRegex, '$1');
+};
+const { headings } = Astro.props;
+---
+
+<ul class:list={'sticky top-[6rem] m-0 list-none p-0'}>
+  {
+    headings.map((heading) => (
+      <li>
+        <TocItem
+          slug={heading.slug}
+          text={extractTextFromMarkdown(heading.text)}
+          index={heading.index}
+        />
+        {heading.children.length > 0 && (
+          <Astro.self headings={heading.children} />
+        )}
+      </li>
+    ))
+  }
+</ul>
