@@ -9,7 +9,10 @@ export default {
     extend: {
       container: {
         center: true,
-        padding: '2rem',
+        padding: {
+          DEFAULT: '1rem',
+          md: '2rem',
+        },
         screens: {
           '2xl': '1400px',
         },
@@ -17,7 +20,7 @@ export default {
       typography: () => ({
         DEFAULT: {
           css: {
-            '--tw-prose-invert-pre-bg': '#22272e',
+            '--tw-prose-invert-pre-bg': '#000',
             '--tw-prose-pre-bg': '#fff',
           },
         },
@@ -63,8 +66,8 @@ export default {
       },
       fontFamily: {
         sans: [
-          'SUIT Variable',
           'Satoshi Variable',
+          'SUIT Variable',
           'Murecho Variable',
           ...fontFamily.sans,
         ],

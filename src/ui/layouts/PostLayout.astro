@@ -42,14 +42,34 @@ const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
     <meta property='twitter:description' content={post.data.description} />
     <meta name='twitter:image' content={ogImage} />
   </Fragment>
-  <div
-    class:list={'prose prose-sm mx-auto mt-20 dark:prose-invert relative w-full'}
-  >
-    <h1>{post.data.title}</h1>
-    <blockquote>{post.data.description}</blockquote>
+  <div class:list={'mt-20 relative w-full flex flex-col container gap-4'}>
+    <div class='overflow-hidden'>
+      <h1
+        class='text-balance pr-[10vw] text-[8vw] font-extrabold leading-[1.25] duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+      >
+        {post.data.title}
+      </h1>
+    </div>
+    <div class='block gap-4 lg:flex'>
+      <p class='w-[25vw]'>
+        {
+          Intl.DateTimeFormat(post.data.locale, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }).format(post.data.date)
+        }
+        {' ー '}
+        {post.data.tags.map((tag) => <span>#{tag.id}</span>)}
+      </p>
+      <p class='lg:px-2'>{post.data.description}</p>
+    </div>
   </div>
-  <div class='prose prose-sm relative mx-auto w-full px-2 dark:prose-invert'>
+
+  <div class='container mt-8 flex gap-4'>
     <TableOfContents post={post.body} />
-    <slot />
+    <div class='prose relative w-full dark:prose-invert lg:px-2'>
+      <slot />
+    </div>
   </div>
 </Layout>

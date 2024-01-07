@@ -116,12 +116,26 @@ figcaption + pre {
   @apply !rounded-t-none;
 }
 
-figure[data-rehype-pretty-code-figure] pre {
-  @apply border border-gray-200 rounded-lg;
+figure[data-rehype-pretty-code-figure] {
+  @apply p-4 md:p-8 bg-foreground/10 rounded-lg relative;
+  pre {
+    @apply rounded-lg shadow-lg;
+  }
+
+  figcaption {
+    @apply absolute -translate-x-1/2 left-1/2;
+  }
+
+  &:has(figcaption) {
+    @apply pb-12;
+  }
 }
 
-.dark figure[data-rehype-pretty-code-figure] pre {
-  @apply bg-transparent border border-gray-800;
+.dark figure[data-rehype-pretty-code-figure] {
+  @apply bg-foreground/5;
+  pre {
+    @apply !bg-background;
+  }
 }
 
 h1,

@@ -19,7 +19,6 @@ const params = Object.entries(Astro.params).reduce<Record<string, string>>(
 );
 
 const links = astroI18n.locales.map((locale) => ({
-  locale,
   href: l(Astro.url.pathname, params, {
     targetLocale: locale,
   }),
@@ -44,4 +43,3 @@ const links = astroI18n.locales.map((locale) => ({
     ))
   }
 </DropdownMenu>
-```
