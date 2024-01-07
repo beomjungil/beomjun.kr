@@ -1,0 +1,16 @@
+---
+
+---
+
+<div class='group relative'>
+  <button
+    class='appearance-none rounded-md p-2 outline-none transition-colors hover:bg-black/10 dark:hover:bg-white/10'
+  >
+    <slot name='trigger' />
+  </button>
+  <ul
+    class='invisible absolute right-0 top-full z-50 flex w-max flex-col rounded bg-white/50 py-1 opacity-0 shadow-lg backdrop-blur-lg transition-all group-focus-within:visible group-focus-within:translate-y-1 group-focus-within:opacity-100 dark:bg-foreground/10'
+  >
+    <slot />
+  </ul>
+</div>

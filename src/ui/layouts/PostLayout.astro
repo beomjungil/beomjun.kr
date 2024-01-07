@@ -42,11 +42,13 @@ const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
     <meta property='twitter:description' content={post.data.description} />
     <meta name='twitter:image' content={ogImage} />
   </Fragment>
-  <div class:list={'prose mx-auto mt-20 dark:prose-invert relative w-full'}>
+  <div
+    class:list={'prose prose-sm mx-auto mt-20 dark:prose-invert relative w-full'}
+  >
     <h1>{post.data.title}</h1>
     <blockquote>{post.data.description}</blockquote>
   </div>
-  <div class='prose relative mx-auto w-full px-2 dark:prose-invert'>
+  <div class='prose prose-sm relative mx-auto w-full px-2 dark:prose-invert'>
     <TableOfContents post={post.body} />
     <slot />
   </div>

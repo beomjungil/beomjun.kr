@@ -1,27 +1,53 @@
 ---
 import { t } from 'astro-i18n';
+import { Icon } from 'astro-icon/components';
+
+import DropdownMenu from '../foundations/DropdownMenu.astro';
+import DropdownItem from '../foundations/DropdownItem.astro';
 ---
 
-<ul>
-  <theme-button data-theme='system'>
-    <button data-type='change-theme' data-theme='system'>
-      {t('theme.system')}
-    </button>
-  </theme-button>
+<DropdownMenu>
+  <Icon slot='trigger' name='lucide:palette' />
 
-  <theme-button data-theme='light'>
-    <button data-type='change-theme' data-theme='light'>
-      {t('theme.light')}
-    </button>
-  </theme-button>
+  <DropdownItem>
+    <theme-button data-theme='system'>
+      <button
+        class='flex items-center gap-2'
+        data-type='change-theme'
+        data-theme='system'
+      >
+        <Icon name='lucide:monitor' />
+        {t('theme.system')}
+      </button>
+    </theme-button>
+  </DropdownItem>
 
-  <theme-button data-theme='dark'>
-    <button data-type='change-theme' data-theme='dark'>
-      {t('theme.dark')}
-    </button>
-  </theme-button>
-</ul>
+  <DropdownItem>
+    <theme-button data-theme='light'>
+      <button
+        class='flex items-center gap-2'
+        data-type='change-theme'
+        data-theme='light'
+      >
+        <Icon name='lucide:sun' />
+        {t('theme.light')}
+      </button>
+    </theme-button>
+  </DropdownItem>
 
+  <DropdownItem>
+    <theme-button data-theme='dark'>
+      <button
+        class='flex items-center gap-2'
+        ata-type='change-theme'
+        data-theme='dark'
+      >
+        <Icon name='lucide:moon' />
+        {t('theme.dark')}
+      </button>
+    </theme-button>
+  </DropdownItem>
+</DropdownMenu>
 <script>
   import { match } from 'ts-pattern';
   type Theme = 'system' | 'dark' | 'light';

@@ -1,5 +1,9 @@
 ---
-import { astroI18n, l } from 'astro-i18n';
+import { astroI18n, l, t } from 'astro-i18n';
+import { Icon } from 'astro-icon/components';
+
+import DropdownItem from '../foundations/DropdownItem.astro';
+import DropdownMenu from '../foundations/DropdownMenu.astro';
 
 const labels: Record<string, string> = {
   ko: '한국어',
@@ -19,16 +23,25 @@ const links = astroI18n.locales.map((locale) => ({
   href: l(Astro.url.pathname, params, {
     targetLocale: locale,
   }),
-  label: labels[locale] || locale.toUpperCase(),
+  translatedLocale: t(`locale.${locale}`),
+  locale: labels[locale],
 }));
 ---
 
-<ul>
+<DropdownMenu>
+  <Icon slot='trigger' name='lucide:languages' />
+
   {
-    links.map(({ href, label }) => (
-      <li>
-        <a href={href}>{label}</a>
-      </li>
+    links.map(({ href, translatedLocale, locale }) => (
+      <DropdownItem>
+        <a href={href}>
+          <div class='flex w-32 items-center gap-2'>
+            <span>{translatedLocale}</span>
+            <span class='text-sm opacity-50'>{locale}</span>
+          </div>
+        </a>
+      </DropdownItem>
     ))
   }
-</ul>
+</DropdownMenu>
+```
