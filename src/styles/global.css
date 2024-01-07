@@ -2,14 +2,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @apply font-sans text-foreground bg-background selection:bg-black dark:selection:bg-white selection:text-primary;
-  font-feature-settings:
-    'ss03' on,
-    'ss06' on,
-    'salt' on;
+  @apply font-sans text-foreground bg-background selection:bg-foreground selection:text-background;
 
-  line-height: 139.3%;
-  letter-spacing: -0.04em;
+  line-height: 140%;
+  letter-spacing: -0.05em;
+
   box-sizing: border-box;
 }
 
@@ -19,6 +16,6 @@ body {
   td,
   th,
   blockquote {
-    @apply font-ko-paragraph;
+    letter-spacing: -0.025em;
   }
 }

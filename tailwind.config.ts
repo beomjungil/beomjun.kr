@@ -63,17 +63,12 @@ export default {
       },
       fontFamily: {
         sans: [
-          'DM Sans Variable',
-          'SUITE Variable',
-          'MPLUS1p Variable',
+          'SUIT Variable',
+          'Satoshi Variable',
+          'Murecho Variable',
           ...fontFamily.sans,
         ],
         mono: ['Monaspace Variable', fontFamily.mono],
-        'ko-paragraph': [
-          'DM Sans Variable',
-          'SUIT Variable',
-          ...fontFamily.sans,
-        ],
       },
       boxShadow: {
         card: 'hsl(var(--twc-primary) / 10%) 0 12px 28px 0, rgba(0, 0, 0, 0.1) 0 2px 4px 0',
@@ -98,8 +93,8 @@ export default {
     require('tailwindcss-animate'),
     createThemes({
       light: {
-        foreground: '#000000',
-        background: '#FFFFFF',
+        foreground: '#121211',
+        background: '#F7F6ED',
         primary: {
           50: '#FDF7F8',
           100: '#FBE9EC',
@@ -112,12 +107,11 @@ export default {
           800: '#B2152A',
           900: '#6E1220',
           DEFAULT: '#FF4E5D',
-          foreground: '#000000',
         },
       },
       dark: {
-        foreground: '#FFFFFF',
-        background: '#0d0909',
+        foreground: '#F7F6ED',
+        background: '#121211',
         primary: {
           50: '#320B12',
           100: '#6E1220',
@@ -130,7 +124,6 @@ export default {
           800: '#FAD1D7',
           900: '#FBE9EC',
           DEFAULT: '#FF4E5D',
-          foreground: '#FFFFFF',
         },
       },
     }),

@@ -1,0 +1,135 @@
+---
+import { t } from 'astro-i18n';
+---
+
+<ul>
+  <theme-button data-theme='system'>
+    <button data-type='change-theme' data-theme='system'>
+      {t('theme.system')}
+    </button>
+  </theme-button>
+
+  <theme-button data-theme='light'>
+    <button data-type='change-theme' data-theme='light'>
+      {t('theme.light')}
+    </button>
+  </theme-button>
+
+  <theme-button data-theme='dark'>
+    <button data-type='change-theme' data-theme='dark'>
+      {t('theme.dark')}
+    </button>
+  </theme-button>
+</ul>
+
+<script>
+  import { match } from 'ts-pattern';
+  type Theme = 'system' | 'dark' | 'light';
+
+  function setTheme(desiredTheme: Theme, write: boolean = true) {
+    match(desiredTheme)
+      .with('system', () => {
+        localStorage?.removeItem('theme');
+        setTheme(
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light',
+          false,
+        );
+      })
+      .with('light', () => {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+
+        if (write) localStorage?.setItem('theme', 'light');
+      })
+      .with('dark', () => {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        if (write) localStorage?.setItem('theme', 'dark');
+      });
+  }
+
+  function initializeTheme() {
+    const theme: Theme = (() => {
+      const persistedColorPreference = localStorage?.getItem('theme') as Theme;
+
+      if (persistedColorPreference) {
+        return persistedColorPreference;
+      }
+
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+
+      return 'light';
+    })();
+    setTheme(theme);
+  }
+  document.addEventListener('astro:after-swap', initializeTheme);
+
+  class ThemeButton extends HTMLElement {
+    constructor() {
+      super();
+
+      const button = this.querySelector('button');
+      const theme = this.dataset.theme as Theme;
+
+      if (!button || !theme) return;
+
+      button.addEventListener('click', () => {
+        setTheme(theme);
+      });
+    }
+  }
+
+  customElements.define('theme-button', ThemeButton);
+</script>
+
+<script is:inline>
+  function setTheme(desiredTheme) {
+    if (desiredTheme === 'system') {
+      localStorage?.removeItem('theme');
+      setTheme(
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light',
+      );
+      return;
+    }
+
+    if (desiredTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      return;
+    }
+
+    if (desiredTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      return;
+    }
+  }
+
+  const theme = (() => {
+    const persistedColorPreference = localStorage?.getItem('theme');
+
+    if (persistedColorPreference) {
+      return persistedColorPreference;
+    }
+
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+
+    return 'light';
+  })();
+  setTheme(theme);
+
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', (event) => {
+      if (localStorage?.getItem('theme')) return;
+      setTheme(event.matches ? 'dark' : 'light');
+    });
+</script>

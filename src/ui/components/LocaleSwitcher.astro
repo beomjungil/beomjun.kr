@@ -23,14 +23,12 @@ const links = astroI18n.locales.map((locale) => ({
 }));
 ---
 
-<nav>
-  <ul>
-    {
-      links.map(({ href, label }) => (
-        <li>
-          <a href={href}>{label}</a>
-        </li>
-      ))
-    }
-  </ul>
-</nav>
+<ul>
+  {
+    links.map(({ href, label }) => (
+      <li>
+        <a href={href}>{label}</a>
+      </li>
+    ))
+  }
+</ul>
