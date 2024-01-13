@@ -3,6 +3,12 @@
   animation-delay: 1s;
 }
 
+#post-content blockquote {
+  @apply border-none text-center text-lg pl-0 mt-[4em] mb-[4em];
+  font-style: normal;
+  text-wrap: balance;
+}
+
 body [data-rehype-pretty-code-fragment] *,
 body [data-rehype-pretty-code-figure] * {
   @apply font-mono;
