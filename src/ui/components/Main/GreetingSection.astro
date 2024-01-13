@@ -10,20 +10,31 @@ import IndexButton from './IndexButton.astro';
   <h1
     class='flex flex-col items-start font-sans text-3xl font-extrabold md:text-4xl'
   >
-    <span>
-      <span>
+    <span class='block overflow-hidden'>
+      <span
+        class='block duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+        style={{ animationDelay: '0.25s' }}
+      >
         {t('main.greeting')}
       </span>
     </span>
-    <span>
-      <span>
+    <span class='block overflow-hidden'>
+      <span
+        class='block duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+        style={{ animationDelay: '0.5s' }}
+      >
         {t('main.myNameIs')}{t('fullName')}{t('main.myNameIsSuffix')}
       </span>
     </span>
   </h1>
-  <p class:list={'whitespace-nowrap opacity-50'}>
-    {t('main.greetingDescription')}
-  </p>
+  <div class='overflow-hidden'>
+    <p
+      class:list={'whitespace-nowrap opacity-50 duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'}
+      style={{ animationDelay: '1s' }}
+    >
+      {t('main.greetingDescription')}
+    </p>
+  </div>
   <div class:list={'mt-20 flex min-w-[16rem] flex-col gap-4 self-end'}>
     <IndexButton to='about'>
       {t('main.aboutMe')}

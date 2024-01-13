@@ -11,5 +11,18 @@
   ],
   "prettier.documentSelectors": [
     "**/*.astro"
-  ]
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.classpath": true,
+    "**/node_modules": false,
+    "**/.factorypath": true
+  }
 }

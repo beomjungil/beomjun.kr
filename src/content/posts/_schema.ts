@@ -8,5 +8,6 @@ export const postsCollection = defineCollection({
     description: z.string(),
     locale: z.string(),
     tags: z.array(z.string()),
+    endCard: z.string(),
   }),
 });

@@ -1,12 +1,13 @@
 ---
 import '@/styles/post.css';
-import { t } from 'astro-i18n';
+import { t, l } from 'astro-i18n';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
 import TableOfContents from '@/ui/components/Post/TableOfContents/TableOfContents.astro';
 import Layout from '@/ui/layouts/Layout.astro';
 
 import type { Post } from '@/types/Post';
-import PostComment from '../components/Post/PostComment.astro';
 
 interface Props {
   post: Post;
@@ -18,6 +19,10 @@ const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
   '/',
   '__',
 )}/og.png`;
+
+const suggestMailto =
+  t('post.mailto', { title: encodeURIComponent(post.data.title) }) +
+  t('post.mailtosuffix', { href: encodeURIComponent(Astro.url.href) });
 ---
 
 <Layout title={post.data.title}>
@@ -64,7 +69,9 @@ const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
                 {t('post.writtenBy')}
               </td>
               <td>
-                {t('fullName')}
+                <address class='author not-italic'>
+                  {t('fullName')}
+                </address>
               </td>
             </tr>
           </tbody>
@@ -78,7 +85,9 @@ const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
               {t('post.writtenBy')}
             </td>
             <td>
-              {t('fullName')}
+              <address class='author not-italic'>
+                {t('fullName')}
+              </address>
             </td>
           </tr>
           <tr class='align-top'>
@@ -149,14 +158,55 @@ const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
     </div>
   </div>
 
-  <div class="container flex mt-16 flex-col gap-4 mb-32 lg:flex-row">
-    <div class='flex w-full lg:w-[min(25vw,25%)] text-lg lg:text-2xl font-bold'>
-      {t('post.comments')}
+  <div class='container mt-16 flex flex-col gap-4 lg:flex-row'>
+    <div
+      class='flex w-full flex-col whitespace-nowrap text-lg font-bold lg:w-[min(25vw,25%)] lg:text-2xl'
+    >
+      <span class='opacity-50'>{t('post.writtenBy')}</span>
+      {t('fullName')}
     </div>
-    <div class="w-full lg:mx-auto max-w-[712px]">
-      <PostComment url={`posts/${post.slug.replaceAll('en/', '').replaceAll('ja/', '')}`} />
+    <div class='flex w-full max-w-[712px] flex-col gap-12 lg:mx-auto'>
+      <a href='/#get-in-touch'>
+        <Image
+          alt={t('fullName')}
+          src={'/images/profile.png'}
+          width={240}
+          height={240}
+          class:list={'object-cover filter grayscale brightness-125 constract-150 hover:filter-none transition-all duration-300'}
+        />
+      </a>
+      <p class='leading-[1.8]'>
+        {post.data.endCard}<br />
+        {t('post.endDescription')}
+        {t('post.suggestPrefix')}
+        <a href={suggestMailto}>gil@beomjun.kr</a>
+        {t('post.suggestSuffix')}
+      </p>
     </div>
   </div>
+
+  <div class='mb-24 mt-16 flex justify-end'>
+    <div
+      class='lg:pl-4'
+      style={{
+        width:
+          'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
+      }}
+    >
+      <div class='h-0.5 w-full bg-foreground'></div>
+    </div>
+  </div>
+
+  <a
+    href={l('/')}
+    class='group mb-40 flex items-center justify-center whitespace-nowrap text-lg uppercase lg:text-2xl'
+  >
+    {t('post.goToMain')}
+    <Icon
+      name='lucide:arrow-right'
+      class='inline-block h-12 w-12 transition-all duration-500 group-hover:ml-8'
+    />
+  </a>
 </Layout>
 
 <script is:inline>

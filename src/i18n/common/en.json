@@ -8,7 +8,13 @@
     "publishedAt": "Published at",
     "tags": "Tags",
     "description": "Description",
-    "comments": "Comments"
+    "comments": "Comments",
+    "mailto": "mailto:gil@beomjun.kr?subject=%5BBLOG%5D%20I'm%20reaching%20out%20after%20reading%20'{# title #}",
+    "mailtosuffix": "'%20post.&body=%3E%20{# href #}",
+    "suggestPrefix": "If you have any questions or suggestions about this post, please contact me at",
+    "suggestSuffix": ".",
+    "endDescription": "I’m currently working as a software engineer in Seoul, South Korea.",
+    "goToMain": "Go to main page"
   },
 
   "theme": {
