@@ -4,6 +4,8 @@ import { t, l } from 'astro-i18n';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
+import Footer from '../components/Footer.astro';
+
 import TableOfContents from '@/ui/components/Post/TableOfContents/TableOfContents.astro';
 import Layout from '@/ui/layouts/Layout.astro';
 
@@ -197,16 +199,23 @@ const suggestMailto =
     </div>
   </div>
 
-  <a
-    href={l('/')}
-    class='group mb-40 flex items-center justify-center whitespace-nowrap text-lg uppercase lg:text-2xl'
-  >
-    {t('post.goToMain')}
-    <Icon
-      name='lucide:arrow-right'
-      class='inline-block h-12 w-12 transition-all duration-500 group-hover:ml-8'
-    />
-  </a>
+  <div class='container mb-40 mt-16 flex flex-col gap-4 lg:flex-row'>
+    <div class='w-full gap-4 lg:w-[min(25vw,25%)]'></div>
+
+    <div class='w-full max-w-[712px] lg:mx-auto'>
+      <a
+        href={l('/')}
+        class='group flex items-center justify-start whitespace-nowrap text-lg uppercase lg:text-2xl'
+      >
+        {t('post.goToMain')}
+        <Icon
+          name='lucide:arrow-right'
+          class='ml-4 inline-block h-12 w-12 transition-all duration-500 group-hover:ml-8'
+        />
+      </a>
+    </div>
+  </div>
+  <Footer />
 </Layout>
 
 <script is:inline>

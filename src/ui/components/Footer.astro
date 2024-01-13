@@ -1,0 +1,27 @@
+---
+import Name from '../foundations/Name.astro';
+---
+
+<footer
+  class='flex w-full items-center justify-center bg-foreground/10 pb-32 pt-12'
+>
+  <div class='container flex'>
+    <div
+      class='flex w-full flex-col gap-2 whitespace-nowrap lg:w-[min(25vw,25%)]'
+    >
+      <div>
+        <Name cn='!m-0 h-6 w-auto opacity-50' />
+      </div>
+      <a
+        href='mailto:gil@beomjun.kr'
+        class='text-sm no-underline opacity-25 hover:underline hover:opacity-100'
+      >
+        gil@beomjun.kr
+      </a>
+    </div>
+
+    <div class='flex w-full max-w-[712px] flex-col gap-12 lg:mx-auto'>
+      Build Product with :heart: by Beomjun Gil
+    </div>
+  </div>
+</footer>
