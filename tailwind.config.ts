@@ -14,7 +14,7 @@ export default {
           md: '2rem',
         },
         screens: {
-          '2xl': '1400px',
+          '2xl': '1200px',
         },
       },
       typography: () => ({
@@ -22,6 +22,18 @@ export default {
           css: {
             '--tw-prose-invert-pre-bg': '#000',
             '--tw-prose-pre-bg': '#fff',
+            '--tw-prose-quote-borders': 'hsl(var(--twc-foreground))',
+            '--tw-prose-invert-quote-borders': 'hsl(var(--twc-foreground))',
+            '--tw-prose-bullets': 'hsl(var(--twc-foreground))',
+            '--tw-prose-invert-bullets': 'hsl(var(--twc-foreground))',
+            '--tw-prose-hr': 'hsl(var(--twc-foreground))',
+            '--tw-prose-invert-hr': 'hsl(var(--twc-foreground))',
+            '--tw-prose-counters': 'hsl(var(--twc-foreground))',
+            '--tw-prose-invert-counters': 'hsl(var(--twc-foreground))',
+            '--tw-prose-td-borders': 'hsla(60, 2.9%,6.9%,0.1)',
+            '--tw-prose-invert-td-borders': 'hsla(54, 38.5%, 94.9%, 0.1)',
+            '--tw-prose-th-borders': 'hsl(var(--twc-foreground))',
+            '--tw-prose-invert-th-borders': 'hsl(var(--twc-foreground))',
           },
         },
       }),

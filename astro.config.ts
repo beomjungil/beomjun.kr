@@ -64,7 +64,13 @@ export default defineConfig({
       ],
       gfm: true,
       optimize: {
-        customComponentNames: ['YouTube', 'details', 'summary', 'Callout'],
+        customComponentNames: [
+          'YouTube',
+          'blockquote',
+          'details',
+          'summary',
+          'Callout',
+        ],
       },
     }),
     icon(),

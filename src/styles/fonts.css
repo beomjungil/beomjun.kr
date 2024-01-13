@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'Satoshi Variable';
   src:
-    url('/fonts/Satoshi-Variable.woff2') format('woff2'),
-    url('/fonts/Satoshi-Variable.woff') format('woff'),
-    url('/fonts/Satoshi-Variable.ttf') format('truetype');
+    url('/fonts/Satoshi-Variable.woff2') format('woff2-variations'),
+    url('/fonts/Satoshi-Variable.woff') format('woff-variations'),
+    url('/fonts/Satoshi-Variable.ttf') format('truetype-variations');
   font-weight: 430 900;
   font-display: swap;
   font-style: normal;
@@ -13,8 +13,10 @@
   font-family: 'Monaspace Variable';
   font-style: monospace;
   font-display: swap;
-  font-weight: 400 1000;
-  src: url(/fonts/Monaspace.ttf) format('truetype-variations');
+  font-weight: 300 1000;
+  src:
+    url(/fonts/Monaspace-Variable.woff) format('woff2-variations'),
+    url(/fonts/Monaspace-Variable.woff) format('woff-variations');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;

@@ -33,7 +33,7 @@ const links = astroI18n.locales.map((locale) => ({
   {
     links.map(({ href, translatedLocale, locale }) => (
       <DropdownItem>
-        <a href={href}>
+        <a href={href} class='-mx-4 -my-2 px-4 py-2'>
           <div class='flex w-32 items-center gap-2'>
             <span>{translatedLocale}</span>
             <span class='text-sm opacity-50'>{locale}</span>

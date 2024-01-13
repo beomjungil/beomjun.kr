@@ -11,7 +11,7 @@ const headings = getHeadings(post);
 ---
 
 <aside
-  class:list={'select-none sticky top-[60px] w-[25vw] h-full hidden lg:block overflow-hidden text-sm'}
+  class:list={'select-none sticky top-[60px] w-[min(25vw,25%)] h-full hidden lg:block overflow-hidden text-sm'}
 >
   <RecursiveList headings={headings} />
 </aside>

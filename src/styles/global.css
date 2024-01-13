@@ -1,21 +1,18 @@
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
   @apply font-sans text-foreground bg-background selection:bg-foreground selection:text-background;
-
+  scroll-behavior: smooth;
   line-height: 140%;
   letter-spacing: -0.05em;
 
   box-sizing: border-box;
+
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt', 'ss03';
 }
 
-[lang='ko'] {
-  p,
-  article li,
-  td,
-  th,
-  blockquote {
-    letter-spacing: -0.025em;
-  }
+p,
+li,
+td,
+th,
+blockquote {
+  letter-spacing: -0.025em;
 }
