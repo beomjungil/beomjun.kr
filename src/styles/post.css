@@ -1,5 +1,6 @@
 #post-content > * {
-  @apply fill-mode-both animate-in fade-in slide-in-from-bottom-[3rem] delay-1000 duration-300;
+  @apply fill-mode-both animate-in fade-in slide-in-from-bottom-[3rem] duration-300;
+  animation-delay: 1s;
 }
 
 body [data-rehype-pretty-code-fragment] *,
