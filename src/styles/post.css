@@ -178,3 +178,102 @@ h6 {
     }
   }
 }
+
+#jcComments {
+  margin: 0;
+
+  .jc-CommentBox {
+    @apply bg-foreground/10 rounded-lg mb-8 p-4 md:p-8;
+  }
+
+  .jc-CommentBox-form {
+    @apply bg-white dark:bg-background rounded-lg shadow-lg;
+  }
+
+  .jc-Editor {
+    @apply flex flex-col gap-0 bg-transparent  border-b border-solid border-foreground/10;
+  }
+
+  .jc-Editor-tabs {
+    @apply transform-none gap-0;
+  }
+  .jc-Editor-tab {
+    @apply bg-transparent border-0 block flex-1;
+
+    button {
+      @apply text-foreground/60 border-b-2 border-solid border-foreground/10 transition-colors px-4 py-2 pt-3 w-full;
+
+      &:hover {
+        @apply text-foreground/80;
+      }
+    }
+
+    &.is-selected button {
+      @apply text-foreground border-foreground;
+    }
+  }
+
+  .jc-CommentList-count {
+    display: none;
+  }
+
+  .jc-CommentBox-textarea {
+    @apply bg-transparent border-0;
+
+    textarea {
+      @apply outline-none border-2 border-transparent border-solid rounded-none p-2 focus:border-foreground/20 transition-colors bg-white dark:bg-background;
+    }
+  }
+
+  .jc-CommentBox-preview {
+    @apply border-0 rounded-none;
+  }
+
+  .jc-CommentBox-belowCommentWrapper {
+    @apply pr-4 py-2;
+  }
+
+  .jc-CommentBox-attribution {
+    @apply text-sm text-foreground/25 opacity-100;
+
+    a {
+      @apply font-mono underline decoration-transparent hover:decoration-foreground hover:text-foreground;
+    }
+  }
+
+  .jc-Comment-actions:before {
+    @apply hidden;
+  }
+
+  .jc-Comment-actionList {
+    @apply m-0;
+  }
+
+  .jc-Comment-details {
+    @apply text-foreground;
+  }
+
+  .jc-CommentBox-inputWrapper {
+    @apply p-4 m-0;
+
+    input {
+      @apply outline-none border-2 border-foreground/10 rounded border-solid p-2 focus:border-foreground/20 transition-colors bg-white dark:bg-background;
+    }
+  }
+
+  .jc-Comment-date {
+    @apply hidden;
+  }
+
+  .jc-CommentBox-submitWrapper {
+    @apply flex-row-reverse justify-start gap-4 items-center m-0;
+  }
+
+  .jc-CommentBox-button {
+    @apply bg-foreground text-background rounded-lg px-4 py-2;
+  }
+
+  .jc-Message {
+    @apply mt-0;
+  }
+}

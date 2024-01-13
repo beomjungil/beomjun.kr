@@ -6,6 +6,7 @@ import TableOfContents from '@/ui/components/Post/TableOfContents/TableOfContent
 import Layout from '@/ui/layouts/Layout.astro';
 
 import type { Post } from '@/types/Post';
+import PostComment from '../components/Post/PostComment.astro';
 
 interface Props {
   post: Post;
@@ -128,10 +129,32 @@ const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
       <div class='h-0.5 w-full bg-foreground'></div>
     </div>
   </div>
+
   <div class='container flex gap-4'>
     <TableOfContents post={post.body} />
     <div id='post-content' class='prose w-full dark:prose-invert lg:mx-auto'>
       <slot />
+    </div>
+  </div>
+
+  <div class='mb-4 mt-24 flex justify-end'>
+    <div
+      class='lg:pl-4'
+      style={{
+        width:
+          'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
+      }}
+    >
+      <div class='h-0.5 w-full bg-foreground'></div>
+    </div>
+  </div>
+
+  <div class="container flex mt-16 flex-col gap-4 mb-32 lg:flex-row">
+    <div class='flex w-full lg:w-[min(25vw,25%)] text-lg lg:text-2xl font-bold'>
+      {t('post.comments')}
+    </div>
+    <div class="w-full lg:mx-auto max-w-[712px]">
+      <PostComment url={`posts/${post.slug.replaceAll('en/', '').replaceAll('ja/', '')}`} />
     </div>
   </div>
 </Layout>

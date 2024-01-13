@@ -7,7 +7,8 @@
     "writtenBy": "Written by",
     "publishedAt": "Published at",
     "tags": "Tags",
-    "description": "Description"
+    "description": "Description",
+    "comments": "Comments"
   },
 
   "theme": {

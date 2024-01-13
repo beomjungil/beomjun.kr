@@ -22,6 +22,7 @@
     "@astrojs/mdx": "^2.0.3",
     "@astrojs/tailwind": "^5.1.0",
     "@fec/remark-a11y-emoji": "^4.0.2",
+    "@jam-comments/astro": "^2.0.1",
     "@tailwindcss/typography": "^0.5.10",
     "@vercel/og": "^0.6.2",
     "astro": "^4.1.1",

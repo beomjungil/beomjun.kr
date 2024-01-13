@@ -7,7 +7,8 @@
     "writtenBy": "執筆者",
     "publishedAt": "公開日",
     "tags": "タグ",
-    "description": "説明"
+    "description": "説明",
+    "comments": "コメント"
   },
   "theme": {
     "light": "ライトモード",

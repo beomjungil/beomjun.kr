@@ -37,6 +37,7 @@ const options: Options = {
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://beomjun.kr',
   integrations: [
     tailwind(),
     mdx({

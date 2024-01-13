@@ -16,3 +16,8 @@ th,
 blockquote {
   letter-spacing: -0.025em;
 }
+
+a,
+#post-content a {
+  @apply decoration-foreground/20 underline-offset-4 underline hover:decoration-foreground transition-colors duration-200;
+}
