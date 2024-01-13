@@ -3,7 +3,7 @@ body {
   scroll-behavior: smooth;
   line-height: 140%;
   letter-spacing: -0.05em;
-
+  font-size: 16px;
   box-sizing: border-box;
 
   font-feature-settings: 'kern', 'liga', 'clig', 'calt', 'ss03';

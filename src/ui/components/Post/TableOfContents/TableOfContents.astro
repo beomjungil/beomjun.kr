@@ -13,5 +13,10 @@ const headings = getHeadings(post);
 <aside
   class:list={'select-none sticky top-[60px] w-[min(25vw,25%)] h-full hidden lg:block overflow-hidden text-sm'}
 >
+  <div
+    class='font-bold delay-1000 duration-300 animate-in fade-in slide-in-from-bottom fill-mode-both'
+  >
+    목차
+  </div>
   <RecursiveList headings={headings} />
 </aside>

@@ -20,6 +20,7 @@ export default {
       typography: () => ({
         DEFAULT: {
           css: {
+            maxWidth: '712px',
             '--tw-prose-invert-pre-bg': '#000',
             '--tw-prose-pre-bg': '#fff',
             '--tw-prose-quote-borders': 'hsl(var(--twc-foreground))',
@@ -34,6 +35,14 @@ export default {
             '--tw-prose-invert-td-borders': 'hsla(54, 38.5%, 94.9%, 0.1)',
             '--tw-prose-th-borders': 'hsl(var(--twc-foreground))',
             '--tw-prose-invert-th-borders': 'hsl(var(--twc-foreground))',
+            '--tw-prose-body': 'hsla(60, 2.9%,6.9%,0.8)',
+            '--tw-prose-invert-body': 'hsl(54, 38.5%, 94.9%, 0.8)',
+            '--tw-prose-headings': 'hsl(var(--twc-foreground))',
+            '--tw-prose-invert-headings': 'hsl(var(--twc-foreground))',
+            '--tw-prose-bold': 'hsl(var(--twc-foreground))',
+            '--tw-prose-invert-bold': 'hsl(var(--twc-foreground))',
+            '--tw-prose-link': 'hsl(var(--twc-foreground))',
+            '--tw-prose-invert-link': 'hsl(var(--twc-foreground))',
           },
         },
       }),

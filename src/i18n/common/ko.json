@@ -1,8 +1,15 @@
 {
   "name": "길범준",
   "fullName": "길범준",
+  "writtenBy": "작성자",
   "description": "이것저것 하는 사람",
 
+  "post": {
+    "writtenBy": "작성자",
+    "publishedAt": "게시일",
+    "tags": "태그",
+    "description": "설명"
+  },
   "theme": {
     "light": "라이트 모드",
     "dark": "다크 모드",

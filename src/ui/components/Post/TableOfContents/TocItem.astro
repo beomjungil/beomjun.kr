@@ -11,8 +11,8 @@ const { slug, text, index } = Astro.props;
 <toc-item data-to={slug}>
   <button
     type='button'
-    class:list={'inline-block appearance-none whitespace-nowrap text-start outline-0 delay-0 duration-300 animate-in fade-in opacity-50 hover:opacity-100 transition-opacity slide-in-from-bottom fill-mode-both hover:underline'}
-    style={{ animationDelay: `${index * 0.02}s` }}
+    class:list={'inline-block py-1 appearance-none whitespace-nowrap text-start outline-0 delay-0 duration-300 animate-in fade-in opacity-50 hover:opacity-100 transition-opacity slide-in-from-bottom fill-mode-both hover:underline'}
+    style={{ animationDelay: `${1 + (index + 1) * 0.02}s` }}
   >
     {text}
   </button>

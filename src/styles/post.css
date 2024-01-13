@@ -6,7 +6,15 @@ body [data-rehype-pretty-code-figure] * {
   letter-spacing: initial;
   line-height: 1.6;
 }
-
+.dark {
+  img {
+    filter: brightness(0.85) contrast(1.1);
+    transition: filter 0.5s ease-in-out;
+  }
+  img:hover {
+    filter: brightness(1) contrast(1);
+  }
+}
 hr {
   opacity: 0.1;
 }

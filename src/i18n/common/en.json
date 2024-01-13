@@ -3,6 +3,13 @@
   "fullName": "Beomjun Gil",
   "description": "Exploring Here and There",
 
+  "post": {
+    "writtenBy": "Written by",
+    "publishedAt": "Published at",
+    "tags": "Tags",
+    "description": "Description"
+  },
+
   "theme": {
     "light": "Light",
     "dark": "Dark",

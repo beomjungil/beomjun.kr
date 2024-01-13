@@ -1,4 +1,4 @@
-import { defineCollection, reference, z } from 'astro:content';
+import { defineCollection, z } from 'astro:content';
 
 export const postsCollection = defineCollection({
   type: 'content',
@@ -11,6 +11,6 @@ export const postsCollection = defineCollection({
       alt: z.string(),
     }),
     locale: z.string(),
-    tags: z.array(reference('tags')),
+    tags: z.array(z.string()),
   }),
 });

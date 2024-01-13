@@ -1,8 +1,14 @@
 {
   "name": "ボムジュン",
   "fullName": "ギルボムジュン",
+  "writtenBy": "執筆者",
   "description": "あれこれする人",
-
+  "post": {
+    "writtenBy": "執筆者",
+    "publishedAt": "公開日",
+    "tags": "タグ",
+    "description": "説明"
+  },
   "theme": {
     "light": "ライトモード",
     "dark": "ダークモード",
