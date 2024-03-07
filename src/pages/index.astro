@@ -15,8 +15,8 @@ const posts = await getCollection('posts', (post) => {
 <Layout title={t('name')}>
   <Fragment slot='head'>
     <meta name='description' content={t('description')} />
-    <link rel='canonical' href={Astro.url.origin} />
-    <meta property='og:url' content={Astro.url.origin} />
+    <link rel='canonical' href={Astro.site?.origin} />
+    <meta property='og:url' content={Astro.site?.origin} />
     <meta property='og:type' content='website' />
     <meta property='og:title' content={t('name')} />
     <meta property='og:description' content={t('description')} />

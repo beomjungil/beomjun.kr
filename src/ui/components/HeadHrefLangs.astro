@@ -10,7 +10,7 @@ const params = Object.entries(Astro.params).reduce<Record<string, string>>(
 
 const hrefLangs = astroI18n.locales.map((locale) => ({
   href:
-    Astro.url.origin +
+    Astro.site?.origin +
     astroI18n.l(Astro.url.pathname, params, {
       targetLocale: locale,
     }),

@@ -1,6 +1,14 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
-/// <reference types="@sanity/astro/module" />
+
+interface ImportMetaEnv {
+  readonly SUPABASE_URL: string
+  readonly SUPABASE_ANON_KEY: string
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
 
 // ###> astro-i18n/type-generation ###
 type PrimaryLocale = "ko"

@@ -17,7 +17,7 @@ interface Props {
 
 const { post } = Astro.props;
 
-const ogImage = `${Astro.url.origin}/posts/${post.slug.replaceAll(
+const ogImage = `${Astro.site?.origin}/posts/${post.slug.replaceAll(
   '/',
   '__',
 )}/og.png`;
@@ -41,7 +41,7 @@ const suggestMailto =
     />
     <meta
       property='article:author'
-      content={`${Astro.url.origin}/${post.data.locale}/about`}
+      content={`${Astro.site?.origin}/${post.data.locale}/about`}
     />
     <meta
       property='article:tag'
