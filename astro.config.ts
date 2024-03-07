@@ -1,6 +1,13 @@
+import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 import a11yEmoji from '@fec/remark-a11y-emoji';
+import {
+  transformerCompactLineOptions,
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationHighlight,
+} from '@shikijs/transformers';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -12,12 +19,6 @@ import rehypePrettyCode, {
 import rehypeSlug from 'rehype-slug';
 import remarkBehead from 'remark-behead';
 import joinCJKLines from 'remark-join-cjk-lines';
-import {
-  transformerCompactLineOptions,
-  transformerNotationDiff,
-  transformerNotationErrorLevel,
-  transformerNotationHighlight,
-} from 'shikiji-transformers';
 
 const options: Options = {
   theme: {
@@ -76,4 +77,12 @@ export default defineConfig({
     }),
     icon(),
   ],
+  output: 'hybrid',
+  adapter: cloudflare({
+    imageService: 'cloudflare',
+    runtime: {
+      mode: 'local',
+      type: 'pages',
+    },
+  }),
 });
