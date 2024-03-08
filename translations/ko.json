@@ -1,0 +1,41 @@
+{
+  "name": "길범준",
+  "fullName": "길범준",
+  "description": "이것저것 하는 사람",
+  "profile": "프로필",
+
+  "lightTheme": "라이트 모드",
+  "darkTheme": "다크 모드",
+  "systemTheme": "시스템 설정 사용",
+  "labelTheme": "테마 변경",
+
+  "talkWithMe": "마주보며 이야기하기",
+  "aboutMe": "소개",
+  "blog": "블로그",
+  "getInTouch": "연락하기",
+
+  "mainGreeting": "반가워요.",
+  "mainMyNameIsPrefix": "저는 ",
+  "mainMyNameIsSuffix": "입니다.",
+  "mainGreetingDescription": "저는 현재 서울에서 소프트웨어 엔지니어로 일하고 있어요. ",
+
+  "localeEn": "영어",
+  "localeKo": "한국어",
+  "localeJa": "일본어",
+  "localeLabel": "언어 변경",
+  "localeSuggest": "번역 제안하기",
+
+  "postsTitle": "전체 글 목록",
+
+  "postWrittenBy": "작성자",
+  "postPublishedAt": "게시일",
+  "postTags": "태그",
+  "postDescription": "설명",
+  "postComments": "작성자",
+  "postMailto": "mailto:gil@beomjun.kr?subject=%5BBLOG%5D%20%22{title}",
+  "postMailtoSuffix": "%22%20%EA%B8%80%20%EC%9D%BD%EA%B3%A0%20%EC%97%B0%EB%9D%BD%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4&body=%3E%20{href}",
+  "postSuggestPrefix": "지금 읽은 글에 대해 질문이나 의견이 있다면,",
+  "postSuggestSuffix": "으로 연락주세요.",
+  "postEndDescription": "저는 현재 서울에서 소프트웨어 엔지니어로 일하고 있어요.",
+  "postGoToMain": "메인 화면으로 이동"
+}

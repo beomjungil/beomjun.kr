@@ -1,29 +1,30 @@
 ---
-import { astroI18n, l, t } from 'astro-i18n';
 import { getCollection } from 'astro:content';
+import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
 
 import GetInTouchSection from '@/client/ui/components/Main/GetInTouchSection.astro';
 import GreetingSection from '@/client/ui/components/Main/GreetingSection.astro';
 import Layout from '@/client/ui/layouts/Layout.astro';
 import { normalizeSlug } from '@/client/utils/normalizeSlug';
+import * as m from '@/paraglide/messages';
+import { languageTag } from '@/paraglide/runtime';
+
+const currentLocale = languageTag();
 
 const posts = await getCollection('posts', (post) => {
-  return post.data.locale === astroI18n.locale;
+  return post.data.locale === currentLocale;
 });
 ---
 
-<Layout title={t('name')}>
+<Layout title={m.name()}>
   <Fragment slot='head'>
-    <meta name='description' content={t('description')} />
+    <meta name='description' content={m.description()} />
     <link rel='canonical' href={Astro.site?.origin} />
     <meta property='og:url' content={Astro.site?.origin} />
     <meta property='og:type' content='website' />
-    <meta property='og:title' content={t('name')} />
-    <meta property='og:description' content={t('description')} />
-    <meta
-      property='og:image'
-      content={`/og/${astroI18n.locale}/og-image.png`}
-    />
+    <meta property='og:title' content={m.name()} />
+    <meta property='og:description' content={m.description()} />
+    <meta property='og:image' content={`/og/${currentLocale}/og-image.png`} />
   </Fragment>
   <div class:list={'flex flex-col grow'}>
     <div class:list={'grow'}>
@@ -40,7 +41,10 @@ const posts = await getCollection('posts', (post) => {
                   <h2 class='mb-2 text-xl font-bold'>{post.data.title}</h2>
                   <p class='text-gray-600'>{post.data.description}</p>
                   <a
-                    href={l(`/posts/${normalizeSlug(post.slug)}`)}
+                    href={l(
+                      currentLocale,
+                      `/posts/${normalizeSlug(post.slug)}`,
+                    )}
                     class='text-blue-500 hover:underline'
                   >
                     Read more

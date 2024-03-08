@@ -1,0 +1,41 @@
+{
+  "name": "Beomjun",
+  "fullName": "Beomjun Gil",
+  "description": "Exploring Here and There",
+  "profile": "Profile",
+
+  "lightTheme": "Light",
+  "darkTheme": "Dark",
+  "systemTheme": "Use system setting",
+  "labelTheme": "Change theme",
+
+  "talkWithMe": "Talk with me",
+  "aboutMe": "About me",
+  "blog": "Blog",
+  "getInTouch": "Get in touch",
+
+  "mainGreeting": "Hey,",
+  "mainMyNameIsPrefix": "I’m ",
+  "mainMyNameIsSuffix": ".",
+  "mainGreetingDescription": "I’m currently working as a software engineer in Seoul, South Korea. ",
+
+  "localeEn": "English",
+  "localeKo": "Korean",
+  "localeJa": "Japanese",
+  "localeLabel": "Change language",
+  "localeSuggest": "Suggest translation",
+
+  "postsTitle": "All Posts",
+
+  "postWrittenBy": "Written by",
+  "postPublishedAt": "Published at",
+  "postTags": "Tags",
+  "postDescription": "Description",
+  "postComments": "Comments",
+  "postMailto": "mailto:gil@beomjun.kr?subject=%5BBLOG%5D%20I'm%20reaching%20out%20after%20reading%20'{title}",
+  "postMailtoSuffix": "'%20post.&body=%3E%20{href}",
+  "postSuggestPrefix": "If you have any questions or suggestions about this post, please contact me at",
+  "postSuggestSuffix": ".",
+  "postEndDescription": "I’m currently working as a software engineer in Seoul, South Korea.",
+  "postGoToMain": "Go to main page"
+}

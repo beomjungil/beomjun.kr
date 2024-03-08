@@ -1,0 +1,34 @@
+---
+import Layout from '@/client/ui/layouts/Layout.astro';
+
+export const prerender = false;
+
+const accessToken = Astro.cookies.get('access-token');
+const refreshToken = Astro.cookies.get('refresh-token');
+
+if (accessToken && refreshToken) {
+  return Astro.redirect('/dashboard');
+}
+---
+
+<Layout title='Log in'>
+  <h1>Log in</h1>
+  <p>New here? <a href='/register'>Create an account</a></p>
+  <form action='/auth/login' method='post'>
+    <label for='email' for='email'>Email</label>
+    <input
+      type='email'
+      name='email'
+      id='email'
+      class='appearance-none border bg-transparent'
+    />
+    <label for='password'>Password</label>
+    <input
+      type='password'
+      name='password'
+      id='password'
+      class='appearance-none border bg-transparent'
+    />
+    <button type='submit'>Login</button>
+  </form>
+</Layout>

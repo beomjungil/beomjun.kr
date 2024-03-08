@@ -1,10 +1,9 @@
 ---
-import { astroI18n } from 'astro-i18n';
 import { ViewTransitions } from 'astro:transitions';
 
-import HeadHrefLangs from '../components/HeadHrefLangs.astro';
-
 import Header from '@/client/ui/components/Header.astro';
+import { languageTag } from '@/paraglide/runtime';
+import HeadHrefLangs from '@/client/ui/components/HeadHrefLangs.astro';
 
 import '@/styles/fonts.css';
 import '@/styles/global.css';
@@ -17,10 +16,11 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={astroI18n.locale}>
+<html lang={languageTag()}>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
+    <link rel='sitemap' href='/sitemap-index.xml' />
 
     <link
       rel='apple-touch-icon-precomposed'

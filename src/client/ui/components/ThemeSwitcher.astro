@@ -1,13 +1,14 @@
 ---
-import { t } from 'astro-i18n';
-import { Icon } from 'astro-icon/components';
+import { Palette, Monitor, Sun, Moon } from 'lucide-astro';
 
 import DropdownMenu from '../foundations/DropdownMenu.astro';
 import DropdownItem from '../foundations/DropdownItem.astro';
+
+import * as m from '@/paraglide/messages';
 ---
 
 <DropdownMenu>
-  <Icon slot='trigger' name='lucide:palette' />
+  <Palette slot='trigger' />
 
   <DropdownItem>
     <theme-button data-theme='system' class='flex flex-1'>
@@ -16,8 +17,8 @@ import DropdownItem from '../foundations/DropdownItem.astro';
         data-type='change-theme'
         data-theme='system'
       >
-        <Icon name='lucide:monitor' />
-        {t('theme.system')}
+        <Monitor />
+        {m.systemTheme()}
       </button>
     </theme-button>
   </DropdownItem>
@@ -29,8 +30,8 @@ import DropdownItem from '../foundations/DropdownItem.astro';
         data-type='change-theme'
         data-theme='light'
       >
-        <Icon name='lucide:sun' />
-        {t('theme.light')}
+        <Sun />
+        {m.lightTheme()}
       </button>
     </theme-button>
   </DropdownItem>
@@ -42,14 +43,15 @@ import DropdownItem from '../foundations/DropdownItem.astro';
         ata-type='change-theme'
         data-theme='dark'
       >
-        <Icon name='lucide:moon' />
-        {t('theme.dark')}
+        <Moon />
+        {m.darkTheme()}
       </button>
     </theme-button>
   </DropdownItem>
 </DropdownMenu>
 <script>
   import { match } from 'ts-pattern';
+
   type Theme = 'system' | 'dark' | 'light';
 
   function setTheme(desiredTheme: Theme, write: boolean = true) {

@@ -1,8 +1,10 @@
 ---
-import Page from "../../../posts/[slug]/index.astro"
-import { getStaticPaths as proxyGetStaticPaths } from "../../../posts/[slug]/index.astro"
-/* @ts-ignore */
-export const getStaticPaths = (props) => proxyGetStaticPaths({ ...props, astroI18n: { locale: "en", route: "/posts/[slug]", primaryLocale: "ko", secondaryLocales: ["en", "ja"] } })
-const { props } = Astro
+import Page, {
+  getStaticPaths as originalGetStaticPaths,
+} from '@/pages/posts/[slug]/index.astro';
+
+export const getStaticPaths = originalGetStaticPaths;
+const { props } = Astro;
 ---
+
 <Page {...props} />

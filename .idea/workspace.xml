@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9e7c9d32-543e-4721-ba46-26e83ec12d56" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/constants/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/data/repositories/ActorRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/data/repositories/ActorRepository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/data/supabase/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/data/supabase/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/data/supabase/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/data/supabase/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/dependencies/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/dependencies/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/domain/entities/Actor/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/domain/entities/Actor/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/domain/entities/Actor/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/domain/entities/Actor/schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/domain/failures/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/domain/failures/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/domain/repositories/ActorRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/domain/repositories/ActorRepository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/domain/usecase/GetActorByID.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/domain/usecase/GetActorByID.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/domain/usecase/GetActorByUsername.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/domain/usecase/GetActorByUsername.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/utils/ZSchema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/utils/ZSchema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/utils/lets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/utils/lets.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/activitypub/utils/usecase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/activitypub/utils/usecase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/.well-known/webfinger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.well-known/webfinger.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/activity-pub/users/[username]/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activity-pub/users/[username]/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/posts/[slug]/index.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/posts/[slug]/index.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Empty.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/Empty.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Footer.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Footer.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/HeadHrefLangs.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/HeadHrefLangs.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Header.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Header.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/LocaleSwitcher.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/LocaleSwitcher.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Main/GetInTouchSection.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Main/GetInTouchSection.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Main/GreetingSection.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Main/GreetingSection.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Main/IndexButton.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Main/IndexButton.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Main/IntroduceSection.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Main/IntroduceSection.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Post/TableOfContents/RecursiveList.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Post/TableOfContents/RecursiveList.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Post/TableOfContents/TableOfContents.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Post/TableOfContents/TableOfContents.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Post/TableOfContents/TocItem.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Post/TableOfContents/TocItem.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Post/TableOfContents/getHeadings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Post/TableOfContents/getHeadings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/Post/YouTube.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/Post/YouTube.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/components/ThemeSwitcher.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/components/ThemeSwitcher.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/foundations/DropdownItem.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/foundations/DropdownItem.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/foundations/DropdownMenu.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/foundations/DropdownMenu.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/foundations/Logo.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/foundations/Logo.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/foundations/Name.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/foundations/Name.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/layouts/Layout.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/layouts/Layout.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/layouts/PostLayout.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/layouts/PostLayout.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/normalizeSlug.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/utils/normalizeSlug.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="preview" />
+                    <option name="lastUsedInstant" value="1704083398" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1704083397" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2aJIhMupHcBkiU2tTlsBLqfS0Q3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "eu.ydp.idea.ts.spec.generator.settings.spec.template": "import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';\n\ndescribe('$ClassName$', () => {\n  let $ObjName$:$ClassName$;\n\n  beforeEach(() => {\n    $ObjName$ = new $ClassName$();\n  });\n\n  describe('', () => {\n    it('', () => {\n      // given\n\n      // when\n\n      // then\n    });\n  });\n});\n",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/Users/beomjungil/.local/share/mise/installs/node/18.12.1/bin/node",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/beomjungil/Documents/beomjun.kr/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/client" />
+      <recent name="$PROJECT_DIR$/src/server" />
+      <recent name="$PROJECT_DIR$/src/app/ui/components/Post/TableOfContents" />
+      <recent name="$PROJECT_DIR$/src/app/ui/components/Post" />
+      <recent name="$PROJECT_DIR$/src/app/ui/components/MainPage" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e7c9d32-543e-4721-ba46-26e83ec12d56" name="Changes" comment="" />
+      <created>1704030372538</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704030372538</updated>
+      <workItem from="1704030373828" duration="1338000" />
+      <workItem from="1704081444602" duration="9000" />
+      <workItem from="1704081470739" duration="4400000" />
+      <workItem from="1704086392848" duration="1438000" />
+      <workItem from="1704088160391" duration="6530000" />
+      <workItem from="1704108958256" duration="16195000" />
+      <workItem from="1704529077929" duration="1212000" />
+      <workItem from="1709798814351" duration="4488000" />
+      <workItem from="1709806508939" duration="1518000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

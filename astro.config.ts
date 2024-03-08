@@ -1,14 +1,15 @@
 import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import a11yEmoji from '@fec/remark-a11y-emoji';
+import paraglide from '@inlang/paraglide-js-adapter-astro';
 import {
   transformerCompactLineOptions,
   transformerNotationDiff,
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers';
-import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeMinify from 'rehype-preset-minify';
@@ -39,7 +40,15 @@ const options: Options = {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://beomjun.kr',
+  i18n: {
+    defaultLocale: 'ko',
+    locales: ['ko', 'en', 'ja'],
+  },
   integrations: [
+    paraglide({
+      project: './project.inlang',
+      outdir: './src/paraglide',
+    }),
     tailwind(),
     mdx({
       syntaxHighlight: false,
@@ -75,7 +84,23 @@ export default defineConfig({
         ],
       },
     }),
-    icon(),
+    sitemap({
+      filter: (page) => {
+        return (
+          !page.endsWith('/dashboard/') &&
+          !page.endsWith('/login/') &&
+          !page.endsWith('/register/')
+        );
+      },
+      i18n: {
+        defaultLocale: 'ko',
+        locales: {
+          ko: 'ko-KR',
+          en: 'en-US',
+          ja: 'ja-JP',
+        },
+      },
+    }),
   ],
   output: 'hybrid',
   adapter: cloudflare({
@@ -84,5 +109,6 @@ export default defineConfig({
       mode: 'local',
       type: 'pages',
     },
+    functionPerRoute: true,
   }),
 });

@@ -1,0 +1,21 @@
+---
+import * as m from '@/paraglide/messages';
+import Layout from '@/client/ui/layouts/Layout.astro';
+---
+
+<Layout title={m.postsTitle()}>
+  <div
+    class:list={'py-20 flex flex-col items-center justify-center max-w-[800px] mx-auto px-4 w-full'}
+  >
+    <section class='flex w-full flex-col'>
+      <h1
+        class='flex flex-col items-start font-sans text-3xl font-extrabold md:text-4xl'
+      >
+        {m.postsTitle()}
+      </h1>
+    </section>
+    <section class='flex w-full flex-col items-center justify-center py-20'>
+      <p class='font-sans opacity-30'>Feed is not yet implemented</p>
+    </section>
+  </div>
+</Layout>

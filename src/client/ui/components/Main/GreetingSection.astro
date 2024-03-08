@@ -1,7 +1,7 @@
 ---
-import { t } from 'astro-i18n';
-
 import IndexButton from './IndexButton.astro';
+
+import * as m from '@/paraglide/messages';
 ---
 
 <div
@@ -15,7 +15,7 @@ import IndexButton from './IndexButton.astro';
         class='block duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
         style={{ animationDelay: '0.25s' }}
       >
-        {t('main.greeting')}
+        {m.mainGreeting()}
       </span>
     </span>
     <span class='block overflow-hidden'>
@@ -23,7 +23,9 @@ import IndexButton from './IndexButton.astro';
         class='block duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
         style={{ animationDelay: '0.5s' }}
       >
-        {t('main.myNameIs')}{t('fullName')}{t('main.myNameIsSuffix')}
+        {m.mainMyNameIsPrefix({ empty: '' })}{m.fullName()}{
+          m.mainMyNameIsSuffix()
+        }
       </span>
     </span>
   </h1>
@@ -32,19 +34,19 @@ import IndexButton from './IndexButton.astro';
       class:list={'whitespace-nowrap opacity-50 duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'}
       style={{ animationDelay: '1s' }}
     >
-      {t('main.greetingDescription')}
+      {m.mainGreetingDescription()}
     </p>
   </div>
   <div class:list={'mt-20 flex min-w-[16rem] flex-col gap-4 self-end'}>
     <IndexButton to='about'>
-      {t('main.aboutMe')}
+      {m.aboutMe()}
     </IndexButton>
 
     <IndexButton to='blog'>
-      {t('main.blog')}
+      {m.blog()}
     </IndexButton>
     <IndexButton to='contact'>
-      {t('main.getInTouch')}
+      {m.getInTouch()}
     </IndexButton>
   </div>
 </div>

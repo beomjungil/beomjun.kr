@@ -1,5 +1,4 @@
 ---
-import { astroI18n, createGetStaticPaths } from 'astro-i18n';
 import { getCollection } from 'astro:content';
 
 import Empty from '@/client/ui/Empty.astro';
@@ -7,18 +6,20 @@ import YouTube from '@/client/ui/components/Post/YouTube.astro';
 import PostLayout from '@/client/ui/layouts/PostLayout.astro';
 import { normalizeSlug } from '@/client/utils/normalizeSlug';
 
+import { languageTag } from '@/paraglide/runtime';
 import type { Post } from '@/types/Post';
+import type { GetStaticPaths } from 'astro';
 
-export const getStaticPaths = createGetStaticPaths(async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const blogEntries = await getCollection('posts', (post) => {
-    return post.data.locale === astroI18n.locale;
+    return post.data.locale === languageTag();
   });
 
   return blogEntries.map((entry) => ({
     params: { slug: normalizeSlug(entry.slug) },
     props: { entry },
   }));
-});
+};
 
 const { entry } = Astro.props as { entry: Post };
 const { Content } = await entry.render();

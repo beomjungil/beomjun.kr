@@ -1,6 +1,8 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -8,10 +10,14 @@
       ]
     },
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
+    "jsxImportSource": "react"
   },
   "include": [
-    "src/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.astro",
+    "**/*.d.ts",
+    "src/env.d.ts",
     "src/pages/.well-known/**/*"
   ]
 }

@@ -1,9 +1,10 @@
 ---
-import { l } from 'astro-i18n';
+import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
 
 import LocaleSwitcher from './LocaleSwitcher.astro';
 import ThemeSwitcher from './ThemeSwitcher.astro';
 
+import { languageTag } from '@/paraglide/runtime';
 import Logo from '@/client/ui/foundations/Logo.astro';
 import Name from '@/client/ui/foundations/Name.astro';
 ---
@@ -11,7 +12,10 @@ import Name from '@/client/ui/foundations/Name.astro';
 <header
   class='fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-gradient-to-b from-background to-transparent pb-2 pr-2 backdrop-blur-[1px]'
 >
-  <a href={l('/')} class='group flex items-center space-x-4 pt-2'>
+  <a
+    href={l(languageTag(), '/')}
+    class='group flex items-center space-x-4 pt-2'
+  >
     <div class='bg-background pl-2'>
       <Logo cn={'size-8'} />
     </div>

@@ -1,2 +1,12 @@
+User-agent: baiduspider
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
 User-agent: *
-Disallow: /admin
+Disallow: /auth/
+Disallow: /api/
+Disallow: /activity-pub/
+
+Sitemap: https://beomjun.kr/sitemap-index.xml

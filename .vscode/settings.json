@@ -9,6 +9,7 @@
     "typescript",
     "typescriptreact"
   ],
+  "eslint.experimental.useFlatConfig": true,
   "prettier.documentSelectors": [
     "**/*.astro"
   ],

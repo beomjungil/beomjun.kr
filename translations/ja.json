@@ -1,0 +1,42 @@
+{
+  "name": "ボムジュン",
+  "fullName": "ギルボムジュン",
+  "writtenBy": "執筆者",
+  "description": "あれこれする人",
+  "profile": "プロフィール",
+
+  "lightTheme": "ライトモード",
+  "darkTheme": "ダークモード",
+  "systemTheme": "システム設定を使用する",
+  "labelTheme": "テーマ変更",
+
+  "talkWithMe": "一緒にお話する",
+  "aboutMe": "自己紹介",
+  "blog": "ブログ",
+  "getInTouch": "連絡先",
+
+  "mainGreeting": "初めまして、",
+  "mainMyNameIsPrefix": "{empty}",
+  "mainMyNameIsSuffix": "です。",
+  "mainGreetingDescription": "私は現在、ソウルでソフトウェアエンジニアとして働いています。",
+
+  "localeEn": "英語",
+  "localeKo": "韓国語",
+  "localeJa": "日本語",
+  "localeLabel": "言語変更",
+  "localeSuggest": "翻訳を提案する",
+
+  "postsTitle": "投稿一覧",
+
+  "postWrittenBy": "執筆者",
+  "postPublishedAt": "公開日",
+  "postTags": "タグ",
+  "postDescription": "説明",
+  "postComments": "コメント",
+  "postMailto": "mailto:gil@beomjun.kr?subject=BLOG%20%7C%20%E3%80%8C{title}",
+  "postMailtoSuffix": "%E3%80%8D%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E8%A6%8B%E3%81%A6%E3%81%94%E9%80%A3%E7%B5%A1%E3%81%97%E3%81%BE%E3%81%99%E3%80%82&body=%3E%20{href}",
+  "postSuggestPrefix": "このブログに関するご質問やご意見がありましたら、",
+  "postSuggestSuffix": "までご連絡ください。",
+  "postEndDescription": "私は現在、ソウルでソフトウェアエンジニアとして働いています。",
+  "postGoToMain": "メインページに戻る"
+}

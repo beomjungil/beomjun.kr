@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { ArrowRight } from 'lucide-astro';
 
 interface Props {
   to: string;
@@ -14,11 +14,11 @@ const { to } = Astro.props;
     type='button'
   >
     <slot />
-    <Icon name='lucide:arrow-right' />
+    <ArrowRight />
   </button>
 </index-button>
 
-<script>
+<script lang='ts'>
   class IndexButton extends HTMLElement {
     constructor() {
       super();

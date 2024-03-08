@@ -1,6 +1,7 @@
 ---
-import { astroI18n } from 'astro-i18n';
 import { match } from 'ts-pattern';
+
+import { languageTag } from '@/paraglide/runtime';
 
 interface Props {
   cn: string;
@@ -10,7 +11,7 @@ const { cn } = Astro.props;
 
 <Fragment>
   {
-    match(astroI18n.locale)
+    match(languageTag())
       .with('en', () => (
         <svg
           width='390'

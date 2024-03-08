@@ -5,15 +5,15 @@ import {
 import { ResultAsync } from 'neverthrow';
 
 import {
-  type Failure,
   FailureCode,
+  type Failure,
 } from '@/server/activitypub/domain/failures';
 
 import type { Database } from './types';
 
 export const supabase = createClient<Database>(
-  import.meta.env.SUPABASE_URL,
-  import.meta.env.SUPABASE_ANON_KEY,
+  'https://vfkedhgiubyogeetugob.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZma2VkaGdpdWJ5b2dlZXR1Z29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTE1NzU1NjYsImV4cCI6MjAwNzE1MTU2Nn0.hJSgpC7UpE7IF9Jhpyn4ipulnrGU5CX72ABRQbnzjwo',
   {
     auth: {
       autoRefreshToken: true,
@@ -29,6 +29,7 @@ type Callback<T> = (
 type Converter<T, V> = (data: T) => V;
 
 export const Supabase = {
+  auth: supabase.auth,
   query: <T, V>(
     callback: Callback<T>,
     {

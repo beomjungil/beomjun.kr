@@ -1,19 +1,19 @@
 ---
-import { astroI18n } from 'astro-i18n';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
 
-const params = Object.entries(Astro.params).reduce<Record<string, string>>(
-  (acc, [key, value]) => {
-    return value !== undefined ? { ...acc, [key]: String(value) } : acc;
-  },
-  {},
-);
+// TODO: Should check
+// const params = Object.entries(Astro.params).reduce<Record<string, string>>(
+//   (acc, [key, value]) => {
+//     return value !== undefined ? { ...acc, [key]: String(value) } : acc;
+//   },
+//   {},
+// );
 
-const hrefLangs = astroI18n.locales.map((locale) => ({
-  href:
-    Astro.site?.origin +
-    astroI18n.l(Astro.url.pathname, params, {
-      targetLocale: locale,
-    }),
+const hrefLangs = ['ko', 'en', 'ja'].map((locale) => ({
+  href: getAbsoluteLocaleUrl(
+    locale,
+    Astro.url.pathname.replace('/en', '').replace('/ja', '').replace('/ko', ''),
+  ),
   hreflang: locale,
 }));
 ---

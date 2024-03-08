@@ -1,9 +1,11 @@
 ---
-import { astroI18n, l, t } from 'astro-i18n';
-import { Icon } from 'astro-icon/components';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { Languages } from 'lucide-astro';
 
 import DropdownItem from '../foundations/DropdownItem.astro';
 import DropdownMenu from '../foundations/DropdownMenu.astro';
+
+import * as m from '@/paraglide/messages';
 
 const labels: Record<string, string> = {
   ko: '한국어',
@@ -11,24 +13,32 @@ const labels: Record<string, string> = {
   ja: '日本語',
 };
 
-const params = Object.entries(Astro.params).reduce<Record<string, string>>(
-  (acc, [key, value]) => {
-    return value !== undefined ? { ...acc, [key]: String(value) } : acc;
-  },
-  {},
-);
+const translatedLabels: Record<string, string> = {
+  ko: m.localeKo(),
+  en: m.localeEn(),
+  ja: m.localeJa(),
+};
 
-const links = astroI18n.locales.map((locale) => ({
-  href: l(Astro.url.pathname, params, {
-    targetLocale: locale,
-  }),
-  translatedLocale: t(`locale.${locale}`),
+// TODO: Shoud Check
+// const params = Object.entries(Astro.params).reduce<Record<string, string>>(
+//   (acc, [key, value]) => {
+//     return value !== undefined ? { ...acc, [key]: String(value) } : acc;
+//   },
+//   {},
+// );
+
+const links = ['ko', 'en', 'ja'].map((locale) => ({
+  href: getAbsoluteLocaleUrl(
+    locale,
+    Astro.url.pathname.replace('/en', '').replace('/ja', '').replace('/ko', ''),
+  ),
+  translatedLocale: translatedLabels[locale],
   locale: labels[locale],
 }));
 ---
 
 <DropdownMenu>
-  <Icon slot='trigger' name='lucide:languages' />
+  <Languages slot='trigger' />
 
   {
     links.map(({ href, translatedLocale, locale }) => (

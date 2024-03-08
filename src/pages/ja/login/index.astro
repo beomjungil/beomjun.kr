@@ -1,0 +1,8 @@
+---
+import Page from '@/pages/login.astro';
+
+export const prerender = false;
+const { props } = Astro;
+---
+
+<Page {...props} />

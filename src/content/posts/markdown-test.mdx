@@ -1,15 +1,16 @@
 ---
-title: "마크다운 예제"
-description: "어떻게 하면 가장 미니멀한 블로그 포스트를 만들 수 있을까?"
+title: '마크다운 예제'
+description: '어떻게 하면 가장 미니멀한 블로그 포스트를 만들 수 있을까?'
 locale: ko
 date: 2021-09-28 00:00:00
-endCard: "블로그 글보다 블로그를 더 많이 만든 개발자입니다. 이번이 마지막이면 좋겠네요."
+endCard: '블로그 글보다 블로그를 더 많이 만든 개발자입니다. 이번이 마지막이면 좋겠네요.'
 tags:
   - markdown
   - example
   - test
   - frontend
 ---
+
 ## 타이포그래피 대체
 
 타이포그래퍼 옵션을 활성화하여 결과를 확인합니다.
@@ -22,7 +23,7 @@ test.. test... test..... test?..... test!....
 
 "스마티팬츠, 큰따옴표" 및 '작은따옴표'
 
-<YouTube url="https://www.youtube.com/watch?v=cpuT1AWuRx8"/>
+<YouTube url='https://www.youtube.com/watch?v=cpuT1AWuRx8' />
 
 # 왜 안되나요
 
@@ -38,73 +39,79 @@ test.. test... test..... test?..... test!....
 
 </details>
 
-
 ---
+
 {/* <Callout> */}
 
 Oh dang! Is this a React component in the middle of our content? 😱
 
 {/* </Callout> */}
 
-__광고 :)__
+**광고 :)**
 
-- __[피카](https://nodeca.github.io/pica/demo/)__ - 고화질 및 빠른 이미지
-브라우저에서 크기를 조정합니다.
-- __[babelfish](https://github.com/nodeca/babelfish/)__ - 개발자 친화적
-복수형 지원과 쉬운 구문을 갖춘 i18n.
+- **[피카](https://nodeca.github.io/pica/demo/)** - 고화질 및 빠른 이미지
+  브라우저에서 크기를 조정합니다.
+- **[babelfish](https://github.com/nodeca/babelfish/)** - 개발자 친화적
+  복수형 지원과 쉬운 구문을 갖춘 i18n.
 
 이 프로젝트가 마음에 드실 겁니다!
 
 ---
 
 ## h1 제목 8-)
-## h2 제목
-### h3 제목
-#### h4 제목
-##### h5 제목
-###### h6 제목
 
+## h2 제목
+
+### h3 제목
+
+#### h4 제목
+
+##### h5 제목
+
+###### h6 제목
 
 ## 가로 규칙
 
-___
+---
 
 ---
 
-***
-
+---
 
 ## 강조
 
 **이것은 굵은 텍스트입니다**
 
-이것은 굵은 텍스트입니다__
+이것은 굵은 텍스트입니다\_\_
 
 *이 텍스트는 이탤릭체 텍스트*입니다.
 
-이 텍스트는 이탤릭체입니다 _이 텍스트는 이탤릭체입니다
+이 텍스트는 이탤릭체입니다 \_이 텍스트는 이탤릭체입니다
 
 ~~ 취소선~~
 
-
 ## 블록 따옴표
 
-
 > 블록 따옴표는 중첩할 수도 있습니다...> ...바로 옆에 더 큰 기호를 사용하여...
+>
 > > ...또는 화살표 사이에 공백을 사용하여 중첩할 수 있습니다.
-
 
 ## 목록
 
 정렬되지 않은
 
-+ 줄을 `+`, `-` 또는 `*`로 시작하여 목록을 만듭니다.
-2칸 들여쓰기 + 하위 목록은 2칸 들여쓰기하여 만듭니다:
-- 마커 문자를 변경하면 새 목록이 시작됩니다:
-* Ac tristique libero volutpat at
-+ Facilisis in pretium nisl aliquet
+- 줄을 `+`, `-` 또는 `*`로 시작하여 목록을 만듭니다.
+  2칸 들여쓰기 + 하위 목록은 2칸 들여쓰기하여 만듭니다:
+
+* 마커 문자를 변경하면 새 목록이 시작됩니다:
+
+- Ac tristique libero volutpat at
+
+* Facilisis in pretium nisl aliquet
+
 - Nulla volutpat aliquam velit
-+ 매우 쉽습니다!
+
+* 매우 쉽습니다!
 
 주문
 
@@ -112,15 +119,13 @@ ___
 2. 컨센테투르 아디피싱 엘리트
 3. 정수 성추행 로렘 앳 마사
 
-
-1. 일련번호를 사용할 수 있습니다...
-1. ...또는 모든 숫자를 `1.`로 유지합니다.
+4. 일련번호를 사용할 수 있습니다...
+5. ...또는 모든 숫자를 `1.`로 유지합니다.
 
 오프셋으로 번호 매기기를 시작합니다:
 
 57. foo
 1. 바
-
 
 ## 코드
 
@@ -136,7 +141,7 @@ ___
 
 ```typescript filename=test.ts title=test.ts {1,3-4} showLineNumbers caption="Test"
 const foo = function (bar) {
-  return bar++
+  return bar++;
 };
 
 console.log(foo(5));
@@ -149,34 +154,32 @@ const [name, setName] = useState('Taylor');
 
 ## 테이블
 
-| 옵션 | 설명 |
-| ------ | ----------- |
+| 옵션   | 설명                                                      |
+| ------ | --------------------------------------------------------- |
 | 데이터 | 템플릿에 전달할 데이터를 제공할 데이터 파일의 경로입니다. |
-| 엔진 | 템플릿 처리에 사용할 엔진. 기본값은 핸들바입니다. |
-| 확장자 | 대상 파일에 사용할 확장자입니다. |
+| 엔진   | 템플릿 처리에 사용할 엔진. 기본값은 핸들바입니다.         |
+| 확장자 | 대상 파일에 사용할 확장자입니다.                          |
 
 오른쪽 정렬 열
 
-| 옵션 | 설명 |
-| ------:| -----------:|
+|   옵션 |                                                      설명 |
+| -----: | --------------------------------------------------------: |
 | 데이터 | 템플릿에 전달할 데이터를 제공할 데이터 파일의 경로입니다. |
-| 엔진 | 템플릿 처리에 사용할 엔진. 기본값은 핸들바입니다. |
-| 확장자 | 대상 파일에 사용할 확장자입니다. |
-
+|   엔진 |         템플릿 처리에 사용할 엔진. 기본값은 핸들바입니다. |
+| 확장자 |                          대상 파일에 사용할 확장자입니다. |
 
 ## 링크
 
 [링크 텍스트](http://dev.nodeca.com)
 
-[제목이 있는 링크](http://nodeca.github.io/pica/demo/ "제목 텍스트!")
+[제목이 있는 링크](http://nodeca.github.io/pica/demo/ '제목 텍스트!')
 
 자동 변환된 링크 https://github.com/nodeca/pica (보려면 linkify 활성화)
-
 
 ## 이미지
 
 ![미니언](https://octodex.github.com/images/minion.png)
-![스톰트루퍼캣](https://octodex.github.com/images/stormtroopocat.jpg "스톰트루퍼캣")
+![스톰트루퍼캣](https://octodex.github.com/images/stormtroopocat.jpg '스톰트루퍼캣')
 
 링크와 마찬가지로 이미지에도 각주 스타일 구문이 있습니다.
 
@@ -184,8 +187,7 @@ const [name, setName] = useState('Taylor');
 
 문서 뒷부분에 URL 위치를 정의하는 참조가 있습니다:
 
-[id]  https://octodex.github.com/images/dojocat.jpg "도조캣"
-
+[id] https://octodex.github.com/images/dojocat.jpg "도조캣"
 
 ## 플러그인
 
@@ -201,25 +203,25 @@ const [name, setName] = useState('Taylor');
 
 ```ts
 export function foo() {
-  console.log('hewwo') // [!code --]
-  console.log('hello') // [!code ++]
+  console.log('hewwo'); // [!code --]
+  console.log('hello'); // [!code ++]
 }
 ```
 
 ```ts
 export function foo() {
-  console.log('hewwo') // [!code highlight]
+  console.log('hewwo'); // [!code highlight]
 }
 ```
 
 ```ts
 export function foo() {
-  console.log('hewwo') // [!code error]
-  console.log('hello') // [!code warning]
+  console.log('hewwo'); // [!code error]
+  console.log('hello'); // [!code warning]
 }
 ```
 
-<span className="mix-blend-plus-lighter text-zinc-400/80">
+<span className='mix-blend-plus-lighter text-zinc-400/80'>
   Enjoy the accuracy and granularity of VS Code's syntax highlighting engine and
   the popularity of its themes ecosystem — use any VS Code theme you want!
 </span>
@@ -452,12 +454,7 @@ You can use your own theme as well by passing the theme JSON:
 
 ```js
 const options = {
-  theme: JSON.parse(
-    fs.readFileSync(
-      './themes/moonlight-ii.json',
-      'utf-8',
-    ),
-  ),
+  theme: JSON.parse(fs.readFileSync('./themes/moonlight-ii.json', 'utf-8')),
 };
 ```
 

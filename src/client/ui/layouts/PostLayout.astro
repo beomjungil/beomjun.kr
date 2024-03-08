@@ -1,15 +1,18 @@
 ---
 import '@/styles/post.css';
-import { t, l } from 'astro-i18n';
+
+import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
 import { Image } from 'astro:assets';
-import { Icon } from 'astro-icon/components';
+import { ArrowRight } from 'lucide-astro';
 
 import Footer from '../components/Footer.astro';
 
+import * as m from '@/paraglide/messages';
 import TableOfContents from '@/client/ui/components/Post/TableOfContents/TableOfContents.astro';
 import Layout from '@/client/ui/layouts/Layout.astro';
 
 import type { Post } from '@/types/Post';
+import { languageTag } from '@/paraglide/runtime';
 
 interface Props {
   post: Post;
@@ -23,8 +26,9 @@ const ogImage = `${Astro.site?.origin}/posts/${post.slug.replaceAll(
 )}/og.png`;
 
 const suggestMailto =
-  t('post.mailto', { title: encodeURIComponent(post.data.title) }) +
-  t('post.mailtosuffix', { href: encodeURIComponent(Astro.url.href) });
+  m.postMailto({
+    title: encodeURIComponent(post.data.title),
+  }) + m.postMailtoSuffix({ href: encodeURIComponent(Astro.url.href) });
 ---
 
 <Layout title={post.data.title}>
@@ -68,11 +72,11 @@ const suggestMailto =
           <tbody>
             <tr class='align-top'>
               <td class='whitespace-nowrap pb-3 pr-4 opacity-50'>
-                {t('post.writtenBy')}
+                {m.postWrittenBy()}
               </td>
               <td>
                 <address class='author not-italic'>
-                  {t('fullName')}
+                  {m.fullName()}
                 </address>
               </td>
             </tr>
@@ -84,17 +88,17 @@ const suggestMailto =
         <tbody>
           <tr class='table-row align-top lg:hidden'>
             <td class='whitespace-nowrap pb-3 pr-4 opacity-50'>
-              {t('post.writtenBy')}
+              {m.postWrittenBy()}
             </td>
             <td>
               <address class='author not-italic'>
-                {t('fullName')}
+                {m.fullName()}
               </address>
             </td>
           </tr>
           <tr class='align-top'>
             <td class='whitespace-nowrap pb-3 opacity-50'>
-              {t('post.description')}
+              {m.postDescription()}
             </td>
             <td>
               {post.data.description}
@@ -102,7 +106,7 @@ const suggestMailto =
           </tr>
           <tr class='align-top'>
             <td class='whitespace-nowrap pb-3 opacity-50'>
-              {t('post.publishedAt')}
+              {m.postPublishedAt()}
             </td>
             <td>
               {
@@ -116,7 +120,7 @@ const suggestMailto =
           </tr>
           <tr class='align-top'>
             <td class='whitespace-nowrap pb-3 opacity-50'>
-              {t('post.tags')}
+              {m.postTags()}
             </td>
             <td>
               <div class='flex flex-wrap gap-1'>
@@ -164,13 +168,15 @@ const suggestMailto =
     <div
       class='flex w-full flex-col whitespace-nowrap text-lg font-bold lg:w-[min(25vw,25%)] lg:text-2xl'
     >
-      <span class='opacity-50'>{t('post.writtenBy')}</span>
-      {t('fullName')}
+      <span class='opacity-50'>
+        {m.postWrittenBy()}
+      </span>
+      {m.fullName()}
     </div>
     <div class='flex w-full max-w-[712px] flex-col gap-12 lg:mx-auto'>
       <a href='/#get-in-touch'>
         <Image
-          alt={t('fullName')}
+          alt={m.fullName()}
           src={'/images/profile.png'}
           width={240}
           height={240}
@@ -179,10 +185,10 @@ const suggestMailto =
       </a>
       <p class='leading-[1.8]'>
         {post.data.endCard}<br />
-        {t('post.endDescription')}
-        {t('post.suggestPrefix')}
+        {m.postEndDescription()}
+        {m.postSuggestPrefix()}
         <a href={suggestMailto}>gil@beomjun.kr</a>
-        {t('post.suggestSuffix')}
+        {m.postSuggestSuffix()}
       </p>
     </div>
   </div>
@@ -204,12 +210,11 @@ const suggestMailto =
 
     <div class='w-full max-w-[712px] lg:mx-auto'>
       <a
-        href={l('/')}
+        href={l(languageTag(), '/')}
         class='group flex items-center justify-start whitespace-nowrap text-lg uppercase lg:text-2xl'
       >
-        {t('post.goToMain')}
-        <Icon
-          name='lucide:arrow-right'
+        {m.postGoToMain()}
+        <ArrowRight
           class='ml-4 inline-block size-12 transition-all duration-500 group-hover:ml-8'
         />
       </a>
