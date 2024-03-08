@@ -2,10 +2,10 @@
 import { astroI18n, createGetStaticPaths } from 'astro-i18n';
 import { getCollection } from 'astro:content';
 
-import Empty from '@/ui/Empty.astro';
-import YouTube from '@/ui/components/Post/YouTube.astro';
-import PostLayout from '@/ui/layouts/PostLayout.astro';
-import { normalizeSlug } from '@/utils/normalizeSlug';
+import Empty from '@/client/ui/Empty.astro';
+import YouTube from '@/client/ui/components/Post/YouTube.astro';
+import PostLayout from '@/client/ui/layouts/PostLayout.astro';
+import { normalizeSlug } from '@/client/utils/normalizeSlug';
 
 import type { Post } from '@/types/Post';
 

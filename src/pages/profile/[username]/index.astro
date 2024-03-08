@@ -1,0 +1,32 @@
+---
+import { createGetStaticPaths, t } from 'astro-i18n';
+
+import Layout from '@/client/ui/layouts/Layout.astro';
+
+export const getStaticPaths = createGetStaticPaths(() => {
+  // TODO: database에서 불러와야함
+  return [{ params: { username: 'gil' } }];
+});
+
+const { username } = Astro.params as { username: string };
+---
+
+<Layout title={username}>
+  <div
+    class:list={'py-20 flex flex-col items-center justify-center max-w-[800px] mx-auto px-4 w-full'}
+  >
+    <section class='flex w-full flex-col'>
+      <label>
+        <span class='text-md opacity-50'>{t('profile.profile')}</span>
+        <h1
+          class='flex flex-col items-start font-sans text-3xl font-extrabold md:text-4xl'
+        >
+          @{username}
+        </h1>
+      </label>
+    </section>
+    <section class='flex w-full flex-col items-center justify-center py-20'>
+      <p class='font-sans opacity-30'>Feed is not yet implemented</p>
+    </section>
+  </div>
+</Layout>

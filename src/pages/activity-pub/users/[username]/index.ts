@@ -1,37 +1,12 @@
-import { getActorByUsername } from '@/activitypub/dependencies';
-
-import type { APIRoute } from 'astro';
+import { getActorByUsername } from '@/server/activitypub/dependencies';
+import { APIRoute } from '@/server/api-route';
+import { activityJson } from '@/server/api-route/response';
 
 export const prerender = false;
 
-export const GET: APIRoute = async ({ params }) => {
-  const id = params.username;
-
-  if (!id) {
-    return new Response(null, {
-      status: 404,
-      statusText: 'Not found',
-    });
-  }
-
-  const actor = await getActorByUsername({
-    username: id,
+export const GET = APIRoute('/activity-pub/users/:username', ({ params }) => {
+  return getActorByUsername({
+    username: params.username,
     domain: 'beomjun.kr',
-  });
-
-  return actor.match(
-    (actor) => {
-      return Response.json(actor, {
-        headers: {
-          'Content-Type': 'application/activity+json',
-        },
-      });
-    },
-    () => {
-      return new Response(null, {
-        status: 404,
-        statusText: 'Not found',
-      });
-    },
-  );
-};
+  }).map(activityJson);
+});

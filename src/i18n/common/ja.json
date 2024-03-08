@@ -3,6 +3,11 @@
   "fullName": "ギルボムジュン",
   "writtenBy": "執筆者",
   "description": "あれこれする人",
+
+  "profile": {
+    "profile": "プロフィール"
+  },
+
   "post": {
     "writtenBy": "執筆者",
     "publishedAt": "公開日",

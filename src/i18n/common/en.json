@@ -3,6 +3,10 @@
   "fullName": "Beomjun Gil",
   "description": "Exploring Here and There",
 
+  "profile": {
+    "profile": "Profile"
+  },
+
   "post": {
     "writtenBy": "Written by",
     "publishedAt": "Published at",

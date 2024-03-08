@@ -4,6 +4,7 @@
 interface ImportMetaEnv {
   readonly SUPABASE_URL: string
   readonly SUPABASE_ANON_KEY: string
+  readonly NEW_RELIC_LICENSE_KEY: string
 }
 
 interface ImportMeta {
@@ -14,7 +15,7 @@ interface ImportMeta {
 type PrimaryLocale = "ko"
 type SecondaryLocale = "en"|"ja"
 type Locale = PrimaryLocale | SecondaryLocale
-type RouteParameters = {"/":undefined;"/posts/[slug]":{"slug":unknown;};}
+type RouteParameters = {"/":undefined;"/posts/[slug]":{"slug":unknown;};"/profile/[username]":{"username":unknown;};}
 type Route = keyof RouteParameters
 type TranslationVariables = {"name":object|undefined;"fullName":object|undefined;"description":object|undefined;"post.writtenBy":object|undefined;"post.publishedAt":object|undefined;"post.tags":object|undefined;"post.description":object|undefined;"post.comments":object|undefined;"post.mailto":{"title"?:unknown;}|undefined;"post.mailtosuffix":{"href"?:unknown;}|undefined;"post.suggestPrefix":object|undefined;"post.suggestSuffix":object|undefined;"post.endDescription":object|undefined;"post.goToMain":object|undefined;"theme.light":object|undefined;"theme.dark":object|undefined;"theme.system":object|undefined;"theme.label":object|undefined;"header.talkWithMe":object|undefined;"locale.en":object|undefined;"locale.ko":object|undefined;"locale.ja":object|undefined;"locale.label":object|undefined;"locale.suggest":object|undefined;"main.greeting":object|undefined;"main.myNameIs":object|undefined;"main.myNameIsSuffix":object|undefined;"main.greetingDescription":object|undefined;"main.aboutMe":object|undefined;"main.blog":object|undefined;"main.getInTouch":object|undefined;}
 type Translation = keyof TranslationVariables

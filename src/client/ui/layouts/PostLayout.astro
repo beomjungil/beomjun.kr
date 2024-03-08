@@ -1,0 +1,233 @@
+---
+import '@/styles/post.css';
+import { t, l } from 'astro-i18n';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+import Footer from '../components/Footer.astro';
+
+import TableOfContents from '@/client/ui/components/Post/TableOfContents/TableOfContents.astro';
+import Layout from '@/client/ui/layouts/Layout.astro';
+
+import type { Post } from '@/types/Post';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+
+const ogImage = `${Astro.site?.origin}/posts/${post.slug.replaceAll(
+  '/',
+  '__',
+)}/og.png`;
+
+const suggestMailto =
+  t('post.mailto', { title: encodeURIComponent(post.data.title) }) +
+  t('post.mailtosuffix', { href: encodeURIComponent(Astro.url.href) });
+---
+
+<Layout title={post.data.title}>
+  <Fragment slot='head'>
+    <meta property='og:title' content={post.data.title} />
+    <meta property='og:description' content={post.data.description} />
+    <meta property='og:url' content={Astro.url.href} />
+    <meta property='og:image' content={ogImage} />
+    <meta property='og:locale' content={post.data.locale} />
+    <meta property='og:type' content='article' />
+    <meta
+      property='article:published_time'
+      content={post.data.date.toLocaleDateString()}
+    />
+    <meta
+      property='article:author'
+      content={`${Astro.site?.origin}/${post.data.locale}/about`}
+    />
+    <meta
+      property='article:tag'
+      content={post.data.tags.map((tag) => tag).join(',')}
+    />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content={post.data.title} />
+    <meta property='twitter:description' content={post.data.description} />
+    <meta name='twitter:image' content={ogImage} />
+  </Fragment>
+  <div
+    class:list={'container relative mt-28 flex w-full flex-col gap-2 lg:gap-6'}
+  >
+    <div class='overflow-hidden'>
+      <h1
+        class='text-balance text-[min(6vw,7em)] font-extrabold leading-[1.25] duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+      >
+        {post.data.title}
+      </h1>
+    </div>
+    <div class='flex flex-col gap-4 lg:flex-row'>
+      <div class='flex w-full gap-4 lg:w-[min(25vw,25%)]'>
+        <table class='hidden lg:table'>
+          <tbody>
+            <tr class='align-top'>
+              <td class='whitespace-nowrap pb-3 pr-4 opacity-50'>
+                {t('post.writtenBy')}
+              </td>
+              <td>
+                <address class='author not-italic'>
+                  {t('fullName')}
+                </address>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table class='w-full max-w-[712px] lg:mx-auto'>
+        <tbody>
+          <tr class='table-row align-top lg:hidden'>
+            <td class='whitespace-nowrap pb-3 pr-4 opacity-50'>
+              {t('post.writtenBy')}
+            </td>
+            <td>
+              <address class='author not-italic'>
+                {t('fullName')}
+              </address>
+            </td>
+          </tr>
+          <tr class='align-top'>
+            <td class='whitespace-nowrap pb-3 opacity-50'>
+              {t('post.description')}
+            </td>
+            <td>
+              {post.data.description}
+            </td>
+          </tr>
+          <tr class='align-top'>
+            <td class='whitespace-nowrap pb-3 opacity-50'>
+              {t('post.publishedAt')}
+            </td>
+            <td>
+              {
+                Intl.DateTimeFormat(post.data.locale, {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                }).format(post.data.date)
+              }
+            </td>
+          </tr>
+          <tr class='align-top'>
+            <td class='whitespace-nowrap pb-3 opacity-50'>
+              {t('post.tags')}
+            </td>
+            <td>
+              <div class='flex flex-wrap gap-1'>
+                {post.data.tags.map((tag) => <span>#{tag}</span>)}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class='mb-16 mt-10 flex justify-end'>
+    <div
+      class='lg:pl-4'
+      style={{
+        width:
+          'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
+      }}
+    >
+      <div class='h-0.5 w-full bg-foreground'></div>
+    </div>
+  </div>
+
+  <div class='container flex gap-4'>
+    <TableOfContents post={post.body} />
+    <div id='post-content' class='prose w-full dark:prose-invert lg:mx-auto'>
+      <slot />
+    </div>
+  </div>
+
+  <div class='mb-4 mt-24 flex justify-end'>
+    <div
+      class='lg:pl-4'
+      style={{
+        width:
+          'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
+      }}
+    >
+      <div class='h-0.5 w-full bg-foreground'></div>
+    </div>
+  </div>
+
+  <div class='container mt-16 flex flex-col gap-4 lg:flex-row'>
+    <div
+      class='flex w-full flex-col whitespace-nowrap text-lg font-bold lg:w-[min(25vw,25%)] lg:text-2xl'
+    >
+      <span class='opacity-50'>{t('post.writtenBy')}</span>
+      {t('fullName')}
+    </div>
+    <div class='flex w-full max-w-[712px] flex-col gap-12 lg:mx-auto'>
+      <a href='/#get-in-touch'>
+        <Image
+          alt={t('fullName')}
+          src={'/images/profile.png'}
+          width={240}
+          height={240}
+          class:list={'object-cover filter grayscale brightness-125 constract-150 hover:filter-none transition-all duration-300'}
+        />
+      </a>
+      <p class='leading-[1.8]'>
+        {post.data.endCard}<br />
+        {t('post.endDescription')}
+        {t('post.suggestPrefix')}
+        <a href={suggestMailto}>gil@beomjun.kr</a>
+        {t('post.suggestSuffix')}
+      </p>
+    </div>
+  </div>
+
+  <div class='mb-24 mt-16 flex justify-end'>
+    <div
+      class='lg:pl-4'
+      style={{
+        width:
+          'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
+      }}
+    >
+      <div class='h-0.5 w-full bg-foreground'></div>
+    </div>
+  </div>
+
+  <div class='container mb-40 mt-16 flex flex-col gap-4 lg:flex-row'>
+    <div class='w-full gap-4 lg:w-[min(25vw,25%)]'></div>
+
+    <div class='w-full max-w-[712px] lg:mx-auto'>
+      <a
+        href={l('/')}
+        class='group flex items-center justify-start whitespace-nowrap text-lg uppercase lg:text-2xl'
+      >
+        {t('post.goToMain')}
+        <Icon
+          name='lucide:arrow-right'
+          class='ml-4 inline-block size-12 transition-all duration-500 group-hover:ml-8'
+        />
+      </a>
+    </div>
+  </div>
+  <Footer />
+</Layout>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    document
+      .getElementById('post-content')
+      ?.childNodes.forEach((node, index) => {
+        if (!(node instanceof HTMLElement)) {
+          return;
+        }
+
+        node.style.animationDelay = `${1 + (index + 1) * 0.02}s`;
+      });
+  });
+</script>

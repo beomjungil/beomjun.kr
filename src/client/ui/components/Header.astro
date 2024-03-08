@@ -1,0 +1,26 @@
+---
+import { l } from 'astro-i18n';
+
+import LocaleSwitcher from './LocaleSwitcher.astro';
+import ThemeSwitcher from './ThemeSwitcher.astro';
+
+import Logo from '@/client/ui/foundations/Logo.astro';
+import Name from '@/client/ui/foundations/Name.astro';
+---
+
+<header
+  class='fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-gradient-to-b from-background to-transparent pb-2 pr-2 backdrop-blur-[1px]'
+>
+  <a href={l('/')} class='group flex items-center space-x-4 pt-2'>
+    <div class='bg-background pl-2'>
+      <Logo cn={'size-8'} />
+    </div>
+    <Name
+      cn='z-[-1] !m-0 h-6 w-auto max-w-48 translate-x-[-100%] transition-all duration-1000 ease-in-out group-hover:translate-x-[0.5rem]'
+    />
+  </a>
+  <div class='flex items-center space-x-1 pt-2'>
+    <LocaleSwitcher />
+    <ThemeSwitcher />
+  </div>
+</header>

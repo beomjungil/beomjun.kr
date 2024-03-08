@@ -1,5 +1,5 @@
 {
-  "name": "new-beomjun-kr",
+  "name": "beomjun-kr",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -36,6 +36,8 @@
     "date-fns": "^3.3.1",
     "github-slugger": "^2.0.0",
     "neverthrow": "^6.1.0",
+    "pino": "^8.19.0",
+    "pino-pretty": "^10.3.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-preset-minify": "^7.0.0",
     "rehype-pretty-code": "^0.13.0",
@@ -65,6 +67,7 @@
     "eslint-plugin-tailwindcss": "^3.14.3",
     "prettier": "^3.2.5",
     "prettier-config-standard": "^7.0.0",
-    "prettier-plugin-astro": "^0.12.3"
+    "prettier-plugin-astro": "^0.12.3",
+    "type-fest": "^4.11.1"
   }
 }

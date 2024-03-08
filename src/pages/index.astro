@@ -2,10 +2,10 @@
 import { astroI18n, l, t } from 'astro-i18n';
 import { getCollection } from 'astro:content';
 
-import GetInTouchSection from '@/ui/components/Main/GetInTouchSection.astro';
-import GreetingSection from '@/ui/components/Main/GreetingSection.astro';
-import Layout from '@/ui/layouts/Layout.astro';
-import { normalizeSlug } from '@/utils/normalizeSlug';
+import GetInTouchSection from '@/client/ui/components/Main/GetInTouchSection.astro';
+import GreetingSection from '@/client/ui/components/Main/GreetingSection.astro';
+import Layout from '@/client/ui/layouts/Layout.astro';
+import { normalizeSlug } from '@/client/utils/normalizeSlug';
 
 const posts = await getCollection('posts', (post) => {
   return post.data.locale === astroI18n.locale;
