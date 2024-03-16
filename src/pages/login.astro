@@ -1,34 +1,35 @@
 ---
 import Layout from '@/client/ui/layouts/Layout.astro';
+import { SESSION_COOKIE_NAME } from '@/server/auth/constants';
 
 export const prerender = false;
 
-const accessToken = Astro.cookies.get('access-token');
-const refreshToken = Astro.cookies.get('refresh-token');
-
-if (accessToken && refreshToken) {
+const sessionId = Astro.cookies.get(SESSION_COOKIE_NAME)?.value ?? null;
+if (sessionId) {
   return Astro.redirect('/dashboard');
 }
 ---
 
-<Layout title='Log in'>
-  <h1>Log in</h1>
-  <p>New here? <a href='/register'>Create an account</a></p>
-  <form action='/auth/login' method='post'>
-    <label for='email' for='email'>Email</label>
-    <input
-      type='email'
-      name='email'
-      id='email'
-      class='appearance-none border bg-transparent'
-    />
-    <label for='password'>Password</label>
-    <input
-      type='password'
-      name='password'
-      id='password'
-      class='appearance-none border bg-transparent'
-    />
-    <button type='submit'>Login</button>
-  </form>
+<Layout title='Login'>
+  <div class='py-20 font-sans'>
+    <h1>Log in</h1>
+    <p>New here? <a href='/register'>Create an account</a></p>
+    <form action='/auth/login' method='post'>
+      <label for='username' for='username'>Username</label>
+      <input
+        type='text'
+        name='username'
+        id='username'
+        class='appearance-none border bg-transparent'
+      />
+      <label for='password'>Password</label>
+      <input
+        type='password'
+        name='password'
+        id='password'
+        class='appearance-none border bg-transparent'
+      />
+      <button type='submit'>Login</button>
+    </form>
+  </div>
 </Layout>

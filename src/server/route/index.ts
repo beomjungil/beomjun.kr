@@ -1,24 +1,37 @@
 import { match } from 'ts-pattern';
 
-import { FailureCode, type Failure } from '../activitypub/domain/failures';
-import { logger } from '../logger';
+import { FailureCode, type Failure } from '../failures';
 
-import type { APIRoute as AstroAPIRoute } from 'astro';
+import type { APIContext, APIRoute as AstroAPIRoute } from 'astro';
+import type { AwilixContainer } from 'awilix';
 import type { ResultAsync } from 'neverthrow';
-import type { Logger } from 'pino';
+import {
+  configureCoreContainer,
+  identical,
+  type DependencyContainer,
+  type ExtendContainer,
+  type ExtendedContainer,
+} from '../dependencies/configureContainer';
 
-type APIRouteWithLogger = (
-  context: Parameters<AstroAPIRoute>[0],
-  logger: Logger<never>,
+export type APIRouteFunction<T> = (
+  context: APIContext,
+  container: ExtendedContainer<T>,
 ) => ResultAsync<Response, Failure>;
 
-export const APIRoute = (
+export const APIRoute = <T = never>(
   name: string,
-  route: APIRouteWithLogger,
+  route: APIRouteFunction<T>,
+  extendContainer: ExtendContainer<T> = identical,
 ): AstroAPIRoute => {
   return (context) => {
-    const childLogger = logger.child({ endpoint: name });
-    return route(context, childLogger).match(
+    const container = extendContainer(
+      configureCoreContainer({
+        DB: context.locals.runtime.env.DB,
+        name,
+      }),
+    );
+
+    return route(context, container).match(
       (response) => response,
       (failure) => {
         return match(failure)
@@ -49,7 +62,9 @@ export const APIRoute = (
             );
           })
           .otherwise(() => {
-            childLogger.error(failure.underlyingError, 'Internal server error');
+            (container as AwilixContainer<DependencyContainer>)
+              .resolve('logger')
+              .error(failure.underlyingError, 'Internal server error');
             return new Response(null, {
               status: 500,
               statusText: 'Internal server error',

@@ -1,4 +1,4 @@
-import { APIRoute } from '@/server/api-route';
+import { APIRoute } from '@/server/route';
 import { okAsync } from 'neverthrow';
 
 export const prerender = false;

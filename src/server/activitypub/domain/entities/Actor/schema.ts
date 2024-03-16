@@ -1,6 +1,10 @@
 import { z } from 'zod';
 
 import {
+  MASTODON_DISCOVERABLE_TYPE,
+  MASTODON_FEATURED_TAGS_TYPE,
+  MASTODON_FEATURED_TYPE,
+  SCHEMA_PROPERTY_VALUE_TYPE,
   W3_ACTIVITY_STREAMS_NAMESPACE,
   W3_SECURITY_V1,
 } from '@/server/activitypub/constants';
@@ -10,10 +14,15 @@ export const ActorSchema = z.object({
     z.union([
       z.literal(W3_ACTIVITY_STREAMS_NAMESPACE),
       z.literal(W3_SECURITY_V1),
+      SCHEMA_PROPERTY_VALUE_TYPE,
+      MASTODON_DISCOVERABLE_TYPE,
+      MASTODON_FEATURED_TAGS_TYPE,
+      MASTODON_FEATURED_TYPE,
     ]),
   ),
   id: z.string(),
   type: z.enum(['Person', 'Service', 'Application', 'Group', 'Organization']),
+  discoverable: z.boolean(),
   following: z.string().url(),
   followers: z.string().url(),
   inbox: z.string().url(),
@@ -29,6 +38,8 @@ export const ActorSchema = z.object({
     owner: z.string(),
     publicKeyPem: z.string(),
   }),
+  featuredTags: z.string(),
+  featured: z.string(),
   icon: z
     .object({
       type: z.literal('Image'),
@@ -46,6 +57,13 @@ export const ActorSchema = z.object({
   endpoints: z.object({
     sharedInbox: z.string().url(),
   }),
+  attachment: z.array(
+    z.object({
+      type: z.string(),
+      name: z.string(),
+      value: z.string(),
+    }),
+  ),
 });
 
 export type ActorSchema = z.infer<typeof ActorSchema>;

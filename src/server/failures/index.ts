@@ -11,3 +11,15 @@ export interface Failure {
   message: string;
   underlyingError?: unknown;
 }
+
+export function failure(failure: Failure): Failure {
+  return failure;
+}
+
+export function unknownFailure(underlyingError?: unknown): Failure {
+  return {
+    code: FailureCode.Unknown,
+    message: 'unknownError',
+    underlyingError,
+  };
+}

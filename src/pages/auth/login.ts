@@ -1,41 +1,47 @@
 import { Result, ResultAsync, err, ok } from 'neverthrow';
 
-import {
-  FailureCode,
-  type Failure,
-} from '@/server/activitypub/domain/failures';
-import { APIRoute } from '@/server/api-route';
-import { loginWithPassword } from '@/server/auth/dependencies';
+import { AuthRoute } from '@/server/auth/route';
+import { FailureCode, failure, type Failure } from '@/server/failures';
 
 export const prerender = false;
 
-export const POST = APIRoute(
+export const POST = AuthRoute(
   '/auth/login',
-  ({ request, cookies, redirect }) => {
+  ({ request, cookies, redirect }, container) => {
+    const loginWithPassword = container.resolve('loginWithPasswordUseCase');
+    const setSession = container.resolve('setSessionUseCase');
+
     return ResultAsync.fromSafePromise(request.formData())
       .andThen(getFormData)
-      .andThen((data) =>
-        loginWithPassword({
-          ...data,
-          cookies,
-        }),
-      )
-      .map(() => redirect('/dashboard'));
+      .andThen(loginWithPassword)
+      .map((session) => setSession({ session, cookies }))
+      .map(() => redirect('/me'));
   },
 );
 
 function getFormData(
   formData: FormData,
-): Result<{ email: string; password: string }, Failure> {
-  const email = formData.get('email')?.toString();
+): Result<{ password: string; username: string }, Failure> {
+  const username = formData.get('username')?.toString();
   const password = formData.get('password')?.toString();
 
-  if (!email || !password) {
-    return err({
-      code: FailureCode.InvalidRequest,
-      message: 'Email and password are required',
-    });
+  if (!password) {
+    return err(
+      failure({
+        code: FailureCode.InvalidRequest,
+        message: 'passwordIsRequired',
+      }),
+    );
   }
 
-  return ok({ email, password });
+  if (!username) {
+    return err(
+      failure({
+        code: FailureCode.InvalidRequest,
+        message: 'usernameIsRequired',
+      }),
+    );
+  }
+
+  return ok({ password, username });
 }

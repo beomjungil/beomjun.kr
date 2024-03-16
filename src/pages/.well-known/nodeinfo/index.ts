@@ -1,5 +1,5 @@
-import { APIRoute } from '@/server/api-route';
-import { json } from '@/server/api-route/response';
+import { APIRoute } from '@/server/route';
+import { json } from '@/server/route/response';
 import { okAsync } from 'neverthrow';
 
 export const prerender = false;

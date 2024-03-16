@@ -1,22 +1,12 @@
 import { z } from 'zod';
 
-import { User, UserData } from '../entitites/User';
-
-import { ZSchema } from '@/server/activitypub/utils/ZSchema';
+import { ZSchema } from '@/server/utils/ZSchema';
 
 export const SessionData = z.object({
-  providerToken: z.string().optional().nullable(),
-  providerRefreshToken: z.string().optional().nullable(),
-  accessToken: z.string(),
-  refreshToken: z.string(),
-  expiresIn: z.number(),
-  expiresAt: z.number().optional(),
-  tokenType: z.string(),
-  user: UserData,
+  id: z.string(),
+  expiresAt: z.date(),
+  fresh: z.boolean(),
+  userId: z.string(),
 });
 
-export class Session extends ZSchema(SessionData) {
-  getUser(): User {
-    return User.parse(this.user);
-  }
-}
+export class Session extends ZSchema(SessionData) {}

@@ -1,64 +1,63 @@
 import { ResultAsync } from 'neverthrow';
 
-import { Supabase } from '../supabase';
-
-import { Actor } from '@/server/activitypub/domain/entities/Actor';
-import { type Failure } from '@/server/activitypub/domain/failures';
+import {
+  Actor,
+  type ActorType,
+} from '@/server/activitypub/domain/entities/Actor';
+import { type Failure } from '@/server/failures';
 
 import type { ActorRepository } from '@/server/activitypub/domain/repositories/ActorRepository';
+import type { Database } from '@/server/database/drizzle';
+import { singleRowOrFailure } from '@/server/database/singleRowOrFailure';
+import { actors } from '@/server/database/tables/actors';
+import { users } from '@/server/database/tables/users';
+import { errorToFailure } from '@/server/utils/errorToFailure';
+import { repository } from '@/server/utils/repository';
+import { and, eq } from 'drizzle-orm/expressions';
 
-export const ActorRepositoryImpl: ActorRepository = {
-  findByID(id: string): ResultAsync<Actor, Failure> {
-    return Supabase.query(
-      (supabase) => supabase.from('actor').select('*').eq('id', id).single(),
-      {
-        converter: (data) =>
-          Actor.parse({
-            id: data.id,
-            type: data.type,
-            username: data.username,
-            domain: data.domain,
-            name: data.name || undefined,
-            summary: data.summary || undefined,
-            iconUrl: data.icon_url || undefined,
-            headerImageUrl: data.header_image_url || undefined,
-            createdAt: new Date(data.created_at),
-            updatedAt: new Date(data.updated_at),
-            publicKey: data.public_key,
-            privateKey: data.private_key,
-          }),
-      },
-    );
-  },
+export const ActorRepositoryImpl = repository<
+  ActorRepository,
+  {
+    database: Database;
+  }
+>(({ database }) => ({
   findByUsername(
     username: string,
     domain: string,
   ): ResultAsync<Actor, Failure> {
-    return Supabase.query(
-      (supabase) =>
-        supabase
-          .from('actor')
-          .select('*')
-          .eq('username', username)
-          .eq('domain', domain)
-          .single(),
-      {
-        converter: (data) =>
-          Actor.parse({
-            id: data.id,
-            type: data.type,
-            username: data.username,
-            domain: data.domain,
-            name: data.name || undefined,
-            summary: data.summary || undefined,
-            iconUrl: data.icon_url || undefined,
-            headerImageUrl: data.header_image_url || undefined,
-            createdAt: new Date(data.created_at),
-            updatedAt: new Date(data.updated_at),
-            publicKey: data.public_key,
-            privateKey: data.private_key,
-          }),
-      },
-    );
+    return ResultAsync.fromPromise(
+      database
+        .select({
+          id: users.id,
+          summary: users.summary,
+          profileImageUrl: users.profileImageUrl,
+          headerImageUrl: users.headerImageUrl,
+          fullName: users.fullName,
+          type: actors.type,
+          publicKey: actors.publicKey,
+          createdAt: actors.createdAt,
+          updatedAt: actors.updatedAt,
+        })
+        .from(actors)
+        .innerJoin(users, eq(users.id, actors.userId))
+        .where(and(eq(users.username, username), eq(actors.domain, domain))),
+      errorToFailure,
+    )
+      .andThen(singleRowOrFailure)
+      .map((result) => {
+        return Actor.parse({
+          id: result.id,
+          type: result.type as ActorType,
+          username: username,
+          domain: domain,
+          name: result.fullName || undefined,
+          summary: result.summary || undefined,
+          iconUrl: result.profileImageUrl || undefined,
+          headerImageUrl: result.headerImageUrl || undefined,
+          createdAt: result.createdAt,
+          updatedAt: result.updatedAt,
+          publicKey: result.publicKey,
+        });
+      });
   },
-};
+}));

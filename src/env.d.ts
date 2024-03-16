@@ -11,6 +11,17 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
+type D1Database = import("@cloudflare/workers-types").D1Database;
+type ENV = {
+  DB: D1Database;
+};
+
+type Runtime = import("@astrojs/cloudflare").AdvancedRuntime<ENV>;
+declare namespace App {
+  interface Locals extends Runtime {
+  }
+}
+
 // ###> astro-i18n/type-generation ###
 type PrimaryLocale = 'ko';
 type SecondaryLocale = 'en' | 'ja';

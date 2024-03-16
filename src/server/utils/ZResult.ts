@@ -1,7 +1,7 @@
 import { Result } from 'neverthrow';
 import { ZodError, z } from 'zod';
 
-import { FailureCode, type Failure } from '../domain/failures';
+import { FailureCode, type Failure } from '../failures';
 
 const toFailure = (error: unknown): Failure => {
   if (error instanceof ZodError) {

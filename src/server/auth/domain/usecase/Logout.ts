@@ -1,17 +1,18 @@
-import { okAsync, type ResultAsync } from 'neverthrow';
+import { type ResultAsync } from 'neverthrow';
 
-import { type Failure } from '@/server/activitypub/domain/failures';
-import { usecase } from '@/server/activitypub/utils/usecase';
+import { type Failure } from '@/server/failures';
+import { usecase, type UseCaseOf } from '@/server/utils/usecase';
 
-import type { AstroCookies } from 'astro';
+import type { SessionRepository } from '../repositories/SessionRepository';
 
 export const LogoutUseCase = usecase<
+  { sessionId: string },
+  ResultAsync<void, Failure>,
   {
-    cookies: AstroCookies;
-  },
-  ResultAsync<void, Failure>
->((_, { cookies }) => {
-  cookies.delete('access-token', { path: '/' });
-  cookies.delete('refresh-token', { path: '/' });
-  return okAsync(undefined);
+    sessionRepository: SessionRepository;
+  }
+>(({ sessionRepository }, { sessionId }) => {
+  return sessionRepository.remove(sessionId);
 });
+
+export type LogoutUseCase = UseCaseOf<typeof LogoutUseCase>;

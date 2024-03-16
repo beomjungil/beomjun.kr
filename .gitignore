@@ -22,3 +22,5 @@ pnpm-debug.log*
 
 # Cloudflare Pages
 .wrangler/state/v3
+drizzle/
+migrations/

@@ -108,7 +108,17 @@ export default defineConfig({
     runtime: {
       mode: 'local',
       type: 'pages',
+      bindings: {
+        DB: {
+          type: 'd1',
+        },
+      },
     },
     functionPerRoute: true,
   }),
+  vite: {
+    optimizeDeps: {
+      exclude: ['oslo'],
+    },
+  },
 });

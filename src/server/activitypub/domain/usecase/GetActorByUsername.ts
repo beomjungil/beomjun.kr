@@ -1,8 +1,8 @@
 import { err, ok, Result, type ResultAsync } from 'neverthrow';
 
-import { FailureCode, type Failure } from '../failures';
+import { FailureCode, type Failure } from '../../../failures';
 
-import { usecase } from '@/server/activitypub/utils/usecase';
+import { usecase, type UseCaseOf } from '@/server/utils/usecase';
 
 import type { RequiredDeep } from 'type-fest';
 import type { Actor } from '../entities/Actor';
@@ -50,3 +50,7 @@ function validateCommand({
     domain,
   });
 }
+
+export type GetActorByUsernameUseCase = UseCaseOf<
+  typeof GetActorByUsernameUseCase
+>;

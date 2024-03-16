@@ -1,0 +1,49 @@
+---
+import Layout from '@/client/ui/layouts/Layout.astro';
+import { SESSION_COOKIE_NAME } from '@/server/auth/constants';
+import { configureAuthContainer } from '@/server/auth/dependencies/configureContainer';
+import { configureCoreContainer } from '@/server/dependencies/configureContainer';
+
+export const prerender = false;
+
+const { cookies, redirect } = Astro;
+
+const container = configureAuthContainer(
+  configureCoreContainer({ DB: Astro.locals.runtime.env.DB }),
+);
+const lucia = container.resolve('lucia');
+const sessionId = cookies.get(SESSION_COOKIE_NAME)?.value ?? null;
+
+if (!sessionId) {
+  return redirect('/login');
+}
+
+const { session, user } = await lucia.validateSession(sessionId);
+
+if (!session) {
+  const sessionCookie = lucia.createBlankSessionCookie();
+  cookies.set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes,
+  );
+  return redirect('/login');
+}
+
+if (session?.fresh) {
+  const sessionCookie = lucia.createSessionCookie(session.id);
+  cookies.set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes,
+  );
+}
+---
+
+<Layout title='dashboard'>
+  <h1>Welcome {JSON.stringify(user)}</h1>
+  <p>We are happy to see you here</p>
+  <form action='/api/auth/signout'>
+    <button type='submit'>Sign out</button>
+  </form>
+</Layout>

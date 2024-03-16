@@ -1,25 +1,57 @@
-import { type ResultAsync } from 'neverthrow';
+import { ResultAsync } from 'neverthrow';
 import { z } from 'zod';
 
-import { type Failure } from '@/server/activitypub/domain/failures';
-import { usecase } from '@/server/activitypub/utils/usecase';
-import { zodParseResult } from '@/server/activitypub/utils/ZResult';
+import { unknownFailure, type Failure } from '@/server/failures';
+import { zodParseResult } from '@/server/utils/ZResult';
+import { usecase, type UseCaseOf } from '@/server/utils/usecase';
 
-import type { AuthRepository } from '../repositories/AuthRepository';
+import type { AuthService } from '../../service/AuthService';
+import type { SessionRepository } from '../repositories/SessionRepository';
+import type { UserRepository } from '../repositories/UserRepository';
+import type { Session } from '../vo/Session';
 
 const Command = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  username: z
+    .string()
+    .min(3, { message: 'usernameMustMoreThan3' })
+    .max(20, { message: 'usernameMustLessThan20' }),
+  password: z
+    .string()
+    .min(8, { message: 'passwordMustMoreThan8' })
+    .max(100, { message: 'passwordMustLessThan100' }),
 });
 
 export const RegisterUseCase = usecase<
   z.infer<typeof Command>,
-  ResultAsync<void, Failure>,
+  ResultAsync<Session, Failure>,
   {
-    repository: AuthRepository;
+    authService: AuthService;
+    userRepository: UserRepository;
+    sessionRepository: SessionRepository;
   }
->(({ repository }, command) =>
-  zodParseResult(Command, command).asyncAndThen(({ email, password }) =>
-    repository.register(email, password),
-  ),
+>(({ userRepository, sessionRepository, authService }, command) =>
+  zodParseResult(Command, command)
+    .asyncAndThen(({ password, username, email }) =>
+      authService
+        .hashPassword(password)
+        .map((hashedPassword) => ({
+          id: authService.createUserID(),
+          username,
+          email,
+          hashedPassword,
+        }))
+        .mapErr(() => unknownFailure()),
+    )
+    .andThen(({ username, hashedPassword, id, email }) =>
+      userRepository.create({
+        id,
+        email,
+        username,
+        hashedPassword,
+      }),
+    )
+    .andThen((user) => sessionRepository.create(user.id)),
 );
+
+export type RegisterUseCase = UseCaseOf<typeof RegisterUseCase>;

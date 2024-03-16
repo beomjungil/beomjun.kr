@@ -1,21 +1,21 @@
-import { getActorByUsername } from '@/server/activitypub/dependencies';
-import {
-  FailureCode,
-  type Failure,
-} from '@/server/activitypub/domain/failures';
-import { APIRoute } from '@/server/api-route';
-import { json } from '@/server/api-route/response';
+import { ActivityPubRoute } from '@/server/activitypub/route';
+import { FailureCode, type Failure } from '@/server/failures';
+import { json } from '@/server/route/response';
 import { Result, err, ok } from 'neverthrow';
 
 export const prerender = false;
 
-export const GET = APIRoute('/.well-known/webfinger', (req) => {
-  return validateSearchParams(req.url.searchParams)
-    .andThen(validateResource)
-    .asyncAndThen(getActorByUsername)
-    .map((actor) => actor.toWebfinger())
-    .map(json);
-});
+export const GET = ActivityPubRoute(
+  '/.well-known/webfinger',
+  ({ url }, container) => {
+    const getActorByUsername = container.resolve('getActorByUsernameUseCase');
+    return validateSearchParams(url.searchParams)
+      .andThen(validateResource)
+      .asyncAndThen(getActorByUsername)
+      .map((actor) => actor.toWebfinger())
+      .map(json);
+  },
+);
 
 function validateSearchParams(
   params: URLSearchParams,
