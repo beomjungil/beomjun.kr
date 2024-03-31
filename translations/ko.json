@@ -37,5 +37,19 @@
   "postSuggestPrefix": "지금 읽은 글에 대해 질문이나 의견이 있다면,",
   "postSuggestSuffix": "으로 연락주세요.",
   "postEndDescription": "저는 현재 서울에서 소프트웨어 엔지니어로 일하고 있어요.",
-  "postGoToMain": "메인 화면으로 이동"
+  "postGoToMain": "메인 화면으로 이동",
+
+  "login": "로그인",
+  "welcomeBack": "다시 오신 것을 환영해요",
+  "newHere": "혹시 처음이시라면, ",
+  "registerAccountInstead": "계정을 만들어보세요",
+
+  "register": "새로운 계정 만들기",
+  "gladToMeetYou": "만나뵙게 되어 반가워요",
+  "alreadyHaveAccount": "이미 계정이 있다면, ",
+  "loginInstead": "로그인하세요",
+
+  "username": "사용자 이름",
+  "email": "이메일",
+  "password": "비밀번호"
 }

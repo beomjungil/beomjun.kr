@@ -132,6 +132,7 @@ export default {
           900: '#6E1220',
           DEFAULT: '#FF4E5D',
         },
+        surface: '#ffffff',
       },
       dark: {
         foreground: '#F7F6ED',
@@ -149,6 +150,7 @@ export default {
           900: '#FBE9EC',
           DEFAULT: '#FF4E5D',
         },
+        surface: '#000000',
       },
     }),
   ],

@@ -1,6 +1,7 @@
 {
   "name": "beomjun-kr",
   "version": "0.0.1",
+  "description": "Personal Universe of Beomjun Gil.",
   "type": "module",
   "private": true,
   "scripts": {

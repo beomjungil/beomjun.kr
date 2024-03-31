@@ -1,7 +1,10 @@
 ---
 import Layout from '@/client/ui/layouts/Layout.astro';
+import * as m from '@/paraglide/messages';
 import { SESSION_COOKIE_NAME } from '@/server/auth/constants';
 
+import { languageTag } from '@/paraglide/runtime';
+import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
 export const prerender = false;
 
 const sessionId = Astro.cookies.get(SESSION_COOKIE_NAME)?.value ?? null;
@@ -10,26 +13,53 @@ if (sessionId) {
 }
 ---
 
-<Layout title='Login'>
-  <div class='py-20 font-sans'>
-    <h1>Log in</h1>
-    <p>New here? <a href='/register'>Create an account</a></p>
-    <form action='/auth/login' method='post'>
-      <label for='username' for='username'>Username</label>
-      <input
-        type='text'
-        name='username'
-        id='username'
-        class='appearance-none border bg-transparent'
-      />
-      <label for='password'>Password</label>
-      <input
-        type='password'
-        name='password'
-        id='password'
-        class='appearance-none border bg-transparent'
-      />
-      <button type='submit'>Login</button>
-    </form>
+<Layout title={m.login()}>
+  <div
+    class:list={'container relative mt-28 flex w-full justify-center items-center flex-col gap-6'}
+  >
+    <div class='overflow-hidden'>
+      <h1
+        class='text-balance text-center text-[max(min(5vw,5em),2em)] font-extrabold leading-[1.25] duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+      >
+        {m.welcomeBack()}
+      </h1>
+    </div>
+    <div class='overflow-hidden'>
+      <p
+        class='whitespace-pre-line text-center delay-500 fill-mode-both duration-1000 animate-in fade-in slide-in-from-bottom'
+      >
+      <span class='opacity-50'>
+        {m.newHere()}
+      </span>
+        <a href={l(languageTag(), '/register')}>{m.registerAccountInstead()}</a>
+      </p>
+      </div>
+      <form action='/auth/login' method='post' class="p-4 gap-4 md:p-8 bg-foreground/10 rounded-lg flex flex-col w-full max-w-[500px]">
+        <div class="flex w-full flex-col">
+        <label for='username' for='username' class="opacity-50 mb-2">{m.username()}</label>
+        <input
+          type='text'
+          name='username'
+          id='username'
+          autofocus
+          placeholder="john.doe"
+          required
+          class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
+        />
+      </div>   
+           <div class="flex w-full flex-col">
+        <label for='password' class="opacity-50 mb-2">{m.password()}</label>
+        <input
+          type='password'
+          name='password'
+          id='password'
+          placeholder="********"
+          required
+          class='appearance-none  bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
+        />
+      </div>
+        <button type='submit' class="flex w-full uppercase bg-foreground text-background text-center justify-center align-center rounded-md p-4 font-semibold">{m.login()}</button>
+      </form>
+    </div>
   </div>
 </Layout>

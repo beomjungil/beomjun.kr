@@ -38,5 +38,19 @@
   "postSuggestPrefix": "このブログに関するご質問やご意見がありましたら、",
   "postSuggestSuffix": "までご連絡ください。",
   "postEndDescription": "私は現在、ソウルでソフトウェアエンジニアとして働いています。",
-  "postGoToMain": "メインページに戻る"
+  "postGoToMain": "メインページに戻る",
+
+  "login": "ログイン",
+  "welcomeBack": "おかえりなさい",
+  "newHere": "初めての方は",
+  "registerAccountInstead": "アカウントを作成してみましょう",
+
+  "register": "新規アカウントを作成する",
+  "gladToMeetYou": "よろしくお願いします",
+  "alreadyHaveAccount": "すでにアカウントをお持ちの方は、",
+  "loginInstead": "ログインしてください",
+
+  "username": "ユーザー名",
+  "email": "メール",
+  "password": "パスワード"
 }

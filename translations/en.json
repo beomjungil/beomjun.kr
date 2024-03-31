@@ -37,5 +37,19 @@
   "postSuggestPrefix": "If you have any questions or suggestions about this post, please contact me at",
   "postSuggestSuffix": ".",
   "postEndDescription": "I’m currently working as a software engineer in Seoul, South Korea.",
-  "postGoToMain": "Go to main page"
+  "postGoToMain": "Go to main page",
+
+  "login": "Sign In",
+  "welcomeBack": "Welcome back",
+  "newHere": "New here? You can ",
+  "registerAccountInstead": "register an account",
+
+  "register": "Create new account",
+  "gladToMeetYou": "It's glad to meet you",
+  "alreadyHaveAccount": "If you already have an account, ",
+  "loginInstead": "sign in instead",
+
+  "username": "Username",
+  "email": "Email",
+  "password": "Password"
 }

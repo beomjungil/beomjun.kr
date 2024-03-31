@@ -1,34 +1,65 @@
 ---
+import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
+
 import Layout from '@/client/ui/layouts/Layout.astro';
+import * as m from '@/paraglide/messages';
+import { languageTag } from '@/paraglide/runtime';
 ---
 
-<Layout title='Register'>
-  <div class='py-20 font-sans'>
-    <h1>Register</h1>
-    <p>Already have an account? <a href='/signin'>Sign in</a></p>
-    <form action='/auth/register' method='post'>
-      <label for='username' for='username'>Username</label>
-      <input
-        type='text'
-        name='username'
-        id='username'
-        class='appearance-none border bg-transparent'
-      />
-      <label for='email' for='email'>Email</label>
-      <input
-        type='email'
-        name='email'
-        id='email'
-        class='appearance-none border bg-transparent'
-      />
-      <label for='password'>Password</label>
-      <input
-        type='password'
-        name='password'
-        id='password'
-        class='appearance-none border bg-transparent'
-      />
-      <button type='submit'>Login</button>
-    </form>
+<Layout title={m.register()}>
+  <div
+    class:list={'container relative mt-28 flex w-full justify-center items-center flex-col gap-6'}
+  >
+    <div class='overflow-hidden'>
+      <h1
+        class='text-balance text-center text-[max(min(5vw,5em),2em)] font-extrabold leading-[1.25] duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+      >
+        {m.gladToMeetYou()}
+      </h1>
+    </div>
+    <div class='overflow-hidden'>
+      <p
+        class='whitespace-pre-line delay-500 text-center fill-mode-both duration-1000 animate-in fade-in slide-in-from-bottom'
+      >
+        <span class='opacity-50'>
+          {m.alreadyHaveAccount()}
+        </span>
+        <a href={l(languageTag(), '/login')}>{m.loginInstead()}</a>
+      </p>
+      </div>
+      <form action='/auth/register' method='post' class="p-4 gap-4 md:p-8 bg-foreground/10 rounded-lg flex flex-col w-full max-w-[500px]">
+        <div class="flex w-full flex-col">
+        <label for='username' class="opacity-50 mb-2">{m.username()}</label>
+        <input
+          type='text'
+          name='username'
+          id='username'
+          placeholder="john.doe"
+          class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
+        />
+        </div>
+        <div class="flex w-full flex-col">
+        <label for='email' class="opacity-50 mb-2">{m.email()}</label>
+        <input
+          type='email'
+          name='email'
+          id='email'
+          placeholder="example@beomjun.kr"
+          class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
+        />
+        </div>
+        <div class="flex w-full flex-col">
+        <label for='password' class="opacity-50 mb-2">{m.password()}</label>
+        <input
+          type='password'
+          name='password'
+          id='password'
+          placeholder="********"
+          class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
+        />
+        </div>
+        <button type='submit'class="flex uppercase w-full bg-foreground text-background text-center justify-center align-center rounded-md p-4 font-semibold">{m.register()}</button>
+      </form>
+    </div>
   </div>
 </Layout>
