@@ -1,11 +1,10 @@
 import { APIRoute, type APIRouteFunction } from '@/server/route';
 import {
   configureActivityPubContainer,
-  type AcitivityPubContainer,
+  type ActivityPubContainer,
 } from '../dependencies/configureContainer';
 
 export const ActivityPubRoute = (
   name: string,
-  route: APIRouteFunction<AcitivityPubContainer>,
-) =>
-  APIRoute<AcitivityPubContainer>(name, route, configureActivityPubContainer);
+  route: APIRouteFunction<ActivityPubContainer>,
+) => APIRoute<ActivityPubContainer>(name, route, configureActivityPubContainer);

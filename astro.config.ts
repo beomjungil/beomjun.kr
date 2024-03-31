@@ -120,5 +120,8 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ['oslo'],
     },
+    ssr: {
+      external: ['node:crypto'],
+    },
   },
 });
