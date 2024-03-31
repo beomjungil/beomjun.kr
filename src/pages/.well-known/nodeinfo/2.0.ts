@@ -36,7 +36,7 @@ export const GET = APIRoute('/.well-known/node-info/2.0', () => {
         mailerEnabled: false,
         invitesEnabled: false,
         nodeName: 'beomjun.kr',
-        nodeDescription: 'A personal website of Beomjun Gil.',
+        nodeDescription: packageJson.description,
         features: [],
         federation: {
           enabled: true,

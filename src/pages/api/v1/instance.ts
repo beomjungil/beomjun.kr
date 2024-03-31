@@ -11,8 +11,8 @@ export const GET = APIRoute('/api/v1/instance', () => {
     json({
       uri: 'beomjun.kr',
       title: 'beomjun.kr',
-      short_description: 'A personal website of Beomjun Gil.',
-      description: 'A personal website of Beomjun Gil.',
+      short_description: packageJson.description,
+      description: packageJson.description,
       email: 'gil@beomjun.kr',
       version: packageJson.version,
       thumbnail: 'https://beomjun.kr/og/en/og-image.png',
