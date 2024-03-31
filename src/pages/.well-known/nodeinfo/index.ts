@@ -4,13 +4,13 @@ import { okAsync } from 'neverthrow';
 
 export const prerender = false;
 
-export const GET = APIRoute('/.well-known/nodeinfo', () => {
+export const GET = APIRoute('/.well-known/node-info', () => {
   return okAsync(
     json({
       links: [
         {
-          rel: 'http://nodeinfo.diaspora.software/ns/schema/2.1',
-          href: 'https://beomjun.kr/nodeinfo/2.1',
+          rel: 'http://nodeinfo.diaspora.software/ns/schema/2.0',
+          href: 'https://beomjun.kr/.well-known/nodeinfo/2.0',
         },
       ],
     }),
