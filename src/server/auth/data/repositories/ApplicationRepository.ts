@@ -5,9 +5,9 @@ import { errorToFailure } from '@/server/utils/errorToFailure';
 import { repository } from '@/server/utils/repository';
 import { eq } from 'drizzle-orm';
 import { ResultAsync } from 'neverthrow';
-import { Application } from '../../domain/entities/Application';
+import { Application } from '../../domain/entitites/Application';
 import type { ApplicationRepository } from '../../domain/repositories/ApplicationRepository';
-import { Scope } from '../../domain/types/Scope';
+import { Scope } from '../../types/Scope';
 
 export const ApplicationRepositoryImpl = repository<
   ApplicationRepository,

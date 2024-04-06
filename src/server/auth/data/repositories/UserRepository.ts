@@ -62,4 +62,20 @@ export const UserRepositoryImpl = repository<
         }),
       );
   },
+
+  getByID(id) {
+    return ResultAsync.fromPromise(
+      database.select().from(users).where(eq(users.id, id)),
+      errorToFailure,
+    )
+      .andThen(singleRowOrFailure)
+      .map((response) =>
+        User.parse({
+          id: response.id,
+          email: response.email ?? undefined,
+          username: response.username,
+          hashedPassword: response.hashedPassword ?? undefined,
+        }),
+      );
+  },
 }));

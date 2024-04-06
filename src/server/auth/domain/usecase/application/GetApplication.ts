@@ -3,14 +3,14 @@ import { zodParseResult } from '@/server/utils/ZResult';
 import { usecase, type UseCaseOf } from '@/server/utils/usecase';
 import { z } from 'astro:content';
 import { err, ok, type Result, type ResultAsync } from 'neverthrow';
-import type { Application } from '../entities/Application';
-import type { ApplicationRepository } from '../repositories/ApplicationRepository';
-import { Scope } from '../types/Scope';
+import { Scope } from '../../../types/Scope';
+import type { Application } from '../../entitites/Application';
+import type { ApplicationRepository } from '../../repositories/ApplicationRepository';
 
 const Command = z.object({
   clientId: z.string(),
   redirectUri: z.string(),
-  scopes: z.array(z.string()),
+  scope: z.string(),
 });
 
 type Command = z.infer<typeof Command>;
@@ -35,9 +35,10 @@ function failureIfScopesDoesNotMatch(
   command: Command,
 ): Result<Application, Failure> {
   if (
-    !command.scopes.every((scope) =>
-      application.scopes.includes(Scope.parse(scope)),
-    )
+    !command.scope
+      .split(' ')
+      .map((scope) => Scope.parse(scope))
+      .every((scope) => application.scopes.includes(scope))
   ) {
     return err(
       failure({

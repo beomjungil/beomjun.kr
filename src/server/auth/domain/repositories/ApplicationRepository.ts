@@ -1,7 +1,7 @@
 import type { Failure } from '@/server/failures';
 import type { ResultAsync } from 'neverthrow';
-import type { Application } from '../entities/Application';
-import type { Scope } from '../types/Scope';
+import type { Scope } from '../../types/Scope';
+import type { Application } from '../entitites/Application';
 
 interface CreateApplicationRequest {
   id: string;

@@ -1,6 +1,6 @@
 import { ZSchema } from '@/server/utils/ZSchema';
 import { z } from 'zod';
-import { Scope } from '../../types/Scope';
+import { Scope } from '../../../types/Scope';
 import { ApplicationContract } from './schema';
 
 const ApplicationData = z.object({

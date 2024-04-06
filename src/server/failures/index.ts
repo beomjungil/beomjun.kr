@@ -3,6 +3,7 @@ export enum FailureCode {
   AuthProvider = 'AUTH_PROVIDER',
   NotFound = 'NOT_FOUND',
   InvalidRequest = 'INVALID_REQUEST',
+  Unauthorized = 'UNAUTHORIZED',
   Unknown = 'UNKNOWN',
 }
 
@@ -12,7 +13,12 @@ export interface Failure {
   underlyingError?: unknown;
 }
 
-export function failure(failure: Failure): Failure {
+export function failure(
+  failure: Failure = {
+    code: FailureCode.Unknown,
+    message: 'unknownError',
+  },
+): Failure {
   return failure;
 }
 

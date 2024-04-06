@@ -14,6 +14,9 @@ interface ImportMeta {
 type D1Database = import("@cloudflare/workers-types").D1Database;
 type ENV = {
   DB: D1Database;
+  JWT_SECRET: string;
+  REFRESH_TOKEN_SECRET: string;
+  AUTH_CODE_SECRET: string;
 };
 
 type Runtime = import("@astrojs/cloudflare").AdvancedRuntime<ENV>;
@@ -21,9 +24,9 @@ declare namespace App {
   interface Locals extends Runtime {
 		session: import("lucia").Session | null;
     user: {
-      id: number;
+      id: string;
       username: string;
-      email: string;
+      email: string | null;
     } | null;
   }
 }

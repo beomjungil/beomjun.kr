@@ -5,7 +5,7 @@ import { SESSION_COOKIE_NAME } from './server/auth/constants';
 import { configureAuthContainer } from './server/auth/dependencies/configureContainer';
 import { configureCoreContainer } from './server/dependencies/configureContainer';
 
-const authRequiredRoutes = ['/oauth', '/me'];
+const authRequiredRoutes = ['/oauth/authorize', '/me'];
 
 function redirectIfAuthRequired(context: APIContext, next: MiddlewareNext) {
   const pathname = context.url.pathname.replace('/en', '').replace('/ja', '');
@@ -35,7 +35,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   const container = configureAuthContainer(
-    configureCoreContainer({ DB: context.locals.runtime.env.DB }),
+    configureCoreContainer({
+      DB: context.locals.runtime.env.DB,
+      env: context.locals.runtime.env,
+    }),
   );
   const lucia = container.resolve('lucia');
   const sessionId = context.cookies.get(SESSION_COOKIE_NAME)?.value ?? null;

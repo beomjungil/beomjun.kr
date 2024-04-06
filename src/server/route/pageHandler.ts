@@ -16,6 +16,7 @@ export function PageHandler<T, V>(
   const container = extendContainer(
     configureCoreContainer({
       DB: astro.locals.runtime.env.DB,
+      env: astro.locals.runtime.env,
     }),
   );
 

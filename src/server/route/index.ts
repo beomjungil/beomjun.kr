@@ -28,15 +28,14 @@ export const APIRoute = <T = never>(
       configureCoreContainer({
         DB: context.locals.runtime.env.DB,
         name,
+        env: context.locals.runtime.env,
       }),
     );
 
     return route(context, container).match(
       (response) => response,
       (failure) => {
-        if (!import.meta.env.PROD) {
-          console.log(failure);
-        }
+        console.log(failure);
         return match(failure)
           .with({ code: FailureCode.NotFound }, () => {
             return new Response(
@@ -61,6 +60,19 @@ export const APIRoute = <T = never>(
               {
                 status: 400,
                 statusText: 'Bad request',
+              },
+            );
+          })
+          .with({ code: FailureCode.Unauthorized }, () => {
+            return new Response(
+              failure.message
+                ? JSON.stringify({
+                    error: failure.message,
+                  })
+                : null,
+              {
+                status: 401,
+                statusText: 'Unauthorized',
               },
             );
           })

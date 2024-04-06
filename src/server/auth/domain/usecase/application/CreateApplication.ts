@@ -3,10 +3,10 @@ import { usecase, type UseCaseOf } from '@/server/utils/usecase';
 import { zodParseResult } from '@/server/utils/ZResult';
 import { err, ok, type ResultAsync } from 'neverthrow';
 import { z } from 'zod';
-import type { Application } from '../entities/Application';
-import type { ApplicationRepository } from '../repositories/ApplicationRepository';
-import type { ApplicationService } from '../service/ApplicationService';
-import { Scope } from '../types/Scope';
+import type { ApplicationService } from '../../../service/ApplicationService';
+import { Scope } from '../../../types/Scope';
+import type { Application } from '../../entitites/Application';
+import type { ApplicationRepository } from '../../repositories/ApplicationRepository';
 
 const Command = z.object({
   name: z.string(),

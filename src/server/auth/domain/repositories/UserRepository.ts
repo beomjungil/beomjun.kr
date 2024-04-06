@@ -11,4 +11,6 @@ export interface UserRepository {
   }) => ResultAsync<User, Failure>;
 
   findByUsername: (username: string) => ResultAsync<User, Failure>;
+
+  getByID: (id: string) => ResultAsync<User, Failure>;
 }

@@ -1,7 +1,16 @@
-export const json = <T>(data: T): Response => {
+export const json = <T>(
+  data: T,
+  { allowCors } = { allowCors: false },
+): Response => {
   return new Response(JSON.stringify(data), {
     headers: {
       'Content-Type': 'application/json',
+      ...(allowCors
+        ? {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Max-Age': '86400',
+          }
+        : {}),
     },
   });
 };
