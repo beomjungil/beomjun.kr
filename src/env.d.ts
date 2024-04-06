@@ -19,6 +19,12 @@ type ENV = {
 type Runtime = import("@astrojs/cloudflare").AdvancedRuntime<ENV>;
 declare namespace App {
   interface Locals extends Runtime {
+		session: import("lucia").Session | null;
+    user: {
+      id: number;
+      username: string;
+      email: string;
+    } | null;
   }
 }
 

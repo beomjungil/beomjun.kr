@@ -10,6 +10,7 @@ import {
 } from '../domain/service/ApplicationService';
 import { CreateApplicationUseCase } from '../domain/usecase/CreateApplication';
 import { GetActorByUsernameUseCase } from '../domain/usecase/GetActorByUsername';
+import { GetApplicationUseCase } from '../domain/usecase/GetApplication';
 
 export interface ActivityPubContainer {
   actorRepository: ActorRepository;
@@ -21,6 +22,8 @@ export interface ActivityPubContainer {
   getActorByUsernameUseCase: GetActorByUsernameUseCase;
 
   createApplicationUseCase: CreateApplicationUseCase;
+
+  getApplicationUseCase: GetApplicationUseCase;
 }
 
 export const configureActivityPubContainer =
@@ -53,6 +56,12 @@ export const configureActivityPubContainer =
           CreateApplicationUseCase({
             repository: container.cradle.applicationRepository,
             service: container.cradle.applicationService,
+          }),
+        ).singleton(),
+
+        getApplicationUseCase: asFunction(() =>
+          GetApplicationUseCase({
+            repository: container.cradle.applicationRepository,
           }),
         ).singleton(),
       });

@@ -73,4 +73,34 @@ export const ApplicationRepositoryImpl = repository<
         }),
       );
   },
+
+  getById(id) {
+    return ResultAsync.fromPromise(
+      database
+        .select({
+          id: applications.id,
+          secret: applications.secret,
+          name: applications.name,
+          redirectUris: applications.redirectUris,
+          website: applications.website,
+          createdAt: applications.createdAt,
+          scopes: applications.scopes,
+        })
+        .from(applications)
+        .where(eq(applications.id, id)),
+      errorToFailure,
+    )
+      .andThen(singleRowOrFailure)
+      .map((result) =>
+        Application.parse({
+          id: result.id,
+          secret: result.secret,
+          name: result.name,
+          redirectUris: result.redirectUris.split(' '),
+          website: result.website,
+          createdAt: result.createdAt,
+          scopes: result.scopes.split(' ').map((scope) => Scope.parse(scope)),
+        }),
+      );
+  },
 }));

@@ -1,0 +1,92 @@
+---
+import Layout from '@/client/ui/layouts/Layout.astro';
+import type { Application } from '@/server/activitypub/domain/entities/Application';
+import { ActivityPubPageHandler } from '@/server/activitypub/route/pageHandler';
+import { FailureCode } from '@/server/failures';
+import { errAsync } from 'neverthrow';
+import { match } from 'ts-pattern';
+
+export const prerender = false;
+
+const searchParams = Astro.url.searchParams;
+const responseType = searchParams.get('response_type');
+const clientId = searchParams.get('client_id');
+const redirectUri = searchParams.get('redirect_uri');
+const scope = decodeURIComponent(searchParams.get('scope') || '');
+
+const application = await ActivityPubPageHandler(Astro, (container) => {
+  const getApplication = container.resolve('getApplicationUseCase');
+
+  if (!clientId || !redirectUri) {
+    return errAsync<Application, string>('INVALID_REQUEST');
+  }
+
+  return getApplication({
+    clientId: clientId ?? '',
+    scopes: scope.split(' '),
+    redirectUri: redirectUri ?? '',
+  }).mapErr((failure) => {
+    return match(failure)
+      .with({ code: FailureCode.NotFound }, () => 'APPLICATION_NOT_FOUND')
+      .with(
+        { code: FailureCode.InvalidRequest, message: 'scopeDoesNotMatch' },
+        () => 'INVALID_SCOPE',
+      )
+      .with(
+        {
+          code: FailureCode.InvalidRequest,
+          message: 'redirectUriDoesNotMatch',
+        },
+        () => 'INVALID_REDIRECT_URI',
+      )
+      .otherwise(() => 'UNKNOWN');
+  });
+});
+---
+
+<Layout title='Authorize'>
+  <div
+    class:list={'container relative mt-28 flex w-full justify-center items-center flex-col gap-6'}
+  >
+    {
+      application.match(
+        (application) => {
+          return <div>
+            <h1 class='text-3xl font-bold'>
+              {application.name}이,
+              <br />@{Astro.locals.user?.username} 계정에 대한 접근을
+              요청합니다. 요청을 허용하면, {application.name}은 <br />
+              {scope?.split(' ').map((scope) => (
+                <span class='font-bold'>{scope}</span>
+              ))}
+              에 대한 접근 권한을 얻게 됩니다. 계속 하시겠습니까?
+            </h1>
+            <div class='flex gap-4'>
+              <a
+                href={`${redirectUri}?${responseType}=123456&state=123456`}
+                class='bg-blue-500 text-white px-4 py-2 rounded'
+              >
+                Authorize
+              </a>
+              <a
+                href={`${redirectUri}?error=access_denied&state=123456`}
+                class='bg-red-500 text-white px-4 py-2 rounded'
+              >
+                Deny
+              </a>
+            </div>
+          </div>;
+        },
+        (error) => {
+          return <div>
+            <h1 class='text-3xl font-bold'>Error</h1>
+            <p class='text-lg'>
+              An error occurred while trying to authorize the application.
+            </p>
+            <p class='text-lg'>Error: {error}</p>
+          </div>;
+        },
+      )
+    }
+  </div>
+</Layout>

@@ -34,6 +34,9 @@ export const APIRoute = <T = never>(
     return route(context, container).match(
       (response) => response,
       (failure) => {
+        if (!import.meta.env.PROD) {
+          console.log(failure);
+        }
         return match(failure)
           .with({ code: FailureCode.NotFound }, () => {
             return new Response(

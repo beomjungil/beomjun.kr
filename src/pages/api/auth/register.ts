@@ -1,4 +1,4 @@
-import { Result, ResultAsync, err, ok } from 'neverthrow';
+import { ResultAsync, err, ok, type Result } from 'neverthrow';
 
 import { AuthRoute } from '@/server/auth/route';
 import { FailureCode, failure, type Failure } from '@/server/failures';
@@ -6,14 +6,14 @@ import { FailureCode, failure, type Failure } from '@/server/failures';
 export const prerender = false;
 
 export const POST = AuthRoute(
-  '/auth/login',
-  ({ request, cookies, redirect }, container) => {
-    const loginWithPassword = container.resolve('loginWithPasswordUseCase');
+  '/auth/register',
+  ({ request, redirect, cookies }, container) => {
+    const register = container.resolve('registerUseCase');
     const setSession = container.resolve('setSessionUseCase');
 
     return ResultAsync.fromSafePromise(request.formData())
       .andThen(getFormData)
-      .andThen(loginWithPassword)
+      .andThen(register)
       .map((session) => setSession({ session, cookies }))
       .map(() => redirect('/me'));
   },
@@ -21,9 +21,19 @@ export const POST = AuthRoute(
 
 function getFormData(
   formData: FormData,
-): Result<{ password: string; username: string }, Failure> {
+): Result<{ email: string; password: string; username: string }, Failure> {
+  const email = formData.get('email')?.toString();
   const username = formData.get('username')?.toString();
   const password = formData.get('password')?.toString();
+
+  if (!email) {
+    return err(
+      failure({
+        code: FailureCode.InvalidRequest,
+        message: 'emailIsRequired',
+      }),
+    );
+  }
 
   if (!password) {
     return err(
@@ -43,5 +53,5 @@ function getFormData(
     );
   }
 
-  return ok({ password, username });
+  return ok({ email, password, username });
 }

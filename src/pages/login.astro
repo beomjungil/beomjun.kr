@@ -9,8 +9,11 @@ export const prerender = false;
 
 const sessionId = Astro.cookies.get(SESSION_COOKIE_NAME)?.value ?? null;
 if (sessionId) {
-  return Astro.redirect('/dashboard');
+  return Astro.redirect('/me');
 }
+
+const redirectTo =
+  new URLSearchParams(Astro.url.search).get('redirect') ?? '/me';
 ---
 
 <Layout title={m.login()}>
@@ -28,38 +31,46 @@ if (sessionId) {
       <p
         class='whitespace-pre-line text-center delay-500 fill-mode-both duration-1000 animate-in fade-in slide-in-from-bottom'
       >
-      <span class='opacity-50'>
-        {m.newHere()}
-      </span>
+        <span class='opacity-50'>
+          {m.newHere()}
+        </span>
         <a href={l(languageTag(), '/register')}>{m.registerAccountInstead()}</a>
       </p>
-      </div>
-      <form action='/auth/login' method='post' class="p-4 gap-4 md:p-8 bg-foreground/10 rounded-lg flex flex-col w-full max-w-[500px]">
-        <div class="flex w-full flex-col">
-        <label for='username' for='username' class="opacity-50 mb-2">{m.username()}</label>
+    </div>
+    <form
+      action={'/api/auth/login?redirect=' + redirectTo}
+      method='post'
+      class='p-4 gap-4 md:p-8 bg-foreground/10 rounded-lg flex flex-col w-full max-w-[500px]'
+    >
+      <div class='flex w-full flex-col'>
+        <label for='username' for='username' class='opacity-50 mb-2'
+          >{m.username()}</label
+        >
         <input
           type='text'
           name='username'
           id='username'
-          autofocus
-          placeholder="john.doe"
+          placeholder='john.doe'
           required
           class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
         />
-      </div>   
-           <div class="flex w-full flex-col">
-        <label for='password' class="opacity-50 mb-2">{m.password()}</label>
+      </div>
+      <div class='flex w-full flex-col'>
+        <label for='password' class='opacity-50 mb-2'>{m.password()}</label>
         <input
           type='password'
           name='password'
           id='password'
-          placeholder="********"
+          placeholder='********'
           required
-          class='appearance-none  bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
+          class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
         />
       </div>
-        <button type='submit' class="flex w-full uppercase bg-foreground text-background text-center justify-center align-center rounded-md p-4 font-semibold">{m.login()}</button>
-      </form>
-    </div>
+      <button
+        type='submit'
+        class='flex w-full uppercase bg-foreground text-background text-center justify-center align-center rounded-md p-4 font-semibold'
+        >{m.login()}</button
+      >
+    </form>
   </div>
 </Layout>

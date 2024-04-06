@@ -26,40 +26,47 @@ import { languageTag } from '@/paraglide/runtime';
         </span>
         <a href={l(languageTag(), '/login')}>{m.loginInstead()}</a>
       </p>
-      </div>
-      <form action='/auth/register' method='post' class="p-4 gap-4 md:p-8 bg-foreground/10 rounded-lg flex flex-col w-full max-w-[500px]">
-        <div class="flex w-full flex-col">
-        <label for='username' class="opacity-50 mb-2">{m.username()}</label>
+    </div>
+    <form
+      action='/api/auth/register'
+      method='post'
+      class='p-4 gap-4 md:p-8 bg-foreground/10 rounded-lg flex flex-col w-full max-w-[500px]'
+    >
+      <div class='flex w-full flex-col'>
+        <label for='username' class='opacity-50 mb-2'>{m.username()}</label>
         <input
           type='text'
           name='username'
           id='username'
-          placeholder="john.doe"
+          placeholder='john.doe'
           class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
         />
-        </div>
-        <div class="flex w-full flex-col">
-        <label for='email' class="opacity-50 mb-2">{m.email()}</label>
+      </div>
+      <div class='flex w-full flex-col'>
+        <label for='email' class='opacity-50 mb-2'>{m.email()}</label>
         <input
           type='email'
           name='email'
           id='email'
-          placeholder="example@beomjun.kr"
+          placeholder='example@beomjun.kr'
           class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
         />
-        </div>
-        <div class="flex w-full flex-col">
-        <label for='password' class="opacity-50 mb-2">{m.password()}</label>
+      </div>
+      <div class='flex w-full flex-col'>
+        <label for='password' class='opacity-50 mb-2'>{m.password()}</label>
         <input
           type='password'
           name='password'
           id='password'
-          placeholder="********"
+          placeholder='********'
           class='appearance-none bg-surface outline-none py-4 px-4 rounded-md shadow-lg focus:ring-2 transition-all'
         />
-        </div>
-        <button type='submit'class="flex uppercase w-full bg-foreground text-background text-center justify-center align-center rounded-md p-4 font-semibold">{m.register()}</button>
-      </form>
-    </div>
+      </div>
+      <button
+        type='submit'
+        class='flex uppercase w-full bg-foreground text-background text-center justify-center align-center rounded-md p-4 font-semibold'
+        >{m.register()}</button
+      >
+    </form>
   </div>
 </Layout>

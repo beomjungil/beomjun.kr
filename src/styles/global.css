@@ -1,5 +1,5 @@
 body {
-  @apply font-sans text-foreground bg-background selection:bg-foreground selection:text-background;
+  @apply font-sans text-foreground bg-background selection:bg-foreground selection:text-background antialiased;
   scroll-behavior: smooth;
   line-height: 140%;
   letter-spacing: -0.05em;

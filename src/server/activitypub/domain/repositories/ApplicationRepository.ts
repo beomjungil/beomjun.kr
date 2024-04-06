@@ -17,4 +17,6 @@ export interface ApplicationRepository {
   create(request: CreateApplicationRequest): ResultAsync<Application, Failure>;
 
   getByName(name: string): ResultAsync<Application, Failure>;
+
+  getById(id: string): ResultAsync<Application, Failure>;
 }
