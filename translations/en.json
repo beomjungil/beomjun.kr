@@ -17,7 +17,7 @@
   "mainGreeting": "Hey,",
   "mainMyNameIsPrefix": "I’m ",
   "mainMyNameIsSuffix": ".",
-  "mainGreetingDescription": "I’m currently working as a software engineer in Seoul, South Korea. ",
+  "mainGreetingDescription": "I’m currently working as a software engineer at <a href=\"https://unni.global/\" target=\"_blank\">UNNI</a> in Seoul, South Korea. ",
 
   "localeEn": "English",
   "localeKo": "Korean",

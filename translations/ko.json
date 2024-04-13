@@ -17,7 +17,7 @@
   "mainGreeting": "반가워요.",
   "mainMyNameIsPrefix": "저는 ",
   "mainMyNameIsSuffix": "입니다.",
-  "mainGreetingDescription": "저는 현재 서울에서 소프트웨어 엔지니어로 일하고 있어요. ",
+  "mainGreetingDescription": "저는 현재 <a href=\"https://team.gangnamunni.com/\" class=\"font-bold\" target=\"_blank\">강남언니 팀</a>에서 소프트웨어 엔지니어로 일하고 있어요. ",
 
   "localeEn": "영어",
   "localeKo": "한국어",

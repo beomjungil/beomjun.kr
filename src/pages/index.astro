@@ -1,11 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
 
 import GetInTouchSection from '@/client/ui/components/Main/GetInTouchSection.astro';
 import GreetingSection from '@/client/ui/components/Main/GreetingSection.astro';
+import IntroduceSection from '@/client/ui/components/Main/IntroduceSection.astro';
 import Layout from '@/client/ui/layouts/Layout.astro';
-import { normalizeSlug } from '@/client/utils/normalizeSlug';
 import * as m from '@/paraglide/messages';
 import { languageTag } from '@/paraglide/runtime';
 
@@ -29,12 +28,10 @@ const posts = await getCollection('posts', (post) => {
   <div class:list={'flex flex-col grow'}>
     <div class:list={'grow'}>
       <div class='flex h-full flex-col items-start justify-center'>
-        <section
-          class='flex w-full flex-col items-center md:w-auto md:flex-row'
-        >
+        <section class='flex w-full flex-col'>
           <GreetingSection />
-          <div class='h-screen w-1/2 md:w-screen'></div>
-          <div class='flex h-screen w-1/2 items-center md:w-screen' id='blog'>
+          <IntroduceSection />
+          <!-- <div class='flex h-screen w-1/2 items-center md:w-screen' id='blog'>
             {
               posts.map((post) => (
                 <div class='m-4 rounded-lg  p-4 shadow-lg'>
@@ -52,9 +49,7 @@ const posts = await getCollection('posts', (post) => {
                 </div>
               ))
             }
-          </div>
-          <div class='h-screen w-1/2 md:w-screen'></div>
-          <div class='h-screen w-1/2 md:w-screen'></div>
+          </div> -->
           <GetInTouchSection />
         </section>
       </div>

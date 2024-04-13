@@ -2,51 +2,159 @@
 import IndexButton from './IndexButton.astro';
 
 import * as m from '@/paraglide/messages';
+
+const messages = [
+  {
+    title: '제품을 만드는 사람.',
+    description: m.mainGreetingDescription(),
+  },
+  {
+    title: '목표를 위한 일을 하는 사람.',
+    description: '본질과 목표에 집중해서 일을 찾아 해내요.',
+  },
+  {
+    title: '할 수 있는 건 다 하는 사람.',
+    description: '목표를 위해서라면, ',
+  },
+  {
+    title: 'Apple 이벤트가 명절인 사람.',
+    description:
+      'Apple 이벤트를 새벽에 실시간으로 보고 잘 정도로, Apple을 좋아해요.',
+  },
+  {
+    title: '',
+  },
+];
+
+const titles = messages.map(({ title }) => title);
+const descriptions = messages.map(({ description }) => description);
 ---
 
-<div
-  class:list={'flex w-full shrink-0 grow-0 flex-col items-start justify-center gap-4 px-2 md:h-full md:w-[60rem]'}
->
+<div class:list={'flex w-full flex-col pt-24 max-w-[1200px] mx-auto px-1rem'}>
   <h1
-    class='flex flex-col items-start font-sans text-3xl font-extrabold md:text-4xl'
+    class='flex flex-col items-start font-sans text-[max(min(6vw,6.5em),2.5em)] font-extrabold'
   >
     <span class='block overflow-hidden'>
       <span
-        class='block duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+        class='flex items-center h-[1.375em] duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
         style={{ animationDelay: '0.25s' }}
       >
-        {m.mainGreeting()}
+        {m.name()},
       </span>
     </span>
-    <span class='block overflow-hidden'>
-      <span
-        class='block duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
-        style={{ animationDelay: '0.5s' }}
-      >
-        {m.mainMyNameIsPrefix({ empty: '' })}{m.fullName()}{
-          m.mainMyNameIsSuffix()
+    <span class='block overflow-hidden h-[1.375em]'>
+      <slide-in-from-bottom>
+        {
+          titles.map((title) => (
+            <span
+              class='flex items-center h-[1.375em] line-clamp-1 whitespace-nowrap duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+              style={{ animationDelay: '0.5s' }}
+            >
+              {title}
+            </span>
+          ))
         }
-      </span>
+      </slide-in-from-bottom>
     </span>
   </h1>
-  <div class='overflow-hidden'>
-    <p
-      class:list={'whitespace-nowrap opacity-50 duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'}
-      style={{ animationDelay: '1s' }}
-    >
-      {m.mainGreetingDescription()}
-    </p>
-  </div>
-  <div class:list={'mt-20 flex min-w-[16rem] flex-col gap-4 self-end'}>
-    <IndexButton to='about'>
-      {m.aboutMe()}
-    </IndexButton>
-
-    <IndexButton to='blog'>
-      {m.blog()}
-    </IndexButton>
-    <IndexButton to='contact'>
-      {m.getInTouch()}
-    </IndexButton>
+  <div class='overflow-hidden h-[1.375em]'>
+    <slide-in-from-bottom delay='0.25s'>
+      {
+        descriptions.map((description) => (
+          <p
+            class:list={
+              'whitespace-nowrap opacity-50 duration-1000 animate-in fade-in slide-in-from-bottom fill-mode-both'
+            }
+            style={{ animationDelay: '1s' }}
+            set:html={description}
+          />
+        ))
+      }
+    </slide-in-from-bottom>
   </div>
 </div>
+<div class:list={'mt-20 flex min-w-[16rem] flex-col self-end pl-4'}>
+  <div class='flex justify-end'>
+    <div
+      style={{
+        width:
+          'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
+      }}
+    >
+      <div class='h-0.5 w-full bg-foreground'></div>
+    </div>
+  </div>
+  <div>MENU</div>
+  <IndexButton to='about'>
+    {m.aboutMe()}
+  </IndexButton>
+
+  <IndexButton to='blog'>
+    {m.blog()}
+  </IndexButton>
+  <IndexButton to='contact'>
+    {m.getInTouch()}
+  </IndexButton>
+</div>
+
+<script>
+  class SlideInFromBottom extends HTMLElement {
+    private currentIndex = 0;
+    private removeInterval: NodeJS.Timeout | null = null;
+
+    constructor() {
+      super();
+
+      const delay = this.getAttribute('delay');
+      this.appendChild(this.firstChild?.cloneNode(true) as HTMLElement);
+
+      const childrenNodes = Array.from(this.children).filter(
+        (child): child is HTMLElement => child instanceof HTMLElement,
+      );
+      const firstElement = childrenNodes[0];
+      const lastElement = firstElement.cloneNode(true) as HTMLElement;
+      this.appendChild(lastElement);
+      childrenNodes.push(lastElement);
+
+      const total = childrenNodes.length;
+
+      this.removeInterval = setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % total;
+
+        childrenNodes.forEach((child) => {
+          child.style.transition = `transform 2s cubic-bezier(0.19, 1, 0.22, 1) ${delay || '0s'}`;
+          child.style.transform = `translateY(${this.currentIndex * -100}%)`;
+        });
+
+        if (this.currentIndex === total - 1) {
+          this.afterTransitionDelay(() => {
+            childrenNodes.forEach((child) => {
+              child.style.transition = 'none';
+              child.style.transform = `translateY(0)`;
+            });
+
+            this.currentIndex = 0;
+          });
+        }
+      }, 5000);
+
+      this.afterTransitionDelay(() => {
+        childrenNodes.forEach((child) => {
+          child.classList.remove('animate-in');
+        });
+      });
+    }
+
+    afterTransitionDelay(cb: () => void) {
+      setTimeout(cb, 2000);
+    }
+
+    disconnectedCallback() {
+      if (this.removeInterval) {
+        clearInterval(this.removeInterval);
+      }
+    }
+  }
+
+  customElements.define('slide-in-from-bottom', SlideInFromBottom);
+</script>

@@ -8,18 +8,21 @@ import { normalizeSlug } from '@/client/utils/normalizeSlug';
 
 import { languageTag } from '@/paraglide/runtime';
 import type { Post } from '@/types/Post';
-import type { GetStaticPaths } from 'astro';
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const blogEntries = await getCollection('posts', (post) => {
-    return post.data.locale === languageTag();
-  });
+export const originalGetStaticPaths =
+  (language: string = languageTag()) =>
+  async () => {
+    const blogEntries = await getCollection('posts', (post) => {
+      return post.data.locale === language;
+    });
 
-  return blogEntries.map((entry) => ({
-    params: { slug: normalizeSlug(entry.slug) },
-    props: { entry },
-  }));
-};
+    return blogEntries.map((entry) => ({
+      params: { slug: normalizeSlug(entry.slug) },
+      props: { entry },
+    }));
+  };
+
+export const getStaticPaths = originalGetStaticPaths();
 
 const { entry } = Astro.props as { entry: Post };
 const { Content } = await entry.render();

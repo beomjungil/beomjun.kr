@@ -1,9 +1,7 @@
 ---
-import Page, {
-  getStaticPaths as originalGetStaticPaths,
-} from '@/pages/posts/[slug]/index.astro';
+import Page, { originalGetStaticPaths } from '@/pages/posts/[slug]/index.astro';
 
-export const getStaticPaths = originalGetStaticPaths;
+export const getStaticPaths = originalGetStaticPaths('ja');
 const { props } = Astro;
 ---
 

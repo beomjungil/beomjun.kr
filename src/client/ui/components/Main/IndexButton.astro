@@ -1,5 +1,5 @@
 ---
-import { ArrowRight } from 'lucide-astro';
+import { ArrowDown } from 'lucide-astro';
 
 interface Props {
   to: string;
@@ -10,11 +10,11 @@ const { to } = Astro.props;
 
 <index-button data-to={to}>
   <button
-    class:list={'duration-50 flex w-full appearance-none items-center justify-between border-t-2 border-foreground py-2 pr-2 text-start text-lg transition-colors ease-out-expo hover:bg-foreground hover:text-background'}
+    class:list={'duration-50 w-full max-w-[24rem] flex appearance-none items-center justify-between py-2 pr-2 text-start text-lg transition-colors ease-out-expo hover:bg-foreground hover:text-background'}
     type='button'
   >
     <slot />
-    <ArrowRight />
+    <ArrowDown />
   </button>
 </index-button>
 
