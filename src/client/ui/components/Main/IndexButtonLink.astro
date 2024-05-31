@@ -1,0 +1,21 @@
+---
+import { ArrowUpRight } from 'lucide-astro';
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<a
+  class:list={'duration-50 group rounded-md no-underline w-full flex appearance-none items-center justify-between py-2 pr-2 text-start text-md md:text-lg transition-colors hover:bg-foreground/10'}
+  href={to}
+  target='_blank'
+  rel='noopener noreferrer'
+>
+  <span class='inline-block group-hover:translate-x-2 transition-transform'>
+    <slot />
+  </span>
+  <ArrowUpRight class='group-hover:-translate-x-2 transition-transform' />
+</a>

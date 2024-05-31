@@ -10,11 +10,13 @@ const { to } = Astro.props;
 
 <index-button data-to={to}>
   <button
-    class:list={'duration-50 w-full max-w-[24rem] flex appearance-none items-center justify-between py-2 pr-2 text-start text-lg transition-colors ease-out-expo hover:bg-foreground hover:text-background'}
+    class:list={'group duration-50 rounded-md w-full flex appearance-none items-center justify-between py-2 pr-2 text-start text-md md:text-lg transition-colors hover:bg-foreground/10'}
     type='button'
   >
-    <slot />
-    <ArrowDown />
+    <span class='inline-block group-hover:translate-x-2 transition-transform'>
+      <slot />
+    </span>
+    <ArrowDown class='group-hover:-translate-x-2 transition-transform' />
   </button>
 </index-button>
 

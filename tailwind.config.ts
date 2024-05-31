@@ -90,6 +90,7 @@ export default {
           'Satoshi Variable',
           'SUIT Variable',
           'Murecho Variable',
+          'Noto Emoji Variable',
           ...fontFamily.sans,
         ],
         mono: ['Monaspace Variable', fontFamily.mono],

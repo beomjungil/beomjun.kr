@@ -11,13 +11,17 @@
 
   "talkWithMe": "마주보며 이야기하기",
   "aboutMe": "소개",
-  "blog": "블로그",
+  "blog": "글모음",
   "getInTouch": "연락하기",
+  "readMore": "더 알아보기",
+  "mainGreetingDescription": "반가워요\uD83D\uDC4B 저는 현재 <a href=\"https://team.gangnamunni.com/\" class=\"font-bold\" target=\"_blank\">강남언니 팀</a>에서 소프트웨어 엔지니어로 일하고 있어요. ",
 
-  "mainGreeting": "반가워요.",
-  "mainMyNameIsPrefix": "저는 ",
-  "mainMyNameIsSuffix": "입니다.",
-  "mainGreetingDescription": "저는 현재 <a href=\"https://team.gangnamunni.com/\" class=\"font-bold\" target=\"_blank\">강남언니 팀</a>에서 소프트웨어 엔지니어로 일하고 있어요. ",
+  "mainPersonWhoBuildProduct": "제품을 만드는 사람",
+  "mainTmi": "그리고...",
+  "mainTmiTitle1": "Apple Events가 명절인 사람",
+  "mainTmiDescription1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec purus.",
+  
+  "mainGetInTouch": "우리 같이 이야기 나눠요.",
 
   "localeEn": "영어",
   "localeKo": "한국어",
@@ -51,5 +55,11 @@
 
   "username": "사용자 이름",
   "email": "이메일",
-  "password": "비밀번호"
+  "password": "비밀번호",
+  
+  "tableOfContents": "목차",
+  
+  "now": "지금",
+  
+  "works": "작업물"
 }

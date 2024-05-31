@@ -25,7 +25,7 @@ export const GET = AuthRoute(
 
 function getToken(request: Request): Result<string, Failure> {
   const authorization = request.headers.get('Authorization');
-  if (!authorization || !authorization.startsWith('Bearer ')) {
+  if (!authorization?.startsWith('Bearer ')) {
     return err(
       failure({
         code: FailureCode.Unauthorized,

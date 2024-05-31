@@ -1,17 +1,16 @@
 ---
+import * as m from '@/paraglide/messages';
 import Signature from '../Signature.astro';
 ---
 
-<div id='get-in-touch' class='flex w-full flex-col lg:w-auto lg:pr-48'>
-  <div class='flex flex-col gap-2 pb-12'>
-    <h2 class='whitespace-nowrap text-2xl font-bold'>같이 이야기 나눠요</h2>
-    <p class='leading-relaxed opacity-80'>
-      동해물과 백두산이 마르고 닳도록
-      <br />
-      하느님이 보우하사 우리나라 만세
-    </p>
-  </div>
-  <div class='h-40 w-1/2'>
+<section
+  id='get-in-touch'
+  class='container px-2 py-24 md:py-32 lg:pt-44 lg:pb-32'
+>
+  <h2 class='text-2xl md:text-3xl text-balance font-extrabold'>
+    {m.mainGetInTouch()}
+  </h2>
+  <div class='h-40 w-2/3 max-w-[500px] ml-auto'>
     <Signature />
   </div>
-</div>
+</section>

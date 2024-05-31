@@ -3,6 +3,7 @@
   "fullName": "Beomjun Gil",
   "description": "Exploring Here and There",
   "profile": "Profile",
+  "readMore": "Read more",
 
   "lightTheme": "Light",
   "darkTheme": "Dark",
@@ -10,14 +11,18 @@
   "labelTheme": "Change theme",
 
   "talkWithMe": "Talk with me",
-  "aboutMe": "About me",
+  "aboutMe": "About",
   "blog": "Blog",
-  "getInTouch": "Get in touch",
+  "getInTouch": "Contact",
 
-  "mainGreeting": "Hey,",
-  "mainMyNameIsPrefix": "I’m ",
-  "mainMyNameIsSuffix": ".",
-  "mainGreetingDescription": "I’m currently working as a software engineer at <a href=\"https://unni.global/\" target=\"_blank\">UNNI</a> in Seoul, South Korea. ",
+  "mainGreetingDescription": "Hey there!\uD83D\uDC4B I’m a software engineer at <a href=\"https://unni.global/\" class=\"font-bold\" target=\"_blank\">UNNI</a> in Seoul, South Korea. ",
+
+  "mainPersonWhoBuildProduct": "Who builds products",
+  "mainTmi": "And Also...",
+  "mainTmiTitle1": "Who watches ALL Apple Events in live",
+  "mainTmiDescription1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec purus.",
+
+  "mainGetInTouch": "Let's have a chat",
 
   "localeEn": "English",
   "localeKo": "Korean",
@@ -51,5 +56,11 @@
 
   "username": "Username",
   "email": "Email",
-  "password": "Password"
+  "password": "Password",
+
+  "tableOfContents": "Contents",
+
+  "now": "Now",
+
+  "works": "Work"
 }

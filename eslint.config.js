@@ -1,8 +1,10 @@
 // @ts-check
 
-import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
+import tsESLintParser from '@typescript-eslint/parser';
+import astroEslint from 'eslint-plugin-astro';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import tseslint from 'typescript-eslint';
@@ -10,16 +12,16 @@ import tseslint from 'typescript-eslint';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  resolvePluginsRelativeTo: __dirname,
-  recommendedConfig: undefined,
-  allConfig: undefined,
-});
-
 export default tseslint.config(
   {
-    ignores: ['src/env.d.ts', '.astro/**', 'dist/**', 'src/paraglide/**'],
+    ignores: [
+      'src/env.d.ts',
+      '.astro/**',
+      'dist/**',
+      'src/paraglide/**',
+      '.prettierrc.cjs',
+      'postcss.config.cjs',
+    ],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
@@ -40,36 +42,30 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/prefer-nullish-coalescing': 'off',
     },
   },
-
-  ...compat.config({
-    overrides: [
-      {
-        files: ['*.astro'],
-        extends: [
-          'plugin:astro/recommended',
-          'plugin:astro/jsx-a11y-recommended',
-        ],
-        parser: 'astro-eslint-parser',
-        processor: 'astro/client-side-ts',
-        rules: {
-          '@typescript-eslint/no-unused-vars': [
-            'error',
-            {
-              args: 'all',
-              argsIgnorePattern: '^_',
-              caughtErrors: 'all',
-              caughtErrorsIgnorePattern: '^_',
-              destructuredArrayIgnorePattern: '^_',
-              varsIgnorePattern: '^Props',
-              ignoreRestSiblings: true,
-            },
-          ],
-        },
+  ...astroEslint.configs['flat/jsx-a11y-recommended'].filter(
+    ({ name }) => name !== 'astro/base/typescript',
+  ),
+  {
+    name: 'astro/base/typescript',
+    files: ['**/*.astro/*.ts', '*.astro/*.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
       },
-    ],
-  }),
+      parser: tsESLintParser ?? undefined,
+      sourceType: 'module',
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
+    rules: {
+      'prettier/prettier': 'off',
+    },
+  },
   eslintPluginPrettierRecommended,
 );

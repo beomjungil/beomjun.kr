@@ -9,16 +9,19 @@
   "darkTheme": "ダークモード",
   "systemTheme": "システム設定を使用する",
   "labelTheme": "テーマ変更",
+  "readMore": "もっと見る",
 
   "talkWithMe": "一緒にお話する",
-  "aboutMe": "自己紹介",
+  "aboutMe": "紹介",
   "blog": "ブログ",
   "getInTouch": "連絡先",
+  "mainGreetingDescription": "初めまして\uD83D\uDC4B　ソウルで<a href=\"https://www.gangnamunni.com/jp\" class=\"font-bold\" target=\"_blank\">カンナムオンニ</a>のソフトウェアエンジニアをしています。",
+  "mainPersonWhoBuildProduct": "製品を作る人",
+  "mainTmi": "そして…",
+  "mainTmiTitle1": "Appleイベントが祝日の人",
+  "mainTmiDescription1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec purus.",
 
-  "mainGreeting": "初めまして、",
-  "mainMyNameIsPrefix": "{empty}",
-  "mainMyNameIsSuffix": "です。",
-  "mainGreetingDescription": "私は現在、韓国のソウルにある<a href=\"https://www.gangnamunni.com/jp\" target=\"_blank\">カンナムオンニ</a>でソフトウェアエンジニアとして働いています。",
+  "mainGetInTouch": "一緒にお話ししましょう。",
 
   "localeEn": "英語",
   "localeKo": "韓国語",
@@ -52,5 +55,11 @@
 
   "username": "ユーザー名",
   "email": "メール",
-  "password": "パスワード"
+  "password": "パスワード",
+  
+  "tableOfContents": "目次",
+  
+  "now": "今",
+  
+  "works": "制作物"
 }

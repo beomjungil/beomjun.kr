@@ -1,9 +1,6 @@
 import { ResultAsync } from 'neverthrow';
 
-import {
-  Actor,
-  type ActorType,
-} from '@/server/activitypub/domain/entities/Actor';
+import { Actor } from '@/server/activitypub/domain/entities/Actor';
 import { type Failure } from '@/server/failures';
 
 import type { ActorRepository } from '@/server/activitypub/domain/repositories/ActorRepository';
@@ -47,7 +44,7 @@ export const ActorRepositoryImpl = repository<
       .map((result) => {
         return Actor.parse({
           id: result.id,
-          type: result.type as ActorType,
+          type: result.type,
           username: username,
           domain: domain,
           name: result.fullName || undefined,

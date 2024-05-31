@@ -1,9 +1,173 @@
 ---
+import 'swiper/css';
+import 'swiper/css/keyboard';
+import 'swiper/css/mousewheel';
 
+import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
+import { ChevronRight, ChevronLeft, ArrowRight } from 'lucide-astro';
+import { Image } from 'astro:assets';
+import ProfileImage from '@/client/images/profile.png';
+import * as m from '@/paraglide/messages';
+import { languageTag } from '@/paraglide/runtime';
+
+const tmi = [
+  {
+    title: m.mainTmiTitle1(),
+    description: m.mainTmiDescription1(),
+  },
+  {
+    title: m.mainTmiTitle1(),
+    description: m.mainTmiDescription1(),
+  },
+  {
+    title: m.mainTmiTitle1(),
+    description: m.mainTmiDescription1(),
+  },
+  {
+    title: m.mainTmiTitle1(),
+    description: m.mainTmiDescription1(),
+  },
+  {
+    title: m.mainTmiTitle1(),
+    description: m.mainTmiDescription1(),
+  },
+  {
+    title: m.mainTmiTitle1(),
+    description: m.mainTmiDescription1(),
+  },
+  {
+    title: m.mainTmiTitle1(),
+    description: m.mainTmiDescription1(),
+  },
+];
 ---
 
-<div
-  class='flex w-full shrink-0 grow-0 flex-col items-start justify-center gap-4 px-2 md:h-full md:w-[60rem]'
->
-  안녕하세요
-</div>
+<section id='about' class='relative'>
+  <div
+    class='flex flex-col md:flex-row gap-4 container px-0 pt-24 md:pt-32 lg:pt-44'
+  >
+    <div class='flex-1 flex justify-between gap-8 flex-col md:flex-row pb-4'>
+      <div class='pl-2 flex flex-col gap-2 order-2 md:order-1'>
+        <h3 class='text-xl md:text-2xl lg:text-3xl font-extrabold'>
+          {m.mainPersonWhoBuildProduct()}
+        </h3>
+        <p class='flex-1'>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae
+          nunc nec nunc.
+        </p>
+
+        <div class='text-end'>
+          <a
+            href={l(languageTag(), '/about')}
+            class='text-end uppercase px-2 py-2 rounded-md no-underline group text-md hover:bg-foreground/10 transition-colors'
+          >
+            <span
+              class='inline-flex items-center gap-1 rounded-md group-hover:scale-95 transition-transform'
+            >
+              {m.readMore()}
+              <ArrowRight />
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class='order-1'>
+        <Image
+          alt={m.fullName()}
+          src={ProfileImage}
+          width={ProfileImage.width / 1.5}
+          height={ProfileImage.height / 1.5}
+          densities={[1.5, 2]}
+          class:list={'object-cover aspect-square filter grayscale brightness-125 constract-150 hover:filter-none transition-all duration-300'}
+        />
+      </div>
+    </div>
+    <div class='bg-foreground h-[2px] md:w-[2px] md:h-auto'></div>
+    <div
+      class='flex flex-col md:basis-1/4 grow-0 shrink-0 overflow-hidden px-2 pb-4'
+    >
+      <h3 class='mb-2 opacity-40'>
+        {m.mainTmi()}
+      </h3>
+      <div id='swiper' class='flex-1 flex flex-col items-end w-full'>
+        <div class='swiper-wrapper'>
+          {
+            tmi.map(({ title, description }) => (
+              <div class='swiper-slide'>
+                <div class='flex flex-col justify-center'>
+                  <h2 class='text-lg font-bold text-balance'>{title}</h2>
+                  <p class='mt-4'>{description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class='z-20 bg-foreground/10 rounded-full inline-flex mt-12'>
+          <button
+            id='swiper-button-prev'
+            class='rounded-full hover:bg-foreground/10 transition-colors duration-300 ease-in-out group disabled:hover:bg-transparent'
+          >
+            <ChevronLeft
+              class='size-10 p-2 text-foreground/80 group-disabled:opacity-20 transition-opacity'
+            />
+          </button>
+          <button
+            id='swiper-button-next'
+            class='rounded-full hover:bg-foreground/10 transition-colors duration-300 ease-in-out group disabled:hover:bg-transparent'
+          >
+            <ChevronRight
+              class='size-10 p-2 text-foreground/80 group-disabled:opacity-20 transition-opacity'
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='flex justify-end'>
+    <div
+      class='lg:pl-2'
+      style={{
+        width:
+          'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
+      }}
+    >
+      <div class='h-0.5 w-full bg-foreground'></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import {
+    Navigation,
+    Keyboard,
+    Mousewheel,
+    FreeMode,
+    A11y,
+  } from 'swiper/modules';
+  new Swiper('#swiper', {
+    modules: [Navigation, Keyboard, Mousewheel, FreeMode, A11y],
+    slidesPerView: 1,
+    spaceBetween: 32,
+    grabCursor: true,
+    mousewheel: {
+      enabled: true,
+    },
+    freeMode: {
+      enabled: true,
+      sticky: true,
+      momentum: true,
+      momentumRatio: 0.3,
+      momentumVelocityRatio: 0.3,
+    },
+    keyboard: {
+      enabled: true,
+    },
+    navigation: {
+      enabled: true,
+      nextEl: '#swiper-button-next',
+      prevEl: '#swiper-button-prev',
+    },
+  });
+</script>

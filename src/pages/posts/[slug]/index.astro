@@ -6,11 +6,10 @@ import YouTube from '@/client/ui/components/Post/YouTube.astro';
 import PostLayout from '@/client/ui/layouts/PostLayout.astro';
 import { normalizeSlug } from '@/client/utils/normalizeSlug';
 
-import { languageTag } from '@/paraglide/runtime';
 import type { Post } from '@/types/Post';
 
 export const originalGetStaticPaths =
-  (language: string = languageTag()) =>
+  (language = 'ko') =>
   async () => {
     const blogEntries = await getCollection('posts', (post) => {
       return post.data.locale === language;

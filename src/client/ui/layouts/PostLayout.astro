@@ -2,10 +2,7 @@
 import '@/styles/post.css';
 
 import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
-import { Image } from 'astro:assets';
 import { ArrowRight } from 'lucide-astro';
-
-import Footer from '../components/Footer.astro';
 
 import * as m from '@/paraglide/messages';
 import TableOfContents from '@/client/ui/components/Post/TableOfContents/TableOfContents.astro';
@@ -13,6 +10,8 @@ import Layout from '@/client/ui/layouts/Layout.astro';
 
 import type { Post } from '@/types/Post';
 import { languageTag } from '@/paraglide/runtime';
+import { Image } from 'astro:assets';
+import ProfileImage from '@/client/images/profile.png';
 
 interface Props {
   post: Post;
@@ -177,7 +176,7 @@ const suggestMailto =
       <a href='/#get-in-touch'>
         <Image
           alt={m.fullName()}
-          src={'/images/profile.png'}
+          src={ProfileImage}
           width={240}
           height={240}
           class:list={'object-cover filter grayscale brightness-125 constract-150 hover:filter-none transition-all duration-300'}
@@ -220,7 +219,6 @@ const suggestMailto =
       </a>
     </div>
   </div>
-  <Footer />
 </Layout>
 
 <script is:inline>

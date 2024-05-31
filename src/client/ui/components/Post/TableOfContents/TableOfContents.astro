@@ -1,6 +1,7 @@
 ---
 import { getHeadings } from './getHeadings';
 import RecursiveList from './RecursiveList.astro';
+import * as m from '@/paraglide/messages';
 
 interface Props {
   post: string;
@@ -17,7 +18,7 @@ const headings = getHeadings(post);
     class='font-bold duration-300 animate-in fade-in slide-in-from-bottom fill-mode-both'
     style={{ animationDelay: '1s' }}
   >
-    목차
+    {m.tableOfContents()}
   </div>
   <RecursiveList headings={headings} />
 </aside>

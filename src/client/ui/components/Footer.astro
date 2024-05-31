@@ -1,5 +1,7 @@
 ---
 import Name from '../foundations/Name.astro';
+import ThemeSwitcher from './ThemeSwitcher.astro';
+import LocaleSwitcher from './LocaleSwitcher.astro';
 ---
 
 <footer
@@ -23,5 +25,7 @@ import Name from '../foundations/Name.astro';
     <div class='flex w-full max-w-[712px] flex-col gap-12 lg:mx-auto'>
       Build Product with :heart: by Beomjun Gil
     </div>
+    <LocaleSwitcher />
+    <ThemeSwitcher />
   </div>
 </footer>
