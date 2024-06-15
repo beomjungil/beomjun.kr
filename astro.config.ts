@@ -75,7 +75,7 @@ export default defineConfig({
       ],
       gfm: true,
       optimize: {
-        customComponentNames: [
+        ignoreElementNames: [
           'YouTube',
           'blockquote',
           'details',
@@ -104,24 +104,17 @@ export default defineConfig({
   ],
   output: 'hybrid',
   adapter: cloudflare({
-    imageService: 'cloudflare',
-    runtime: {
-      mode: 'local',
-      type: 'pages',
-      bindings: {
-        DB: {
-          type: 'd1',
-        },
-      },
+    imageService: 'compile',
+    platformProxy: {
+      enabled: true,
     },
-    functionPerRoute: true,
   }),
   vite: {
     optimizeDeps: {
       exclude: ['oslo'],
     },
     ssr: {
-      external: ['node:crypto'],
+      external: ['node:crypto', 'node:buffer', 'node:fs'],
     },
   },
 });

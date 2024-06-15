@@ -7,11 +7,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "paraglide-js compile --project ./project.inlang && pnpm run sync && astro check && astro build",
+    "build": "paraglide-js compile --project ./project.inlang && bun run sync && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "i18n:sync": "paraglide-js compile --project ./project.inlang",
-    "sync": "astro sync && pnpm run i18n:sync && pnpm lint:fix",
+    "sync": "astro sync && bun run i18n:sync && bun run lint:fix",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "db:generate": "cross-env DB_NAME='beomjun-kr' drizzle-kit generate:sqlite",
@@ -21,22 +21,22 @@
     "db:studio:local": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
     "db:studio:preview": "cross-env DB_NAME='preview-beomjun-kr' WRANGLER_CONFIG='--environment=preview' drizzle-kit studio",
     "db:studio:prod": "drizzle-kit studio",
-    "postinstall": "paraglide-js compile --project ./project.inlang && pnpm run sync"
+    "postinstall": "paraglide-js compile --project ./project.inlang && bun run sync"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.6",
-    "@astrojs/cloudflare": "^9.1.0",
-    "@astrojs/mdx": "^2.1.1",
-    "@astrojs/sitemap": "^3.1.1",
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/cloudflare": "^10.4.0",
+    "@astrojs/mdx": "^3.1.0",
+    "@astrojs/rss": "^4.0.6",
+    "@astrojs/sitemap": "^3.1.5",
     "@astrojs/tailwind": "^5.1.0",
     "@fec/remark-a11y-emoji": "^4.0.2",
     "@inlang/paraglide-js-adapter-astro": "^0.1.6",
     "@lucia-auth/adapter-drizzle": "^1.0.4",
     "@shikijs/transformers": "^1.1.7",
     "@tailwindcss/typography": "^0.5.10",
-    "@vercel/og": "^0.6.2",
     "arctic": "^1.2.1",
-    "astro": "^4.4.15",
+    "astro": "^4.10.2",
     "autoprefixer": "^10.4.18",
     "awilix": "^10.0.1",
     "cssnano": "^6.1.0",
@@ -57,6 +57,7 @@
     "rehype-slug": "^6.0.0",
     "remark-behead": "^3.1.0",
     "remark-join-cjk-lines": "^1.0.11",
+    "satori": "^0.10.13",
     "swiper": "^11.1.4",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
@@ -67,7 +68,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240314.0",
-    "@eslint/js": "^9.3.0",
+    "@eslint/js": "^9.5.0",
     "@inlang/paraglide-js": "1.9.1",
     "@types/node": "^20.11.25",
     "@types/uuid": "^9.0.8",
@@ -76,7 +77,7 @@
     "better-sqlite3": "^11.0.0",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.20.14",
-    "eslint": "^9.3.0",
+    "eslint": "^9.5.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^1.2.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -87,6 +88,6 @@
     "type-fest": "^4.11.1",
     "typescript": "^5.4.2",
     "typescript-eslint": "^7.11.0",
-    "wrangler": "^3.34.2"
+    "wrangler": "^3.60.3"
   }
 }

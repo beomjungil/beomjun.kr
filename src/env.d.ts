@@ -11,15 +11,12 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
-type D1Database = import("@cloudflare/workers-types").D1Database;
-type ENV = {
-  DB: D1Database;
-  JWT_SECRET: string;
-  REFRESH_TOKEN_SECRET: string;
-  AUTH_CODE_SECRET: string;
-};
-
-type Runtime = import("@astrojs/cloudflare").AdvancedRuntime<ENV>;
+// type ENV = {
+//   JWT_SECRET: string;
+//   REFRESH_TOKEN_SECRET: string;
+//   AUTH_CODE_SECRET: string;
+// };
+type Runtime = import('@astrojs/cloudflare').Runtime<Env>;
 declare namespace App {
   interface Locals extends Runtime {
 		session: import("lucia").Session | null;

@@ -3,7 +3,6 @@
 import eslint from '@eslint/js';
 import tsESLintParser from '@typescript-eslint/parser';
 import astroEslint from 'eslint-plugin-astro';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,6 +20,7 @@ export default tseslint.config(
       'src/paraglide/**',
       '.prettierrc.cjs',
       'postcss.config.cjs',
+      'worker-configuration.d.ts',
     ],
   },
   eslint.configs.recommended,
@@ -63,9 +63,5 @@ export default tseslint.config(
         tsconfigRootDir: __dirname,
       },
     },
-    rules: {
-      'prettier/prettier': 'off',
-    },
   },
-  eslintPluginPrettierRecommended,
 );

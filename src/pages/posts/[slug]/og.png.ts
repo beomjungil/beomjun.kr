@@ -1,10 +1,9 @@
-import { ImageResponse } from '@vercel/og';
-import { getCollection } from 'astro:content';
-import { match } from 'ts-pattern';
-
-import fs from 'node:fs';
-
 import type { Post } from '@/types/Post';
+import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+import satori from 'satori';
+import sharp from 'sharp';
+import { match } from 'ts-pattern';
 
 const size = {
   width: 1200,
@@ -235,7 +234,7 @@ const name: Record<string, object> = {
   },
 };
 
-export function GET({
+export async function GET({
   props: { post },
 }: {
   params: {
@@ -252,6 +251,7 @@ export function GET({
   const html = {
     type: 'div',
     props: {
+      lang: post.data.locale,
       style: {
         background: '#F7F6ED',
         width: '100%',
@@ -323,8 +323,9 @@ export function GET({
       ],
     },
   };
-  return new ImageResponse(html, {
+  const svg = await satori(html, {
     ...size,
+    debug: true,
     fonts:
       post.data.locale === 'en'
         ? [
@@ -350,6 +351,17 @@ export function GET({
             },
           ],
   });
+  const image = await sharp(Buffer.from(svg))
+    .png()
+    .toBuffer();
+  return new Response(
+    image,
+    {
+      headers: {
+        'Content-Type': 'image/png',
+      },
+    },
+  );
 }
 
 export const getStaticPaths = async () => {
