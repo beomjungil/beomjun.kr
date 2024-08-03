@@ -56,7 +56,7 @@ const suggestMailto =
     <meta name='twitter:image' content={ogImage} />
   </Fragment>
   <div
-    class:list={'container relative mt-28 flex w-full flex-col gap-2 lg:gap-6'}
+    class:list={'container px-2 relative mt-28 flex w-full flex-col gap-2 lg:gap-6'}
   >
     <div class='overflow-hidden'>
       <h1
@@ -134,7 +134,7 @@ const suggestMailto =
 
   <div class='mb-16 mt-10 flex justify-end'>
     <div
-      class='lg:pl-4'
+      class='lg:pl-2'
       style={{
         width:
           'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
@@ -144,7 +144,7 @@ const suggestMailto =
     </div>
   </div>
 
-  <div class='container flex gap-4'>
+  <div class='container px-2 flex gap-4'>
     <TableOfContents post={post.body} />
     <div id='post-content' class='prose w-full dark:prose-invert lg:mx-auto'>
       <slot />
@@ -153,7 +153,7 @@ const suggestMailto =
 
   <div class='mb-4 mt-24 flex justify-end'>
     <div
-      class='lg:pl-4'
+      class='lg:pl-2'
       style={{
         width:
           'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
@@ -194,7 +194,7 @@ const suggestMailto =
 
   <div class='mb-24 mt-16 flex justify-end'>
     <div
-      class='lg:pl-4'
+      class='lg:pl-2'
       style={{
         width:
           'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',

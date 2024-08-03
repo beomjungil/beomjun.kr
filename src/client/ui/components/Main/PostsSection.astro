@@ -5,6 +5,7 @@ import { getAbsoluteLocaleUrl as l } from 'astro:i18n';
 import * as m from '@/paraglide/messages';
 import { languageTag } from '@/paraglide/runtime';
 import { normalizeSlug } from '../../../utils/normalizeSlug';
+import Tab from "../Tab/Tab.astro";
 
 const currentLocale = languageTag();
 
@@ -13,22 +14,92 @@ const posts = await getCollection('posts', (post) => {
 });
 ---
 
-<section id='blog' class='container px-2 py-24 md:py-32 lg:py-44'>
-  <h2 class='text-2xl md:text-3xl font-extrabold'>
+<section id='blog' class='container flex flex-col gap-4 py-4 px-2'>
+  <div class="flex justify-between items-center">
+  <h3 class='text-xl md:text-2xl lg:text-3xl font-extrabold'>
     {m.blog()}
-  </h2>
+  </h3>
+    <div class="flex">
+    <a
+      href={l(languageTag(), '/posts')}
+      class='text-end uppercase px-2 py-2 rounded-md no-underline group text-md hover:bg-foreground/10 transition-colors'
+    >
+    <span
+      class='inline-flex items-center gap-1 rounded-md group-hover:scale-95 transition-transform'
+    >
+      {m.readMore()}
+    </span>
+    </a>  </div>
+
+  </div>
+
+  <div class="flex">
+  <Tab
+    tabs={[
+      { label: 'All', id: 'all'},
+      { label: 'Tech', id: 'tech', },
+      { label: 'Life', id: 'life', },
+    ]}
+    identifier="categories"
+  />
+  </div>
+
+  <div class="flex flex-col gap-4">
   {
-    posts.map((post) => (
-      <div>
-        <h2 class='mb-2 text-xl font-bold'>{post.data.title}</h2>
-        <p class='text-gray-600'>{post.data.description}</p>
-        <a
-          href={l(currentLocale, `/posts/${normalizeSlug(post.slug)}`)}
-          class='text-blue-500 hover:underline'
-        >
-          Read more
-        </a>
-      </div>
+    [
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+      ...posts,
+    ]
+      .slice(0, 10)
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+      .map((post) => (
+      <a
+        href={l(currentLocale, `/posts/${normalizeSlug(post.slug)}`)}
+        class="no-underline duration-300 flex gap-4 items-start group hover:bg-foreground/10 p-2 rounded-md transition-all"
+      >
+        <span class='opacity-50'>{new Intl.DateTimeFormat(currentLocale).format(post.data.date)}</span>
+        <div class="flex-1">
+          <h4 class='text-md font-bold leading-none'>{post.data.title}</h4>
+  
+          <p class="mt-0 group-hover:mt-4 transition-all blur-sm group-hover:blur-0 opacity-0 max-h-0 overflow-hidden group-hover:max-h-8 group-hover:opacity-100 duration-500">
+           {post.data.description}
+          </p>
+        </div>
+      </a>
     ))
   }
+  </div>
+
+  <div class='flex justify-end'>
+    <div
+      class='lg:pl-2'
+      style={{
+        width:
+          'calc(min(1200px,100vw) + calc((100vw - min(1200px,100vw)) / 2))',
+      }}
+    >
+      <div class='h-0.5 w-full bg-foreground'></div>
+    </div>
+  </div>
 </section>
+
+<script>
+  
+</script>

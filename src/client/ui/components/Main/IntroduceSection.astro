@@ -146,28 +146,31 @@ const tmi = [
     FreeMode,
     A11y,
   } from 'swiper/modules';
-  new Swiper('#swiper', {
-    modules: [Navigation, Keyboard, Mousewheel, FreeMode, A11y],
-    slidesPerView: 1,
-    spaceBetween: 32,
-    grabCursor: true,
-    mousewheel: {
-      enabled: true,
-    },
-    freeMode: {
-      enabled: true,
-      sticky: true,
-      momentum: true,
-      momentumRatio: 0.3,
-      momentumVelocityRatio: 0.3,
-    },
-    keyboard: {
-      enabled: true,
-    },
-    navigation: {
-      enabled: true,
-      nextEl: '#swiper-button-next',
-      prevEl: '#swiper-button-prev',
-    },
+
+  document.addEventListener('astro:page-load', () => {
+    new Swiper('#swiper', {
+      modules: [Navigation, Keyboard, Mousewheel, FreeMode, A11y],
+      slidesPerView: 1,
+      spaceBetween: 32,
+      grabCursor: true,
+      mousewheel: {
+        enabled: true,
+      },
+      freeMode: {
+        enabled: true,
+        sticky: true,
+        momentum: true,
+        momentumRatio: 0.3,
+        momentumVelocityRatio: 0.3,
+      },
+      keyboard: {
+        enabled: true,
+      },
+      navigation: {
+        enabled: true,
+        nextEl: '#swiper-button-next',
+        prevEl: '#swiper-button-prev',
+      },
+    });
   });
 </script>

@@ -1,0 +1,121 @@
+---
+interface Props {
+  tabs: {
+    id: string;
+    label: string;
+  }[];
+  identifier?: string;
+}
+
+const { tabs, identifier } = Astro.props;
+
+const ulClasses = 'flex w-fit';
+const buttonClasses = 'px-4 flex items-center';
+---
+
+<custom-tabs data-tabs-id={identifier}>
+<div class="relative">
+  <ul class={ulClasses}>
+    {tabs.map((tab) => (
+      <li>
+        <button data-tab={tab.id} class={buttonClasses}>
+          {tab.label}
+        </button>
+      </li>
+    ))}
+  </ul>
+
+  <div aria-hidden="true" class="clip-path-container w-fit duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] transition-all absolute inset-0 z-10">
+    <ul class={`${ulClasses} bg-foreground`}>
+      {tabs.map((tab) => (
+        <li>
+          <button
+            data-tab={tab.id}
+            class={`${buttonClasses} text-background`}
+            tab-index={-1}
+          >
+            {tab.label}
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+</custom-tabs>
+
+<script>
+  class CustomTabs extends HTMLElement {
+    private readonly buttons: Array<HTMLButtonElement>;
+    private readonly clipPathContainer: HTMLDivElement;
+
+    constructor() {
+      super();
+      
+      this.buttons = Array.from(this.getElementsByTagName('button'));
+      this.clipPathContainer = this.querySelector('.clip-path-container') as HTMLDivElement;
+
+      this.buttons.forEach((button) => {
+        button.addEventListener('click', this.handleClick);
+      })
+      
+      const firstTab = this.buttons[0]
+      if(!firstTab) {
+        return;
+      }
+      firstTab.dataset.active = 'true';
+
+      const firstTabId = firstTab.dataset.tab;
+
+      if(!firstTabId) {
+        return;
+      }
+
+      this.broadcastChange(firstTabId)
+      this.moveClipPath(firstTabId)
+    }
+    
+    handleClick = (event: MouseEvent) => {
+      const target = event.target as HTMLButtonElement;
+      const tabId = target.dataset.tab;
+
+      if (!tabId) {
+        return
+      }
+
+      this.buttons.forEach((button) => {
+        button.dataset.active = button.dataset.tab === tabId ? 'true' : 'false';
+      })
+
+      this.broadcastChange(tabId);
+      this.moveClipPath(tabId);
+    };
+    
+    moveClipPath = (tabId: string) => {
+      const target = this.buttons.find((button) => button.dataset.tab === tabId);
+      if(!target) {
+        return;
+      }
+      const { offsetLeft, offsetWidth } = target;
+
+      const clipLeft = offsetLeft;
+      const clipRight = clipLeft + offsetWidth;
+
+      const start = Number(100 - (clipRight / this.clipPathContainer.offsetWidth) * 100).toFixed();
+      const end = Number((clipLeft / this.clipPathContainer.offsetWidth) * 100).toFixed()
+
+      this.clipPathContainer.style.clipPath = `inset(0 ${start}% 0 ${end}% round 8px)`;
+    };
+    
+    broadcastChange = (tabId: string) => {
+      window.postMessage({
+        type: 'tabChange',
+        data: {
+          identifier: this.dataset.tabsId,
+          activeTab: tabId,
+        },
+      });
+    };
+  }
+
+  customElements.define('custom-tabs', CustomTabs);
+</script>

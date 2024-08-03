@@ -1,5 +1,7 @@
-import { fontFamily } from 'tailwindcss/defaultTheme';
-import { createThemes } from 'tw-colors';
+import { fontFamily } from "tailwindcss/defaultTheme";
+import { createThemes } from "tw-colors";
+import TailwindAnimate from "tailwindcss-animate";
+import TailwindTypography from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -114,11 +116,11 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('tailwindcss-animate'),
+    TailwindTypography,
+    TailwindAnimate,
     createThemes({
       light: {
-        foreground: '#121211',
+        foreground: '#1a1a19',
         background: '#F7F6ED',
         primary: {
           50: '#FDF7F8',
@@ -137,7 +139,7 @@ export default {
       },
       dark: {
         foreground: '#F7F6ED',
-        background: '#121211',
+        background: '#1a1a19',
         primary: {
           50: '#320B12',
           100: '#6E1220',
