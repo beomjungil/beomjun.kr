@@ -9,12 +9,12 @@ interface Props {
 
 const { tabs, identifier } = Astro.props;
 
-const ulClasses = 'flex w-fit';
-const buttonClasses = 'px-4 flex items-center';
+const ulClasses = 'flex w-fit p-2';
+const buttonClasses = 'px-4 flex items-center rounded-full';
 ---
 
 <custom-tabs data-tabs-id={identifier}>
-<div class="relative">
+<div class="relative bg-foreground/10 rounded-full">
   <ul class={ulClasses}>
     {tabs.map((tab) => (
       <li>
@@ -32,7 +32,7 @@ const buttonClasses = 'px-4 flex items-center';
           <button
             data-tab={tab.id}
             class={`${buttonClasses} text-background`}
-            tab-index={-1}
+            tabindex={-1}
           >
             {tab.label}
           </button>
@@ -103,7 +103,7 @@ const buttonClasses = 'px-4 flex items-center';
       const start = Number(100 - (clipRight / this.clipPathContainer.offsetWidth) * 100).toFixed();
       const end = Number((clipLeft / this.clipPathContainer.offsetWidth) * 100).toFixed()
 
-      this.clipPathContainer.style.clipPath = `inset(0 ${start}% 0 ${end}% round 8px)`;
+      this.clipPathContainer.style.clipPath = `inset(15% ${start}% 15% ${end}% round 9999px)`;
     };
     
     broadcastChange = (tabId: string) => {

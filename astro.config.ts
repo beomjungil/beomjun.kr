@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import a11yEmoji from '@fec/remark-a11y-emoji';
-import paraglide from '@inlang/paraglide-js-adapter-astro';
+import paraglide from '@inlang/paraglide-astro';
 import {
   transformerCompactLineOptions,
   transformerNotationDiff,
@@ -114,7 +114,7 @@ export default defineConfig({
       exclude: ['oslo'],
     },
     ssr: {
-      external: ['node:crypto', 'node:buffer', 'node:fs'],
+      external: ['node:crypto', 'node:buffer', 'node:fs', 'node:async_hooks'],
     },
   },
 });

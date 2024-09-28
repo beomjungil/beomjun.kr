@@ -1,7 +1,7 @@
-import { Result, ResultAsync, err, ok } from 'neverthrow';
+import { err, ok, Result, ResultAsync } from "neverthrow";
 
-import { AuthRoute } from '@/server/auth/route';
-import { FailureCode, failure, type Failure } from '@/server/failures';
+import { AuthRoute } from "@/server/auth/route";
+import { failure, type Failure, FailureCode } from "@/server/failures";
 
 export const prerender = false;
 

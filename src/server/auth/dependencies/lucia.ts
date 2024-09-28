@@ -1,12 +1,13 @@
-import type { Database } from '@/server/database/drizzle';
-import { sessions } from '@/server/database/tables/sessions';
-import { users } from '@/server/database/tables/users';
-import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle';
-import { Lucia } from 'lucia';
-import type { UsersTable } from '../../database/db';
-import { SESSION_COOKIE_NAME } from '../constants';
+import type { Database } from "@/server/database/drizzle";
+import { sessions } from "@/server/database/tables/sessions";
+import { users } from "@/server/database/tables/users";
+import { DrizzleSQLiteAdapter } from "@lucia-auth/adapter-drizzle";
+import { Lucia } from "lucia";
+import type { UsersTable } from "../../database/db";
+import { SESSION_COOKIE_NAME } from "../constants";
 
 export function initializeLucia(database: Database) {
+  // @ts-expect-error - This is a valid adapter
   const adapter = new DrizzleSQLiteAdapter(database, sessions, users);
 
   return new Lucia(adapter, {
