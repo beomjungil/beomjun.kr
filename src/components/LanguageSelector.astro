@@ -1,0 +1,56 @@
+---
+import * as m from '@/i18n/paraglide/messages';
+import { languageTag } from '@/i18n/paraglide/runtime';
+import Segmented from './Segmented.astro';
+
+const languageOptions = [
+  {
+    value: 'ko',
+    label: '한국어',
+    icon: () => `<div class="size-4 font-bold text-sm flex items-center justify-center">한</div>`,
+  },
+  {
+    value: 'en',
+    label: 'English',
+    icon: () => `<div class="size-4 font-bold text-sm flex items-center justify-center">EN</div>`,
+  },
+  {
+    value: 'ja',
+    label: '日本語',
+    icon: () => `<div class="size-4 font-bold text-sm flex items-center justify-center">日</div>`,
+  },
+];
+
+const locale = languageTag();
+---
+<label class="flex flex-col gap-2 w-full md:w-fit">
+  <span class="typo-caption uppercase !tracking-widest">{m.language()}</span>
+  <Segmented
+    options={languageOptions}
+    iconOnly
+    name="language"
+    defaultValue={locale}
+  />
+</label>
+
+<script>
+  import { getRelativeLocaleUrl } from 'astro:i18n';
+import { navigate } from 'astro:transitions/client';
+
+  function setupLanguageChangeListener() {
+    document.addEventListener('segment:language:change', (e) => {
+      const { value } = (e as CustomEvent).detail;
+      const currentPath = window.location.pathname;
+      const pathWithoutLang = currentPath.replace(/^\/(ko|en|ja)/, '');
+      const newHref = getRelativeLocaleUrl(
+        value,
+        pathWithoutLang,
+      );
+      navigate(newHref);
+    });
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    setupLanguageChangeListener();
+  });
+</script>

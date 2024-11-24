@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Page, { getStaticPaths as originalGetStaticPaths } from '@/pages/writing/[...slug].astro';
+
+export async function getStaticPaths() {
+  return originalGetStaticPaths();
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+---
+
+<Page {...post} />

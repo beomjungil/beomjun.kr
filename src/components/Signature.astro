@@ -1,0 +1,95 @@
+---
+interface Props {
+  className?: string;
+}
+const { className } = Astro.props as Props;
+---
+<svg class={`${className} signature`} width="1544" height="451" viewBox="0 0 1544 451" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1037.78 229.503C1044.05 229.503 1044.05 219.763 1037.78 219.763C1031.51 219.763 1031.5 229.503 1037.78 229.503Z" fill="currentColor"/>
+  <path d="M1030.52 246.859C1030.52 246.859 1016.57 286.966 1028.34 287.395C1048.04 288.135 1136.71 116.836 1136.71 116.836C1136.71 116.836 1033.31 332.859 1079.7 342.404C1109.72 348.579 1204.29 277.09 1383.53 241.755C1492.21 220.328 1568.88 247.229 1525.82 285.583" stroke="currentColor" stroke-width="11" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1056.79 15.4863C956.091 78.209 899.68 139.198 921.882 151.898C946.79 166.138 1056.79 89.1757 1056.79 89.1757L960.295 356.429C960.295 356.429 1019.59 230.789 889.872 188.597C760.158 146.405 506.761 196.544 514.428 204.219C522.095 211.894 1397.76 172.722 1397.76 172.722" stroke="currentColor" stroke-width="11" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M737.721 231.957C743.987 231.957 743.987 222.218 737.721 222.218C731.455 222.218 731.455 231.957 737.721 231.957Z" fill="currentColor"/>
+  <path d="M764.731 247.054C764.731 247.054 736.456 291.057 746.848 293.063C756.48 294.914 793.005 254.904 793.005 254.904C793.005 254.904 780.668 285.739 794.834 287.22C808.689 288.681 842.625 254.904 842.625 254.904C842.625 254.904 828.401 293.804 834.414 293.258C840.426 292.713 881.66 257.105 881.66 257.105C881.66 257.105 869.421 287.122 890.962 289.791C910.11 292.167 928.732 266.786 928.732 266.786" stroke="currentColor" stroke-width="11" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M467.551 282.466L503.667 265.111C503.667 265.111 473.525 294.991 486.932 298.848C498.841 302.277 556.752 263.65 556.752 263.65C556.752 263.65 547.314 270.526 539.744 279.681C530.521 290.823 525.792 302.822 533.323 305.841C545.193 310.594 589.968 271.694 579.383 259.637C568.797 247.579 549.454 296.978 621.161 262.286L602.13 299.822L639.764 271.188C639.764 271.188 628.264 293.92 634.705 295.985C641.574 298.186 673.837 265.714 673.837 265.714C673.837 265.714 662.298 291.154 675.16 293.784C689.171 296.667 728.615 254.884 728.615 254.884L661.831 445" stroke="currentColor" stroke-width="11" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6 191.889C6 191.889 398.957 170.657 397.031 183.669C395.669 192.98 206.195 229.659 206.195 229.659C206.195 229.659 449.726 259.267 448.208 292.693C446.846 322.827 224.37 326.392 224.37 326.392" stroke="currentColor" stroke-width="11" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M288.391 6L164.709 342.56" stroke="currentColor" stroke-width="11" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const signature = document.querySelector('.signature');
+    const footer = document.querySelector('footer');
+    
+    const checkScroll = () => {
+      if (!signature || !footer) return;
+      
+      const triggerPoint = document.documentElement.scrollHeight - footer.offsetHeight;
+      const currentScroll = window.scrollY + window.innerHeight;
+      
+      if (currentScroll >= triggerPoint && !signature.classList.contains('animate-signature')) {
+        signature.classList.add('animate-signature');
+        window.removeEventListener('scroll', checkScroll);
+      }
+    };
+
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();
+  });
+</script>
+
+<style>
+  .signature path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+  }
+
+  .animate-signature path:nth-child(8) { 
+    animation: sign 1s ease forwards;
+    animation-delay: 0s;
+   }
+  .animate-signature path:nth-child(7) { 
+    animation: sign 1s ease forwards;
+    animation-delay: 0.2s;
+   }
+  .animate-signature path:nth-child(6) { 
+    animation: sign 3s ease forwards;
+    animation-delay: 0.6s;
+   }
+  .animate-signature path:nth-child(5) {
+    animation: sign 3s ease forwards;
+    animation-delay: 1.9s;
+   }
+  .animate-signature path:nth-child(4) {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 1.5s;
+   }
+  .animate-signature path:nth-child(3) { 
+    stroke-dasharray: 2200;
+    stroke-dashoffset: 2200;
+    animation: sign 1s ease-in-out forwards;
+    animation-delay: 2.5s;
+   }
+  .animate-signature path:nth-child(2) { 
+    animation: sign 1s ease forwards;
+    animation-delay: 3.7s;
+  
+   }
+  .animate-signature path:nth-child(1) { 
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 3.6s;
+    opacity: 0;
+   }
+
+  @keyframes sign {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>

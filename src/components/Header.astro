@@ -1,85 +1,276 @@
 ---
+import * as m from '@/i18n/paraglide/messages';
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import I18NLink from './I18nLink.astro';
+import LanguageSelector from './LanguageSelector.astro';
+import Logo from './Logo.astro';
+import ThemeSelector from './ThemeSelector.astro';
+
+const pathname = Astro.url.pathname.replace('/ja', '').replace('/en', '');
+const isMainPage = ['/', '/ja', '/en'].includes(pathname);
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href="https://m.webtoo.ls/@astro" target="_blank">
-				<span class="sr-only">Follow Astro on Mastodon</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-					></path></svg
-				>
-			</a>
-			<a href="https://twitter.com/astrodotbuild" target="_blank">
-				<span class="sr-only">Follow Astro on Twitter</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-					></path></svg
-				>
-			</a>
-			<a href="https://github.com/withastro/astro" target="_blank">
-				<span class="sr-only">Go to Astro's GitHub repo</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
-			</a>
-		</div>
-	</nav>
-</header>
-<style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
+<button popovertarget="nav" popovertargetaction="toggle" class="fixed vt-name-[menu-button] right-4 top-4 text-foreground z-50 md:hidden">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="size-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+    />
+  </svg>
+  <span class="sr-only">메뉴 열기</span>
+</button>
 
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	}
+<header class="fixed top-0 z-40">
+  <nav class="p-4">
+    <I18NLink data-astro-prefetch="viewport" href="/" class={`absolute block left-4 top-4 ${isMainPage ? 'opacity-0 w-0' : 'vt-name-[logo]'}`}>
+      <Logo className="size-8" />
+    </I18NLink>
+
+    <div
+      id="nav"
+      popover="auto"
+      class:list={[
+        'bg-surface dark:border dark:border-foreground/10 md:border-none md:flex md:bg-transparent md:relative md:flex-col md:ml-0 md:p-0 md:items-start md:justify-start md:gap-4 md:translate-y-10 md:vt-name-[header-links]',
+        {'md:!translate-y-12': !isMainPage}
+      ]}
+    >
+      <button class="hider md:hidden">
+        <span class="sr-only">메뉴 닫기</span>
+      </button>
+      <div class="flex flex-col items-start gap-8 md:gap-4">
+        <HeaderLink data-astro-prefetch="viewport" href="/about">{m.about()}</HeaderLink>
+        <HeaderLink data-astro-prefetch="viewport" href="/writing">{m.writing()}</HeaderLink>
+        <HeaderLink data-astro-prefetch="viewport" href="/projects">{m.projects()}</HeaderLink>
+        <HeaderLink data-astro-prefetch="viewport" href="/now">{m.now()}</HeaderLink>
+
+        <div class="my-2 h-px bg-foreground/20 w-full"></div>
+        <LanguageSelector/>
+        <ThemeSelector/>
+      </div>
+    </div>
+  </nav>
+
+  <div class="gradient-blur fixed top-0 left-0 right-0 h-16 -z-10">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <div class="gradient-blur-overlay fixed top-0 left-0 right-0 h-16 -z-10"></div>
+</header>
+
+<style>
+  :root {
+    --timing: 0.42s;
+    --ease: linear(
+      0, 0.0036 9.62%, 0.0185 16.66%, 0.0489 23.03%, 0.0962 28.86%,
+      0.1705 34.93%, 0.269 40.66%, 0.3867 45.89%, 0.5833 52.95%,
+      0.683 57.05%, 0.7829 62.14%, 0.8621 67.46%, 0.8991 70.68%,
+      0.9299 74.03%, 0.9545 77.52%, 0.9735 81.21%, 0.9865 85%,
+      0.9949 89.15%, 1
+    );
+  }
+
+  @media (max-width: 768px) {
+    [popover] {
+      display: none;
+      z-index: 99999;
+      position: fixed;
+      bottom: 0;
+      width: 100vw;
+      overflow: hidden;
+      height: fit-content;
+      padding: 48px 0.5rem calc(56px + env(safe-area-inset-bottom));
+      border-radius: 12px 12px 0 0;
+      translate: 0 100%;
+      margin-bottom: 0;
+      transition: translate var(--timing) var(--ease),
+                opacity var(--timing) var(--ease),
+                transform var(--timing) var(--ease);
+    }
+    [data-resizing='false'] [popover] {
+      transition: display, overlay, translate;
+      transition-behavior: allow-discrete;
+      transition-duration: var(--timing);
+      transition-timing-function: var(--ease);
+    }
+    [popover]:popover-open {
+      display: flex;
+      flex-direction: column;
+      translate: 0 calc(clamp(0, var(--ty, 0), var(--distance)) * 1px);
+      transition: translate var(--timing) var(--ease),
+                opacity var(--timing) var(--ease),
+                transform var(--timing) var(--ease);
+
+      @starting-style {
+        translate: 0 100%;
+      }
+    }
+
+    [popover]::backdrop {
+      background: hsl(0 0% 10% / 0.4);
+      transition-property: display, overlay, opacity;
+      transition-behavior: allow-discrete;
+      transition-duration: var(--timing);
+      transition-timing-function: var(--ease);
+      opacity: 0;
+    }
+    [data-resizing='false'] [popover] {
+      transition: display, overlay, translate;
+      transition-behavior: allow-discrete;
+      transition-duration: var(--timing);
+      transition-timing-function: var(--ease);
+    }
+    [popover]:popover-open::backdrop {
+      opacity: calc(1 - clamp(0, var(--complete), 1));
+      backdrop-filter: blur(1px);
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+
+    .hider {
+      height: 48px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 12px 12px 0 0;
+      background: transparent;
+      cursor: grab;
+    }
+
+    .hider::after {
+      content: "";
+      position: absolute;
+      height: 6px;
+      width: 40px;
+      border-radius: 10px;
+      background: color-mix(in hsl, canvas, canvasText 40%);
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+    }
+
+    html[data-dragging='true'] [popover] {
+      transition-duration: 0s;
+    }
+
+    body {
+      transition-property: transform, clip-path;
+      clip-path: inset(0 0 0 0 round 0px);
+      transition-duration: var(--timing);
+      transition-timing-function: var(--ease);
+      transform-origin: 50% 0;
+    }
+
+    :root:has(:popover-open) body {
+      transform: scale(calc(0.95 + (clamp(0, var(--complete), 1) * 0.05))) translate(0, calc((env(safe-area-inset-top) + 14px) * (1 - clamp(0, var(--complete), 1))));
+      clip-path: inset(0 0 0 0 round calc(12px * (1 - clamp(0, var(--complete), 1))));
+      overflow: hidden;
+    }
+
+    html[data-dragging="true"] body,
+    html[data-dragging="true"] [popover]::backdrop {
+      transition: none !important;
+    }
+
+    :root:has(:popover-open) body {
+      background: black;
+    }
+  }
 </style>
+
+<script>
+function initializeHeader() {
+  const popover = document.querySelector("#nav") as HTMLElement;
+  const hider = popover.querySelector(".hider");
+  
+  if (popover && hider) {
+    let startY = 0;
+    let currentY = 0;
+    let distance = 0;
+
+    const reset = () => {
+      document.documentElement.dataset.complete = "false"; 
+      document.documentElement.style.setProperty("--complete", "0");
+      popover.style.setProperty("--ty", "0");
+    };
+
+    const closeWithAnimation = async () => {      
+      document.documentElement.dataset.complete = "true";
+      document.documentElement.style.setProperty("--complete", "1");
+      popover.style.setProperty("--ty", "480");
+
+      setTimeout(() => {
+        popover.hidePopover();
+      }, 420);
+    };
+    hider.addEventListener("pointerdown", (e) => {      
+      e.preventDefault();
+      startY = (e as PointerEvent).clientY;
+      distance = popover.offsetHeight;
+      popover.style.setProperty("--distance", distance.toString());
+      document.documentElement.dataset.dragging = "true";
+    });
+
+    window.addEventListener("pointermove", (e) => {
+      if (document.documentElement.dataset.dragging !== "true") return;
+
+      currentY = Math.max(0, e.clientY - startY);
+      const progress = currentY / distance;
+      
+      document.documentElement.style.setProperty("--complete", progress.toString());
+      popover.style.setProperty("--ty", currentY.toString());
+    });
+
+    window.addEventListener("pointerup", async () => {
+      if (document.documentElement.dataset.dragging !== "true") return;
+      
+      document.documentElement.dataset.dragging = "false";
+      
+      if (currentY > distance * 0.4) {
+        closeWithAnimation();
+      } else {
+        reset();
+      }
+    });
+
+    popover.addEventListener("toggle", (e) => {
+      if (popover.matches(":popover-open")) {
+        if (navigator.vibrate) navigator.vibrate(100);
+        reset();
+      }
+    });
+
+    // 리사이즈 처리
+    let resizeTimeout: NodeJS.Timeout | null = null;
+    window.addEventListener("resize", () => {
+      if (popover.matches(":popover-open")) popover.hidePopover();
+      document.documentElement.dataset.resizing = "true";
+      
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        document.documentElement.dataset.resizing = "false";
+      }, 200);
+    });
+  }
+}
+
+document.addEventListener('astro:page-load', () => {
+  initializeHeader();
+});
+</script>
+

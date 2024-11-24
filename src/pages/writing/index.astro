@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import I18NLink from '@/components/I18nLink.astro';
+import * as m from '@/i18n/paraglide/messages';
+import BaseHead from '../../components/BaseHead.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { SITE_DESCRIPTION } from '../../consts';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout>
+	<Fragment slot="head">
+		<BaseHead description={SITE_DESCRIPTION} />
+	</Fragment>
+  <section class="container">
+    <div class="relative">
+      <h1 class="typo-headline-small vt-name-[name]">{m.name()}</h1>
+      <p class="typo-headline-small opacity-50">{m.writing()}</p>
+    </div>
+    <ul class="space-y-6 mt-8">
+      {
+        posts.map((post, index) => (
+          <li class="post-item" style={`--sibling-index: ${index}`}>
+            <I18NLink class="flex justify-between align-top" href={`/writing/${post.id}/`}>
+              <h4 class="typo-headline-small">{post.data.title}</h4>
+              <p class="date typo-caption">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+            </I18NLink>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
+
+<style>
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0.5rem, 0);
+    filter: blur(0.125rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+.post-item {
+  animation: fadeSlideIn 0.5s ease-out;
+  animation-fill-mode: both;
+  animation-delay: calc(var(--sibling-index) * 0.05s + 632ms);
+}
+
+</style>

@@ -1,5 +1,5 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+import * as m from '@/i18n/paraglide/messages';
 
-export const SITE_TITLE = 'Astro Blog';
+// TODO: 언어 변경 시에도 안바뀌는 문제가 있음
+export const SITE_TITLE = m.name();
 export const SITE_DESCRIPTION = 'Welcome to my website!';

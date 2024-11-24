@@ -1,0 +1,17 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "name": "길범준",
+  "shortname": "길범준",
+  "greeting": "반가워요<span role=\"img\" aria-label=\"wave\" class=\"font-emoji emoji\">👋</span> 저는 현재 <a href=\"https://team.gangnamunni.com/\" class=\"text-accent link\" target=\"_blank\">강남언니 팀</a>에서 소프트웨어 엔지니어로 일하고 있어요.",
+  "about": "소개",
+  "writing": "글모음",
+  "projects": "작업물",
+  "now": "지금",
+  "language": "언어",
+  "theme": "색상",
+  "light": "밝음",
+  "dark": "어두움",
+  "system": "시스템",
+  "writtenAt": "작성일",
+  "tags": "태그"
+}

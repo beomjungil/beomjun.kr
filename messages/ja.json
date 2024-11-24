@@ -1,0 +1,17 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "name": "ギル・ボムジュン",
+  "shortname": "ボムジュン",
+  "greeting": "初めまして<span role=\"img\" aria-label=\"wave\" class=\"font-emoji emoji\">👋</span>　私は<a href=\"https://www.gangnamunni.com/jp\" class=\"text-accent link\" target=\"_blank\">カンナムオンニ</a>でエンジニアとして働いています。",
+  "about": "紹介",
+  "writing": "ブログ",
+  "projects": "制作物",
+  "now": "今",
+  "language": "言語",
+  "theme": "テーマ",
+  "light": "ライト",
+  "dark": "ダーク",
+  "system": "システム",
+  "writtenAt": "作成日",
+  "tags": "タグ"
+}

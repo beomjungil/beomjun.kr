@@ -1,0 +1,17 @@
+---
+import Logo from './Logo.astro';
+---
+<div class="size-8 relative group hover:scale-110 active:scale-90 transition-all duration-300" id="logo">
+  <Logo className="vt-name-[logo] size-8 group-[.show-image]:opacity-0 transition-opacity duration-300" />
+  <img loading="lazy" src="/profile.jpg" alt="profle" class="absolute bg-foreground/5 hover inset-0 rounded-md opacity-0 group-[.show-image]:opacity-100 transition-opacity duration-300" />
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const logo = document.getElementById('logo');
+
+    logo?.addEventListener('click', () => {
+      logo?.classList.toggle('show-image');
+    });
+  });
+</script>

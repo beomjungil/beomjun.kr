@@ -1,0 +1,11 @@
+---
+interface Props {
+  className: string;
+}
+const { className } = Astro.props as Props;
+---
+<svg class={`text-foreground ${className}`} width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" class:list={className}>
+  <rect x="196.267" width="59.7331" height="187.733" fill="currentColor"/>
+  <rect x="0.000732422" y="256" width="59.7333" height="255.999" transform="rotate(-90 0.000732422 256)" fill="currentColor"/>
+  <path d="M8.03451e-06 187.733C24.6534 187.733 49.0654 182.877 71.8422 173.443C94.619 164.008 115.314 150.18 132.747 132.748C150.18 115.315 164.008 94.6193 173.442 71.8424C182.877 49.0656 187.733 24.6535 187.733 0L1.52588e-05 6.95475e-06L8.03451e-06 187.733Z" fill="currentColor"/>
+</svg>

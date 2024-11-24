@@ -1,25 +1,23 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { languageTag } from '@/i18n/paraglide/runtime';
 import type { HTMLAttributes } from 'astro/types';
 
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
 
-const { pathname } = Astro.url;
+const pathname = Astro.url.pathname.replace('/ja', '').replace('/en', '').replace('/ko', '');
 const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + subpath?.[0];
+const isActive = href === pathname || href === `/${subpath?.[0]}`;
+const isMainPage = ['/', '/ja', '/en'].includes(Astro.url.pathname);
+
+const newHref = getRelativeLocaleUrl(
+  languageTag(),
+  (href as string).replace('/ja', '').replace('/en', '').replace('/ko', ''),
+);
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a href={newHref} class:list={['typo-headline-small hover:!text-foreground transition-colors duration-200', className, {'!text-foreground': isMainPage || isActive, '!text-foreground/50': !(isActive || isMainPage)}]} {...props}>
 	<slot />
 </a>
-<style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
-</style>

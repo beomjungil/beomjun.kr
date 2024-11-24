@@ -1,0 +1,80 @@
+---
+interface Option {
+  value: string;
+  label: string;
+  icon?: (props: { class?: string }) => string;
+}
+
+interface Props {
+  iconOnly?: boolean;
+  options: Option[];
+  name: string;
+  defaultValue?: string;
+  class?: string;
+}
+
+const { options, name, defaultValue, iconOnly = false, class: className = '' } = Astro.props;
+---
+
+<div data-segmented={name} class:list={['relative bg-foreground/10 text-foreground rounded-full w-full md:w-fit', className]}>
+
+  <div
+    aria-hidden="true"
+    class:list={["w-full p-2 pointer-events-none md:w-fit duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] transition-all absolute inset-0"]}
+  >
+    <ul class="flex md:w-fit w-full">
+      {options.map((option, index) => (
+        option.value === defaultValue ? (
+        <li class="flex-1 md:flex-none">
+          <div
+            style={`--index: ${index}; --name: ${name}`}
+            aria-label={option.label}
+            class:list={['translate-x-[calc(100%*var(--index))]', `vt-name-[var(--name)]`, 'px-4 flex -my-1 py-1 bg-surface w-full md:w-fit items-center text-center justify-center gap-2 rounded-full text-foreground']}
+            tabindex="-1"
+          >
+            {option.icon && <div class="opacity-0" set:html={option.icon({ class: 'size-4' })} />}
+            {!iconOnly && <span class="opacity-0">{option.label}</span>}
+            </div>
+          </li>
+        ) : null
+      ))}
+    </ul>
+  </div>
+
+  <ul class="flex md:w-fit w-full p-2 relative z-10 vt-name-[var(--name)]" style={`--name: segmented-${name}`}>
+    {options.map((option) => (
+      <li class="flex-1 md:flex-none">
+        <button
+          data-segment-value={option.value}
+          class:list={['flex w-full md:w-fit -my-1 py-1 px-4 cursor-pointer items-center justify-center text-center gap-2']}
+          aria-label={option.label}
+          data-active={option.value === defaultValue ? 'true' : 'false'}
+        >
+          {option.icon && <div set:html={option.icon({ class: 'size-4' })} />}
+          {!iconOnly && <span>{option.label}</span>}
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<script define:vars={{ 'segmentedName': name }}>
+  function initializeSegment() {
+    const buttons = document.querySelector(`[data-segmented=${segmentedName}]`).querySelectorAll(`[data-segment-value]`);
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const value = button.dataset.segmentValue;
+
+        const event = new CustomEvent(`segment:${segmentedName}:change`, {
+          detail: { value }
+        });
+        document.dispatchEvent(event);
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    initializeSegment();
+  });
+</script>
