@@ -3,6 +3,7 @@
   "name": "ギル・ボムジュン",
   "shortname": "ボムジュン",
   "greeting": "初めまして<span role=\"img\" aria-label=\"wave\" class=\"font-emoji emoji\">👋</span>　私は<a href=\"https://www.gangnamunni.com/jp\" class=\"text-accent link\" target=\"_blank\">カンナムオンニ</a>でエンジニアとして働いています。",
+  "mainAboutMe": "私は問題の本質を理解し、その解決プロセスを楽しんでいます。チームと一緒に高い基準を設定してより良い成果を目指し、細部を見落とさずに実質的な変化を起こすことに情熱を注いでいます。",
   "about": "紹介",
   "writing": "ブログ",
   "projects": "制作物",

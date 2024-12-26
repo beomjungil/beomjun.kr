@@ -5,8 +5,8 @@ import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout>
-  <div class="container flex flex-col gap-8 min-h-screen mb-24">
-	  <selction>
+  <div class="container flex flex-col gap-16 min-h-screen mb-24">
+	  <section>
       <div class="mb-4">
         <DynamicLogo />
       </div>
@@ -14,14 +14,28 @@ import Layout from '@/layouts/Layout.astro';
       <h1 class="typo-headline-small vt-name-[name]">{m.name()}</h1>
       <h2 class="typo-subtitle-large mt-4" set:html={m.greeting()}></h2>
       <p class="typo-body-large my-[1em]">
-        
+        {m.mainAboutMe()}
+      </p>
+    </section>
+
+    <section>
+      <h2 class="typo-headline-small">경험</h2>
+      <p class="typo-body-large my-[1em]">
+        ㅁㄴㅇㄹ
+      </p>
+    </section>
+
+    <section>
+      <h2 class="typo-headline-small">연락하기</h2>
+      <p class="typo-body-large my-[1em]">
+        ㅁㄴㅇㄹ
       </p>
     </section>
 
     <section>
       <h2 class="typo-headline-small">자신있게 추천하는 사람들</h2>
       <p class="typo-body-large my-[1em]">
-        
+        ㅁㄴㅇㄹ
       </p>
     </section>
   </div>

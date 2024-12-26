@@ -75,7 +75,9 @@ export default defineConfig({
     }),
     mdx(),
     sitemap(),
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
     pageInsight(),
     paraglide({
       project: './project.inlang',

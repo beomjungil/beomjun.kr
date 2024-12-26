@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .break-anywhere {
   overflow-wrap: anywhere;
 }
