@@ -21,7 +21,7 @@ export default {
       },
       fontFamily: {
         sans: ['Pretendard JP Variable', ...defaultTheme.fontFamily.sans],
-        serif: ['Noto Serif KR', ...defaultTheme.fontFamily.serif],
+        serif: ['Noto Serif KR', 'Noto Serif JP', ...defaultTheme.fontFamily.serif],
         emoji: ['Noto Emoji'],
         mono: ['Commit Mono', ...defaultTheme.fontFamily.mono],
       },

@@ -29,7 +29,7 @@ export const typography = {
   subtitleLarge: typo({
     font: 'serif',
     fontSize: '0.925rem',
-    fontWeight: '500',
+    fontWeight: '600',
     lineHeight: '1.4',
     letterSpacing: '-0.04em',
     textOpacity: '1',
@@ -45,7 +45,7 @@ export const typography = {
   bodyLarge: typo({
     font: 'serif',
     fontSize: '0.925rem',
-    fontWeight: '400',
+    fontWeight: '450',
     lineHeight: '1.7',
     letterSpacing: '-0.02em',
     textOpacity: '0.8',
@@ -53,7 +53,7 @@ export const typography = {
   bodySmall: typo({
     font: 'serif',
     fontSize: '0.925rem',
-    fontWeight: '500',
+    fontWeight: '450',
     lineHeight: '1.7',
     letterSpacing: '-0.02em',
     textOpacity: '0.8',

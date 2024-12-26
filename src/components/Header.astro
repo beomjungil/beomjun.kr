@@ -10,7 +10,7 @@ const pathname = Astro.url.pathname.replace('/ja', '').replace('/en', '');
 const isMainPage = ['/', '/ja', '/en'].includes(pathname);
 ---
 
-<button popovertarget="nav" popovertargetaction="toggle" class="fixed vt-name-[menu-button] right-4 top-4 text-foreground z-50 md:hidden">
+<button popovertarget="nav" popovertargetaction="toggle" class="fixed vt-name-[menu-button] right-4 top-4 text-foreground z-50 lg:hidden">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -38,14 +38,14 @@ const isMainPage = ['/', '/ja', '/en'].includes(pathname);
       id="nav"
       popover="auto"
       class:list={[
-        'bg-surface dark:border dark:border-foreground/10 md:border-none md:flex md:bg-transparent md:relative md:flex-col md:ml-0 md:p-0 md:items-start md:justify-start md:gap-4 md:translate-y-10 md:vt-name-[header-links]',
-        {'md:!translate-y-12': !isMainPage}
+        'bg-surface dark:border dark:border-foreground/10 lg:border-none lg:flex lg:bg-transparent lg:relative lg:flex-col lg:ml-0 lg:p-0 lg:items-start lg:justify-start lg:gap-4 lg:translate-y-10 lg:vt-name-[header-links]',
+        {'lg:!translate-y-12': !isMainPage}
       ]}
     >
-      <button class="hider md:hidden">
+      <button class="hider lg:hidden">
         <span class="sr-only">메뉴 닫기</span>
       </button>
-      <div class="flex flex-col items-start gap-8 md:gap-4">
+      <div class="flex flex-col items-start gap-8 lg:gap-4">
         <HeaderLink data-astro-prefetch="viewport" href="/about">{m.about()}</HeaderLink>
         <HeaderLink data-astro-prefetch="viewport" href="/writing">{m.writing()}</HeaderLink>
         <HeaderLink data-astro-prefetch="viewport" href="/projects">{m.projects()}</HeaderLink>

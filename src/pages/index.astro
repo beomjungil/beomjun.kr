@@ -1,5 +1,7 @@
 ---
 import DynamicLogo from '@/components/DynamicLogo.astro';
+import Contacts from '@/components/main/Contacts.astro';
+import Experiences from '@/components/main/Experiences.astro';
 import * as m from '@/i18n/paraglide/messages';
 import Layout from '@/layouts/Layout.astro';
 ---
@@ -13,24 +15,14 @@ import Layout from '@/layouts/Layout.astro';
       <h1 class="typo-headline-small hidden vt-name-[title]">{m.name()}</h1>
       <h1 class="typo-headline-small vt-name-[name]">{m.name()}</h1>
       <h2 class="typo-subtitle-large mt-4" set:html={m.greeting()}></h2>
-      <p class="typo-body-large my-[1em]">
+      <p class="typo-body-large my-[1em] [&:lang(ko)]:text-balance">
         {m.mainAboutMe()}
       </p>
     </section>
 
-    <section>
-      <h2 class="typo-headline-small">경험</h2>
-      <p class="typo-body-large my-[1em]">
-        ㅁㄴㅇㄹ
-      </p>
-    </section>
+    <Experiences />
 
-    <section>
-      <h2 class="typo-headline-small">연락하기</h2>
-      <p class="typo-body-large my-[1em]">
-        ㅁㄴㅇㄹ
-      </p>
-    </section>
+    <Contacts />
 
     <section>
       <h2 class="typo-headline-small">자신있게 추천하는 사람들</h2>

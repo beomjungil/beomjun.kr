@@ -1,0 +1,29 @@
+[
+    {
+      "startDate": "2023-12-01",
+      "endDate": null,
+      "company": "UNNI",
+      "position": "Software Engineer (B2B SaaS)",
+      "description": "Developing KOS, a SaaS for aesthetic medical clinics. KOS merges booking, procedure management, payment, and data analysis into one product. I refine its design, development, and operations with relentless thought."
+    },
+    {
+      "startDate": "2019-01-01",
+      "endDate": "2023-11-01",
+      "company": "ScatterLab",
+      "position": "Software Engineer",
+      "description": "Developed mobile apps and web services for “Science of Love” and “BLIMP.” I contributed to their pivot from content to e-commerce, creating engaging products. I led the e-commerce pivot through rapid prototyping and feedback, driving changes in the business model."
+    },
+    {
+      "startDate": "2017-11-01",
+      "endDate": "2019-01-01",
+      "company": "Atlas Labs",
+      "position": "Frontend Engineer & UI/UX Designer"
+    },
+    {
+      "startDate": "2017-03-01",
+      "endDate": "2017-10-01",
+      "company": "AND Corporation",
+      "position": "UI/UX Designer"
+    }
+  ]
+  

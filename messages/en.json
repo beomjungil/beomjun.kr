@@ -3,7 +3,7 @@
   "name": "Beomjun Gil",
   "shortname": "Beomjun",
   "greeting": "Hey<span role=\"img\" aria-label=\"wave\" class=\"font-emoji emoji\">👋</span> I’m a software engineer at <a href=\"https://unni.global/\" class=\"text-accent link\" target=\"_blank\">UNNI</a> in Seoul, South Korea. ",
-  "mainAboutMe": "I enjoy understanding the essence of a problem and the process of solving it. I like setting high standards with my team to achieve better results, and I’m passionate about making real changes without missing any details.",
+  "present": "Present",
   "about": "About",
   "writing": "Writing",
   "projects": "Projects",
@@ -14,5 +14,15 @@
   "dark": "Dark",
   "system": "System",
   "writtenAt": "Date",
-  "tags": "Tags"
+  "tags": "Tags",
+  
+  "__main__": "Main page translation",
+  "mainAboutMe": "I enjoy understanding the essence of a problem and the process of solving it. I like setting high standards with my team to achieve better results, and I’m passionate about making real changes without missing any details.",
+  "experiences": "Experiences",
+  "contacts": "Contacts",
+  "email": "Email",
+  "github": "Github",
+  "linkedin": "Linkedin",
+  "instagram": "Instagram",
+  "mailto": "mailto:gil@beomjun.kr?subject=I'm%20contacting%20you%20via%20your%20homepage."
 }

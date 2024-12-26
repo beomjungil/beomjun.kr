@@ -1,0 +1,31 @@
+---
+import * as m from '@/i18n/paraglide/messages';
+
+const utm = '?utm_source=beomjun.kr&utm_medium=website&utm_campaign=contact';
+---
+<section>
+  <h2 class="typo-headline-small flex justify-between pb-[1em]">
+      {m.contacts()}
+  </h2>
+  <p class="flex flex-col md:grid md:grid-cols-[11.5rem_1fr] md:gap-8 gap-4 typo-body-large">
+    <span>{m.email()}</span>
+    <a href={m.mailto()} class="link">
+      gil@beomjun.kr
+    </a>
+
+    <span>{m.github()}</span>
+    <a href={`https://github.com/beomjungil${utm}`} target="_blank" class="link">
+      github.com/beomjungil
+    </a>
+
+    <span>{m.linkedin()}</span>
+    <a href={`https://www.linkedin.com/in/beomjungil${utm}`} target="_blank" class="link">
+      linked.in/beomjungil
+    </a>
+
+    <span>{m.instagram()}</span>
+    <a href={`https://www.instagram.com/gil.beomjun${utm}`} target="_blank" class="link">
+      @gil.beomjun
+    </a>
+  </p>
+</section>
