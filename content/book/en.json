@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Antifragile",
+    "cover": "/content/book/images/en-antifragile.jpg",
+    "author": "Nassim Nicholas Taleb",
+    "comment": ""
+  },
+  {
+    "title": "The 4 Disciplines of Execution",
+    "cover": "/content/book/images/en-Disciplines.jpg",
+    "author": "Chris McChesney, Sean Covey, Jim Huling",
+    "comment": ""
+  },
+  {
+    "title": "Zero to One",
+    "cover": "/content/book/images/en-zero-to-one.jpg",
+    "author": "Peter Thiel, Blake Masters",
+    "comment": ""
+  },
+  {
+    "title": "EMPOWERED",
+    "cover": "/content/book/images/en-empowered.jpg",
+    "author": "Marty Cagan, Chris Jones",
+    "comment": ""
+  },
+  {
+    "title": "Epictetus' Wisdom on Life",
+    "cover": "/content/book/images/ko-Epictetus.jpg",
+    "author": "Epictetus",
+    "comment": ""
+  },
+  {
+    "title": "Meditations",
+    "cover": "/content/book/images/en-HEAUTON.jpg",
+    "author": "Marcus Aurelius Antoninus",
+    "comment": ""
+  },
+  {
+    "title": "Manager's Path",
+    "cover": "/content/book/images/managers-path.jpg",
+    "author": "Camille Fournier",
+    "comment": ""
+  }
+]

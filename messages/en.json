@@ -30,5 +30,9 @@
   "translationPendingTitle": "This post has not been translated yet.",
   "translationPendingDescription": "I am currently learning languages with AI and working on the translation, so please wait a little longer.",
   "writtenAt": "Date",
-  "tags": "Tags"
+  "tags": "Tags",
+
+  "__now__": "now page translation",
+  "bookshelf": "Bookshelf",
+  "gadgets": "Gadgets"
 }

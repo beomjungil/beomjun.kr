@@ -1,0 +1,216 @@
+---
+import * as m from '@/i18n/paraglide/messages';
+import ko from '@content/gadget/ko.json';
+import en from '@content/gadget/en.json';
+import ja from '@content/gadget/ja.json';
+import { languageTag } from '@/i18n/paraglide/runtime';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+const gadgets = {
+  ko,
+  en,
+  ja,
+};
+const language = languageTag();
+const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/images/*.{jpeg,jpg,png,gif}');
+---
+
+<section>
+  <h2 class="typo-headline-small">
+    {m.gadgets()}
+  </h2>
+
+  <div class="gadget-grid">
+    {gadgets[language].map(gadget => (
+      <div class="gadget-container">
+        <div class="gadget">
+          <div
+            class="cover"
+          >
+              <Image width={256} height={256} src={images[gadget.image]()} alt={gadget.title} />
+          </div>
+        </div>
+        <div class="info">
+          <div class="info-placeholder"/>
+          <div class="info-content">
+            <h3 class="typo-headline-small">{gadget.title}</h3>
+            <p class="typo-body-small">{gadget.comment}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+
+<style>
+
+  .gadget-grid {
+    display: grid;
+    gap: 4rem;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .gadget-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .gadget-container {
+    position: relative;
+  }
+
+  .gadget {
+    position: relative;
+    user-select: none;
+    perspective: 2000px;
+    box-shadow:
+      -2px 2px 5px rgba(0,0,0,0.1),
+      inset 0 0 30px rgba(0,0,0,0.05);
+    max-width: 25vw;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+  }
+
+  html.dark .gadget::after {
+    background: linear-gradient(
+      to right,
+      #2a2a2a 0%,
+      #333 8%,
+      #333 100%
+    );
+  }
+
+
+  .gadget:hover {
+    transform: rotate3d(1, 1, 1, 15deg);
+    box-shadow:
+      -8px 5px 15px rgba(0,0,0,0.15),
+      inset 0 0 30px rgba(0,0,0,0.05);
+  }
+
+  .gadget:hover  {
+    z-index: 20;
+  }
+
+  @media (max-width: 768px) {
+    .gadget-container .gadget.opened {
+      transform: rotate3d(0, 1, 0.2, 15deg);
+    }
+  }
+
+  .cover {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    transform-origin: top;
+    backface-visibility: hidden;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow:
+      0 5px 15px rgba(0,0,0,0.2),
+      inset 0 0 100px rgba(255,255,255,0.2);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .cover:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.1) 10%, rgba(255,255,255,0) 30%),
+      radial-gradient(
+        circle at 25% 25%,
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0)
+      ),
+      linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.1));
+  }
+
+  html.dark .cover img {
+    filter: brightness(0.9);
+  }
+
+  .cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.5rem;
+  }
+
+  .info {
+    opacity: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+  }
+
+  .info-placeholder, .info-content {
+    flex: 1;
+  }
+
+
+  @media (min-width: 768px) {
+    .info {
+      position: absolute;
+      left: -2rem;
+      top: -2rem;
+      bottom: -2rem;
+      width: 25rem;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.3s ease;
+      transform: scale(0.95);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    html.dark .info {
+      background: rgba(50, 50, 50, 0.8);
+    }
+
+    .info-content {
+      padding: 1.5rem 0.5rem 1.5rem 1.5rem;
+    }
+    .gadget-container:nth-child(3n) .info {
+      left: auto;
+      right: -2rem;
+    }
+
+    .gadget-container:nth-child(3n) .info-placeholder {
+      order: 2;
+    }
+
+    .gadget-container:nth-child(3n) .info-content {
+      padding: 1.5rem 1.5rem 1.5rem 0;
+    }
+
+    .gadget:hover + .info {
+      opacity: 1;
+      z-index: 10;
+      transform: scale(1);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .gadget-container {
+      display: flex;
+      align-itrems: center;
+      gap: 1rem;
+    }
+
+    .info {
+      display: block;
+      flex: 1;
+      opacity: 1;
+    }
+  }
+</style>

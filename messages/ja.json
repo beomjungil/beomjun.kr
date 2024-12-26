@@ -30,7 +30,11 @@
   "translationPendingTitle": "まだ投稿が翻訳されていません。",
   "translationPendingDescription": "AIと一緒に言語を学びながら翻訳を進めていますので、もう少々お待ちください。",
   "writtenAt": "作成日",
-  "tags": "タグ"
+  "tags": "タグ",
+
+  "__now__": "now page translation",
+  "bookshelf": "本棚",
+  "gadgets": "飾り棚"
 }
 
 

@@ -16,6 +16,12 @@ const posts = (await getCollection('blog'))
       return !post.id.match(/^(en|ja)-/);
     }
     return post.id.startsWith(`${language}-`);
+  })
+  .map((post) => {
+    return {
+      ...post,
+      id: post.id.replace(`${language}-`, ''),
+    };
   });
 ---
 

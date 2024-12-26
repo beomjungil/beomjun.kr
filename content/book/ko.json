@@ -1,0 +1,44 @@
+[
+  {
+    "title": "안티프래질",
+    "cover": "/content/book/images/ko-antifragile.jpg",
+    "author": "나심 니콜라스 탈레브",
+    "comment": ""
+  },
+  {
+    "title": "성과를 내려면 실행하라",
+    "cover": "/content/book/images/ko-Disciplines.jpg",
+    "author": "크리스 맥체스니, 숀 코비, 짐 헐링",
+    "comment": ""
+  },
+  {
+    "title": "제로 투 원",
+    "cover": "/content/book/images/ko-zero-to-one.jpg",
+    "author": "피터 틸, 블레이크 매스터스",
+    "comment": ""
+  },
+  {
+    "title": "임파워드",
+    "cover": "/content/book/images/ko-empowered.jpg",
+    "author": "마티 케이건, 크리스 존스",
+    "comment": ""
+  },
+  {
+    "title": "에픽테토스의 인생을 바라보는 지혜",
+    "cover": "/content/book/images/ko-Epictetus.jpg",
+    "author": "에픽테토스",
+    "comment": ""
+  },
+  {
+    "title": "명상록",
+    "cover": "/content/book/images/ko-HEAUTON.jpg",
+    "author": "마르쿠스 아우렐리우스",
+    "comment": ""
+  },
+  {
+    "title": "Manager's Path (개발 7년차, 매니저 1일차)",
+    "cover": "/content/book/images/managers-path.jpg",
+    "author": "카미유 푸르니에",
+    "comment": ""
+  }
+]

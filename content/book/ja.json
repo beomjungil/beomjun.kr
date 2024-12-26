@@ -1,0 +1,44 @@
+[
+  {
+    "title": "反脆弱性",
+    "cover": "/content/book/images/ja-antifragile.jpg",
+    "author": "ナシーム・ニコラス・タレブ",
+    "comment": ""
+  },
+  {
+    "title": "実行の4つの規律",
+    "cover": "/content/book/images/ja-Disciplines.jpg",
+    "author": "クリス マチェズニー",
+    "comment": ""
+  },
+  {
+    "title": "ゼロ・トゥ・ワン",
+    "cover": "/content/book/images/ja-zero-to-one.jpg",
+    "author": "ピーター・ティール, ブレイク・マスターズ",
+    "comment": ""
+  },
+  {
+    "title": "EMPOWERED",
+    "cover": "/content/book/images/ja-empowered.jpg",
+    "author": "マーティ・ケーガン, クリス・ジョーンズ",
+    "comment": ""
+  },
+  {
+    "title": "エピクテトスの人生論",
+    "cover": "/content/book/images/ko-Epictetus.jpg",
+    "author": "エピクテトス",
+    "comment": ""
+  },
+  {
+    "title": "自省録",
+    "cover": "/content/book/images/ja-HEAUTON.jpg",
+    "author": "マルクス アウレーリウス",
+    "comment": ""
+  },
+  {
+    "title": "Manager's Path",
+    "cover": "/content/book/images/managers-path.jpg",
+    "author": "カミーユ・フォーニエ",
+    "comment": ""
+  }
+]

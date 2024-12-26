@@ -6,9 +6,12 @@ export async function getStaticPaths() {
   return getPostStaticPaths('ja');
 }
 
-type Props = CollectionEntry<'blog'>;
+interface Props {
+  post: CollectionEntry<'blog'>;
+  isDefaultLanguage: boolean;
+}
 
-const post = Astro.props;
+const { post, isDefaultLanguage } = Astro.props;
 ---
 
-<Page {...post} />
+<Page post={post} isDefaultLanguage={isDefaultLanguage} />

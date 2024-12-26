@@ -7,7 +7,7 @@ import Layout from '@/layouts/Layout.astro';
 import { languageTag } from '@/i18n/paraglide/runtime';
 
 type Props = CollectionEntry<'blog'>['data'] & {
-  isDefaultLanguage: boolean;
+  isDefaultLanguage?: boolean;
 };
 
 const { title, description, pubDate, updatedDate, tags, isDefaultLanguage } = Astro.props;

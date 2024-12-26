@@ -2,24 +2,31 @@
 import Layout from '@/layouts/Layout.astro';
 import * as m from '@/i18n/paraglide/messages';
 import Bookselves from '@/components/now/Bookselves.astro';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { languageTag } from '@/i18n/paraglide/runtime';
+import FormattedDate from '@/components/FormattedDate.astro';
+import Gadgets from '@/components/now/Gadgets.astro';
+
+const now = await getCollection('now');
+const nowContent = now.find((item) => item.id === languageTag());
+
+const { Content } = await render(nowContent as CollectionEntry<'now'>);
 ---
 
 <Layout title={m.now()}>
 
-  <div class="container flex flex-col gap-16 min-h-screen mb-24">
+  <div class="container flex flex-col gap-24 min-h-screen mb-24">
     <section>
       <h1 class="typo-headline-small vt-name-[title] title">{m.now() }</h1>
       <p class="typo-headline-small opacity-50 vt-name-[name] author">{m.name()}</p>
-
-      <p class="typo-body-large my-[1em]">
-        저는 말이죠 지금 뭐하고 있냐면 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리 나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세
-      </p>
+      <p class="typo-subtitle-small !text-foreground/50 date mt-8"><FormattedDate date={nowContent?.data.updatedDate || new Date()} /></p>
+      <div class="prose no-initial my-[1em]">
+        <Content />
+      </div>
     </section>
 
     <Bookselves />
 
-    <section>
-      <h2 class="typo-headline-small">진열장</h2>
-    </section>
+    <Gadgets/>
   </div>
 </Layout>

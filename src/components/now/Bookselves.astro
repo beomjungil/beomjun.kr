@@ -1,78 +1,43 @@
 ---
-interface Book {
-  id: string;
-  title: string;
-  cover: string;
-  comment: string;
-}
+import ko from '@content/book/ko.json';
+import en from '@content/book/en.json';
+import ja from '@content/book/ja.json';
+import { languageTag } from '@/i18n/paraglide/runtime';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import * as m from '@/i18n/paraglide/messages';
 
-const books: Book[] = [
-  {
-    id: '1',
-    title: '샘플 책 1',
-    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
-    comment: '이 책에 대한 나의 생각...',
-  },
-  {
-    id: '2',
-    title: '샘플 책 2',
-    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
-    comment: '이 책에 대한 나의 생각...',
-  },
-  {
-    id: '3',
-    title: '샘플 책 3',
-    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
-    comment: '이 책에 대한 나의 생각...',
-  },
-  {
-    id: '4',
-    title: '샘플 책 4',
-    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
-    comment: '이 책에 대한 나의 생각...',
-  },
-  {
-    id: '5',
-    title: '샘플 책 5',
-    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
-    comment: '이 책에 대한 나의 생각...',
-  },
-  {
-    id: '6',
-    title: '샘플 책 6',
-    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
-    comment: '이 책에 대한 나의 생각...',
-  },
-  {
-    id: '7',
-    title: '샘플 책 7',
-    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
-    comment: '이 책에 대한 나의 생각...',
-  },
-  {
-    id: '8',
-    title: '샘플 책 8',
-    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
-    comment: '이 책에 대한 나의 생각...',
-  },
-  // ... 더 많은 책 데이터
-];
+const books = {
+  ko,
+  en,
+  ja,
+};
+const language = languageTag();
+const images = import.meta.glob<{ default: ImageMetadata }>('/content/book/images/*.{jpeg,jpg,png,gif}');
 ---
 
 <section>
-  <h2 class="typo-headline-small">책장</h2>
+  <h2 class="typo-headline-small">
+    {m.bookshelf()}
+  </h2>
   <div class="books-grid">
-    {books.map(book => (
+    {books[language].map(book => (
       <div class="book-container">
         <div class="book">
+          <div class="book-page"/>
           <div
-            class="book-cover">
-              <img src={book.cover} alt={book.title} />
-            </div>
+            class="book-cover"
+          >
+            <Image width={256} height={384} src={images[book.cover]()} alt={book.title} />
+          </div>
         </div>
         <div class="book-info">
-          <h3>{book.title}</h3>
-          <p>{book.comment}</p>
+          <div class="book-info-placeholder"/>
+          <div class="book-info-content">
+            <h3 class="typo-headline-small">{book.title}</h3>
+            <p class="typo-headline-small opacity-50">{book.author}</p>
+            <p class="typo-body-small">{book.comment}</p>
+          </div>
         </div>
       </div>
     ))}
@@ -95,18 +60,81 @@ const books: Book[] = [
 
   .book-container {
     position: relative;
-    perspective: 1000px;
   }
 
   .book {
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-    transform-origin: left center;
+    user-select: none;
+    perspective: 1000px;
+    box-shadow:
+      -2px 2px 5px rgba(0,0,0,0.1),
+      inset 0 0 30px rgba(0,0,0,0.05);
+    max-width: 25vw;
+    border-radius: 2px 6px 6px 2px;
   }
 
-  @media (min-width: 768px) {
-    .book-container:hover .book {
+  .book-page {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    border-radius: 2px 6px 6px 2px;
+    background:
+      repeating-linear-gradient(
+        to right,
+        #f8f8f8 0px,
+        #f8f8f8 2px,
+        #fff 2px,
+        #fff 4px
+      ),
+      linear-gradient(
+        to right,
+        #f8f8f8 0%,
+        #fff 8%,
+        #fff 100%
+      );
+    border: 4px solid #e0e0e0;
+    box-shadow:
+      inset -3px 0px 2px rgba(0,0,0,0.1),
+      1px 0 3px rgba(0,0,0,0.1);
+  }
+
+  html.dark .book-page {
+    background:
+      repeating-linear-gradient(
+        to right,
+        #2a2a2a 0px,
+        #2a2a2a 2px,
+        #333 2px,
+        #333 4px
+      ),
+      linear-gradient(
+        to right,
+        #2a2a2a 0%,
+        #333 8%,
+        #333 100%
+      );
+    border: 2px solid #404040;
+  }
+
+  html.dark .book::after {
+    background: linear-gradient(
+      to right,
+      #2a2a2a 0%,
+      #333 8%,
+      #333 100%
+    );
+  }
+
+  .book:hover .book-cover {
+    transform: rotateY(-30deg) translateX(-6px);
+  }
+
+  .book:hover  {
+    z-index: 20;
+  }
+
+  @media (max-width: 768px) {
+    .book-container .book-cover.opened {
       transform: rotateY(-30deg) translateX(-6px);
     }
   }
@@ -124,6 +152,9 @@ const books: Book[] = [
     box-shadow:
       -5px 5px 15px rgba(0,0,0,0.2),
       inset 0 0 100px rgba(255,255,255,0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    transform-origin: left center;
   }
 
   .book-cover:after {
@@ -141,58 +172,86 @@ const books: Book[] = [
       ),
       linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.1));
   }
-  .dark .book-cover:after {
-    background:
-      linear-gradient(to right, rgba(0,0,0,0.05) 7%, rgba(0,0,0,0.05) 8%, rgba(0,0,0,0) 8.1%),
-      linear-gradient(to right, rgba(0,0,0,0.0) 6.9%, rgba(0,0,0,0.1) 8%, rgba(0,0,0,0.1) 8.5%, rgba(0,0,0,0) 8.5%),
-      linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.2) 10%, rgba(255,255,255,0) 30%),
-      linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.1));
-  }
 
-  .dark .book-cover img {
-    filter: brightness(0.5);
+  html.dark .book-cover img {
+    filter: brightness(0.9);
   }
 
   .book-cover img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.0125);
   }
 
   .book-info {
-    display: none;
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    opacity: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
   }
+
+  .book-info-placeholder, .book-info-content {
+    flex: 1;
+  }
+
 
   @media (min-width: 768px) {
     .book-info {
       position: absolute;
-      left: 150px;
-      top: 0;
-      width: 200px;
+      left: -2rem;
+      top: -2rem;
+      bottom: -2rem;
+      width: 25rem;
+      padding: 1rem;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease, transform 0.3s ease;
+      transform: scale(0.95);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
     }
 
-    .book-container:hover .book-info {
-      display: block;
+    html.dark .book-info {
+      background: rgba(50, 50, 50, 0.8);
+    }
+
+    .book-info-content {
+      padding: 1.5rem 0.5rem 1.5rem 1.5rem;
+    }
+    .book-container:nth-child(3n) .book-info {
+      left: auto;
+      right: -2rem;
+    }
+
+    .book-container:nth-child(3n) .book-info-placeholder {
+      order: 2;
+    }
+
+    .book-container:nth-child(3n) .book-info-content {
+      padding: 1.5rem 1.5rem 1.5rem 0;
+    }
+
+    .book:hover + .book-info {
       opacity: 1;
+      z-index: 10;
+      transform: scale(1);
     }
   }
 
   @media (max-width: 767px) {
     .book-container {
       display: flex;
-      align-items: center;
+      align-itrems: center;
       gap: 1rem;
     }
 
     .book-info {
       display: block;
       flex: 1;
+      opacity: 1;
     }
   }
 </style>

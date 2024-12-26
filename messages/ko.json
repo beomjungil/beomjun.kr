@@ -30,6 +30,10 @@
   "translationPendingTitle": "아직 글이 번역되지 않았어요.",
   "translationPendingDescription": "시간을 내어 AI와 언어를 공부하며 번역 중이니, 조금만 기다려주세요.",
   "writtenAt": "작성일",
-  "tags": "태그"
+  "tags": "태그",
+
+  "__now__": "지금 페이지용 번역",
+  "bookshelf": "책장",
+  "gadgets": "진열장"
 }
 
