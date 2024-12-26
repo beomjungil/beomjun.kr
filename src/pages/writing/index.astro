@@ -6,8 +6,17 @@ import BaseHead from '../../components/BaseHead.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { SITE_DESCRIPTION } from '../../consts';
 import Layout from '../../layouts/Layout.astro';
+import { languageTag } from '@/i18n/paraglide/runtime';
 
-const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const language = languageTag();
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .filter((post) => {
+    if (language === 'ko') {
+      return !post.id.match(/^(en|ja)-/);
+    }
+    return post.id.startsWith(`${language}-`);
+  });
 ---
 
 <Layout>
@@ -19,6 +28,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
       <h1 class="typo-headline-small vt-name-[name]">{m.name()}</h1>
       <p class="typo-headline-small opacity-50">{m.writing()}</p>
     </div>
+
     <ul class="space-y-6 mt-8">
       {
         posts.map((post, index) => (

@@ -4,25 +4,27 @@ import BaseHead from '@/components/BaseHead.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import * as m from '@/i18n/paraglide/messages';
 import Layout from '@/layouts/Layout.astro';
+import { languageTag } from '@/i18n/paraglide/runtime';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+  isDefaultLanguage: boolean;
+};
 
-const { title, description, pubDate, updatedDate, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, isDefaultLanguage } = Astro.props;
 ---
 
 <Layout title={title}>
 	<Fragment slot="head">
 		<BaseHead title={title} description={description} />
 	</Fragment>
-
-  <article class="prose container">
+  <article class="prose container" lang={isDefaultLanguage ? 'ko' : undefined}>
       <div>
         <div>
           <h1 class="typo-headline-small vt-name-[title] title">{title}</h1>
           <p class="typo-headline-small opacity-50 vt-name-[name] author">{m.name()}</p>
           <p class="mt-4 mb-8 typo-subtitle-small !text-foreground/50 [&:lang(en)]:text-balance [&:lang(ko)]:text-balance">{description}</p>
           <section class="flex gap-4 justify-between mb-8">
-            <p class="typo-subtitle-small !text-foreground/50 date"><FormattedDate date={pubDate} /></p>
+            <p class="typo-subtitle-small !text-foreground/50 date"><FormattedDate date={updatedDate || pubDate} /></p>
 
             {
               tags?.length && (
@@ -33,6 +35,17 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
             }
           </section>
         </div>
+
+
+      {
+        isDefaultLanguage && (
+          <aside class="bg-foreground/10 rounded-lg p-4 mb-8 [&:lang(en)]:text-balance">
+            <p class="mb-2 typo-headline-small">{m.translationPendingTitle()}</p>
+            <p>{m.translationPendingDescription()}</p>
+          </aside>
+        )
+      }
+
       <div class="prose">
         <slot />
       </div>

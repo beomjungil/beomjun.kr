@@ -1,20 +1,48 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import type { AvailableLanguageTag } from '@/i18n/paraglide/runtime';
+
+export async function getPostStaticPaths(language: AvailableLanguageTag) {
+  const posts = await getCollection('blog');
+  return posts
+    .filter((post) => {
+      if (language === 'ko') {
+        return !post.id.match(/^(en|ja)-/);
+      }
+
+      if (language === 'ja') {
+        return post.id.startsWith('ja-') || !post.id.startsWith('en-');
+      }
+
+      if (language === 'en') {
+        return post.id.startsWith('en-') || !post.id.startsWith('ja-');
+      }
+
+      return post.id.startsWith(`${language}-`);
+    })
+    .map((post) => ({
+      params: { slug: post.id.replace('ja-', '').replace('en-', '') },
+      props: {
+        post,
+        isDefaultLanguage: language === 'ko' ? false : !post.id.match(/^(en|ja)-/),
+      },
+    }));
+}
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: post,
-  }));
+  return getPostStaticPaths('ko');
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
+interface Props {
+  post: CollectionEntry<'blog'>;
+  isDefaultLanguage: boolean;
+}
+
+const { post, isDefaultLanguage } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} isDefaultLanguage={isDefaultLanguage}>
 	<Content />
 </BlogPost>

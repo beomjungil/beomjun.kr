@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import Page, { getStaticPaths as originalGetStaticPaths } from '@/pages/writing/[...slug].astro';
+import Page, { getPostStaticPaths } from '@/pages/writing/[...slug].astro';
 
 export async function getStaticPaths() {
-  return originalGetStaticPaths();
+  return getPostStaticPaths('en');
 }
 
 type Props = CollectionEntry<'blog'>;

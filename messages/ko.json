@@ -13,8 +13,6 @@
   "light": "밝음",
   "dark": "어두움",
   "system": "시스템",
-  "writtenAt": "작성일",
-  "tags": "태그",
 
   "__main__": "메인 화면용 번역",
   "mainAboutMe": "저는 문제의 본질을 깊이 이해하고, 이를 해결하는 과정을 즐기는 사람이에요. 팀원들과 함께 높은 기준의 목표를 세워 더 나은 결과를 만들어 나가는 것을 좋아하고, 디테일을 놓치지 않으면서도 실질적인 변화를 만들어내는 데 큰 열정을 가지고 있어요.",
@@ -26,6 +24,12 @@
   "instagram": "인스타그램",
   "mailto": "mailto:gil@beomjun.kr?subject=%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%20%EB%B3%B4%EA%B3%A0%20%EC%97%B0%EB%9D%BD%EB%93%9C%EB%A0%A4%EC%9A%94.",
   "recommendPeople": "자신있게 추천하는 사람들",
-  "recommendPeopleDescription": "제 인생의 한 순간에서 함께 협업하며, 많은 것을 배우고 생각할 수 있게 도와준 뛰어난 분들이에요. 지금의 저를 만드는 데 기여를 주신 분들을 자신있게 추천드려요."
+  "recommendPeopleDescription": "제 인생의 한 순간에서 함께 협업하며, 많은 것을 배우고 생각할 수 있게 도와준 뛰어난 분들이에요. 지금의 저를 만드는 데 기여를 주신 분들을 자신있게 추천드려요.",
+
+  "__post__": "블로그 페이지용 번역",
+  "translationPendingTitle": "아직 글이 번역되지 않았어요.",
+  "translationPendingDescription": "시간을 내어 AI와 언어를 공부하며 번역 중이니, 조금만 기다려주세요.",
+  "writtenAt": "작성일",
+  "tags": "태그"
 }
 
