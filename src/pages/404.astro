@@ -1,0 +1,46 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title='Not found'>
+    <div class="flex flex-col container min-h-screen mb-24" style="gap:5rem">
+        <div class="flex flex-col gap-4" lang="en">
+            <div>
+                <h1 class="typo-headline-small">Uh oh!</h1>
+                <p class="typo-body-small">There's nothing here.</p>
+            </div>
+
+            <p class="typo-body-large">
+                Stepping onto fresh, untouched snow is always a thrill, right? But landing on a page nobody else visits… not quite as exciting. How about heading back to the main page?
+            </p>
+
+            <a href="/" class="typo-body-large link block">Go back to the main page</a>
+        </div>
+        <div class="flex flex-col gap-4" lang="ko">
+            <div>
+                <h1 class="typo-headline-small">이런!</h1>
+                <p class="typo-body-small">여기는 아무것도 없어요.</p>
+            </div>
+
+            <p class="typo-body-large">
+                아무도 밟지 않은 눈을 밟는 것은 언제나 즐겁죠. 하지만 아무도 찾지 않는 페이지를 접속하는 건 그만큼 즐겁진 않네요. 메인 화면으로 돌아가는 건 어때요?
+            </p>
+
+            <a href="/" class="typo-body-large link block">메인 화면으로 돌아가기</a>
+        </div>
+        <div class="flex flex-col gap-4 auto-phrase" lang="ja">
+            <div>
+                <h1 class="typo-headline-small">ああ!</h1>
+                <p class="typo-body-small">ここには何もありません。</p>
+            </div>
+
+            <p class="typo-body-large">
+                まだ誰も踏んでいない新雪を踏むのはいつだってワクワクしますよね。
+でも、誰も探していないページにたどり着いてしまうのは、ちょっと残念かも。
+メインページに戻ってみませんか？
+            </p>
+
+            <a href="/" class="typo-body-large link block">メインページに戻る</a>
+        </div>
+    </div>
+</Layout>

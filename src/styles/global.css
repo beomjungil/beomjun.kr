@@ -12,7 +12,9 @@ html {
   user-select: text;
 }
 
-html:lang(ja) .auto-phrase {
+html:lang(ja) .auto-phrase,
+*:lang(ja) .auto-phrase,
+*:lang(ja).auto-phrase {
   word-break: auto-phrase;
 }
 
