@@ -15,9 +15,13 @@ function initializeTheme() {
     document.documentElement.classList.remove('dark');
     document.documentElement.classList.add('light');
   }
+  const event = new CustomEvent('segment:theme:value-changed', {
+    detail: { value: theme }
+  });
+  document.dispatchEvent(event);
 }
 
-document.addEventListener("astro:after-swap", () => {
+document.addEventListener("astro:page-load", () => {
   initializeTheme();
 });
 

@@ -15,7 +15,7 @@
   "system": "System",
   "writtenAt": "Date",
   "tags": "Tags",
-  
+
   "__main__": "Main page translation",
   "mainAboutMe": "I enjoy understanding the essence of a problem and the process of solving it. I like setting high standards with my team to achieve better results, and I’m passionate about making real changes without missing any details.",
   "experiences": "Experiences",
@@ -24,5 +24,7 @@
   "github": "Github",
   "linkedin": "Linkedin",
   "instagram": "Instagram",
-  "mailto": "mailto:gil@beomjun.kr?subject=I'm%20contacting%20you%20via%20your%20homepage."
+  "mailto": "mailto:gil@beomjun.kr?subject=I'm%20contacting%20you%20via%20your%20homepage.",
+  "recommendPeople": "People I Recommend",
+  "recommendPeopleDescription": "These are wonderful people who worked with me at certain moments in my life, helping me learn and grow. I proudly recommend those who shaped who I am today."
 }

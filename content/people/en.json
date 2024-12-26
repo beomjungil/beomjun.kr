@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Sanghun Lee",
+    "url": "https://www.linkedin.com/in/dsa28s/",
+    "image": "/content/people/images/sanghun.jpg"
+  },
+  {
+    "name": "Minkyu Moon",
+    "url": "https://www.linkedin.com/in/minkyu-moon-b77139156",
+    "image": "/content/people/images/minkyu.jpg"
+  },
+  {
+    "name": "Kihoon Lee",
+    "url": "https://www.linkedin.com/in/kihoon-lee-8b6250232/",
+    "image": "/content/people/images/kihoon.jpg"
+  },
+  {
+    "name": "Yoonhyuk Kim",
+    "url": "https://www.linkedin.com/in/yoonhyeok-%EC%9C%A4%ED%98%81-kim-55722ba0",
+    "image": "/content/people/images/yoonhyuk.jpg"
+  },
+  {
+    "name": "Ukjae Jeong",
+    "url": "https://www.linkedin.com/in/jeongukjae/",
+    "image": "/content/people/images/ukjae.jpg"
+  }
+]

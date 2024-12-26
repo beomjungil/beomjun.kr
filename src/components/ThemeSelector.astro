@@ -45,27 +45,42 @@ const themeOptions = [
 </label>
 
 <script>
+function applyTheme(theme: string) {
+  document.documentElement.classList.remove('dark', 'light');
+
+  if (theme === 'system') {
+    localStorage.removeItem('theme');
+  } else {
+    localStorage.setItem('theme', theme);
+  }
+
+  const event = new CustomEvent('segment:theme:value-changed', {
+    detail: { value: theme }
+  });
+  document.dispatchEvent(event);
+
+  if (theme === 'system') {
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList.add(isDark ? 'dark' : 'light');
+  } else {
+    document.documentElement.classList.add(theme);
+  }
+}
+
+function initializeTheme() {
   document.addEventListener('segment:theme:change', ((e: CustomEvent) => {
     const theme = e.detail.value;
+    debugger
     applyTheme(theme);
   }) as EventListener);
 
-  function applyTheme(theme: string) {
-    document.documentElement.classList.remove('dark', 'light');
-
-    if (theme === 'system') {
-      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.classList.add(isDark ? 'dark' : 'light');
-    } else {
-      document.documentElement.classList.add(theme);
-    }
-  }
-
-  // 시스템 테마 변경 감지
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     const currentTheme = localStorage.getItem('theme') || 'system';
     if (currentTheme === 'system') {
       applyTheme('system');
     }
   });
+}
+
+initializeTheme();
 </script>

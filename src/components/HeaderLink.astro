@@ -10,7 +10,7 @@ const { href, class: className, ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace('/ja', '').replace('/en', '').replace('/ko', '');
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === `/${subpath?.[0]}`;
-const isMainPage = ['/', '/ja', '/en'].includes(Astro.url.pathname);
+const isMainPage = ['/', '/ja/', '/en/', '/en', 'ja'].includes(Astro.url.pathname);
 
 const newHref = getRelativeLocaleUrl(
   languageTag(),

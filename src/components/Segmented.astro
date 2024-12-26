@@ -43,7 +43,7 @@ const { options, name, defaultValue, iconOnly = false, class: className = '' } =
 
   <ul class="flex md:w-fit w-full p-2 relative z-10 vt-name-[var(--name)]" style={`--name: segmented-${name}`}>
     {options.map((option) => (
-      <li class="flex-1 md:flex-none">
+      <li>
         <button
           data-segment-value={option.value}
           class:list={['flex w-full md:w-fit -my-1 py-1 px-4 cursor-pointer items-center justify-center text-center gap-2']}
@@ -59,22 +59,32 @@ const { options, name, defaultValue, iconOnly = false, class: className = '' } =
 </div>
 
 <script define:vars={{ 'segmentedName': name }}>
-  function initializeSegment() {
-    const buttons = document.querySelector(`[data-segmented=${segmentedName}]`).querySelectorAll(`[data-segment-value]`);
+function initializeSegment() {
+  const buttons = document.querySelector(`[data-segmented=${segmentedName}]`).querySelectorAll(`[data-segment-value]`);
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const value = button.dataset.segmentValue;
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const value = button.dataset.segmentValue;
 
-        const event = new CustomEvent(`segment:${segmentedName}:change`, {
-          detail: { value }
-        });
-        document.dispatchEvent(event);
+      const event = new CustomEvent(`segment:${segmentedName}:change`, {
+        detail: { value }
       });
+      document.dispatchEvent(event);
     });
-  }
-
-  document.addEventListener('astro:page-load', () => {
-    initializeSegment();
   });
+
+  document.addEventListener(`segment:${segmentedName}:value-changed`, ((e) => {
+    const value = e.detail.value;
+    const buttons = document.querySelector(`[data-segmented=${segmentedName}]`).querySelectorAll(`[data-segment-value]`);
+    buttons.forEach(button => {
+      button.dataset.active = button.dataset.segmentValue === value ? 'true' : 'false';
+    });
+  }));
+}
+
+initializeSegment();
+
+document.addEventListener('astro:page-load', () => {
+  initializeSegment();
+});
 </script>

@@ -1,0 +1,59 @@
+---
+import * as m from '@/i18n/paraglide/messages';
+import { languageTag } from '@/i18n/paraglide/runtime';
+import ko from '@content/people/ko.json';
+import en from '@content/people/en.json';
+import ja from '@content/people/ja.json';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+const language = languageTag();
+const people = {
+  ko,
+  en,
+  ja,
+};
+const images = import.meta.glob<{ default: ImageMetadata }>('/content/people/images/*.{jpeg,jpg,png,gif}');
+---
+
+<section>
+    <h2 class="typo-headline-small flex justify-between pb-[1em]">
+      {m.recommendPeople()}
+    </h2>
+
+    <p class="typo-body-large mb-4">
+        {m.recommendPeopleDescription()}
+    </p>
+
+    <div class="flex flex-wrap gap-2 typo-body-large" id="people-container">
+    {
+      people[language].map((person) => (
+        <div class="flex items-center gap-1 bg-foreground/10 rounded-full pl-1 pr-3 py-1 hover:bg-accent leading-[1] hover:text-white transition-colors duration-300 cursor-pointer group">
+          <div class="w-[24px] h-[24px] rounded-full overflow-hidden bg-gray-200">
+            <Image width={24} height={24} class="rounded-full" src={images[person.image]()} alt={person.name} />
+          </div>
+          <a href={person.url} target="_blank">
+            {person.name}
+          </a>
+        </div>
+      ))
+    }
+    </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    shuffleChildren('people-container');
+  });
+
+  function shuffleChildren(parentId: string) {
+    const parent = document.getElementById(parentId);
+    if (!parent) return;
+
+    for (let i = parent.children.length; i >= 0; i--) {
+      parent.appendChild(parent.children[Math.random() * i | 0]);
+    }
+  }
+
+  shuffleChildren('people-container');
+</script>

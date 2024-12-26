@@ -8,7 +8,6 @@
 
 html {
   font-size: 16px;
-  user-select: none;
   font-feature-settings: "calt", "ss01", "ss02", "ss03", "ss15", "ss11";
 }
 

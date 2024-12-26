@@ -2,6 +2,7 @@
 import DynamicLogo from '@/components/DynamicLogo.astro';
 import Contacts from '@/components/main/Contacts.astro';
 import Experiences from '@/components/main/Experiences.astro';
+import RecommendPeople from '@/components/main/RecommendPeople.astro';
 import * as m from '@/i18n/paraglide/messages';
 import Layout from '@/layouts/Layout.astro';
 ---
@@ -24,11 +25,6 @@ import Layout from '@/layouts/Layout.astro';
 
     <Contacts />
 
-    <section>
-      <h2 class="typo-headline-small">자신있게 추천하는 사람들</h2>
-      <p class="typo-body-large my-[1em]">
-        ㅁㄴㅇㄹ
-      </p>
-    </section>
+    <RecommendPeople />
   </div>
 </Layout>
