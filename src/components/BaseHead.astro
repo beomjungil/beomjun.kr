@@ -2,6 +2,8 @@
 import * as m from '@/i18n/paraglide/messages';
 import { languageTag } from '@/i18n/paraglide/runtime';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { SITE_DESCRIPTION } from '@/consts';
+
 interface Props {
   title?: string;
   description?: string;
@@ -29,10 +31,10 @@ const { title, description, image } = Astro.props;
   :
   <link href="https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&family=Noto+Serif+KR:wght@400..900&display=swap" rel="stylesheet" />
 }
-<link 
-  rel="preload" 
-  href="/fonts/pretendard/pretendard.css" 
-  as="style" 
+<link
+  rel="preload"
+  href="/fonts/pretendard/pretendard.css"
+  as="style"
   onload="this.onload=null;this.rel='stylesheet'"
 />
 <noscript>
@@ -45,20 +47,20 @@ const { title, description, image } = Astro.props;
 <!-- Primary Meta Tags -->
 <title>{title || m.name()}</title>
 <meta name="title" content={title || m.name()} />
-<meta name="description" content={description} />
+<meta name="description" content={description || SITE_DESCRIPTION} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={description || SITE_DESCRIPTION} />
 <meta property="og:image" content={new URL(image || defaultOgImage, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta property="twitter:description" content={description || SITE_DESCRIPTION} />
 <meta property="twitter:image" content={new URL(image || defaultOgImage, Astro.url)} />
 
 <!-- alternate links -->

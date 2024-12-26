@@ -3,7 +3,6 @@ import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
 import ThemeInitializer from '@/components/ThemeInitializer.astro';
-import { SITE_DESCRIPTION } from '@/consts';
 import { languageTag } from '@/i18n/paraglide/runtime';
 import { customTransition } from '@/styles/customTransition';
 import { ClientRouter } from 'astro:transitions';
@@ -12,13 +11,14 @@ import '@/styles/global.css';
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 <html lang={languageTag()} transition:animate="none" class="group/root light">
   <head>
-    <BaseHead description={SITE_DESCRIPTION} title={title} />
+    <BaseHead description={description} title={title} />
     <slot name="head" />
 
     <ThemeInitializer/>

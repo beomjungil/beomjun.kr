@@ -70,7 +70,6 @@ function applyTheme(theme: string) {
 function initializeTheme() {
   document.addEventListener('segment:theme:change', ((e: CustomEvent) => {
     const theme = e.detail.value;
-    debugger
     applyTheme(theme);
   }) as EventListener);
 

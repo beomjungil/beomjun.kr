@@ -1,0 +1,198 @@
+---
+interface Book {
+  id: string;
+  title: string;
+  cover: string;
+  comment: string;
+}
+
+const books: Book[] = [
+  {
+    id: '1',
+    title: '샘플 책 1',
+    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
+    comment: '이 책에 대한 나의 생각...',
+  },
+  {
+    id: '2',
+    title: '샘플 책 2',
+    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
+    comment: '이 책에 대한 나의 생각...',
+  },
+  {
+    id: '3',
+    title: '샘플 책 3',
+    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
+    comment: '이 책에 대한 나의 생각...',
+  },
+  {
+    id: '4',
+    title: '샘플 책 4',
+    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
+    comment: '이 책에 대한 나의 생각...',
+  },
+  {
+    id: '5',
+    title: '샘플 책 5',
+    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
+    comment: '이 책에 대한 나의 생각...',
+  },
+  {
+    id: '6',
+    title: '샘플 책 6',
+    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
+    comment: '이 책에 대한 나의 생각...',
+  },
+  {
+    id: '7',
+    title: '샘플 책 7',
+    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
+    comment: '이 책에 대한 나의 생각...',
+  },
+  {
+    id: '8',
+    title: '샘플 책 8',
+    cover: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788947529877.jpg',
+    comment: '이 책에 대한 나의 생각...',
+  },
+  // ... 더 많은 책 데이터
+];
+---
+
+<section>
+  <h2 class="typo-headline-small">책장</h2>
+  <div class="books-grid">
+    {books.map(book => (
+      <div class="book-container">
+        <div class="book">
+          <div
+            class="book-cover">
+              <img src={book.cover} alt={book.title} />
+            </div>
+        </div>
+        <div class="book-info">
+          <h3>{book.title}</h3>
+          <p>{book.comment}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+
+  .books-grid {
+    display: grid;
+    gap: 4rem;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .books-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .book-container {
+    position: relative;
+    perspective: 1000px;
+  }
+
+  .book {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    transform-origin: left center;
+  }
+
+  @media (min-width: 768px) {
+    .book-container:hover .book {
+      transform: rotateY(-30deg) translateX(-6px);
+    }
+  }
+
+  .book-cover {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: rotateY(0);
+    backface-visibility: hidden;
+    aspect-ratio: 1/1.4;
+    overflow: hidden;
+    border-radius: 2px 6px 6px 2px;
+    box-shadow:
+      -5px 5px 15px rgba(0,0,0,0.2),
+      inset 0 0 100px rgba(255,255,255,0.2);
+  }
+
+  .book-cover:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, rgba(0,0,0,0.05) 7%, rgba(0,0,0,0.05) 8%, rgba(0,0,0,0) 8.1%),
+      linear-gradient(to right, rgba(0,0,0,0.0) 6.9%, rgba(0,0,0,0.05) 8%, rgba(0,0,0,0.05) 8.5%, rgba(0,0,0,0) 8.5%),
+      linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.1) 10%, rgba(255,255,255,0) 30%),
+      radial-gradient(
+        circle at 25% 25%,
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0)
+      ),
+      linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.1));
+  }
+  .dark .book-cover:after {
+    background:
+      linear-gradient(to right, rgba(0,0,0,0.05) 7%, rgba(0,0,0,0.05) 8%, rgba(0,0,0,0) 8.1%),
+      linear-gradient(to right, rgba(0,0,0,0.0) 6.9%, rgba(0,0,0,0.1) 8%, rgba(0,0,0,0.1) 8.5%, rgba(0,0,0,0) 8.5%),
+      linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.2) 10%, rgba(255,255,255,0) 30%),
+      linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.1));
+  }
+
+  .dark .book-cover img {
+    filter: brightness(0.5);
+  }
+
+  .book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .book-info {
+    display: none;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .book-info {
+      position: absolute;
+      left: 150px;
+      top: 0;
+      width: 200px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .book-container:hover .book-info {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .book-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .book-info {
+      display: block;
+      flex: 1;
+    }
+  }
+</style>
