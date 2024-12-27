@@ -6,14 +6,15 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import { languageTag } from '@/i18n/paraglide/runtime';
 import FormattedDate from '@/components/FormattedDate.astro';
 import Gadgets from '@/components/now/Gadgets.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const now = await getCollection('now');
 const nowContent = now.find((item) => item.id === languageTag());
-
 const { Content } = await render(nowContent as CollectionEntry<'now'>);
+const nowOgImage = getRelativeLocaleUrl(languageTag(), '/open-graph/now.png').slice(0, -1);
 ---
 
-<Layout title={m.now()}>
+<Layout title={m.now()} ogImage={nowOgImage}>
 
   <div class="container flex flex-col gap-24 min-h-screen mb-24">
     <section>
