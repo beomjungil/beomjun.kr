@@ -2,6 +2,7 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "name": "ギル・ボムジュン",
   "shortname": "ボムジュン",
+  "description": "はじめまして。私は現在カンナムオンニでエンジニアとして働いています。",
   "greeting": "初めまして<span role=\"img\" aria-label=\"wave\" class=\"font-emoji emoji\">👋</span>　私は<a href=\"https://www.gangnamunni.com/jp\" class=\"text-accent link\" target=\"_blank\">カンナムオンニ</a>でエンジニアとして働いています。",
   "present": "現在",
   "about": "紹介",
@@ -33,6 +34,7 @@
   "tags": "タグ",
 
   "__now__": "now page translation",
+  "nowDescription": "今の私は...",
   "bookshelf": "本棚",
   "gadgets": "飾り棚",
   "gadgetsDescription": "はい、私はAppleそのものです。"

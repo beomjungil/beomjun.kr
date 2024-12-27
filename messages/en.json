@@ -2,6 +2,7 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "name": "Beomjun Gil",
   "shortname": "Beomjun",
+  "description": "Hi! I’m a software engineer at UNNI in Seoul, South Korea. ",
   "greeting": "Hey<span role=\"img\" aria-label=\"wave\" class=\"font-emoji emoji\">👋</span> I’m a software engineer at <a href=\"https://unni.global/\" class=\"text-accent link\" target=\"_blank\">UNNI</a> in Seoul, South Korea. ",
   "present": "Present",
   "about": "About",
@@ -33,6 +34,7 @@
   "tags": "Tags",
 
   "__now__": "now page translation",
+  "nowDescription": "At this moment, I’m...",
   "bookshelf": "Bookshelf",
   "gadgets": "Gadgets",
   "gadgetsDescription": "Yes, I’m Apple to the core."

@@ -14,7 +14,7 @@ const { Content } = await render(nowContent as CollectionEntry<'now'>);
 const nowOgImage = getRelativeLocaleUrl(languageTag(), '/open-graph/now.png').slice(0, -1);
 ---
 
-<Layout title={m.now()} ogImage={nowOgImage}>
+<Layout title={m.now()} ogImage={nowOgImage} description={m.nowDescription()}>
 
   <div class="container flex flex-col gap-24 min-h-screen mb-24">
     <section>

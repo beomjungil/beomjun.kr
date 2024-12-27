@@ -2,6 +2,7 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "name": "길범준",
   "shortname": "길범준",
+  "description": "반가워요. 저는 현재 강남언니 팀에서 소프트웨어 엔지니어로 일하고 있어요.",
   "greeting": "반가워요<span role=\"img\" aria-label=\"wave\" class=\"font-emoji emoji\">👋</span> 저는 현재 <a href=\"https://team.gangnamunni.com/\" class=\"text-accent link\" target=\"_blank\">강남언니 팀</a>에서 소프트웨어 엔지니어로 일하고 있어요.",
   "present": "현재",
   "about": "소개",
@@ -33,6 +34,7 @@
   "tags": "태그",
 
   "__now__": "지금 페이지용 번역",
+  "nowDescription": "저는 지금 말이죠...",
   "bookshelf": "책장",
   "gadgets": "진열장",
   "gadgetsDescription": "네, 맞아요. 저는 Apple 인간입니다."

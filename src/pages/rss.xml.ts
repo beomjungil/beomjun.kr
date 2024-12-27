@@ -8,10 +8,10 @@ export async function GET(context: APIContext) {
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    site: context.site ?? 'https://your-site.com',
+    site: context.site ?? 'https://beomjun.kr',
     items: posts.map((post) => ({
       ...post.data,
-      link: `/blog/${post.id}/`,
+      link: `/writing/${post.id}/`,
     })),
   });
 }
