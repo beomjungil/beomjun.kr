@@ -3,42 +3,49 @@
     "title": "안티프래질",
     "cover": "/content/book/images/ko-antifragile.jpg",
     "author": "나심 니콜라스 탈레브",
+    "link": "https://www.google.co.kr/books/edition/%EC%95%88%ED%8B%B0%ED%94%84%EB%9E%98%EC%A7%88_Antifragile/8S5YAQAAQBAJ",
     "comment": ""
   },
   {
     "title": "성과를 내려면 실행하라",
     "cover": "/content/book/images/ko-Disciplines.jpg",
     "author": "크리스 맥체스니, 숀 코비, 짐 헐링",
+    "link": "https://www.google.co.kr/books/edition/%EC%84%B1%EA%B3%BC%EB%A5%BC_%EB%82%B4%EA%B3%A0_%EC%8B%B6%EC%9C%BC%EB%A9%B4_%EC%8B%A4%ED%96%89%ED%95%98%EB%9D%BC/svXzCwAAQBAJ",
     "comment": ""
   },
   {
     "title": "제로 투 원",
     "cover": "/content/book/images/ko-zero-to-one.jpg",
     "author": "피터 틸, 블레이크 매스터스",
+    "link": "https://www.google.co.kr/books/edition/%EC%A0%9C%EB%A1%9C_%ED%88%AC_%EC%9B%90/801xDwAAQBAJ",
     "comment": ""
   },
   {
     "title": "임파워드",
     "cover": "/content/book/images/ko-empowered.jpg",
     "author": "마티 케이건, 크리스 존스",
+    "link": "https://www.google.co.kr/books/edition/%EC%9E%84%ED%8C%8C%EC%9B%8C%EB%93%9C/GMTxEAAAQBAJ",
     "comment": ""
   },
   {
     "title": "에픽테토스의 인생을 바라보는 지혜",
     "cover": "/content/book/images/ko-Epictetus.jpg",
     "author": "에픽테토스",
+    "link": "https://www.google.co.kr/books/edition/%EC%97%90%ED%94%BD%ED%85%8C%ED%86%A0%EC%8A%A4%EC%9D%98_%EC%9D%B8%EC%83%9D%EC%9D%84_%EB%B0%94%EB%9D%BC%EB%B3%B4/s5jcDwAAQBAJ",
     "comment": ""
   },
   {
     "title": "명상록",
     "cover": "/content/book/images/ko-HEAUTON.jpg",
     "author": "마르쿠스 아우렐리우스",
+    "link": "https://www.google.co.kr/books/edition/_/plpUDwAAQBAJ?hl=ko&sa=X&ved=2ahUKEwiF0s6gjMiKAxVVi68BHS6BG9kQre8FegUIBRCFAw",
     "comment": ""
   },
   {
     "title": "Manager's Path (개발 7년차, 매니저 1일차)",
     "cover": "/content/book/images/managers-path.jpg",
     "author": "카미유 푸르니에",
+    "link": "https://www.google.co.kr/books/edition/%EA%B0%9C%EB%B0%9C_7%EB%85%84%EC%B0%A8_%EB%A7%A4%EB%8B%88%EC%A0%80_1%EC%9D%BC%EC%B0%A8/Qbf_DwAAQBAJ",
     "comment": ""
   }
 ]

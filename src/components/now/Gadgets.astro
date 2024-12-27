@@ -13,28 +13,34 @@ const gadgets = {
   ja,
 };
 const language = languageTag();
-const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/images/*.{jpeg,jpg,png,gif}');
+const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/images/*.{jpeg,jpg,png,webp}');
 ---
 
 <section>
-  <h2 class="typo-headline-small">
+  <h2 class="typo-headline-small" id="gadgets">
     {m.gadgets()}
+    <span class="opacity-50">{m.gadgetsDescription()}</span>
   </h2>
 
   <div class="gadget-grid">
     {gadgets[language].map(gadget => (
       <div class="gadget-container">
         <div class="gadget">
-          <div
-            class="cover"
-          >
-              <Image width={256} height={256} src={images[gadget.image]()} alt={gadget.title} />
+          <div class="face left"/>
+          <div class="face bottom"/>
+          <div class="face front">
+            <div
+              class="cover"
+            >
+                <Image width={256} height={256} src={images[gadget.image]()} alt={gadget.title} />
+            </div>
           </div>
         </div>
         <div class="info">
           <div class="info-placeholder"/>
           <div class="info-content">
             <h3 class="typo-headline-small">{gadget.title}</h3>
+            <p class="typo-headline-small opacity-50">{gadget.manufacturer}</p>
             <p class="typo-body-small">{gadget.comment}</p>
           </div>
         </div>
@@ -56,6 +62,22 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
     .gadget-grid {
       grid-template-columns: repeat(3, 1fr);
     }
+
+    .gadget:hover {
+      transform: rotate3d(1,0.1,-0.5,30deg) translate(-4px, 22px);
+      box-shadow:
+        -8px 5px 15px rgba(0,0,0,0.15),
+        inset 0 0 30px rgba(0,0,0,0.05);
+    }
+
+    .gadget:hover  {
+      z-index: 20;
+    }
+
+    .face.bottom,
+    .face.left {
+      display: block;
+    }
   }
 
   .gadget-container {
@@ -67,11 +89,13 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
     user-select: none;
     perspective: 2000px;
     box-shadow:
-      -2px 2px 5px rgba(0,0,0,0.1),
-      inset 0 0 30px rgba(0,0,0,0.05);
+      0 5px 15px rgba(0,0,0,0.2),
+      inset 0 0 100px rgba(255,255,255,0.2);
     max-width: 25vw;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     transform-style: preserve-3d;
+    aspect-ratio: 1/1;
+    width: 100%;
   }
 
   html.dark .gadget::after {
@@ -83,38 +107,16 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
     );
   }
 
-
-  .gadget:hover {
-    transform: rotate3d(1, 1, 1, 15deg);
-    box-shadow:
-      -8px 5px 15px rgba(0,0,0,0.15),
-      inset 0 0 30px rgba(0,0,0,0.05);
-  }
-
-  .gadget:hover  {
-    z-index: 20;
-  }
-
-  @media (max-width: 768px) {
-    .gadget-container .gadget.opened {
-      transform: rotate3d(0, 1, 0.2, 15deg);
-    }
-  }
-
   .cover {
     position: relative;
     width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
     transform-origin: top;
     backface-visibility: hidden;
-    aspect-ratio: 1/1;
     overflow: hidden;
-    border-radius: 3px;
     background-color: #ffffff;
-    box-shadow:
-      0 5px 15px rgba(0,0,0,0.2),
-      inset 0 0 100px rgba(255,255,255,0.2);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
@@ -148,13 +150,64 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
     z-index: -1;
     display: flex;
     justify-content: space-between;
-    padding-top: 1rem;
   }
 
   .info-placeholder, .info-content {
     flex: 1;
   }
 
+  .face {
+    inset: 0;
+    position: absolute;
+  }
+
+  .front {
+    width: 100%;
+    height: 100%;
+    transform: translateZ(4.6875rem);
+  }
+
+  .left {
+    display: none;
+    width: 50%;
+    height: 100%;
+    transform: rotateY(-90deg) translateZ(38px) translateX(41px);
+    background: #e8e8e8;
+  }
+
+  .bottom {
+    display: none;
+    width: 100%;
+    height: 50%;
+    transform: rotateX(-90deg) translateY(-36px) translateZ(111px);
+    background: #e0e0e0;
+  }
+
+  html.dark .cover {
+    background: #2a2a2a;
+    box-shadow:
+      1px 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  html.dark .cover:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle at 25% 25%,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0)
+      ),
+      linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.05));
+  }
+
+  html.dark .face.left {
+    background: #252525;
+  }
+
+  html.dark .face.bottom {
+    background: #222222;
+  }
 
   @media (min-width: 768px) {
     .info {
@@ -203,7 +256,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
   @media (max-width: 767px) {
     .gadget-container {
       display: flex;
-      align-itrems: center;
+      align-items: center;
       gap: 1rem;
     }
 
