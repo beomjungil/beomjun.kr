@@ -22,7 +22,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/book/image
   </h2>
   <div class="books-grid">
     {books[language].map(book => (
-      <a class="book-container block" href={book.link} target="_blank">
+      <a class="book-container block no-prose" href={book.link} target="_blank">
         <div class="book">
           <div class="book-page"/>
           <div

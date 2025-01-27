@@ -197,19 +197,19 @@ const isMainPage = ['/', '/ja', '/en'].includes(pathname);
 function initializeHeader() {
   const popover = document.querySelector("#nav") as HTMLElement;
   const hider = popover.querySelector(".hider");
-  
+
   if (popover && hider) {
     let startY = 0;
     let currentY = 0;
     let distance = 0;
 
     const reset = () => {
-      document.documentElement.dataset.complete = "false"; 
+      document.documentElement.dataset.complete = "false";
       document.documentElement.style.setProperty("--complete", "0");
       popover.style.setProperty("--ty", "0");
     };
 
-    const closeWithAnimation = async () => {      
+    const closeWithAnimation = async () => {
       document.documentElement.dataset.complete = "true";
       document.documentElement.style.setProperty("--complete", "1");
       popover.style.setProperty("--ty", "480");
@@ -218,7 +218,7 @@ function initializeHeader() {
         popover.hidePopover();
       }, 420);
     };
-    hider.addEventListener("pointerdown", (e) => {      
+    hider.addEventListener("pointerdown", (e) => {
       e.preventDefault();
       startY = (e as PointerEvent).clientY;
       distance = popover.offsetHeight;
@@ -231,16 +231,16 @@ function initializeHeader() {
 
       currentY = Math.max(0, e.clientY - startY);
       const progress = currentY / distance;
-      
+
       document.documentElement.style.setProperty("--complete", progress.toString());
       popover.style.setProperty("--ty", currentY.toString());
     });
 
     window.addEventListener("pointerup", async () => {
       if (document.documentElement.dataset.dragging !== "true") return;
-      
+
       document.documentElement.dataset.dragging = "false";
-      
+
       if (currentY > distance * 0.4) {
         closeWithAnimation();
       } else {
@@ -260,7 +260,7 @@ function initializeHeader() {
     window.addEventListener("resize", () => {
       if (popover.matches(":popover-open")) popover.hidePopover();
       document.documentElement.dataset.resizing = "true";
-      
+
       if (resizeTimeout) clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         document.documentElement.dataset.resizing = "false";

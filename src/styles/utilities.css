@@ -1,0 +1,23 @@
+@utility break-anywhere {
+  overflow-wrap: anywhere;
+}
+
+@utility auto-phrase {
+  word-break: auto-phrase;
+}
+
+@utility vt-name-* {
+  view-transition-name: --value([*]);
+}
+
+@utility container {
+  max-width: 38rem;
+  padding-inline: 1rem;
+  margin-inline: auto;
+}
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  .emoji {
+    font-weight: 400;
+  }
+}

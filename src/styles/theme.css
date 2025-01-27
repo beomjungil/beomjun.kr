@@ -1,0 +1,53 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-foreground: oklch(18.18% 0.002 106.6);
+  --color-background: oklch(98.67% 0.0106 100.82);
+  --color-accent: oklch(58.13% 0.2127 33.31);
+  --color-surface: oklch(100% 0 0);
+}
+
+.dark {
+  --color-foreground: oklch(98.67% 0.0106 100.82);
+  --color-background: oklch(19.08% 0.002 106.59);
+  --color-accent: oklch(65.59% 0.2327 34.52);
+  --color-surface: oklch(0% 0 0);
+}
+
+@theme {
+  --color-*: initial;
+
+  --font-sans:
+    "Pretendard JP Variable",
+    ui-sans-serif,
+    system-ui,
+    sans-serif,
+    "Noto Emoji",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-serif:
+    "Noto Serif KR",
+    "Noto Serif JP",
+    ui-serif,
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif;
+  --font-mono:
+    "Commit Mono",
+    ui-monospace,
+    monospace;
+  --font-emoji:
+    "Noto Emoji",
+    ui-monospace,
+    monospace;
+
+  --color-foreground: var(--color-foreground);
+  --color-background: var(--color-background);
+  --color-accent: var(--color-accent);
+  --color-surface: var(--color-surface);
+  --color-white: #fff;
+}

@@ -32,7 +32,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/people/ima
           <div class="w-[24px] h-[24px] rounded-full overflow-hidden bg-gray-200">
             <Image width={24} height={24} class="rounded-full" src={images[person.image]()} alt={person.name} />
           </div>
-          <a href={person.url} target="_blank">
+          <a href={person.url} class="no-prose" target="_blank">
             {person.name}
           </a>
         </div>

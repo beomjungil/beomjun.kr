@@ -1,0 +1,22 @@
+@layer base {
+  em {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  a:not(.no-prose), .link {
+    color: var(--color-foreground);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: --alpha(var(--color-foreground) / 20%);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  a:not(.no-prose):hover, .link:hover {
+    text-decoration-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}

@@ -1,0 +1,130 @@
+@import "./typography.css";
+
+.prose {
+  user-select: text;
+}
+
+.prose > h1:not(.no-prose) {
+  @apply typo-headline-large;
+  margin: 2em 0 1em;
+}
+
+.prose > h2:not(.no-prose) {
+  @apply typo-headline-small;
+  margin: 2em 0 1em;
+}
+
+.prose > h3:not(.no-prose) {
+  @apply typo-body-large;
+  margin: 2em 0 1em;
+}
+
+.prose > h4:not(.no-prose) {
+  @apply typo-body-large;
+  margin: 2em 0 1em;
+}
+
+.prose > h5:not(.no-prose) {
+  @apply typo-body-large;
+  font-weight: 700;
+  margin: 2em 0 1em;
+}
+
+.prose > h6:not(.no-prose) {
+  @apply typo-body-large;
+  font-weight: 700;
+  margin: 2em 0 1em;
+}
+
+.prose > p:not(.no-prose) {
+  @apply typo-body-large;
+  margin: 1em 0 1em;
+  text-underline-offset: 0.2em;
+}
+
+.prose:not(.no-initial) > p:first-of-type::first-letter {
+  color: var(--color-accent);
+  font-weight: 700;
+  float: left;
+  font-size: 3rem;
+  line-height: 1;
+  margin-right: 0.5rem;
+}
+
+
+.prose > ol {
+  list-style: decimal;
+  margin: 1em 0 1em 1.5em;
+}
+
+.prose > ul {
+  list-style: disc;
+  margin: 1em 0 1em 1.25em;
+}
+
+.prose > ul ::marker {
+  font-size: 0.8em;
+}
+
+.prose > ol li, .prose > ul li {
+  @apply typo-body-large;
+  margin: 0.3em 0;
+  text-underline-offset: 0.2em;
+}
+
+.prose > div.expressive-code {
+  margin: 2em 0;
+  font-family: var(--font-code);
+  font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "cv02", "cv03", "cv05", "cv10";
+}
+
+.prose > div.expressive-code .title {
+  color: --alpha(var(--color-foreground) / 70%);
+}
+
+.prose > .footnotes {
+  @apply typo-caption;
+  margin: 0.3em 0;
+  opacity: 0.5;
+  border-top: 1px solid currentColor;
+  padding-top: 1em;
+}
+
+.prose > .footnotes .data-footnote-backref {
+  font-family: var(--font-sans);
+}
+
+.prose > .footnotes ol {
+  list-style: decimal;
+  margin: 1em 0 1em 1.5em;
+}
+
+.prose > p kbd {
+  background-color: --alpha(var(--color-foreground) / 10%);
+  border-radius: 0.25em;
+  color: --alpha(var(--color-foreground) / 70%);
+  padding: 0.1em 0.3em;
+  font-size: 0.9em;
+}
+
+.prose > blockquote {
+  @apply typo-subtitle-large;
+  font-weight: 900;
+  text-align: center;
+  font-size: 1.75em;
+  text-wrap: balance;
+  margin: 1em 0;
+}
+
+.prose > blockquote cite {
+  @apply typo-caption;
+  font-size: 1rem;
+  display: block;
+  text-align: center;
+  font-style: normal;
+  margin: 1em 0 0;
+}
+
+.prose > p code {
+  font-size: 0.9em;
+}

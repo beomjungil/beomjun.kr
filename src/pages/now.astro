@@ -7,6 +7,7 @@ import { languageTag } from '@/i18n/paraglide/runtime';
 import FormattedDate from '@/components/FormattedDate.astro';
 import Gadgets from '@/components/now/Gadgets.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import '@/styles/prose.css';
 
 const now = await getCollection('now');
 const nowContent = now.find((item) => item.id === languageTag());

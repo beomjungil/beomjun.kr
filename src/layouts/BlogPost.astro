@@ -4,7 +4,8 @@ import BaseHead from '@/components/BaseHead.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import * as m from '@/i18n/paraglide/messages';
 import Layout from '@/layouts/Layout.astro';
-import { languageTag } from '@/i18n/paraglide/runtime';
+import Emoji from '@/components/Emoji.astro';
+import '@/styles/prose.css';
 
 type Props = CollectionEntry<'blog'>['data'] & {
   isDefaultLanguage?: boolean;
@@ -17,7 +18,7 @@ const { title, description, pubDate, updatedDate, tags, isDefaultLanguage } = As
 	<Fragment slot="head">
 		<BaseHead title={title} description={description} />
 	</Fragment>
-  <article class="prose container" lang={isDefaultLanguage ? 'ko' : undefined}>
+  <article class="container" lang={isDefaultLanguage ? 'ko' : undefined}>
       <div>
         <div>
           <h1 class="typo-headline-small vt-name-[title] title">{title}</h1>
@@ -39,8 +40,10 @@ const { title, description, pubDate, updatedDate, tags, isDefaultLanguage } = As
 
       {
         isDefaultLanguage && (
-          <aside class="bg-foreground/10 rounded-lg p-4 mb-8 [&:lang(en)]:text-balance">
-            <p class="mb-2 typo-headline-small">{m.translationPendingTitle()}</p>
+          <aside class="border-l-4 border-foreground/10 pl-4 py-2 mb-8 [&:lang(en)]:text-balance">
+            <p class="mb-2 typo-headline-small">
+              {m.translationPendingTitle()}
+            </p>
             <p>{m.translationPendingDescription()}</p>
           </aside>
         )

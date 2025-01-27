@@ -1,32 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "./theme.css";
+@import "./utilities.css";
+@import "./typography.css";
+@import "./base.css";
 
-.break-anywhere {
-  overflow-wrap: anywhere;
-}
-
-html {
-  font-size: 16px;
-  font-feature-settings: "calt", "ss01", "ss02", "ss03", "ss15", "ss11";
-}
-
-.prose {
-  user-select: text;
-}
-
-html:lang(ja) .auto-phrase,
-*:lang(ja) .auto-phrase,
-*:lang(ja).auto-phrase {
-  word-break: auto-phrase;
-}
-
-html[lang="ko"] .typo-headline-small,
-html[lang="ko"] .typo-headline-large,
-html[lang="ko"] .typo-subtitle-large,
-html[lang="ko"] .typo-subtitle-small {
-  text-wrap: balance;
-}
 
 ::view-transition-new(name),
 ::view-transition-old(name),
@@ -207,10 +184,4 @@ html[lang="ko"] .typo-subtitle-small {
 
 .gradient-blur-overlay {
   background: linear-gradient(to bottom, rgba(var(--color-background), 1), rgba(var(--color-background), 0.5) 10%, rgba(var(--color-background), 0));
-}
-
-@supports (font: -apple-system-body) and (-webkit-appearance: none) {
-  .emoji {
-    font-weight: 400;
-  }
 }

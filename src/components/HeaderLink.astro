@@ -18,6 +18,6 @@ const newHref = getRelativeLocaleUrl(
 );
 ---
 
-<a href={newHref} class:list={['typo-headline-small hover:!text-foreground transition-colors duration-200', className, {'!text-foreground': isMainPage || isActive, '!text-foreground/50': !(isActive || isMainPage)}]} {...props}>
+<a href={newHref} class:list={['typo-headline-small no-prose hover:!text-foreground transition-colors duration-200', className, {'!text-foreground': isMainPage || isActive, '!text-foreground/50': !(isActive || isMainPage)}]} {...props}>
 	<slot />
 </a>

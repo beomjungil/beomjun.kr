@@ -1,6 +1,5 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import paraglide from '@inlang/paraglide-astro';
@@ -8,6 +7,7 @@ import expressiveCode from 'astro-expressive-code';
 import pageInsight from 'astro-page-insight';
 import { defineConfig } from 'astro/config';
 import fs from 'node:fs';
+import tailwindcss from '@tailwindcss/vite';
 
 function rawFonts(ext: string[]) {
   return {
@@ -30,7 +30,7 @@ export default defineConfig({
     svg: true,
   },
   vite: {
-    plugins: [rawFonts(['.otf'])],
+    plugins: [rawFonts(['.otf']), tailwindcss()],
   },
   prefetch: true,
   site: 'https://beomjun.kr',
@@ -75,9 +75,6 @@ export default defineConfig({
     }),
     mdx(),
     sitemap(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
     pageInsight(),
     paraglide({
       project: './project.inlang',

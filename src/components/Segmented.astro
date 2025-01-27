@@ -29,7 +29,7 @@ const { options, name, defaultValue, iconOnly = false, class: className = '' } =
           <div
             style={`--index: ${index}; --name: ${name}`}
             aria-label={option.label}
-            class:list={['translate-x-[calc(100%*var(--index))]', `vt-name-[var(--name)]`, 'px-4 flex -my-1 py-1 bg-surface w-full md:w-fit items-center text-center justify-center gap-2 rounded-full text-foreground']}
+            class:list={['translate-x-[calc(100%*var(--index))]', `vt-name-[var(--name)]`, 'whitespace-nowrap px-4 flex -my-1 py-1 bg-surface w-full md:w-fit items-center text-center justify-center gap-2 rounded-full text-foreground']}
             tabindex="-1"
           >
             {option.icon && <div class="opacity-0" set:html={option.icon({ class: 'size-4' })} />}
@@ -46,7 +46,7 @@ const { options, name, defaultValue, iconOnly = false, class: className = '' } =
       <li>
         <button
           data-segment-value={option.value}
-          class:list={['flex w-full md:w-fit -my-1 py-1 px-4 cursor-pointer items-center justify-center text-center gap-2']}
+          class:list={['flex w-full md:w-fit whitespace-nowrap -my-1 py-1 px-4 cursor-pointer items-center justify-center text-center gap-2']}
           aria-label={option.label}
           data-active={option.value === defaultValue ? 'true' : 'false'}
         >
