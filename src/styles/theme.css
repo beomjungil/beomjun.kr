@@ -28,8 +28,8 @@
     "Segoe UI Symbol",
     "Noto Color Emoji";
   --font-serif:
-    "Noto Serif KR",
-    "Noto Serif JP",
+    var(--font-noto-serif-kr, ''),
+    var(--font-noto-serif-jp, ''),
     ui-serif,
     Georgia,
     Cambria,
@@ -37,11 +37,11 @@
     Times,
     serif;
   --font-mono:
-    "Commit Mono",
+    var(--font-commit-mono, ''),
     ui-monospace,
     monospace;
   --font-emoji:
-    "Noto Emoji",
+    var(--font-noto-emoji, ''),
     ui-monospace,
     monospace;
 

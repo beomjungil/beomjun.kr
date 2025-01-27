@@ -3,6 +3,8 @@ import * as m from '@/i18n/paraglide/messages';
 import { languageTag } from '@/i18n/paraglide/runtime';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { SITE_DESCRIPTION } from '@/consts';
+import { AstroFont } from 'astro-font';
+import { join } from 'node:path';
 
 interface Props {
   title?: string;
@@ -22,15 +24,6 @@ const { title, description, image } = Astro.props;
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="mask-icon" href="/favicon.svg" color="#000000" />
 
-<!-- Font preloads -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-{
-  language === 'ja' ?
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&family=Noto+Serif+JP:wght@400..900&display=swap" rel="stylesheet" />
-  :
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&family=Noto+Serif+KR:wght@400..900&display=swap" rel="stylesheet" />
-}
 <link
   rel="preload"
   href="/fonts/pretendard/pretendard.css"
@@ -40,6 +33,53 @@ const { title, description, image } = Astro.props;
 <noscript>
   <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
 </noscript>
+<AstroFont
+config={[
+  {
+    src: [],
+    name: "Noto Emoji",
+    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&display=swap',
+    preload: false,
+    display: "swap",
+    cssVariable: "font-noto-emoji",
+    fallback: "sans-serif",
+  },
+  language === 'ja'
+  ? {
+    src: [],
+    name: "Noto Serif JP",
+    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400..900&display=swap',
+    preload: true,
+    display: "swap",
+    cssVariable: "font-noto-serif-jp",
+    fallback: "serif",
+  }
+  : {
+    src: [],
+    name: "Noto Serif KR",
+    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400..900&display=swap',
+    preload: true,
+    display: "swap",
+    cssVariable: "font-noto-serif-kr",
+    fallback: "serif",
+  },
+  {
+    name: "Commit Mono",
+    src: [
+      {
+        style: 'normal',
+        weight: '400',
+        path: join(process.cwd(), 'public', 'fonts', 'commit-mono', 'CommitMonoV143-VF.woff2')
+      },
+    ],
+    preload: false,
+    display: "swap",
+    cssVariable: "font-commit-mono",
+    fallback: "monospace",
+  },
+]}
+/>
+
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

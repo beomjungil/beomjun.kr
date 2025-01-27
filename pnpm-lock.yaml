@@ -50,6 +50,9 @@ importers:
       astro-expressive-code:
         specifier: ^0.38.3
         version: 0.38.3(astro@5.1.9(@types/node@18.19.64)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.27.2)(typescript@5.6.3)(yaml@2.6.0))
+      astro-font:
+        specifier: ^1.0.0
+        version: 1.0.0
       astro-page-insight:
         specifier: ^0.9.0
         version: 0.9.0(astro@5.1.9(@types/node@18.19.64)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.27.2)(typescript@5.6.3)(yaml@2.6.0))(typescript@5.6.3)
@@ -1620,6 +1623,9 @@ packages:
     resolution: {integrity: sha512-Tvdc7RV0G92BbtyEOsfJtXU35w41CkM94fOAzxbQP67Wj5jArfserJ321FO4XA7WG9QMV0GIBmQq77NBIRDzpQ==}
     peerDependencies:
       astro: ^4.0.0-beta || ^5.0.0-beta || ^3.3.0
+
+  astro-font@1.0.0:
+    resolution: {integrity: sha512-g0Oobl1oBg/GHaAzA2HdIWjbQic19wfSswHvBO+N+wKgWCfCjh0ANiOA3UBzMgUHJ67wqfoM4NZTq9+parkhOw==}
 
   astro-integration-kit@0.16.1:
     resolution: {integrity: sha512-N/iam0PAFrRT9azYZqscP1HowQhC77Dwlp912P0/72k+kwUVgO3m73F26XXukHYoZBsrHgrUrfsWBxuCH3kEUg==}
@@ -5754,6 +5760,8 @@ snapshots:
     dependencies:
       astro: 5.1.9(@types/node@18.19.64)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.27.2)(typescript@5.6.3)(yaml@2.6.0)
       rehype-expressive-code: 0.38.3
+
+  astro-font@1.0.0: {}
 
   astro-integration-kit@0.16.1(astro@5.1.9(@types/node@18.19.64)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.27.2)(typescript@5.6.3)(yaml@2.6.0)):
     dependencies:
