@@ -36,36 +36,12 @@ const { title, description, image } = Astro.props;
       <noscript>
         <link rel="stylesheet" href="/fonts/pretendard-jp/pretendard.css">
       </noscript>
-    </>
-  : <>
-      <link
-        rel="preload"
-        href="/fonts/pretendard-kr/pretendard-subset.woff2"
-        as="font"
-        type="font/woff2"
-        crossorigin
-      />
-      <style>
-        @font-face{font-family:'Pretendard Variable';font-weight:45 920;font-style:normal;font-display:swap;src:url('/fonts/pretendard-kr/pretendard-subset.woff2') format('woff2-variations')}
-      </style>
-    </>
-}
 <AstroFont
 config={[
-  language === 'ja'
-  ? {
+  {
     src: [],
     name: "Noto Serif JP",
     googleFontsURL: 'https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400..900&display=swap',
-    preload: true,
-    display: "swap",
-    cssVariable: "font-noto-serif",
-    fallback: "serif",
-  }
-  : {
-    src: [],
-    name: "Noto Serif KR",
-    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400..900&display=swap',
     preload: true,
     display: "swap",
     cssVariable: "font-noto-serif",
@@ -76,7 +52,7 @@ config={[
     src: [
       {
         style: 'normal',
-        weight: '400',
+        weight: '400 800',
         path: join(process.cwd(), 'public', 'fonts', 'commit-mono', 'CommitMonoV143-VF.woff2')
       },
     ],
@@ -87,7 +63,36 @@ config={[
   },
 ]}
 />
-
+    </>
+  : <>
+      <link
+        rel="preload"
+        href="/fonts/pretendard-kr/pretendard-subset.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin
+      />
+      <link
+        rel="preload"
+        href="/fonts/noto-serif-kr/noto-serif-subset.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin
+      />
+      <link
+        rel="preload"
+        href="/fonts/commit-mono/CommitMonoV143-VF.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin
+      />
+      <style>
+        @font-face{font-family:'Pretendard Variable';font-weight:45 920;font-style:normal;font-display:swap;src:url('/fonts/pretendard-kr/pretendard-subset.woff2') format('woff2-variations')}
+        @font-face{font-family:'Noto Serif KR';font-weight:45 900;font-style:normal;font-display:swap;src:url('/fonts/noto-serif-kr/noto-serif-subset.woff2') format('woff2-variations')}
+        @font-face{font-family:'Commit Mono';font-weight:45 900;font-style:normal;font-display:swap;src:url('/fonts/commit-mono/CommitMonoV143-VF.woff2') format('woff2-variations')}
+      </style>
+    </>
+}
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

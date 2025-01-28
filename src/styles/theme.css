@@ -20,10 +20,14 @@
 
 :lang(ko) {
   --font-pretendard: "Pretendard Variable";
+  --font-noto-serif: "Noto Serif KR";
+  --font-commit-mono: "Commit Mono";
 }
 
 :lang(en) {
   --font-pretendard: "Pretendard Variable";
+  --font-noto-serif: "Noto Serif KR";
+  --font-commit-mono: "Commit Mono"
 }
 
 @theme {
