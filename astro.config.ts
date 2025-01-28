@@ -71,6 +71,7 @@ export default defineConfig({
           inlineButtonBackground: 'var(--color-background)',
         },
       },
+      // @ts-expect-error wrong type
       plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
     }),
     mdx(),
