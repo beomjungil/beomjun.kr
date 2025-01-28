@@ -20,12 +20,12 @@ const { options, name, defaultValue, iconOnly = false, class: className = '' } =
 
   <div
     aria-hidden="true"
-    class:list={["w-full p-2 pointer-events-none md:w-fit duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] transition-all absolute inset-0"]}
+    class:list={["w-full p-1 pointer-events-none md:w-fit duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] transition-all absolute inset-0"]}
   >
-    <ul class="flex md:w-fit w-full">
+    <ul class="flex md:w-fit w-full h-full">
       {options.map((option, index) => (
         option.value === defaultValue ? (
-        <li>
+        <li class="h-full flex items-center justify-center flex-1 md:flex-none">
           <div
             style={`--index: ${index}; --name: ${name}`}
             aria-label={option.label}
@@ -41,12 +41,12 @@ const { options, name, defaultValue, iconOnly = false, class: className = '' } =
     </ul>
   </div>
 
-  <ul class="flex md:w-fit w-full p-2 relative z-10 vt-name-[var(--name)]" style={`--name: segmented-${name}`}>
+  <ul class="flex md:w-fit w-full p-1 relative z-10 vt-name-[var(--name)]" style={`--name: segmented-${name}`}>
     {options.map((option) => (
       <li class="flex-1 md:flex-none">
         <button
           data-segment-value={option.value}
-          class:list={['flex w-full md:w-fit whitespace-nowrap -my-1 py-1 px-4 cursor-pointer items-center justify-center text-center gap-2']}
+          class:list={['flex w-full md:w-fit whitespace-nowrap -my-1 py-2 px-4 cursor-pointer items-center justify-center text-center gap-2']}
           aria-label={option.label}
           data-active={option.value === defaultValue ? 'true' : 'false'}
         >
