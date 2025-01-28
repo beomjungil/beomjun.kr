@@ -38,9 +38,10 @@ const posts = (await getCollection('blog'))
     <ul class="space-y-6 mt-8">
       {
         posts.map((post, index) => (
-          <li class="post-item" style={`--sibling-index: ${index}`}>
-            <I18NLink class="flex no-prose justify-between align-top" href={`/writing/${post.id}/`}>
+          <li class="post-item group" style={`--sibling-index: ${index}`}>
+            <I18NLink class="flex no-prose justify-between items-center gap-x-4 group-hover:bg-foreground/5 transition-colors duration-300 -m-2 p-2 rounded-md" href={`/writing/${post.id}/`}>
               <h4 class="typo-headline-small">{post.data.title}</h4>
+              <div class="flex-1 h-px bg-transparent group-hover:bg-foreground/10 transition-colors duration-300"></div>
               <p class="date typo-caption">
                 <FormattedDate date={post.data.pubDate} />
               </p>

@@ -46,25 +46,25 @@ html {
   font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.5;
   letter-spacing: -0.03em;
   color: var(--color-foreground);
 }
 
-@utility typo-body-large {
+@utility typo-body {
   font-family: var(--font-serif);
   font-size: 0.925rem;
   font-weight: 450;
-  line-height: 1.7;
+  line-height: 2;
   letter-spacing: -0.02em;
   color: --alpha(var(--color-foreground) / 80%);
 }
 
-@utility typo-body-small {
-  font-family: var(--font-serif);
-  font-size: 0.925rem;
-  font-weight: 450;
-  line-height: 1.7;
+@utility typo-body-sans {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
   letter-spacing: -0.02em;
   color: --alpha(var(--color-foreground) / 80%);
 }

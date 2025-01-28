@@ -6,51 +6,41 @@
 
 .prose > h1:not(.no-prose) {
   @apply typo-headline-large;
-  margin: 2em 0 1em;
+  margin: 2em 0 0;
 }
 
 .prose > h2:not(.no-prose) {
   @apply typo-headline-small;
-  margin: 2em 0 1em;
+  margin: 2em 0 0;
 }
 
 .prose > h3:not(.no-prose) {
-  @apply typo-body-large;
-  margin: 2em 0 1em;
+  @apply typo-body;
+  margin: 2em 0 0;
 }
 
 .prose > h4:not(.no-prose) {
-  @apply typo-body-large;
-  margin: 2em 0 1em;
+  @apply typo-body;
+  margin: 2em 0 0;
 }
 
 .prose > h5:not(.no-prose) {
-  @apply typo-body-large;
+  @apply typo-body;
   font-weight: 700;
-  margin: 2em 0 1em;
+  margin: 2em 0 0;
 }
 
 .prose > h6:not(.no-prose) {
-  @apply typo-body-large;
+  @apply typo-body;
   font-weight: 700;
-  margin: 2em 0 1em;
+  margin: 2em 0 0;
 }
 
 .prose > p:not(.no-prose) {
-  @apply typo-body-large;
-  margin: 1em 0 1em;
+  @apply typo-body;
+  margin: 0.5em 0;
   text-underline-offset: 0.2em;
 }
-
-.prose:not(.no-initial) > p:first-of-type::first-letter {
-  color: var(--color-accent);
-  font-weight: 700;
-  float: left;
-  font-size: 3rem;
-  line-height: 1;
-  margin-right: 0.5rem;
-}
-
 
 .prose > ol {
   list-style: decimal;
@@ -67,7 +57,7 @@
 }
 
 .prose > ol li, .prose > ul li {
-  @apply typo-body-large;
+  @apply typo-body;
   margin: 0.3em 0;
   text-underline-offset: 0.2em;
 }
@@ -113,7 +103,7 @@
   text-align: center;
   font-size: 1.75em;
   text-wrap: balance;
-  margin: 1em 0;
+  margin: 2em 0;
 }
 
 .prose > blockquote cite {
@@ -127,4 +117,8 @@
 
 .prose > p code {
   font-size: 0.9em;
+}
+
+html .prose > *:first-child {
+  margin-top: 0;
 }

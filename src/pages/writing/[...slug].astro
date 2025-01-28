@@ -40,9 +40,9 @@ interface Props {
 }
 
 const { post, isDefaultLanguage } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
-<BlogPost {...post.data} isDefaultLanguage={isDefaultLanguage}>
+<BlogPost {...post.data} isDefaultLanguage={isDefaultLanguage} headings={headings}>
 	<Content />
 </BlogPost>

@@ -16,7 +16,7 @@ import Layout from '@/layouts/Layout.astro';
       <h1 class="typo-headline-small hidden vt-name-[title]">{m.name()}</h1>
       <h1 class="typo-headline-small vt-name-[name]">{m.name()}</h1>
       <h2 class="typo-subtitle-large mt-4" set:html={m.greeting()}></h2>
-      <p class="typo-body-large my-[1em] [&:lang(ko)]:text-balance">
+      <p class="typo-body my-[1em] [&:lang(ko)]:text-balance">
         {m.mainAboutMe()}
       </p>
     </section>

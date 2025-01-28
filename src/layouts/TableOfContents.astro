@@ -1,0 +1,74 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+---
+<aside class="fixed z-40 top-0 right-0 group/toc pt-12 lg:block hidden">
+<div class="absolute top-12 right-0 p-4 flex flex-col gap-2 items-end group-hover/toc:blur-lg group-hover/toc:opacity-0 group-hover/toc:pointer-events-none group-hover/toc:scale-125 origin-top-right transition-all duration-500">
+  {
+    (headings || []).map((heading, index) => heading.depth > 4 ? null : (
+      <div data-toc-id={heading.slug} data-current={index === 0 ? "true" : "false"} class="typo-caption w-(--depth) h-1 rounded-full bg-foreground/10 data-[current=true]:bg-accent transition-colors duration-300" style={`--depth: ${(5 - heading.depth) * 16}px`}></div>
+    ))
+  }
+</div>
+
+<div class="top-12 right-0 p-4 flex flex-col gap-1 scale-95 items-end opacity-0 pointer-events-none blur-lg group-hover/toc:blur-none group-hover/toc:pointer-events-auto group-hover/toc:opacity-100 group-hover/toc:scale-100 origin-top-right transition-all duration-500">
+  {
+    (headings || []).map((heading, index) => heading.depth > 4 ? null :(
+      <a data-toc-id={heading.slug} href={`#${heading.slug}`} class="no-prose flex items-center gap-1 group/toc-link hover:text-foreground typo-caption text-foreground/50 transition-colors duration-300 data-[current=true]:text-accent data-[current=true]:font-bold" data-current={index === 0 ? "true" : "false"}>
+        {heading.text}
+        <span class="h-1 rounded-full bg-foreground/10 h-px w-(--depth) whitespace-nowrap group-hover/toc-link:bg-foreground/80 transition-colors duration-300 group-data-[current=true]/toc-link:bg-accent"  style={`--depth: ${(5- heading.depth) * 16}px`}></span>
+      </a>
+    ))
+  }
+</div>
+</aside>
+
+<script>
+  let wrappingElement: Element | null;
+  let observeHeaderTags: IntersectionObserver;
+  let allHeaderTags: NodeListOf<Element>;
+
+  function setCurrent(e: IntersectionObserverEntry[]) {
+    const allSectionLinks = document.querySelectorAll("[data-toc-id]") as NodeListOf<HTMLAnchorElement>;
+    e.map((i) => {
+      if (i.isIntersecting === true) {
+        allSectionLinks.forEach((link) => link.dataset.current = "false");
+        const targetLinks = document.querySelectorAll(`[data-toc-id="${i.target.id}"]`) as NodeListOf<HTMLAnchorElement>;
+
+        if (targetLinks.length > 0) targetLinks.forEach((link) => link.dataset.current = "true");
+      }
+    });
+  }
+
+  function initTOC() {
+    wrappingElement = document.querySelector(".prose");
+    if (wrappingElement !== null) {
+      allHeaderTags = wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6");
+    }
+
+    // Intersection Observer Options
+    let options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "0px 0px -85% 0px",
+      threshold: [1],
+    };
+
+    observeHeaderTags = new IntersectionObserver(setCurrent, options);
+    if (wrappingElement === null) {
+      return;
+    }
+    allHeaderTags.forEach((tag) => {
+      tag.classList.add("scroll-mt-24");
+      observeHeaderTags.observe(tag);
+    });
+  }
+
+  initTOC();
+
+  document.addEventListener("astro:after-swap", initTOC);
+</script>
