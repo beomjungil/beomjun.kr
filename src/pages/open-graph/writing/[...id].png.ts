@@ -1,7 +1,7 @@
----
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import * as m from '@/i18n/paraglide/messages';
 import type { AvailableLanguageTag } from '@/i18n/paraglide/runtime';
+import { createOpenGraphImage } from '@/components/open-graph/base';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getPostStaticPaths(language: AvailableLanguageTag) {
   const posts = await getCollection('blog');
@@ -22,10 +22,11 @@ export async function getPostStaticPaths(language: AvailableLanguageTag) {
       return post.id.startsWith(`${language}-`);
     })
     .map((post) => ({
-      params: { slug: post.id.replace('ja-', '').replace('en-', '') },
+      params: {
+        id: post.id,
+      },
       props: {
         post,
-        isDefaultLanguage: language === 'ko' ? false : !post.id.match(/^(en|ja)-/),
       },
     }));
 }
@@ -34,15 +35,14 @@ export async function getStaticPaths() {
   return getPostStaticPaths('ko');
 }
 
-interface Props {
-  post: CollectionEntry<'blog'>;
-  isDefaultLanguage: boolean;
+export async function writingOpenGraph(lang: AvailableLanguageTag, post: CollectionEntry<'blog'>) {
+  return createOpenGraphImage({
+    title: post.data.title,
+    description: m.shortname({}, { languageTag: lang }),
+    lang,
+  });
 }
 
-const { post, isDefaultLanguage } = Astro.props;
-const { Content, headings } = await render(post);
----
-
-<BlogPost {...post.data} isDefaultLanguage={isDefaultLanguage} headings={headings} id={post.id}>
-	<Content />
-</BlogPost>
+export async function GET({ props }: { props: { post: CollectionEntry<'blog'> } }) {
+  return writingOpenGraph('ko', props.post);
+}

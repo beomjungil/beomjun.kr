@@ -7,16 +7,20 @@ import Layout from '@/layouts/Layout.astro';
 import '@/styles/prose.css';
 import type { MarkdownHeading } from 'astro';
 import TableOfContents from './TableOfContents.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { languageTag } from '@/i18n/paraglide/runtime';
 
 type Props = CollectionEntry<'blog'>['data'] & {
   isDefaultLanguage?: boolean;
   headings: MarkdownHeading[];
+  id?: string;
 };
 
-const { title, description, pubDate, updatedDate, tags, isDefaultLanguage, headings } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, isDefaultLanguage, headings, id } = Astro.props;
+const ogImage = id ? getRelativeLocaleUrl(languageTag(), `/open-graph/writing/${id}.png`).slice(0, -1) : undefined;
 ---
 
-<Layout title={title}>
+<Layout title={title} ogImage={ogImage}>
 	<Fragment slot="head">
 		<BaseHead title={title} description={description} />
 	</Fragment>
