@@ -14,11 +14,23 @@
   --color-surface: oklch(0% 0 0);
 }
 
+:lang(ja) {
+  --font-pretendard: "Pretendard JP Variable";
+}
+
+:lang(ko) {
+  --font-pretendard: "Pretendard Variable";
+}
+
+:lang(en) {
+  --font-pretendard: "Pretendard Variable";
+}
+
 @theme {
   --color-*: initial;
 
   --font-sans:
-    "Pretendard JP Variable",
+    var(--font-pretendard, ''),
     ui-sans-serif,
     system-ui,
     sans-serif,
@@ -28,8 +40,7 @@
     "Segoe UI Symbol",
     "Noto Color Emoji";
   --font-serif:
-    var(--font-noto-serif-kr, ''),
-    var(--font-noto-serif-jp, ''),
+    var(--font-noto-serif, ''),
     ui-serif,
     Georgia,
     Cambria,

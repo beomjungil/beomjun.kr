@@ -7,10 +7,11 @@
 
 ::view-transition-new(name),
 ::view-transition-old(name),
-::view-transition-new(title),
 ::view-transition-old(title),
-::view-transition-new(logo),
+::view-transition-new(title),
+::view-transition-old(logo),
 ::view-transition-old(logo) {
+  will-change: transform;
   animation-duration: 632ms;
   animation-timing-function: linear(
     0,
@@ -95,6 +96,7 @@
 }
 
 .gradient-blur {
+  transform: translateZ(0);
   background: linear-gradient(to bottom, rgba(var(--color-background), 1), rgba(var(--color-background), 0));
 }
 .gradient-blur > div,
