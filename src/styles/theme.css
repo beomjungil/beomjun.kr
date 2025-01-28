@@ -51,10 +51,6 @@
     var(--font-commit-mono, ''),
     ui-monospace,
     monospace;
-  --font-emoji:
-    var(--font-noto-emoji, ''),
-    ui-monospace,
-    monospace;
 
   --color-foreground: var(--color-foreground);
   --color-background: var(--color-background);

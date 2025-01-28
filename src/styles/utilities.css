@@ -16,8 +16,6 @@
   margin-inline: auto;
 }
 
-@supports (font: -apple-system-body) and (-webkit-appearance: none) {
-  .emoji {
-    font-weight: 400;
-  }
+.font-emoji {
+  mix-blend-mode: luminosity;
 }

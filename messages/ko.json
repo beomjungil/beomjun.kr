@@ -3,7 +3,7 @@
   "name": "길범준",
   "shortname": "길범준",
   "description": "반가워요. 저는 현재 강남언니 팀에서 소프트웨어 엔지니어로 일하고 있어요.",
-  "greeting": "반가워요<span role=\"img\" aria-label=\"wave\" class=\"font-emoji emoji\">👋</span> 저는 현재 <a href=\"https://team.gangnamunni.com/\" class=\"text-accent link\" target=\"_blank\">강남언니 팀</a>에서 소프트웨어 엔지니어로 일하고 있어요.",
+  "greeting": "반가워요. 저는 현재 <a href=\"https://team.gangnamunni.com/\" class=\"text-accent link\" target=\"_blank\">강남언니 팀</a>에서 소프트웨어 엔지니어로 일하고 있어요.",
   "present": "현재",
   "about": "소개",
   "writing": "글모음",
