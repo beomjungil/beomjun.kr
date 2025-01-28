@@ -11,7 +11,7 @@ const { headings } = Astro.props;
 <div class="absolute top-12 right-0 p-4 flex flex-col gap-2 items-end group-hover/toc:blur-lg group-hover/toc:opacity-0 group-hover/toc:pointer-events-none group-hover/toc:scale-125 origin-top-right transition-all duration-500">
   {
     (headings || []).map((heading, index) => heading.depth > 4 ? null : (
-      <div data-toc-id={heading.slug} data-current={index === 0 ? "true" : "false"} class="typo-caption w-(--depth) h-1 rounded-full bg-foreground/10 data-[current=true]:bg-accent transition-colors duration-300" style={`--depth: ${(5 - heading.depth) * 16}px`}></div>
+      <div data-toc-id={heading.slug} data-current={index === 0 ? "true" : "false"} class="typo-caption w-(--depth) h-0.5 rounded-full bg-foreground/10 data-[current=true]:bg-accent transition-colors duration-300" style={`--depth: ${(5 - heading.depth) * 16}px`}></div>
     ))
   }
 </div>
@@ -21,7 +21,7 @@ const { headings } = Astro.props;
     (headings || []).map((heading, index) => heading.depth > 4 ? null :(
       <a data-toc-id={heading.slug} href={`#${heading.slug}`} class="no-prose flex items-center gap-1 group/toc-link hover:text-foreground typo-caption text-foreground/50 transition-colors duration-300 data-[current=true]:text-accent data-[current=true]:font-bold" data-current={index === 0 ? "true" : "false"}>
         {heading.text}
-        <span class="h-1 rounded-full bg-foreground/10 h-px w-(--depth) whitespace-nowrap group-hover/toc-link:bg-foreground/80 transition-colors duration-300 group-data-[current=true]/toc-link:bg-accent"  style={`--depth: ${(5- heading.depth) * 16}px`}></span>
+        <span class="rounded-full bg-foreground/10 h-0.5 w-(--depth) whitespace-nowrap group-hover/toc-link:bg-foreground/80 transition-colors duration-300 group-data-[current=true]/toc-link:bg-accent"  style={`--depth: ${(5- heading.depth) * 16}px`}></span>
       </a>
     ))
   }
