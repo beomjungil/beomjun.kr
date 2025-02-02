@@ -3,11 +3,12 @@ import type { MarkdownHeading } from 'astro';
 
 interface Props {
   headings: MarkdownHeading[];
+  wrappingElementSelector?: string;
 }
 
-const { headings } = Astro.props;
+const { headings, wrappingElementSelector } = Astro.props;
 ---
-<aside class="fixed z-40 top-0 right-0 group/toc pt-12 lg:block hidden">
+<aside class="fixed z-40 top-0 right-0 group/toc pt-12 lg:block hidden" data-wrapping-element-selector={wrappingElementSelector || ".prose"}>
 <div class="absolute top-12 right-0 p-4 flex flex-col gap-2 items-end group-hover/toc:blur-sm group-hover/toc:opacity-0 group-hover/toc:pointer-events-none group-hover/toc:scale-125 origin-top-right transition-all duration-500">
   {
     (headings || []).map((heading, index) => heading.depth > 4 ? null : (
@@ -28,7 +29,7 @@ const { headings } = Astro.props;
 </div>
 </aside>
 
-<script>
+<script >
   let wrappingElement: Element | null;
   let observeHeaderTags: IntersectionObserver;
   let allHeaderTags: NodeListOf<Element>;
@@ -46,9 +47,10 @@ const { headings } = Astro.props;
   }
 
   function initTOC() {
-    wrappingElement = document.querySelector(".prose");
+    const wrappingElementSelector = (document.querySelector("[data-wrapping-element-selector]") as HTMLElement)?.dataset.wrappingElementSelector || ".prose";
+    wrappingElement = document.querySelector(wrappingElementSelector);
     if (wrappingElement !== null) {
-      allHeaderTags = wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6");
+      allHeaderTags = wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6, :scope > section > h1, :scope > section > h2, :scope > section > h3, :scope > section > h4, :scope > section > h5, :scope > section > h6");
     }
 
     // Intersection Observer Options

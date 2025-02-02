@@ -41,7 +41,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
           <div class="info-content">
             <h3 class="typo-headline-small">{gadget.title}</h3>
             <p class="typo-headline-small opacity-50">{gadget.manufacturer}</p>
-            <p class="typo-body-small">{gadget.comment}</p>
+            {gadget.comment && <blockquote class="typo-caption mt-4">“{gadget.comment}”</blockquote>}
           </div>
         </div>
       </div>
@@ -232,6 +232,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
 
     .info-content {
       padding: 1.5rem 0.5rem 1.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
     .gadget-container:nth-child(3n) .info {
       left: auto;
@@ -256,7 +259,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
   @media (max-width: 767px) {
     .gadget-container {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 1rem;
     }
 

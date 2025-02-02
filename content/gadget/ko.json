@@ -2,73 +2,73 @@
   {
     "title": "Apple Vision Pro",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "놀라운 경험과 기술, 이를 아득히 뛰어넘는 가격과 무게.",
     "image": "/content/gadget/images/visionpro.png"
   },
   {
     "title": "Macbook Pro 14 (M4 Max)",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "지루하지만 여전히 최고의 파트너.",
     "image": "/content/gadget/images/mbp14-m4-2024.png"
   },
   {
     "title": "Apple Watch Series 10",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "왜 Series X가 아닌 거죠?",
     "image": "/content/gadget/images/apple-watch-10.png"
   },
   {
     "title": "iPhone 15 Pro Max",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "🎵 하지만 나는 쓰러지지 않을거예요. 나는 티타늄이니까.",
     "image": "/content/gadget/images/iphone-15-pro-max.png"
   },
   {
     "title": "Homepod (1st Gen)",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "여러모로 Apple을 벗어날 수 없는 스피커.",
     "image": "/content/gadget/images/apple-homepod.webp"
   },
   {
     "title": "Apple TV 4K (2nd Gen)",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "이거 없이 어떻게 '스마트한' TV를 쓸 수 있죠?",
     "image": "/content/gadget/images/apple-tv-4k-2nd-gen.png"
   },
   {
     "title": "iPad Pro (12.9-inch, 5th Gen)",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "없으면 사고 싶고, 있으면 팔고 싶고.",
     "image": "/content/gadget/images/2021-ipad-pro-12-9-colors.png"
   },
   {
     "title": "AirPods Pro (2nd Gen)",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "없어질 때마다 사고, 사고 나면 없어지고.",
     "image": "/content/gadget/images/airpods-pro-2.png"
   },
   {
     "title": "AirPods Max",
     "manufacturer": "Apple",
-    "comment": "",
+    "comment": "한국 힙스터의 상징이 되어버린 내 사랑.",
     "image": "/content/gadget/images/airpods-max.webp"
   },
   {
     "title": "ONYX BOOX Tab Ultra C Pro",
     "manufacturer": "ONYX",
-    "comment": "",
+    "comment": "iPad가 있는데 왜 샀냐고요? 이건, 컬러 전자잉크잖아요.",
     "image": "/content/gadget/images/onyx-tab.png"
   },
   {
     "title": "Galaxy Z Fold 6",
     "manufacturer": "Samsung",
-    "comment": "",
+    "comment": "폴드가 이렇게 예뻐질 수 있다니.",
     "image": "/content/gadget/images/galaxy-fold-6.webp"
   },
   {
     "title": "StandBy Dock",
     "manufacturer": "Scott Yu-Jan",
-    "comment": "",
+    "comment": "볼 때 마다 사랑스러운 디자인.",
     "image": "/content/gadget/images/standby-dock.png"
   }
 ]

@@ -8,25 +8,46 @@ import FormattedDate from '@/components/FormattedDate.astro';
 import Gadgets from '@/components/now/Gadgets.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import '@/styles/prose.css';
+import TableOfContents from '@/layouts/TableOfContents.astro';
+import type { MarkdownHeading } from 'astro';
 
 const now = await getCollection('now');
 const nowContent = now.find((item) => item.id === languageTag());
 const { Content } = await render(nowContent as CollectionEntry<'now'>);
 const nowOgImage = getRelativeLocaleUrl(languageTag(), '/open-graph/now.png').slice(0, -1);
+
+const headings: MarkdownHeading[] = [
+  {
+    depth: 1,
+    slug: 'now',
+    text: m.now(),
+  },
+  {
+    depth: 2,
+    slug: 'bookshelf',
+    text: m.bookshelf(),
+  },
+  {
+    depth: 2,
+    slug: 'gadgets',
+    text: m.gadgets(),
+  },
+];
 ---
 
 <Layout title={m.now()} ogImage={nowOgImage} description={m.nowDescription()}>
-
-  <div class="container flex flex-col gap-24 min-h-screen mb-24">
+  <div id="now-container" class="container flex flex-col gap-24 min-h-screen mb-24">
+    <TableOfContents headings={headings} wrappingElementSelector="#now-container" />
     <section>
-      <h1 class="typo-headline-small vt-name-[title] title">{m.now() }</h1>
+      <h1 class="typo-headline-small vt-name-[title] title" id="now">{m.now() }</h1>
       <p class="typo-headline-small opacity-50 vt-name-[name] author">{m.name()}</p>
+      <article>
       <p class="typo-subtitle-small !text-foreground/50 date mt-8"><FormattedDate date={nowContent?.data.updatedDate || new Date()} /></p>
       <div class="prose no-initial my-[1em]">
         <Content />
       </div>
+      </article>
     </section>
-
     <Bookselves />
 
     <Gadgets/>
