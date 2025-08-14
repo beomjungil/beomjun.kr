@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "build": "astro check && astro build",
-    "preview": "wrangler pages dev",
+    "preview": "wrangler dev",
     "astro": "astro",
     "check": "biome check",
     "check:write": "biome check --write",
-    "deploy": "astro build && wrangler pages deploy"
+    "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -35,6 +35,6 @@
   },
   "packageManager": "pnpm@9.15.1",
   "devDependencies": {
-    "wrangler": "^3.93.0"
+    "wrangler": "^4.29.1"
   }
 }

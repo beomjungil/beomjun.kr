@@ -1,5 +1,5 @@
-name = "new-beomjun-kr"
-compatibility_date = "2025-04-01"
+name = "beomjun-kr-worker"
+compatibility_date = "2025-08-14"
 
 [assets]
 directory = "./dist"
