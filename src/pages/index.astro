@@ -15,10 +15,10 @@ const { t } = i18n(Astro.url);
       <div class="mb-4">
         <DynamicLogo />
       </div>
-      <h1 class="typo-headline-small hidden vt-name-[title]">{t('name')}</h1>
-      <h1 class="typo-headline-small vt-name-[name]">{t('name')}</h1>
-      <h2 class="typo-subtitle-large mt-4 leading-relaxed [&:lang(ko)]:text-balance" set:html={t('greeting')}></h2>
-      <p class="typo-body my-[1em]">
+      <h1 class="typo-sans-bold hidden vt-name-[title]">{t('name')}</h1>
+      <h1 class="typo-sans-bold vt-name-[name]">{t('name')}</h1>
+      <h2 class="typo-serif-bold mt-4 leading-relaxed [&:lang(ko)]:text-balance" set:html={t('greeting')}></h2>
+      <p class="typo-serif my-[1em]">
         {t('mainAboutMe')}
       </p>
     </section>

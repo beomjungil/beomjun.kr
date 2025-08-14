@@ -5,312 +5,248 @@ pubDate: 'Jun 19 2024'
 tags: ['astro', 'blog', 'markdown']
 ---
 
+---
+__Advertisement :)__
 
-```js title="my-test-file.js"
-console.log('Title attribute example')
-```
+- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
+  resize in browser.
+- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
+  i18n with plurals support and easy syntax.
 
-```bash
-echo "This terminal frame has no title"
-```
+You will like those projects!
 
-```powershell title="PowerShell terminal example"
-Write-Output "This one has a title!"
-```
+---
 
-```sh frame="none"
-echo "Look ma, no frame!"
-```
+# h1 Heading 8-)
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
 
-```ps frame="code" title="PowerShell Profile.ps1"
-# Without overriding, this would be a terminal frame
-function Watch-Tail { Get-Content -Tail 20 -Wait $args }
-New-Alias tail Watch-Tail
-```
 
-```js {1, 4, 7-8}
-// Line 1 - targeted by line number
-// Line 2
-// Line 3
-// Line 4 - targeted by line number
-// Line 5
-// Line 6
-// Line 7 - targeted by range "7-8"
-// Line 8 - targeted by range "7-8"
-```
+## Horizontal Rules
 
-```jsx {"1":5} del={"2":7-8} ins={"3":10-12}
-// labeled-line-markers.jsx
-<button
-  role="button"
-  {...props}
-  value={value}
-  className={buttonClassName}
-  disabled={disabled}
-  active={active}
->
-  {children &&
-    !active &&
-    (typeof children === 'string' ? <span>{children}</span> : children)}
-</button>
-```
+___
 
-```jsx {"1. Provide the value prop here:":5-6} del={"2. Remove the disabled and active states:":8-10} ins={"3. Add this to render the children inside the button:":12-15}
-// labeled-line-markers.jsx
-<button
-  role="button"
-  {...props}
+---
 
-  value={value}
-  className={buttonClassName}
+***
 
-  disabled={disabled}
-  active={active}
->
 
-  {children &&
-    !active &&
-    (typeof children === 'string' ? <span>{children}</span> : children)}
-</button>
-```
+## Typographic replacements
 
-```diff lang="js"
-  function thisIsJavaScript() {
-    // This entire block gets highlighted as JavaScript,
-    // and we can still add diff markers to it!
--   console.log('Old code to be removed')
-+   console.log('New and shiny code!')
-  }
-```
+Enable typographer option to see result.
 
-```js "return true;" ins="inserted" del="deleted"
-function demo() {
-  console.log('These are inserted and deleted marker types');
-  // The return statement uses the default marker type
-  return true;
-}
-```
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
 
-```js collapse={1-5, 12-14}
-// All this boilerplate setup code will be collapsed
-import { someBoilerplateEngine } from '@example/some-boilerplate'
-import { evenMoreBoilerplate } from '@example/even-more-boilerplate'
+test.. test... test..... test?..... test!....
 
-const engine = someBoilerplateEngine(evenMoreBoilerplate())
+!!!!!! ???? ,,  -- ---
 
-// This part of the code will be visible by default
-engine.doSomething(1, 2, 3, calcFn)
+"Smartypants, double quotes" and 'single quotes'
 
-function calcFn() {
-  // You can have multiple collapsed sections
-  const a = 1
-  const b = 2
-  return a + b
-}
-```
 
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+## Emphasis
 
-## Headings
+**This is bold text**
 
-The following HTML `<h1>`—`<h6>` elements *represent* six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
+__This is bold text__
 
-## H2
+*This is italic text*
 
-### H3
+_This is italic text_
 
-#### H4
+~~Strikethrough~~
 
-##### H5
-
-###### H6
-
-## Paragraph
-
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
-
-Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
-
-## Images
-
-### Syntax
-
-```markdown
-![Alt text](./full/or/relative/path/of/image)
-```
-
-### Output
-
-![blog placeholder](/blog-placeholder-about.jpg)
 
 ## Blockquotes
 
-The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
 
-### Blockquote without attribution
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
 
-#### Syntax
 
-```markdown
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+## Lists
+
+Unordered
+
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
+
+
+## Code
+
+Inline `code`
+
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code "fences"
+
+```
+Sample text here...
 ```
 
-#### Output
+Syntax highlighting
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+``` js
+var foo = function (bar) {
+  return bar++;
+};
 
-### Blockquote with attribution
-
-#### Syntax
-
-```markdown
-> Don't communicate by sharing memory, share memory by communicating.<br>
-> <cite>—  Rob Pike[^1]</cite>
+console.log(foo(5));
 ```
-
-#### Output
-
-> Don't communicate by sharing memory, share memory by communicating.<br>
-> <cite>— Rob Pike[^1]</cite>
-
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
 ## Tables
 
-### Syntax
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
 
-```markdown
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
-```
+Right aligned columns
 
-### Output
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
 
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
 
-## Code Blocks
+## Links
 
-### Syntax
+[link text](http://dev.nodeca.com)
 
-we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntax, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
 
-````markdown
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
-</html>
-```
-````
+Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
 
-### Output
 
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
-</html>
-```
+## Images
 
-## List Types
+![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 
-### Ordered List
+Like links, Images also have a footnote style syntax
 
-#### Syntax
+![Alt text][id]
 
-```markdown
-1. First item
-2. Second item
-3. Third item
-```
+With a reference later in the document defining the URL location:
 
-#### Output
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
 
-1. First item
-2. Second item
-3. Third item
 
-### Unordered List
+## Plugins
 
-#### Syntax
+The killer feature of `markdown-it` is very effective support of
+[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
 
-```markdown
-- List item
-- Another item
-- And another item
-```
 
-#### Output
+### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
 
-- List item
-- Another item
-- And another item
+> Classic markup: :wink: :cry: :laughing: :yum:
+>
+> Shortcuts (emoticons): :-) :-( 8-) ;)
 
-### Nested list
+see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
 
-#### Syntax
 
-```markdown
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
-```
+### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
-#### Output
+- 19^th^
+- H~2~O
 
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
 
-## Other Elements — abbr, sub, sup, kbd, mark
+### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
 
-### Syntax
+++Inserted text++
 
-```markdown
-<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 
-H<sub>2</sub>O
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
 
-X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
+==Marked text==
 
-Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.
 
-Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
-```
+### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
 
-### Output
+Footnote 1 link[^first].
 
-<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
+Footnote 2 link[^second].
 
-H<sub>2</sub>O
+Inline footnote^[Text of inline footnote] definition.
 
-X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
+Duplicated footnote reference[^second].
 
-Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.
+[^first]: Footnote **can have markup**
 
-Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
+    and multiple paragraphs.
+
+[^second]: Footnote text.
+
+
+### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+
+Term 1
+
+:   Definition 1
+with lazy continuation.
+
+Term 2 with *inline markup*
+
+:   Definition 2
+
+        { some code, part of Definition 2 }
+
+    Third paragraph of definition 2.
+
+_Compact style:_
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+
+### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+
+This is HTML abbreviation example.
+
+It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+
+*[HTML]: Hyper Text Markup Language
+
+### [Custom containers](https://github.com/markdown-it/markdown-it-container)
+
+::: warning
+*here be dragons*
+:::

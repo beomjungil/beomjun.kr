@@ -16,7 +16,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
 ---
 
 <section>
-  <h2 class="typo-headline-small" id="gadgets">
+  <h2 class="typo-sans-bold" id="gadgets">
     {t('gadgets')}
     <span class="opacity-50">{t('gadgetsDescription')}</span>
   </h2>
@@ -38,8 +38,8 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/ima
         <div class="info">
           <div class="info-placeholder"/>
           <div class="info-content">
-            <h3 class="typo-headline-small">{gadget.title}</h3>
-            <p class="typo-headline-small opacity-50">{gadget.manufacturer}</p>
+            <h3 class="typo-sans-bold">{gadget.title}</h3>
+            <p class="typo-sans-bold opacity-50">{gadget.manufacturer}</p>
             {gadget.comment && <blockquote class="typo-caption mt-4">“{gadget.comment}”</blockquote>}
           </div>
         </div>

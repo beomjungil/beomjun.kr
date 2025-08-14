@@ -2,9 +2,9 @@
 
 :root {
   --color-foreground: oklch(18.18% 0.002 106.6);
-  --color-background: oklch(99.641% 0.00655 97.462);
+  --color-background: oklch(99.16% 0.0051 229.674);
   --color-accent: oklch(58.13% 0.2127 33.31);
-  --color-surface: oklch(95.641% 0.00655 97.462);
+  --color-surface: oklch(96.16% 0.0051 229.674);
 }
 
 .dark {
@@ -15,26 +15,30 @@
 }
 
 :lang(ja) {
-  --font-pretendard: "Pretendard JP Variable";
+  --font-custom-sans: var(--font-inter, ''), 'Noto Sans JP';
+  --font-custom-serif: 'Noto Serif JP';
 }
 
 :lang(ko) {
-  --font-pretendard: "Pretendard Variable";
-  --font-noto-serif: "Noto Serif KR";
-  --font-commit-mono: "Commit Mono";
+  --font-custom-sans: var(--font-pretendard, '');
+  --font-custom-serif: var(--font-noto-serif-kr, '');
+  --font-serif-weight: 450;
+  --font-serif-letter-spacing: -0.05em;
+  --font-serif-weight-bold: 700;
 }
 
+
 :lang(en) {
-  --font-pretendard: "Pretendard Variable";
-  --font-noto-serif: "Noto Serif KR";
-  --font-commit-mono: "Commit Mono"
+  --font-custom-sans: var(--font-inter, '');
+  --font-custom-serif: var(--font-serif-en, '');
+  --font-serif-letter-spacing: 0em;
 }
 
 @theme {
   --color-*: initial;
 
   --font-sans:
-    var(--font-pretendard, ''),
+    var(--font-custom-sans, ''),
     ui-sans-serif,
     system-ui,
     sans-serif,
@@ -43,14 +47,7 @@
     "Segoe UI Emoji",
     "Segoe UI Symbol",
     "Noto Color Emoji";
-  --font-serif:
-    var(--font-noto-serif, ''),
-    ui-serif,
-    Georgia,
-    Cambria,
-    "Times New Roman",
-    Times,
-    serif;
+  --font-serif: var(--font-custom-serif, '');
   --font-mono:
     var(--font-commit-mono, ''),
     ui-monospace,

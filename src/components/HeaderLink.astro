@@ -16,6 +16,6 @@ const { tPath } = i18n(Astro.url);
 const newHref = tPath((href as string).replace('/ja', '').replace('/en', '').replace('/ko', ''), language);
 ---
 
-<a href={newHref} class:list={['typo-headline-small no-prose hover:!text-foreground transition-colors duration-200', className, {'!text-foreground': isMainPage || isActive, '!text-foreground/50': !(isActive || isMainPage)}]} {...props}>
+<a href={newHref} class:list={['typo-sans-bold no-prose hover:!text-foreground transition-colors duration-200', className, {'!text-foreground': isMainPage || isActive, '!text-foreground/50': !(isActive || isMainPage)}]} {...props}>
 	<slot />
 </a>

@@ -5,39 +5,41 @@
 }
 
 .prose > h1:not(.no-prose) {
-  @apply typo-headline-large;
+  @apply typo-sans;
   margin: 1em 0;
 }
 
 .prose > h2:not(.no-prose) {
-  @apply typo-headline-small;
+  @apply typo-sans;
   margin: 1em 0;
 }
 
 .prose > h3:not(.no-prose) {
-  @apply typo-body;
+  @apply typo-serif-bold;
   margin: 1em 0;
 }
 
 .prose > h4:not(.no-prose) {
-  @apply typo-body;
+  @apply typo-serif-bold;
   margin: 1em 0;
 }
 
 .prose > h5:not(.no-prose) {
-  @apply typo-body;
-  font-weight: 700;
+  @apply typo-serif-bold;
   margin: 1em 0;
 }
 
 .prose > h6:not(.no-prose) {
-  @apply typo-body;
-  font-weight: 700;
+  @apply typo-serif-bold;
   margin: 1em 0;
 }
 
+.prose strong {
+  @apply typo-serif-bold;
+}
+
 .prose > p:not(.no-prose) {
-  @apply typo-body;
+  @apply typo-serif;
   margin: 0.5em 0;
   text-underline-offset: 0.2em;
 }
@@ -57,9 +59,14 @@
 }
 
 .prose > ol li, .prose > ul li {
-  @apply typo-body;
+  @apply typo-serif;
   margin: 0.3em 0;
   text-underline-offset: 0.2em;
+}
+
+
+.prose > ul li::marker {
+  color: --alpha(var(--color-foreground) / 25%);
 }
 
 .prose > div.expressive-code {
@@ -98,7 +105,7 @@
 }
 
 .prose > blockquote {
-  @apply typo-subtitle-large;
+  @apply typo-serif-bold leading-[1.4];
   font-weight: 900;
   text-align: center;
   font-size: 1.75em;
@@ -112,6 +119,7 @@
   display: block;
   text-align: center;
   font-style: normal;
+
   margin: 1em 0 0;
 }
 

@@ -16,15 +16,15 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/people/ima
 ---
 
 <section>
-    <h2 class="typo-headline-small flex justify-between pb-[1em]">
+    <h2 class="typo-sans-bold flex justify-between pb-[1em]">
       {t('recommendPeople')}
     </h2>
 
-    <p class="typo-body mb-4">
+    <p class="typo-serif mb-4">
         {t('recommendPeopleDescription')}
     </p>
 
-    <div class="flex flex-wrap gap-2 typo-body" id="people-container">
+    <div class="flex flex-wrap gap-2 typo-serif" id="people-container">
     {
       people[language].map((person) => (
         <div class="flex items-center gap-1 bg-foreground/10 rounded-full pl-1 pr-3 py-1 hover:bg-accent leading-[1] hover:text-white transition-colors duration-300 cursor-pointer group">

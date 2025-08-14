@@ -39,10 +39,10 @@ const headings: MarkdownHeading[] = [
   <div id="now-container" class="container flex flex-col gap-24 min-h-screen mb-24">
     <TableOfContents headings={headings} wrappingElementSelector="#now-container" />
     <section>
-      <h1 class="typo-headline-small vt-name-[title] title" id="now">{t('now')}</h1>
-      <p class="typo-headline-small opacity-50 vt-name-[name] author">{t('name')}</p>
+      <h1 class="typo-sans-bold vt-name-[title] title" id="now">{t('now')}</h1>
+      <p class="typo-sans-bold opacity-50 vt-name-[name] author">{t('name')}</p>
       <article>
-      <p class="typo-subtitle-small !text-foreground/50 date mt-8"><FormattedDate date={nowContent?.data.updatedDate || new Date()} /></p>
+      <p class="typo-sans-bold !text-foreground/50 date mt-8"><FormattedDate date={nowContent?.data.updatedDate || new Date()} /></p>
       <div class="prose no-initial my-[1em]">
         <Content />
       </div>

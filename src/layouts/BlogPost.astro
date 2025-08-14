@@ -29,16 +29,16 @@ const ogImage = id ? tPath(`/open-graph/writing/${id}.png`).slice(0, -1) : undef
   <article class="container" lang={isDefaultLanguage ? 'ko' : undefined}>
       <div>
         <div>
-          <h1 class="typo-headline-small vt-name-[title] title">{title}</h1>
-          <p class="typo-headline-small opacity-50 vt-name-[name] author">{t('name')}</p>
+          <h1 class="typo-sans-bold vt-name-[title] title">{title}</h1>
+          <p class="typo-sans-bold opacity-50 vt-name-[name] author">{t('name')}</p>
           <section class="flex gap-8 justify-between mt-4">
-            <p class="typo-subtitle-small !text-foreground/50 date whitespace-nowrap"><FormattedDate date={updatedDate || pubDate} /></p>
-            <p class="typo-body-sans !text-foreground/50 [&:lang(en)]:text-balance [&:lang(ko)]:text-balance">{description}</p>
+            <p class="typo-sans-bold !text-foreground/50 date whitespace-nowrap"><FormattedDate date={updatedDate || pubDate} /></p>
+            <p class="typo-sans !text-foreground/50 [&:lang(en)]:text-balance [&:lang(ko)]:text-balance">{description}</p>
 
             {
               tags?.length && (
-                  <p class="typo-body-sans sr-only flex gap-2 !text-foreground/50 tags">
-                  {tags?.map((tag) => <span class="inline-block">{tag}</span>)}
+                  <p class="typo-sans sr-only flex gap-2 !text-foreground/50 tags">
+                  {tags?.map((tag:string) => <span class="inline-block">{tag}</span>)}
                 </p>
               )
             }
@@ -49,7 +49,7 @@ const ogImage = id ? tPath(`/open-graph/writing/${id}.png`).slice(0, -1) : undef
       {
         isDefaultLanguage && (
           <aside class="border-l-4 border-foreground/10 pl-4 py-2 mt-8 [&:lang(en)]:text-balance">
-            <p class="mb-2 typo-headline-small">
+            <p class="mb-2 typo-sans-bold">
               {t('translationPendingTitle')}
             </p>
             <p>{t('translationPendingDescription')}</p>

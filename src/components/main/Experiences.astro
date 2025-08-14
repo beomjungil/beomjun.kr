@@ -14,16 +14,18 @@ const { language, t } = i18n(Astro.url);
 ---
 
 <section>
-    <h2 class="typo-headline-small flex justify-between pb-[1em]">
+    <h2 class="typo-sans-bold flex justify-between pb-[1em]">
       {t('experiences')}
     </h2>
     <div class="flex flex-col md:grid md:grid-cols-[11.5rem_1fr] md:gap-8 gap-4">
 
-      {experiences[language].map((experience) => (
+      {experiences[language].map((experience) => {
+        const isPresent = !experience.endDate;
+        return(
         <>
-          <div class="typo-subtitle-large">
+          <div class="typo-serif data-[present=true]:typo-serif-bold leading-[1.2]" data-present={isPresent}>
             {
-              experience.startDate && experience.endDate ? (
+              !isPresent ? (
                 <span>
                   <time datetime={experience.startDate}>{new Date(experience.startDate).toLocaleDateString(language, {
                     year: 'numeric',
@@ -46,16 +48,16 @@ const { language, t } = i18n(Astro.url);
 
           <div class="space-y-2">
             <div>
-              <h3 class="typo-headline-small">
+              <h3 class="typo-sans-bold">
                 {experience.company}
               </h3>
-              <p class="typo-body">
+              <p class="typo-serif">
                 {experience.position}
               </p>
             </div>
 
-            <p class="typo-body pb-8" set:html={experience.description}/>
+            <p class="typo-serif pb-8" set:html={experience.description}/>
           </div>
         </>
-      ))}
+      )})}
   </section>

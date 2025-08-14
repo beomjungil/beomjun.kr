@@ -17,7 +17,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/book/image
 ---
 
 <section>
-  <h2 class="typo-headline-small" id="bookshelf">
+  <h2 class="typo-sans-bold" id="bookshelf">
     {t('bookshelf')}
   </h2>
   <div class="books-grid">
@@ -34,9 +34,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/book/image
         <div class="book-info">
           <div class="book-info-placeholder"/>
           <div class="book-info-content">
-            <h3 class="typo-headline-small">{book.title}</h3>
-            <p class="typo-headline-small opacity-50">{book.author}</p>
-            <p class="typo-body-small">{book.comment}</p>
+            <h3 class="typo-sans-bold">{book.title}</h3>
+            <p class="typo-sans-bold opacity-50">{book.author}</p>
+            <p class="typo-serif-small">{book.comment}</p>
           </div>
         </div>
       </a>

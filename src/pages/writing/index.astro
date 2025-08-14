@@ -30,8 +30,8 @@ const posts = (await getCollection('blog'))
 	</Fragment>
   <section class="container">
     <div class="relative">
-      <h1 class="typo-headline-small vt-name-[name]">{t('name')}</h1>
-      <p class="typo-headline-small opacity-50">{t('writing')}</p>
+      <h1 class="typo-sans-bold vt-name-[name]">{t('name')}</h1>
+      <p class="typo-sans-bold opacity-50">{t('writing')}</p>
     </div>
 
     <ul class="space-y-6 mt-8">
@@ -39,7 +39,7 @@ const posts = (await getCollection('blog'))
         posts.map((post, index) => (
           <li class="post-item group" style={`--sibling-index: ${index}`}>
             <I18NLink class="flex no-prose justify-between items-center gap-x-4 group-hover:bg-foreground/5 transition-colors duration-300 -m-2 p-2 rounded-md" href={`/writing/${post.id}/`}>
-              <h4 class="typo-headline-small">{post.data.title}</h4>
+              <h4 class="typo-sans-bold">{post.data.title}</h4>
               <div class="flex-1 h-px bg-transparent group-hover:bg-foreground/10 transition-colors duration-300"></div>
               <p class="date typo-caption">
                 <FormattedDate date={post.data.pubDate} />

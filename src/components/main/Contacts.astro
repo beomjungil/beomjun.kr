@@ -6,10 +6,10 @@ const { t } = i18n(Astro.url);
 const utm = '?utm_source=beomjun.kr&utm_medium=website&utm_campaign=contact';
 ---
 <section class="mb-16">
-  <h2 class="typo-headline-small flex justify-between pb-[1em]">
+  <h2 class="typo-sans-bold flex justify-between pb-[1em]">
       {t('contacts')}
   </h2>
-  <p class="flex flex-col md:grid md:grid-cols-[11.5rem_1fr] md:gap-8 typo-body">
+  <p class="flex flex-col md:grid md:grid-cols-[11.5rem_1fr] md:gap-8 typo-serif">
     <span>{t('email')}</span>
     <a href={t('mailto')} class="link md:mb-0 mb-4">
       gil@beomjun.kr
