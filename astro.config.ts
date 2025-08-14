@@ -41,10 +41,10 @@ export default defineConfig({
         fallbacks: ['sans-serif'],
       },
       {
-        name: 'Literata',
+        name: 'Lora',
         cssVariable: '--font-serif-en',
         provider: fontProviders.google(),
-        weights: ['200 900'],
+        weights: ['400 700'],
         subsets: ['latin'],
         fallbacks: ['serif'],
       },

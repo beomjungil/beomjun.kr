@@ -4,82 +4,6 @@ html {
   font-feature-settings: "calt", "ss01", "ss02", "ss03", "ss15", "ss11";
 }
 
-/* @utility typo-headline-large {
-  font-family: var(--font-sans);
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  text-opacity: 1;
-  color: var(--color-foreground);
-}
-
-@utility typo-headline-medium {
-  font-family: var(--font-sans);
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  text-opacity: 1;
-  color: var(--color-foreground);
-}
-
-@utility typo-sans-bold {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  color: var(--color-foreground);
-}
-
-@utility typo-serif-bold {
-  font-family: var(--font-serif);
-  font-size: 0.925rem;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -0.04em;
-  color: var(--color-foreground);
-}
-
-@utility typo-subtitle-small {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -0.03em;
-  color: var(--color-foreground);
-}
-
-@utility typo-serif {
-  font-family: var(--font-serif);
-  font-size: 0.925rem;
-  font-weight: 400;
-  line-height: 2;
-  letter-spacing: -0.02em;
-  color: --alpha(var(--color-foreground) / 80%);
-}
-
-@utility typo-serif-sans {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  color: --alpha(var(--color-foreground) / 80%);
-}
-
-@utility typo-button-small {
-  font-family: var(--font-sans);
-  font-size: 0.925rem;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -0.03em;
-  color: var(--color-foreground);
-} */
-
-/*  */
-
 @utility typo-caption {
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -101,7 +25,7 @@ html {
 
 @utility typo-serif {
   font-family: var(--font-serif);
-  font-size: 0.9rem;
+  font-size: var(--font-serif-size, 0.9rem);
   font-weight: var(--font-serif-weight, 400);
   line-height: var(--tw-leading, 2);
   letter-spacing: var(--font-serif-letter-spacing, -0.02em);

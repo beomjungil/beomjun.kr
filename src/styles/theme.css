@@ -2,9 +2,9 @@
 
 :root {
   --color-foreground: oklch(18.18% 0.002 106.6);
-  --color-background: oklch(99.16% 0.0051 229.674);
+  --color-background: oklab(97% -0.00129 -0.00329);
   --color-accent: oklch(58.13% 0.2127 33.31);
-  --color-surface: oklch(96.16% 0.0051 229.674);
+  --color-surface: oklab(94% -0.00129 -0.00329);
 }
 
 .dark {
@@ -31,6 +31,7 @@
 :lang(en) {
   --font-custom-sans: var(--font-inter, '');
   --font-custom-serif: var(--font-serif-en, '');
+  --font-serif-weight: 400;
   --font-serif-letter-spacing: 0em;
 }
 

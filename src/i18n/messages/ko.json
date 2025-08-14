@@ -36,5 +36,8 @@
   "nowDescription": "저는 지금 말이죠...",
   "bookshelf": "책장",
   "gadgets": "진열장",
-  "gadgetsDescription": "네, 맞아요. 저는 Apple 인간입니다."
+  "gadgetsDescription": "네, 맞아요. 저는 Apple 인간입니다.",
+
+  "__projects__": "작업물 페이지용 번역",
+  "notImplementedYet": "아직 준비되지 않았어요.<br/>다음에 다시 확인해 주세요."
 }

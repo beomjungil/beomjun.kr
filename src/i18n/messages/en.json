@@ -36,5 +36,8 @@
   "nowDescription": "At this moment, I’m...",
   "bookshelf": "Bookshelf",
   "gadgets": "Gadgets",
-  "gadgetsDescription": "Yes, May the Apple be with me."
+  "gadgetsDescription": "Yes, May the Apple be with me.",
+
+  "__projects__": "Projects page translation",
+  "notImplementedYet": "This page is under construction.<br/>Please check back later."
 }

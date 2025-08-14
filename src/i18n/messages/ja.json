@@ -36,5 +36,8 @@
   "nowDescription": "今の私は...",
   "bookshelf": "本棚",
   "gadgets": "飾り棚",
-  "gadgetsDescription": "はい、私の血はAppleで構成されています。"
+  "gadgetsDescription": "はい、私の血はAppleで構成されています。",
+
+  "__projects__": "Projects page translation",
+  "notImplementedYet": "このページは現在作成中です。<br/>後でもう一度確認してください。"
 }

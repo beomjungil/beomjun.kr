@@ -18,14 +18,14 @@ const { className } = Astro.props as Props;
 <script>
   document.addEventListener('astro:page-load', () => {
     const signature = document.querySelector('.signature');
-    const footer = document.querySelector('footer');
-    
+    const container = document.querySelector('.signature-container') as HTMLElement;
+
     const checkScroll = () => {
-      if (!signature || !footer) return;
-      
-      const triggerPoint = document.documentElement.scrollHeight - footer.offsetHeight;
+      if (!signature || !container) return;
+
+      const triggerPoint = document.documentElement.scrollHeight - container.offsetHeight;
       const currentScroll = window.scrollY + window.innerHeight;
-      
+
       if (currentScroll >= triggerPoint && !signature.classList.contains('animate-signature')) {
         signature.classList.add('animate-signature');
         window.removeEventListener('scroll', checkScroll);
@@ -43,15 +43,15 @@ const { className } = Astro.props as Props;
     stroke-dashoffset: 2000;
   }
 
-  .animate-signature path:nth-child(8) { 
+  .animate-signature path:nth-child(8) {
     animation: sign 1s ease forwards;
     animation-delay: 0s;
    }
-  .animate-signature path:nth-child(7) { 
+  .animate-signature path:nth-child(7) {
     animation: sign 1s ease forwards;
     animation-delay: 0.2s;
    }
-  .animate-signature path:nth-child(6) { 
+  .animate-signature path:nth-child(6) {
     animation: sign 3s ease forwards;
     animation-delay: 0.6s;
    }
@@ -64,18 +64,18 @@ const { className } = Astro.props as Props;
     animation: fadeIn 0.5s ease forwards;
     animation-delay: 1.5s;
    }
-  .animate-signature path:nth-child(3) { 
+  .animate-signature path:nth-child(3) {
     stroke-dasharray: 2200;
     stroke-dashoffset: 2200;
     animation: sign 1s ease-in-out forwards;
     animation-delay: 2.5s;
    }
-  .animate-signature path:nth-child(2) { 
+  .animate-signature path:nth-child(2) {
     animation: sign 1s ease forwards;
     animation-delay: 3.7s;
-  
+
    }
-  .animate-signature path:nth-child(1) { 
+  .animate-signature path:nth-child(1) {
     animation: fadeIn 0.5s ease forwards;
     animation-delay: 3.6s;
     opacity: 0;
