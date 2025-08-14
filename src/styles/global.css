@@ -185,5 +185,5 @@
 }
 
 .gradient-blur-overlay {
-  background: linear-gradient(to bottom, var(--color-background), --alpha(var(--color-background) / 50%) 10%, --alpha(var(--color-background) / 0%));
+  background: linear-gradient(to bottom, var(--color-background), --alpha(var(--color-background) / 0%));
 }

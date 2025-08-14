@@ -1,0 +1,18 @@
+---
+import { i18n } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+
+const { t } = i18n(Astro.url);
+---
+<Layout title={t('projects')}>
+  <section class="container">
+    <h1 class="typo-sans-bold vt-name-[name]">{t('name')}</h1>
+    <p class="typo-sans-bold opacity-50">{t('projects')}</p>
+
+    <div class="mt-8">
+      <p class="typo-serif rounded-md bg-surface text-center p-4" set:html={t('notImplementedYet')}>
+      </p>
+    </div>
+  </section>
+</Layout>
+

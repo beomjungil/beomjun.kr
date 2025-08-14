@@ -34,27 +34,28 @@ const { t } = i18n(Astro.url);
       <Logo className="size-8" />
     </I18NLink>
 
-    <div
+    <diva
     id="nav"
     popover="auto"
     class:list={[
-      'bg-surface dark:border dark:border-foreground/10 lg:border-none lg:flex lg:bg-transparent lg:relative lg:flex-col lg:ml-0 lg:p-0 lg:items-start lg:justify-start lg:gap-4 lg:translate-y-10 lg:vt-name-[header-links]',
+      'w-full h-full p-4 lg:flex lg:bg-transparent lg:relative lg:flex-col lg:ml-0 lg:p-0 lg:items-start lg:justify-start lg:gap-4 lg:translate-y-10 lg:vt-name-[header-links]',
       {'lg:!translate-y-12': !isMainPage}
     ]}
     >
-    <button class="hider lg:hidden">
+    <div class="flex flex-col items-start gap-8 lg:gap-4">
+      <div class="flex items-center justify-between w-full lg:hidden gap-4">
+        <I18NLink href="/">
+          <Logo className="size-8" />
+        </I18NLink>
+    <button class="lg:hidden hider" popovertarget="nav" popovertargetaction="toggle" >
+      (Close)
       <span class="sr-only">메뉴 닫기</span>
     </button>
-    <div class="flex flex-col items-start gap-8 lg:gap-4">
+    </div>
         <HeaderLink data-astro-prefetch="viewport" href="/about">{t('about')}</HeaderLink>
         <HeaderLink data-astro-prefetch="viewport" href="/writing">{t('writing')}</HeaderLink>
-        <HeaderLink data-astro-prefetch="viewport" href="/">{t('projects')}</HeaderLink>
+        <HeaderLink data-astro-prefetch="viewport" href="/projects">{t('projects')}</HeaderLink>
         <HeaderLink data-astro-prefetch="viewport" href="/now">{t('now')}</HeaderLink>
-
-        <!-- <div class="my-2 h-px bg-foreground/20 w-full"></div>
-        <LanguageSelector/>
-        <ThemeSelector/>
-      </div> -->
     </div>
   </nav>
 
@@ -71,206 +72,29 @@ const { t } = i18n(Astro.url);
 </header>
 
 <style>
-  :root {
-    --timing: 0.42s;
-    --ease: linear(
-      0, 0.0036 9.62%, 0.0185 16.66%, 0.0489 23.03%, 0.0962 28.86%,
-      0.1705 34.93%, 0.269 40.66%, 0.3867 45.89%, 0.5833 52.95%,
-      0.683 57.05%, 0.7829 62.14%, 0.8621 67.46%, 0.8991 70.68%,
-      0.9299 74.03%, 0.9545 77.52%, 0.9735 81.21%, 0.9865 85%,
-      0.9949 89.15%, 1
-    );
-  }
 
-  @media (max-width: 768px) {
-    [popover] {
-      display: none;
-      z-index: 99999;
-      position: fixed;
-      bottom: 0;
-      width: 100vw;
-      overflow: hidden;
-      height: fit-content;
-      padding: 48px 0.5rem calc(56px + env(safe-area-inset-bottom));
-      border-radius: 12px 12px 0 0;
-      translate: 0 100%;
-      margin-bottom: 0;
-      transition: translate var(--timing) var(--ease),
-                opacity var(--timing) var(--ease),
-                transform var(--timing) var(--ease);
-    }
-    [data-resizing='false'] [popover] {
-      transition: display, overlay, translate;
-      transition-behavior: allow-discrete;
-      transition-duration: var(--timing);
-      transition-timing-function: var(--ease);
-    }
-    [popover]:popover-open {
-      display: flex;
-      flex-direction: column;
-      translate: 0 calc(clamp(0, var(--ty, 0), var(--distance)) * 1px);
-      transition: translate var(--timing) var(--ease),
-                opacity var(--timing) var(--ease),
-                transform var(--timing) var(--ease);
+  @media screen and (max-width: 1024px) {
+    #nav[popover] {
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease, display 0.5s allow-discrete, backdrop-filter 0.5s ease;
+      background-color: --alpha(var(--color-background)/50%);
 
-      @starting-style {
-        translate: 0 100%;
-      }
-    }
-
-    [popover]::backdrop {
-      background: hsl(0 0% 10% / 0.4);
-      transition-property: display, overlay, opacity;
-      transition-behavior: allow-discrete;
-      transition-duration: var(--timing);
-      transition-timing-function: var(--ease);
       opacity: 0;
+      backdrop-filter: blur(0px);
+      transform: scale(1.25);
     }
-    [data-resizing='false'] [popover] {
-      transition: display, overlay, translate;
-      transition-behavior: allow-discrete;
-      transition-duration: var(--timing);
-      transition-timing-function: var(--ease);
-    }
-    [popover]:popover-open::backdrop {
-      opacity: calc(1 - clamp(0, var(--complete), 1));
-      backdrop-filter: blur(1px);
+  }
 
-      @starting-style {
+    #nav[popover]:popover-open {
+    opacity: 1;
+    transform: scale(1);
+      backdrop-filter: blur(8px);
+
+    @starting-style {
+      & {
         opacity: 0;
+        transform: scale(1.25);
       }
     }
 
-    .hider {
-      height: 48px;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 12px 12px 0 0;
-      background: transparent;
-      cursor: grab;
-    }
-
-    .hider::after {
-      content: "";
-      position: absolute;
-      height: 6px;
-      width: 40px;
-      border-radius: 10px;
-      background: color-mix(in hsl, canvas, canvasText 40%);
-      top: 50%;
-      left: 50%;
-      translate: -50% -50%;
-    }
-
-    html[data-dragging='true'] [popover] {
-      transition-duration: 0s;
-    }
-
-    body {
-      transition-property: transform, clip-path;
-      clip-path: inset(0 0 0 0 round 0px);
-      transition-duration: var(--timing);
-      transition-timing-function: var(--ease);
-      transform-origin: 50% 0;
-    }
-
-    :root:has(:popover-open) body {
-      transform: scale(calc(0.95 + (clamp(0, var(--complete), 1) * 0.05))) translate(0, calc((env(safe-area-inset-top) + 14px) * (1 - clamp(0, var(--complete), 1))));
-      clip-path: inset(0 0 0 0 round calc(12px * (1 - clamp(0, var(--complete), 1))));
-      overflow: hidden;
-    }
-
-    html[data-dragging="true"] body,
-    html[data-dragging="true"] [popover]::backdrop {
-      transition: none !important;
-    }
-
-    :root:has(:popover-open) body {
-      background: black;
-    }
-  }
-</style>
-
-<script>
-function initializeHeader() {
-  const popover = document.querySelector("#nav") as HTMLElement;
-  const hider = popover.querySelector(".hider");
-
-  if (popover && hider) {
-    let startY = 0;
-    let currentY = 0;
-    let distance = 0;
-
-    const reset = () => {
-      document.documentElement.dataset.complete = "false";
-      document.documentElement.style.setProperty("--complete", "0");
-      popover.style.setProperty("--ty", "0");
-    };
-
-    const closeWithAnimation = async () => {
-      document.documentElement.dataset.complete = "true";
-      document.documentElement.style.setProperty("--complete", "1");
-      popover.style.setProperty("--ty", "480");
-
-      setTimeout(() => {
-        popover.hidePopover();
-      }, 420);
-    };
-    hider.addEventListener("pointerdown", (e) => {
-      e.preventDefault();
-      startY = (e as PointerEvent).clientY;
-      distance = popover.offsetHeight;
-      popover.style.setProperty("--distance", distance.toString());
-      document.documentElement.dataset.dragging = "true";
-    });
-
-    window.addEventListener("pointermove", (e) => {
-      if (document.documentElement.dataset.dragging !== "true") return;
-
-      currentY = Math.max(0, e.clientY - startY);
-      const progress = currentY / distance;
-
-      document.documentElement.style.setProperty("--complete", progress.toString());
-      popover.style.setProperty("--ty", currentY.toString());
-    });
-
-    window.addEventListener("pointerup", async () => {
-      if (document.documentElement.dataset.dragging !== "true") return;
-
-      document.documentElement.dataset.dragging = "false";
-
-      if (currentY > distance * 0.4) {
-        closeWithAnimation();
-      } else {
-        reset();
-      }
-    });
-
-    popover.addEventListener("toggle", (e) => {
-      if (popover.matches(":popover-open")) {
-        if (navigator.vibrate) navigator.vibrate(100);
-        reset();
-      }
-    });
-
-    // 리사이즈 처리
-    let resizeTimeout: NodeJS.Timeout | null = null;
-    window.addEventListener("resize", () => {
-      if (popover.matches(":popover-open")) popover.hidePopover();
-      document.documentElement.dataset.resizing = "true";
-
-      if (resizeTimeout) clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        document.documentElement.dataset.resizing = "false";
-      }, 200);
-    });
-  }
 }
-
-document.addEventListener('astro:page-load', () => {
-  initializeHeader();
-});
-</script>
-
+</style>
