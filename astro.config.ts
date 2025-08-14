@@ -2,7 +2,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
-import paraglide from '@inlang/paraglide-astro';
+import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import expressiveCode from 'astro-expressive-code';
 import pageInsight from 'astro-page-insight';
 import { defineConfig } from 'astro/config';
@@ -25,12 +25,15 @@ function rawFonts(ext: string[]) {
 }
 
 export default defineConfig({
-  experimental: {
-    responsiveImages: true,
-    svg: true,
-  },
   vite: {
-    plugins: [rawFonts(['.otf']), tailwindcss()],
+    plugins: [
+      rawFonts(['.otf']),
+      tailwindcss(),
+      paraglideVitePlugin({
+        project: './project.inlang',
+        outdir: './src/i18n/paraglide',
+      }),
+    ],
   },
   prefetch: true,
   site: 'https://beomjun.kr',
@@ -71,15 +74,10 @@ export default defineConfig({
           inlineButtonBackground: 'var(--color-background)',
         },
       },
-      // @ts-expect-error wrong type
       plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
     }),
     mdx(),
     sitemap(),
     pageInsight(),
-    paraglide({
-      project: './project.inlang',
-      outdir: './src/i18n/paraglide',
-    }),
   ],
 });
