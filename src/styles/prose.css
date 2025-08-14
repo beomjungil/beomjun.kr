@@ -6,34 +6,34 @@
 
 .prose > h1:not(.no-prose) {
   @apply typo-headline-large;
-  margin: 2em 0 0;
+  margin: 1em 0;
 }
 
 .prose > h2:not(.no-prose) {
   @apply typo-headline-small;
-  margin: 2em 0 0;
+  margin: 1em 0;
 }
 
 .prose > h3:not(.no-prose) {
   @apply typo-body;
-  margin: 2em 0 0;
+  margin: 1em 0;
 }
 
 .prose > h4:not(.no-prose) {
   @apply typo-body;
-  margin: 2em 0 0;
+  margin: 1em 0;
 }
 
 .prose > h5:not(.no-prose) {
   @apply typo-body;
   font-weight: 700;
-  margin: 2em 0 0;
+  margin: 1em 0;
 }
 
 .prose > h6:not(.no-prose) {
   @apply typo-body;
   font-weight: 700;
-  margin: 2em 0 0;
+  margin: 1em 0;
 }
 
 .prose > p:not(.no-prose) {
@@ -63,7 +63,7 @@
 }
 
 .prose > div.expressive-code {
-  margin: 2em 0;
+  margin: 1em 0;
   font-family: var(--font-code);
   font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "cv02", "cv03", "cv05", "cv10";
 }
@@ -121,4 +121,21 @@
 
 html .prose > *:first-child {
   margin-top: 0;
+}
+
+html .expressive-code figcaption:last-child {
+  background-color: transparent;
+}
+
+.prose hr {
+  background:var(--color-foreground);
+  opacity: 0.1;
+  height: 1px;
+  border: 0;
+  margin: 4em 0;
+}
+
+html .expressive-code figcaption {
+  font-size: 0.875em;
+  color: --alpha(var(--color-foreground) / 60%);
 }

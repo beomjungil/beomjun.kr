@@ -1,46 +1,46 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import * as m from '@/i18n/paraglide/messages';
 import Bookselves from '@/components/now/Bookselves.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import { languageTag } from '@/i18n/paraglide/runtime';
 import FormattedDate from '@/components/FormattedDate.astro';
 import Gadgets from '@/components/now/Gadgets.astro';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import '@/styles/prose.css';
 import TableOfContents from '@/layouts/TableOfContents.astro';
 import type { MarkdownHeading } from 'astro';
+import { i18n } from '@/i18n/utils';
 
 const now = await getCollection('now');
-const nowContent = now.find((item) => item.id === languageTag());
+const { language, t, tPath } = i18n(Astro.url);
+const nowContent = now.find((item) => item.id === language);
 const { Content } = await render(nowContent as CollectionEntry<'now'>);
-const nowOgImage = getRelativeLocaleUrl(languageTag(), '/open-graph/now.png').slice(0, -1);
+
+const nowOgImage = tPath('/open-graph/now.png').slice(0, -1);
 
 const headings: MarkdownHeading[] = [
   {
     depth: 1,
     slug: 'now',
-    text: m.now(),
+    text: t('now'),
   },
   {
     depth: 2,
     slug: 'bookshelf',
-    text: m.bookshelf(),
+    text: t('bookshelf'),
   },
   {
     depth: 2,
     slug: 'gadgets',
-    text: m.gadgets(),
+    text: t('gadgets'),
   },
 ];
 ---
 
-<Layout title={m.now()} ogImage={nowOgImage} description={m.nowDescription()}>
+<Layout title={t('now')} ogImage={nowOgImage} description={t('nowDescription')}>
   <div id="now-container" class="container flex flex-col gap-24 min-h-screen mb-24">
     <TableOfContents headings={headings} wrappingElementSelector="#now-container" />
     <section>
-      <h1 class="typo-headline-small vt-name-[title] title" id="now">{m.now() }</h1>
-      <p class="typo-headline-small opacity-50 vt-name-[name] author">{m.name()}</p>
+      <h1 class="typo-headline-small vt-name-[title] title" id="now">{t('now')}</h1>
+      <p class="typo-headline-small opacity-50 vt-name-[name] author">{t('name')}</p>
       <article>
       <p class="typo-subtitle-small !text-foreground/50 date mt-8"><FormattedDate date={nowContent?.data.updatedDate || new Date()} /></p>
       <div class="prose no-initial my-[1em]">

@@ -3,8 +3,10 @@ import DynamicLogo from '@/components/DynamicLogo.astro';
 import Contacts from '@/components/main/Contacts.astro';
 import Experiences from '@/components/main/Experiences.astro';
 import RecommendPeople from '@/components/main/RecommendPeople.astro';
-import * as m from '@/i18n/paraglide/messages';
+import { i18n } from '@/i18n/utils';
 import Layout from '@/layouts/Layout.astro';
+
+const { t } = i18n(Astro.url);
 ---
 
 <Layout>
@@ -13,11 +15,11 @@ import Layout from '@/layouts/Layout.astro';
       <div class="mb-4">
         <DynamicLogo />
       </div>
-      <h1 class="typo-headline-small hidden vt-name-[title]">{m.name()}</h1>
-      <h1 class="typo-headline-small vt-name-[name]">{m.name()}</h1>
-      <h2 class="typo-subtitle-large mt-4" set:html={m.greeting()}></h2>
-      <p class="typo-body my-[1em] [&:lang(ko)]:text-balance">
-        {m.mainAboutMe()}
+      <h1 class="typo-headline-small hidden vt-name-[title]">{t('name')}</h1>
+      <h1 class="typo-headline-small vt-name-[name]">{t('name')}</h1>
+      <h2 class="typo-subtitle-large mt-4 leading-relaxed [&:lang(ko)]:text-balance" set:html={t('greeting')}></h2>
+      <p class="typo-body my-[1em]">
+        {t('mainAboutMe')}
       </p>
     </section>
 

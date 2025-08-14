@@ -1,9 +1,9 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
-import type { AvailableLanguageTag } from '@/i18n/paraglide/runtime';
+import type { AvailableLanguages } from '@/i18n/utils';
 
-export async function getPostStaticPaths(language: AvailableLanguageTag) {
+export async function getPostStaticPaths(language: AvailableLanguages) {
   const posts = await getCollection('blog');
   return posts
     .filter((post) => {

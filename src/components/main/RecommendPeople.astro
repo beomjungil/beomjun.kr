@@ -1,13 +1,12 @@
 ---
-import * as m from '@/i18n/paraglide/messages';
-import { languageTag } from '@/i18n/paraglide/runtime';
 import ko from '@content/people/ko.json';
 import en from '@content/people/en.json';
 import ja from '@content/people/ja.json';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import { i18n } from '@/i18n/utils';
 
-const language = languageTag();
+const { t, language } = i18n(Astro.url);
 const people = {
   ko,
   en,
@@ -18,11 +17,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/content/people/ima
 
 <section>
     <h2 class="typo-headline-small flex justify-between pb-[1em]">
-      {m.recommendPeople()}
+      {t('recommendPeople')}
     </h2>
 
     <p class="typo-body mb-4">
-        {m.recommendPeopleDescription()}
+        {t('recommendPeopleDescription')}
     </p>
 
     <div class="flex flex-wrap gap-2 typo-body" id="people-container">

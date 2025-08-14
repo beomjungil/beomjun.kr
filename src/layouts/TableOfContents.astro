@@ -17,12 +17,14 @@ const { headings, wrappingElementSelector } = Astro.props;
   }
 </div>
 
-<div class="top-12 right-0 p-4 flex flex-col gap-1 scale-95 items-end opacity-0 pointer-events-none blur-sm group-hover/toc:blur-none group-hover/toc:pointer-events-auto group-hover/toc:opacity-100 group-hover/toc:scale-100 origin-top-right transition-all duration-500">
+<div class="top-12 max-w-[280px] right-0 p-4 flex flex-col gap-2 scale-95 items-start opacity-0 pointer-events-none blur-sm group-hover/toc:blur-none group-hover/toc:pointer-events-auto group-hover/toc:opacity-100 group-hover/toc:scale-100 origin-top-right transition-all duration-500">
   {
     (headings || []).map((heading, index) => heading.depth > 4 ? null :(
-      <a data-toc-id={heading.slug} href={`#${heading.slug}`} class="no-prose flex items-center gap-1 group/toc-link hover:text-foreground typo-caption text-foreground/50 transition-colors duration-300 data-[current=true]:text-accent data-[current=true]:font-bold" data-current={index === 0 ? "true" : "false"}>
-        {heading.text}
-        <span class="rounded-full bg-foreground/10 h-0.5 w-(--depth) whitespace-nowrap group-hover/toc-link:bg-foreground/80 transition-colors duration-300 group-data-[current=true]/toc-link:bg-accent"  style={`--depth: ${(5- heading.depth) * 16}px`}></span>
+      <a data-toc-id={heading.slug} href={`#${heading.slug}`} class="no-prose w-full flex items-center gap-1 group/toc-link hover:text-foreground typo-caption text-foreground/50 transition-all duration-300 data-[current=true]:text-accent data-[current=true]:font-bold pl-[var(--depth)]" data-current={index === 0 ? "true" : "false"} style={`--depth: ${(heading.depth) * 24}px`}>
+        <span class="flex-0 whitespace-nowrap">
+          {heading.text}
+        </span>
+        <span class="rounded-full bg-foreground/10 h-0.25 flex-1 group-hover/toc-link:bg-foreground/80 transition-all duration-300 group-data-[current=true]/toc-link:bg-accent"/>
       </a>
     ))
   }

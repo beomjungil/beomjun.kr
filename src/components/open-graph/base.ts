@@ -2,7 +2,7 @@ import sharp from 'sharp';
 import satori, { type SatoriOptions } from 'satori';
 import { html } from 'satori-html';
 import PretendardJPBold from '@/assets/og-fonts/_PretendardJP-Bold.otf';
-import type { AvailableLanguageTag } from '@/i18n/paraglide/runtime';
+import type { AvailableLanguages } from '@/i18n/utils';
 
 const satoriOptions: SatoriOptions = {
   width: 1200,
@@ -24,7 +24,7 @@ export async function createOpenGraphImage({
 }: {
   title: string;
   description?: string;
-  lang: AvailableLanguageTag;
+  lang: AvailableLanguages;
 }) {
   const hasDescription = description !== undefined;
   const logoWidth = hasDescription ? '11.25em' : '10em';
@@ -54,5 +54,5 @@ export async function createOpenGraphImage({
 
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
 
-  return new Response(png, { headers: { 'Content-Type': 'image/png' } });
+  return new Response(new Uint8Array(png), { headers: { 'Content-Type': 'image/png' } });
 }

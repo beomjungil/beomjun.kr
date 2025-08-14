@@ -1,5 +1,7 @@
 ---
-import { languageTag } from '@/i18n/paraglide/runtime';
+import { i18n } from '@/i18n/utils';
+
+const { language } = i18n(Astro.url);
 
 interface Props {
   date: Date;
@@ -8,6 +10,6 @@ interface Props {
 const { date } = Astro.props;
 ---
 
-<time datetime={date.toISOString()}>{date.toLocaleDateString(languageTag(), {
+<time datetime={date.toISOString()}>{date.toLocaleDateString(language, {
       dateStyle: 'medium',
 })}</time>

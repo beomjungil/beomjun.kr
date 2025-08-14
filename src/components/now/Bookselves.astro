@@ -2,23 +2,23 @@
 import ko from '@content/book/ko.json';
 import en from '@content/book/en.json';
 import ja from '@content/book/ja.json';
-import { languageTag } from '@/i18n/paraglide/runtime';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
-import * as m from '@/i18n/paraglide/messages';
+import { i18n } from '@/i18n/utils';
 
 const books = {
   ko,
   en,
   ja,
 };
-const language = languageTag();
+const { language, t } = i18n(Astro.url);
+
 const images = import.meta.glob<{ default: ImageMetadata }>('/content/book/images/*.{jpeg,jpg,png,gif}');
 ---
 
 <section>
   <h2 class="typo-headline-small" id="bookshelf">
-    {m.bookshelf()}
+    {t('bookshelf')}
   </h2>
   <div class="books-grid">
     {books[language].map(book => (

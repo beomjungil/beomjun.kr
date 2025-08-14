@@ -1,31 +1,31 @@
 ---
-import * as m from '@/i18n/paraglide/messages';
+import { i18n } from '@/i18n/utils';
 import HeaderLink from './HeaderLink.astro';
 import I18NLink from './I18nLink.astro';
 import LanguageSelector from './LanguageSelector.astro';
 import Logo from './Logo.astro';
 import ThemeSelector from './ThemeSelector.astro';
 
-const pathname = Astro.url.pathname.replace('/ja', '').replace('/en', '');
-const isMainPage = ['/', '/ja', '/en'].includes(pathname);
+const pathname = Astro.url.pathname;
+const isMainPage = ['/', '/ja', '/en', '/ja/', '/en/'].includes(pathname);
+const { t } = i18n(Astro.url);
 ---
-
 <button popovertarget="nav" popovertargetaction="toggle" class="fixed vt-name-[menu-button] right-4 top-4 text-foreground z-50 lg:hidden">
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke-width="1.5"
-    stroke="currentColor"
-    class="size-6"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke-width="1.5"
+  stroke="currentColor"
+  class="size-6"
   >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-    />
-  </svg>
-  <span class="sr-only">메뉴 열기</span>
+  <path
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+  />
+</svg>
+<span class="sr-only">메뉴 열기</span>
 </button>
 
 <header class="fixed top-0 z-40">
@@ -35,26 +35,26 @@ const isMainPage = ['/', '/ja', '/en'].includes(pathname);
     </I18NLink>
 
     <div
-      id="nav"
-      popover="auto"
-      class:list={[
-        'bg-surface dark:border dark:border-foreground/10 lg:border-none lg:flex lg:bg-transparent lg:relative lg:flex-col lg:ml-0 lg:p-0 lg:items-start lg:justify-start lg:gap-4 lg:translate-y-10 lg:vt-name-[header-links]',
-        {'lg:!translate-y-12': !isMainPage}
-      ]}
+    id="nav"
+    popover="auto"
+    class:list={[
+      'bg-surface dark:border dark:border-foreground/10 lg:border-none lg:flex lg:bg-transparent lg:relative lg:flex-col lg:ml-0 lg:p-0 lg:items-start lg:justify-start lg:gap-4 lg:translate-y-10 lg:vt-name-[header-links]',
+      {'lg:!translate-y-12': !isMainPage}
+    ]}
     >
-      <button class="hider lg:hidden">
-        <span class="sr-only">메뉴 닫기</span>
-      </button>
-      <div class="flex flex-col items-start gap-8 lg:gap-4">
-        <HeaderLink data-astro-prefetch="viewport" href="/about">{m.about()}</HeaderLink>
-        <HeaderLink data-astro-prefetch="viewport" href="/writing">{m.writing()}</HeaderLink>
-        <HeaderLink data-astro-prefetch="viewport" href="/projects">{m.projects()}</HeaderLink>
-        <HeaderLink data-astro-prefetch="viewport" href="/now">{m.now()}</HeaderLink>
+    <button class="hider lg:hidden">
+      <span class="sr-only">메뉴 닫기</span>
+    </button>
+    <div class="flex flex-col items-start gap-8 lg:gap-4">
+        <HeaderLink data-astro-prefetch="viewport" href="/about">{t('about')}</HeaderLink>
+        <HeaderLink data-astro-prefetch="viewport" href="/writing">{t('writing')}</HeaderLink>
+        <HeaderLink data-astro-prefetch="viewport" href="/">{t('projects')}</HeaderLink>
+        <HeaderLink data-astro-prefetch="viewport" href="/now">{t('now')}</HeaderLink>
 
-        <div class="my-2 h-px bg-foreground/20 w-full"></div>
+        <!-- <div class="my-2 h-px bg-foreground/20 w-full"></div>
         <LanguageSelector/>
         <ThemeSelector/>
-      </div>
+      </div> -->
     </div>
   </nav>
 

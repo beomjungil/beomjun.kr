@@ -1,25 +1,24 @@
 ---
-import * as m from '@/i18n/paraglide/messages';
 import ko from '@content/gadget/ko.json';
 import en from '@content/gadget/en.json';
 import ja from '@content/gadget/ja.json';
-import { languageTag } from '@/i18n/paraglide/runtime';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import { i18n } from '@/i18n/utils';
 
 const gadgets = {
   ko,
   en,
   ja,
 };
-const language = languageTag();
+const { language, t } = i18n(Astro.url);
 const images = import.meta.glob<{ default: ImageMetadata }>('/content/gadget/images/*.{jpeg,jpg,png,webp}');
 ---
 
 <section>
   <h2 class="typo-headline-small" id="gadgets">
-    {m.gadgets()}
-    <span class="opacity-50">{m.gadgetsDescription()}</span>
+    {t('gadgets')}
+    <span class="opacity-50">{t('gadgetsDescription')}</span>
   </h2>
 
   <div class="gadget-grid">

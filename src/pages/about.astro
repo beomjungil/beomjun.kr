@@ -1,11 +1,13 @@
 ---
-import * as m from '@/i18n/paraglide/messages';
+import { i18n } from '@/i18n/utils';
 import Layout from '../layouts/BlogPost.astro';
+
+const { t } = i18n(Astro.url);
 ---
 
 <Layout
 	headings={[]}
-	title={m.about()}
+	title={t('about')}
 	description=""
 	pubDate={new Date('2024-11-24')}
 >

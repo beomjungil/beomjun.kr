@@ -2,16 +2,16 @@
 
 :root {
   --color-foreground: oklch(18.18% 0.002 106.6);
-  --color-background: oklch(98.67% 0.0106 100.82);
+  --color-background: oklch(99.641% 0.00655 97.462);
   --color-accent: oklch(58.13% 0.2127 33.31);
-  --color-surface: oklch(100% 0 0);
+  --color-surface: oklch(95.641% 0.00655 97.462);
 }
 
 .dark {
   --color-foreground: oklch(98.67% 0.0106 100.82);
   --color-background: oklch(19.08% 0.002 106.59);
   --color-accent: oklch(65.59% 0.2327 34.52);
-  --color-surface: oklch(0% 0 0);
+  --color-surface: oklch(23.08% 0.002 106.59);
 }
 
 :lang(ja) {
@@ -55,7 +55,7 @@
     var(--font-commit-mono, ''),
     ui-monospace,
     monospace;
-
+  --font-code: var(--font-mono);
   --color-foreground: var(--color-foreground);
   --color-background: var(--color-background);
   --color-accent: var(--color-accent);

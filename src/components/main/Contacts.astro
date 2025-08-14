@@ -1,29 +1,31 @@
 ---
-import * as m from '@/i18n/paraglide/messages';
+import { i18n } from '@/i18n/utils';
+
+const { t } = i18n(Astro.url);
 
 const utm = '?utm_source=beomjun.kr&utm_medium=website&utm_campaign=contact';
 ---
 <section class="mb-16">
   <h2 class="typo-headline-small flex justify-between pb-[1em]">
-      {m.contacts()}
+      {t('contacts')}
   </h2>
   <p class="flex flex-col md:grid md:grid-cols-[11.5rem_1fr] md:gap-8 typo-body">
-    <span>{m.email()}</span>
-    <a href={m.mailto()} class="link md:mb-0 mb-4">
+    <span>{t('email')}</span>
+    <a href={t('mailto')} class="link md:mb-0 mb-4">
       gil@beomjun.kr
     </a>
 
-    <span>{m.github()}</span>
+    <span>{t('github')}</span>
     <a href={`https://github.com/beomjungil${utm}`} target="_blank" class="link md:mb-0 mb-4">
       github.com/beomjungil
     </a>
 
-    <span>{m.linkedin()}</span>
+    <span>{t('linkedin')}</span>
     <a href={`https://www.linkedin.com/in/beomjungil${utm}`} target="_blank" class="link md:mb-0 mb-4">
       linked.in/beomjungil
     </a>
 
-    <span>{m.instagram()}</span>
+    <span>{t('instagram')}</span>
     <a href={`https://www.instagram.com/gil.beomjun${utm}`} target="_blank" class="link">
       @gil.beomjun
     </a>

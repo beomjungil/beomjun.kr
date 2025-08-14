@@ -1,7 +1,6 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { languageTag } from '@/i18n/paraglide/runtime';
 import type { HTMLAttributes } from 'astro/types';
+import { i18n } from '@/i18n/utils';
 
 type Props = HTMLAttributes<'a'>;
 
@@ -11,11 +10,10 @@ const pathname = Astro.url.pathname.replace('/ja', '').replace('/en', '').replac
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === `/${subpath?.[0]}`;
 const isMainPage = ['/', '/ja/', '/en/', '/en', 'ja'].includes(Astro.url.pathname);
+const { language } = i18n(Astro.url);
 
-const newHref = getRelativeLocaleUrl(
-  languageTag(),
-  (href as string).replace('/ja', '').replace('/en', '').replace('/ko', ''),
-);
+const { tPath } = i18n(Astro.url);
+const newHref = tPath((href as string).replace('/ja', '').replace('/en', '').replace('/ko', ''), language);
 ---
 
 <a href={newHref} class:list={['typo-headline-small no-prose hover:!text-foreground transition-colors duration-200', className, {'!text-foreground': isMainPage || isActive, '!text-foreground/50': !(isActive || isMainPage)}]} {...props}>

@@ -2,13 +2,11 @@
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '@/components/BaseHead.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
-import * as m from '@/i18n/paraglide/messages';
 import Layout from '@/layouts/Layout.astro';
 import '@/styles/prose.css';
 import type { MarkdownHeading } from 'astro';
 import TableOfContents from './TableOfContents.astro';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { languageTag } from '@/i18n/paraglide/runtime';
+import { i18n } from '@/i18n/utils';
 
 type Props = CollectionEntry<'blog'>['data'] & {
   isDefaultLanguage?: boolean;
@@ -17,7 +15,9 @@ type Props = CollectionEntry<'blog'>['data'] & {
 };
 
 const { title, description, pubDate, updatedDate, tags, isDefaultLanguage, headings, id } = Astro.props;
-const ogImage = id ? getRelativeLocaleUrl(languageTag(), `/open-graph/writing/${id}.png`).slice(0, -1) : undefined;
+
+const { t, tPath } = i18n(Astro.url);
+const ogImage = id ? tPath(`/open-graph/writing/${id}.png`).slice(0, -1) : undefined;
 ---
 
 <Layout title={title} ogImage={ogImage}>
@@ -30,7 +30,7 @@ const ogImage = id ? getRelativeLocaleUrl(languageTag(), `/open-graph/writing/${
       <div>
         <div>
           <h1 class="typo-headline-small vt-name-[title] title">{title}</h1>
-          <p class="typo-headline-small opacity-50 vt-name-[name] author">{m.name()}</p>
+          <p class="typo-headline-small opacity-50 vt-name-[name] author">{t('name')}</p>
           <section class="flex gap-8 justify-between mt-4">
             <p class="typo-subtitle-small !text-foreground/50 date whitespace-nowrap"><FormattedDate date={updatedDate || pubDate} /></p>
             <p class="typo-body-sans !text-foreground/50 [&:lang(en)]:text-balance [&:lang(ko)]:text-balance">{description}</p>
@@ -50,14 +50,14 @@ const ogImage = id ? getRelativeLocaleUrl(languageTag(), `/open-graph/writing/${
         isDefaultLanguage && (
           <aside class="border-l-4 border-foreground/10 pl-4 py-2 mt-8 [&:lang(en)]:text-balance">
             <p class="mb-2 typo-headline-small">
-              {m.translationPendingTitle()}
+              {t('translationPendingTitle')}
             </p>
-            <p>{m.translationPendingDescription()}</p>
+            <p>{t('translationPendingDescription')}</p>
           </aside>
         )
       }
 
-      <div class="prose mt-12">
+      <div class="prose mt-16">
         <slot />
       </div>
     </div>

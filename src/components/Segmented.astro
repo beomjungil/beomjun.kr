@@ -58,7 +58,7 @@ const { options, name, defaultValue, iconOnly = false, class: className = '' } =
   </ul>
 </div>
 
-<script define:vars={{ 'segmentedName': name }}>
+<script define:vars={{ 'segmentedName': name }} is:inline>
 function initializeSegment() {
   const buttons = document.querySelector(`[data-segmented=${segmentedName}]`).querySelectorAll(`[data-segment-value]`);
 

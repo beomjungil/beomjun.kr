@@ -1,9 +1,8 @@
-import * as m from '@/i18n/paraglide/messages';
-import type { AvailableLanguageTag } from '@/i18n/paraglide/runtime';
 import { createOpenGraphImage } from '@/components/open-graph/base';
+import { getTranslations, type AvailableLanguages } from '@/i18n/utils';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
-export async function getPostStaticPaths(language: AvailableLanguageTag) {
+export async function getPostStaticPaths(language: AvailableLanguages) {
   const posts = await getCollection('blog');
   return posts
     .filter((post) => {
@@ -35,10 +34,11 @@ export async function getStaticPaths() {
   return getPostStaticPaths('ko');
 }
 
-export async function writingOpenGraph(lang: AvailableLanguageTag, post: CollectionEntry<'blog'>) {
+export async function writingOpenGraph(lang: AvailableLanguages, post: CollectionEntry<'blog'>) {
+  const t = getTranslations(lang);
   return createOpenGraphImage({
     title: post.data.title,
-    description: m.shortname({}, { languageTag: lang }),
+    description: t('shortname'),
     lang,
   });
 }

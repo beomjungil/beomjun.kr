@@ -2,8 +2,7 @@
 import ko from '@content/experience/ko.json';
 import en from '@content/experience/en.json';
 import ja from '@content/experience/ja.json';
-import { languageTag } from '@/i18n/paraglide/runtime';
-import * as m from '@/i18n/paraglide/messages';
+import { i18n } from '@/i18n/utils';
 
 const experiences = {
   ko,
@@ -11,12 +10,12 @@ const experiences = {
   ja,
 };
 
-const language = languageTag();
+const { language, t } = i18n(Astro.url);
 ---
 
 <section>
     <h2 class="typo-headline-small flex justify-between pb-[1em]">
-      {m.experiences()}
+      {t('experiences')}
     </h2>
     <div class="flex flex-col md:grid md:grid-cols-[11.5rem_1fr] md:gap-8 gap-4">
 
@@ -39,7 +38,7 @@ const language = languageTag();
                   <time datetime={experience.startDate}>{new Date(experience.startDate).toLocaleDateString(language, {
                     year: 'numeric',
                     month: 'short'
-                  })}</time> - {m.present()}
+                  })}</time> - {t('present')}
                 </em>
               )
             }
@@ -47,7 +46,7 @@ const language = languageTag();
 
           <div class="space-y-2">
             <div>
-              <h3 class="typo-subtitle-large">
+              <h3 class="typo-headline-small">
                 {experience.company}
               </h3>
               <p class="typo-body">

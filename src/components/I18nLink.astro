@@ -1,18 +1,16 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { type AvailableLanguageTag, languageTag } from '@/i18n/paraglide/runtime';
 import type { HTMLAttributes } from 'astro/types';
+import { i18n, type AvailableLanguages } from '@/i18n/utils';
 
 type Props = HTMLAttributes<'a'> & {
-  locale?: AvailableLanguageTag;
+  locale?: AvailableLanguages;
 };
 
 const { href, class: className, locale, ...props } = Astro.props;
+const { language } = i18n(Astro.url);
 
-const newHref = getRelativeLocaleUrl(
-  locale ?? languageTag(),
-  (href as string).replace('/ja', '').replace('/en', '').replace('/ko', ''),
-);
+const { tPath } = i18n(Astro.url);
+const newHref = tPath((href as string).replace('/ja', '').replace('/en', '').replace('/ko', ''), locale ?? language);
 ---
 
 <a href={newHref} class={className ? className : 'link'} {...props}>

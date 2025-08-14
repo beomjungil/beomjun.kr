@@ -1,14 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import I18NLink from '@/components/I18nLink.astro';
-import * as m from '@/i18n/paraglide/messages';
 import BaseHead from '../../components/BaseHead.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { SITE_DESCRIPTION } from '../../consts';
 import Layout from '../../layouts/Layout.astro';
-import { languageTag } from '@/i18n/paraglide/runtime';
+import { i18n } from '@/i18n/utils';
 
-const language = languageTag();
+const { language, t } = i18n(Astro.url);
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .filter((post) => {
@@ -31,8 +30,8 @@ const posts = (await getCollection('blog'))
 	</Fragment>
   <section class="container">
     <div class="relative">
-      <h1 class="typo-headline-small vt-name-[name]">{m.name()}</h1>
-      <p class="typo-headline-small opacity-50">{m.writing()}</p>
+      <h1 class="typo-headline-small vt-name-[name]">{t('name')}</h1>
+      <p class="typo-headline-small opacity-50">{t('writing')}</p>
     </div>
 
     <ul class="space-y-6 mt-8">
