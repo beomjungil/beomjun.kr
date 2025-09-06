@@ -1,0 +1,94 @@
+---
+import { i18n } from '@/i18n/utils';
+import { getCollection } from 'astro:content';
+
+const allCategories = await getCollection('category');
+
+const { language, t } = i18n(Astro.url);
+
+const categories = allCategories.map((category) => ({
+  name: category.data.title[language],
+  slug: category.id,
+  order: category.data.order
+})).sort((a, b) => a.order - b.order);
+---
+
+<ul id="category-list" class="flex px-4 space-x-1 overflow-x-auto py-1 has-[a[data-category='all'][data-selected='false']]:-ml-2">
+  <li>
+    <a
+      href="?"
+      data-category="all"
+      data-selected="false"
+      class="whitespace-nowrap hover:bg-foreground/10 transition-colors duration-300 no-underline py-1 px-2 rounded-md typo-sans opacity-50 data-[selected='true']:opacity-100 data-[selected='true']:bg-foreground data-[selected='true']:text-background"
+    >
+      {t('all')}
+    </a>
+  </li>
+  {
+  categories.map((category) => (
+    <li>
+      <a
+        href={`?category=${category.slug}`}
+        data-category={category.slug}
+        data-selected={false}
+        class="whitespace-nowrap hover:bg-foreground/10 transition-colors duration-300 no-underline py-1 px-2 rounded-md typo-sans opacity-50 data-[selected='true']:opacity-100 data-[selected='true']:bg-foreground data-[selected='true']:text-background"
+      >
+        {category.name}
+      </a>
+    </li>
+  ))
+  }
+</ul>
+
+<script>
+import { navigate } from 'astro:transitions/client';
+
+  function syncCategoryWithURL() {
+    const params = new URLSearchParams(window.location.search);
+    const value = params.get('category') || 'all';
+    const select = document.getElementById('category-list');
+
+    if (!select) return;
+
+    const options = select.querySelectorAll('a[data-category]') as NodeListOf<HTMLElement>;
+    options.forEach((option) => {
+      if (option.dataset.category === value) {
+        option.dataset.selected = 'true';
+      } else {
+        option.dataset.selected = 'false';
+      }
+    });
+  }
+
+  async function handleCategoryClick(event: Event) {
+    event.preventDefault();
+    const target = event.target as HTMLElement;
+    const category = target.dataset.category;
+
+    if (category) {
+      const url = new URL(window.location.href);
+      if (category === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', category);
+      }
+
+      navigate(url.toString(), { history: 'replace' });
+    }
+  }
+
+  function initializeCategorySelector() {
+    syncCategoryWithURL();
+
+    const categoryList = document.getElementById('category-list');
+    if (categoryList) {
+      categoryList.addEventListener('click', handleCategoryClick);
+    }
+  }
+
+  initializeCategorySelector();
+  document.addEventListener('astro:page-load', () => {
+    initializeCategorySelector();
+  });
+
+</script>

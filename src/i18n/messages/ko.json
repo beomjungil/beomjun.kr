@@ -26,6 +26,9 @@
   "recommendPeople": "자신있게 추천하는 사람들",
   "recommendPeopleDescription": "제 인생의 한 순간에서 함께 협업하며, 많은 것을 배우고 생각할 수 있게 도와준 뛰어난 분들이에요. 지금의 저를 만드는 데 기여를 주신 분들을 자신있게 추천드려요.",
 
+  "__writings__": "글모음 페이지용 번역",
+  "all": "전체",
+
   "__post__": "블로그 페이지용 번역",
   "translationPendingTitle": "아직 글이 번역되지 않았어요.",
   "translationPendingDescription": "시간을 내어 AI와 언어를 공부하며 번역 중이니, 조금만 기다려주세요.",

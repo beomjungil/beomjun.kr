@@ -26,6 +26,9 @@
   "recommendPeople": "おすすめの方々",
   "recommendPeopleDescription": "私の人生のある瞬間で共に協力し、多くを学び、考える機会をくださった素晴らしい方々です。今の私を形作るうえで貢献してくださった方々を自信を持っておすすめします。",
 
+  "__writings__": "記事一覧ページ用の翻訳",
+  "all": "すべて",
+
   "__post__": "ブログページの翻訳",
   "translationPendingTitle": "まだ投稿が翻訳されていません。",
   "translationPendingDescription": "AIと一緒に言語を学びながら翻訳を進めていますので、もう少々お待ちください。",

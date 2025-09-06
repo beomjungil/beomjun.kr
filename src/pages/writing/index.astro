@@ -6,6 +6,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import { SITE_DESCRIPTION } from '../../consts';
 import Layout from '../../layouts/Layout.astro';
 import { i18n } from '@/i18n/utils';
+import CategorySelector from '@/components/writing/CategorySelector.astro';
 
 const { language, t } = i18n(Astro.url);
 const posts = (await getCollection('blog'))
@@ -34,10 +35,14 @@ const posts = (await getCollection('blog'))
       <p class="typo-sans-bold opacity-50">{t('writing')}</p>
     </div>
 
-    <ul class="space-y-6 mt-8">
+    <div class="mt-8 -mx-4">
+      <CategorySelector />
+    </div>
+
+    <ul class="space-y-6 mt-4">
       {
         posts.map((post, index) => (
-          <li class="post-item group" style={`--sibling-index: ${index}`}>
+          <li class="post-item group" style={`--sibling-index: ${index}`} data-category={post.data.category.id || 'etc'}>
             <I18NLink class="flex no-prose justify-between items-center gap-x-4 group-hover:bg-foreground/5 transition-colors duration-300 -m-2 p-2 rounded-md" href={`/writing/${post.id}/`}>
               <h4 class="typo-sans-bold">{post.data.title}</h4>
               <div class="flex-1 h-px bg-transparent group-hover:bg-foreground/10 transition-colors duration-300"></div>
@@ -51,6 +56,36 @@ const posts = (await getCollection('blog'))
     </ul>
   </section>
 </Layout>
+
+<script>
+  function filterPosts() {
+    const params = new URLSearchParams(window.location.search);
+    const selectedCategory = params.get('category') || 'all';
+    const postItems = document.querySelectorAll('.post-item') as NodeListOf<HTMLElement>;
+
+    let visibleIndex = 0;
+    postItems.forEach((item) => {
+      const postCategory = item.dataset.category;
+      const shouldShow = selectedCategory === 'all' || postCategory === selectedCategory;
+
+      if (shouldShow) {
+        item.style.display = 'block';
+        item.style.setProperty('--sibling-index', visibleIndex.toString());
+        item.style.animation = 'none';
+        item.offsetHeight; // Force reflow
+        item.style.animation = null;
+        visibleIndex++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  filterPosts();
+  document.addEventListener('astro:page-load', () => {
+    filterPosts();
+  });
+</script>
 
 <style>
 @keyframes fadeSlideIn {
