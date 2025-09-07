@@ -28,6 +28,7 @@
 
   "__writings__": "Translations for the Writings page",
   "all": "All",
+  "noPostsInCategory": "There are no posts in this category yet.<br/>Please check back soon.",
 
   "__post__": "Blog page translation",
   "translationPendingTitle": "This post has not been translated yet.",

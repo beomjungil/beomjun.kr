@@ -28,6 +28,7 @@
 
   "__writings__": "글모음 페이지용 번역",
   "all": "전체",
+  "noPostsInCategory": "아직 카테고리의 글이 없어요.<br/>조금만 기다려주세요.",
 
   "__post__": "블로그 페이지용 번역",
   "translationPendingTitle": "아직 글이 번역되지 않았어요.",

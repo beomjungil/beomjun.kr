@@ -39,7 +39,11 @@ const posts = (await getCollection('blog'))
       <CategorySelector />
     </div>
 
-    <ul class="space-y-6 mt-4">
+    <div id="empty-state" class="hidden text-center py-12">
+      <p class="typo-sans opacity-50 leading-relaxed" set:html={t('noPostsInCategory')}/>
+    </div>
+
+    <ul id="posts-list" class="space-y-6 mt-4">
       {
         posts.map((post, index) => (
           <li class="post-item group" style={`--sibling-index: ${index}`} data-category={post.data.category.id || 'etc'}>
@@ -62,6 +66,8 @@ const posts = (await getCollection('blog'))
     const params = new URLSearchParams(window.location.search);
     const selectedCategory = params.get('category') || 'all';
     const postItems = document.querySelectorAll('.post-item') as NodeListOf<HTMLElement>;
+    const emptyState = document.getElementById('empty-state');
+    const postsList = document.getElementById('posts-list');
 
     let visibleIndex = 0;
     postItems.forEach((item) => {
@@ -73,12 +79,22 @@ const posts = (await getCollection('blog'))
         item.style.setProperty('--sibling-index', visibleIndex.toString());
         item.style.animation = 'none';
         item.offsetHeight; // Force reflow
+        // @ts-expect-error force
         item.style.animation = null;
         visibleIndex++;
       } else {
         item.style.display = 'none';
       }
     });
+
+    // Show/hide empty state
+    if (visibleIndex === 0) {
+      emptyState?.classList.remove('hidden');
+      postsList?.classList.add('hidden');
+    } else {
+      emptyState?.classList.add('hidden');
+      postsList?.classList.remove('hidden');
+    }
   }
 
   filterPosts();

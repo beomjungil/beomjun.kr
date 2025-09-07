@@ -28,6 +28,7 @@
 
   "__writings__": "記事一覧ページ用の翻訳",
   "all": "すべて",
+  "noPostsInCategory": "このカテゴリにはまだ記事がありません。<br/>もう少々お待ちください。",
 
   "__post__": "ブログページの翻訳",
   "translationPendingTitle": "まだ投稿が翻訳されていません。",
